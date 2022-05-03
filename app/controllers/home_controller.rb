@@ -16,6 +16,13 @@ class HomeController < ApplicationController
         repo: 'timeline'
       },
       {
+        name: 'Parser',
+        url: 'https://parser.ecosyste.ms',
+        description: 'An open API service to parse dependency metadata from many open source software ecosystems manifest files.',
+        icon: 'bar-chart-steps',
+        repo: 'parser'
+      },
+      {
         name: 'Digest',
         url: 'https://digest.ecosyste.ms',
         description: 'An open API service providing digests of packages from many open source software ecosystems and registries.',
