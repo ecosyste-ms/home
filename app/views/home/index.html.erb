@@ -6,10 +6,14 @@
           
           <div class="flex-grow-1 ms-3 text-break">
             <h5 class='card-title'>
-              <%= link_to service[:name], service[:url], target: :_blank %>
-              <% if service[:repo] %>
-                <%= link_to bootstrap_icon('github', height: 20), "https://github.com/ecosyste-ms/#{service[:repo]}", target: :_blank %>
-              <% end %>
+              <% if service[:url] %>
+                <%= link_to service[:name], service[:url], target: :_blank %>
+                <% if service[:repo] %>
+                  <%= link_to bootstrap_icon('github', height: 20), "https://github.com/ecosyste-ms/#{service[:repo]}", target: :_blank %>
+                <% end %>
+              <% else %>
+                <%= service[:name] %> - <i>Coming soon</i>
+              <% end%>
             </h5>
           
             <p class="card-subtitle mb-2 text-muted">

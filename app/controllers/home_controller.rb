@@ -32,9 +32,58 @@ class HomeController < ApplicationController
       {
         name: 'Digest',
         url: 'https://digest.ecosyste.ms',
-        description: 'An open API service providing digests of packages from many open source software ecosystems and registries.',
+        description: 'An open API service providing digests of packages from many open source software ecosystems',
         icon: 'hash',
         repo: 'digest'
+      },
+      {
+        name: 'Repositories',
+        # url: 'https://repositories.ecosyste.ms',
+        description: 'An open API service providing repository metadata for many open source software ecosystems',
+        icon: 'journal-code',
+        repo: 'digest'
+      },
+      {
+        name: 'Dependencies',
+        # url: 'https://dependencies.ecosyste.ms',
+        description: 'An open API service providing dependency graph metadata for many open source software ecosystems',
+        icon: 'diagram-2',
+        repo: 'dependencies'
+      },
+      {
+        name: 'Contributors',
+        # url: 'https://contributors.ecosyste.ms',
+        description: 'An open API service providing contributor metadata for many open source software ecosystems',
+        icon: 'person',
+        repo: 'contributors'
+      },
+      {
+        name: 'Licenses',
+        # url: 'https://licenses.ecosyste.ms',
+        description: 'An open API service to parse license metadata from many open source software ecosystems.',
+        icon: 'check-square',
+        repo: 'licenses'
+      },
+      {
+        name: 'Diff',
+        # url: 'https://diff.ecosyste.ms',
+        description: 'An open API service to generate diffs between package releases for many open source software ecosystems.',
+        icon: 'file-earmark-diff',
+        repo: 'diff'
+      },
+      {
+        name: 'Resolve',
+        # url: 'https://resolve.ecosyste.ms',
+        description: 'An open API service to resolve full dependency trees for many open source software ecosystems.',
+        icon: 'gear',
+        repo: 'resolve'
+      },
+      {
+        name: 'CVE',
+        # url: 'https://cve.ecosyste.ms',
+        description: 'An open API service providing security vulnerability metadata for many open source software ecosystems.',
+        icon: 'incognito',
+        repo: 'cve'
       },
     ]
   end
