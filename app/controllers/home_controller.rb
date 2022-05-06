@@ -23,6 +23,13 @@ class HomeController < ApplicationController
         repo: 'parser'
       },
       {
+        name: 'Archives',
+        url: 'https://archives.ecosyste.ms',
+        description: 'An open API service for inspecting package archives and files from many open source software ecosystems.',
+        icon: 'folder2-open',
+        repo: 'archives'
+      },
+      {
         name: 'Digest',
         url: 'https://digest.ecosyste.ms',
         description: 'An open API service providing digests of packages from many open source software ecosystems and registries.',
