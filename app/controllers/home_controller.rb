@@ -37,6 +37,13 @@ class HomeController < ApplicationController
         repo: 'digest'
       },
       {
+        name: 'Diff',
+        url: 'https://diff.ecosyste.ms',
+        description: 'An open API service to generate diffs between package releases for many open source software ecosystems.',
+        icon: 'file-earmark-diff',
+        repo: 'diff'
+      },
+      {
         name: 'Repositories',
         # url: 'https://repositories.ecosyste.ms',
         description: 'An open API service providing repository metadata for many open source software ecosystems',
@@ -63,13 +70,6 @@ class HomeController < ApplicationController
         description: 'An open API service to parse license metadata from many open source software ecosystems.',
         icon: 'check-square',
         repo: 'licenses'
-      },
-      {
-        name: 'Diff',
-        # url: 'https://diff.ecosyste.ms',
-        description: 'An open API service to generate diffs between package releases for many open source software ecosystems.',
-        icon: 'file-earmark-diff',
-        repo: 'diff'
       },
       {
         name: 'Resolve',
