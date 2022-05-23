@@ -44,6 +44,13 @@ class HomeController < ApplicationController
         repo: 'diff'
       },
       {
+        name: 'Licenses',
+        url: 'https://licenses.ecosyste.ms',
+        description: 'An open API service to parse license metadata from many open source software ecosystems.',
+        icon: 'check-square',
+        repo: 'licenses'
+      },
+      {
         name: 'Repositories',
         # url: 'https://repositories.ecosyste.ms',
         description: 'An open API service providing repository metadata for many open source software ecosystems',
@@ -63,13 +70,6 @@ class HomeController < ApplicationController
         description: 'An open API service providing contributor metadata for many open source software ecosystems',
         icon: 'person',
         repo: 'contributors'
-      },
-      {
-        name: 'Licenses',
-        # url: 'https://licenses.ecosyste.ms',
-        description: 'An open API service to parse license metadata from many open source software ecosystems.',
-        icon: 'check-square',
-        repo: 'licenses'
       },
       {
         name: 'Resolve',
