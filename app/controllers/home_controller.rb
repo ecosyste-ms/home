@@ -51,11 +51,11 @@ class HomeController < ApplicationController
         repo: 'licenses'
       },
       {
-        name: 'Repositories',
-        # url: 'https://repositories.ecosyste.ms',
+        name: 'Repos',
+        # url: 'https://repos.ecosyste.ms',
         description: 'An open API service providing repository metadata for many open source software ecosystems',
         icon: 'journal-code',
-        repo: 'digest'
+        repo: 'repos'
       },
       {
         name: 'Dependencies',
