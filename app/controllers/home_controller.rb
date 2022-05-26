@@ -52,7 +52,7 @@ class HomeController < ApplicationController
       },
       {
         name: 'Repos',
-        # url: 'https://repos.ecosyste.ms',
+        url: 'https://repos.ecosyste.ms',
         description: 'An open API service providing repository metadata for many open source software ecosystems',
         icon: 'journal-code',
         repo: 'repos'
