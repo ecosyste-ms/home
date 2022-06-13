@@ -4,7 +4,7 @@
 
 First things first, you'll need to fork and clone the repository to your local machine.
 
-`git clone https://github.com/ecosyste-ms/packages.git`
+`git clone https://github.com/ecosyste-ms/home.git`
 
 The project uses ruby on rails which have a number of system dependencies you'll need to install. 
 
