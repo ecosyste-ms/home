@@ -2,20 +2,71 @@
 
 ## Setup
 
-todo
+First things first, you'll need to fork and clone the repository to your local machine.
+
+`git clone https://github.com/ecosyste-ms/packages.git`
+
+The project uses ruby on rails which have a number of system dependencies you'll need to install. 
+
+- [ruby 3.1.2](https://www.ruby-lang.org/en/documentation/installation/)
+- [postgresql 14](https://www.postgresql.org/download/)
+- [redis 6+](https://redis.io/download/)
+- [node.js 16+](https://nodejs.org/en/download/)
+
+Once you've got all of those installed, from the root directory of the project run the following commands:
+
+```
+bundle install
+bundle exec rake db:create
+bundle exec rake db:migrate
+rails server
+```
+
+You can then load up [http://localhost:3000](http://localhost:3000) to access the service.
+
+### Docker
+
+Alternatively you can use the existing docker configuration files to run the app in a container.
+
+Run this command from the root directory of the project to start the service.
+
+`docker-compose up --build`
+
+You can then load up [http://localhost:3000](http://localhost:3000) to access the service.
+
+For access the rails console use the following command:
+
+`docker-compose exec app rails console`
+
+Runing rake tasks in docker follows a similar pattern:
+
+`docker-compose exec app rake packages:sync_recent`
 
 ## Tests
 
-todo
+The applications tests can be found in [test](test) and use the testing framework [minitest](https://github.com/minitest/minitest).
 
-## Docker 
+You can run all the tests with:
 
-todo
+`rails test`
+
 
 ## Adding a service
 
-todo
+The services listed on the homepage are defined in [app/controllers/home_controller.rb](app/controllers/home_controller.rb), to add a new service append something like the following:
+
+```ruby
+{
+  name: 'Packages',
+  url: 'https://packages.ecosyste.ms',
+  description: 'An open API service providing package, version and dependency metadata many open source software ecosystems and registries.',
+  icon: 'box-seam',
+  repo: 'packages'
+},
+```
+
+Note: The icon should be a name of an icon from the [bootstrap icon set](https://icons.getbootstrap.com/) (~v1.8) and the repo must exist within the [Ecosystems](https://github.com/ecosyste-ms) GitHub organization.
 
 ## Deployment
 
-todo
+A container-based deployment is highly recommended, we use [dokku.com](https://dokku.com/).
