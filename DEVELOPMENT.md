@@ -9,16 +9,12 @@ First things first, you'll need to fork and clone the repository to your local m
 The project uses ruby on rails which have a number of system dependencies you'll need to install. 
 
 - [ruby 3.1.2](https://www.ruby-lang.org/en/documentation/installation/)
-- [postgresql 14](https://www.postgresql.org/download/)
-- [redis 6+](https://redis.io/download/)
 - [node.js 16+](https://nodejs.org/en/download/)
 
 Once you've got all of those installed, from the root directory of the project run the following commands:
 
 ```
 bundle install
-bundle exec rake db:create
-bundle exec rake db:migrate
 rails server
 ```
 
@@ -37,10 +33,6 @@ You can then load up [http://localhost:3000](http://localhost:3000) to access th
 For access the rails console use the following command:
 
 `docker-compose exec app rails console`
-
-Runing rake tasks in docker follows a similar pattern:
-
-`docker-compose exec app rake packages:sync_recent`
 
 ## Tests
 
