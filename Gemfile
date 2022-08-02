@@ -22,8 +22,5 @@ group :development do
 end
 
 group :test do
-  gem "shoulda"
-  gem "webmock"
-  gem "mocha"
   gem "rails-controller-testing"
 end

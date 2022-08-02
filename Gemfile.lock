@@ -66,8 +66,6 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     bindex (0.8.1)
@@ -84,8 +82,6 @@ GEM
       rails (>= 6)
     builder (3.2.4)
     concurrent-ruby (1.1.10)
-    crack (0.4.5)
-      rexml
     crass (1.0.6)
     debug (1.6.1)
       irb (>= 1.3.6)
@@ -96,7 +92,6 @@ GEM
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    hashdiff (1.0.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
@@ -115,7 +110,6 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.16.2)
-    mocha (1.14.0)
     msgpack (1.5.4)
     net-imap (0.2.3)
       digest
@@ -143,7 +137,6 @@ GEM
       racc (~> 1.4)
     pg (1.4.2)
     popper_js (2.11.5)
-    public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -183,7 +176,6 @@ GEM
     rake (13.0.6)
     reline (0.3.1)
       io-console (~> 0.5)
-    rexml (3.2.5)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -192,12 +184,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    shoulda (4.0.0)
-      shoulda-context (~> 2.0)
-      shoulda-matchers (~> 4.0)
-    shoulda-context (2.0.0)
-    shoulda-matchers (4.5.1)
-      activesupport (>= 4.2.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -216,10 +202,6 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webmock (3.15.0)
-      addressable (>= 2.8.0)
-      crack (>= 0.3.2)
-      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -237,16 +219,13 @@ DEPENDENCIES
   bootstrap-icons-helper
   debug
   jbuilder
-  mocha
   pg (~> 1.4)
   puma (~> 5.0)
   rails (~> 7.0.3)
   rails-controller-testing
   sassc-rails
-  shoulda
   sprockets-rails
   web-console
-  webmock
 
 RUBY VERSION
    ruby 3.1.2p20
