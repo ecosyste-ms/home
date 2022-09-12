@@ -58,6 +58,13 @@ class HomeController < ApplicationController
         repo: 'repos'
       },
       {
+        name: 'Resolve',
+        url: 'https://resolve.ecosyste.ms',
+        description: 'An open API service to resolve dependency trees of packages for many open source software ecosystems.',
+        icon: 'gear',
+        repo: 'resolve'
+      },
+      {
         name: 'Dependencies',
         # url: 'https://dependencies.ecosyste.ms',
         description: 'An open API service providing dependency graph metadata for many open source software ecosystems',
@@ -70,13 +77,6 @@ class HomeController < ApplicationController
         description: 'An open API service providing contributor metadata for many open source software ecosystems',
         icon: 'person',
         repo: 'contributors'
-      },
-      {
-        name: 'Resolve',
-        # url: 'https://resolve.ecosyste.ms',
-        description: 'An open API service to resolve full dependency trees for many open source software ecosystems.',
-        icon: 'gear',
-        repo: 'resolve'
       },
       {
         name: 'CVE',
