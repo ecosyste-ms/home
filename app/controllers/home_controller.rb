@@ -65,13 +65,6 @@ class HomeController < ApplicationController
         repo: 'resolve'
       },
       {
-        name: 'Dependencies',
-        # url: 'https://dependencies.ecosyste.ms',
-        description: 'An open API service providing dependency graph metadata for many open source software ecosystems',
-        icon: 'diagram-2',
-        repo: 'dependencies'
-      },
-      {
         name: 'Contributors',
         # url: 'https://contributors.ecosyste.ms',
         description: 'An open API service providing contributor metadata for many open source software ecosystems',
