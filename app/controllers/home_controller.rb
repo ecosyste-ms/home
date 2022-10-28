@@ -11,7 +11,7 @@ class HomeController < ApplicationController
       {
         name: 'Timeline',
         url: 'https://timeline.ecosyste.ms',
-        description: 'An open API service providing the timeline of over 4 Billion events for every public repo on GitHub, all the way back to 2015.',
+        description: 'An open API service providing the timeline of over 5 Billion events for every public repo on GitHub, all the way back to 2015.',
         icon: 'clock-history',
         repo: 'timeline'
       },
