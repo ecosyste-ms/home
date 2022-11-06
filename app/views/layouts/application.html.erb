@@ -30,10 +30,11 @@
       <%= yield %>
     </div>
 
-    <footer class="py-5 container-sm text-muted text-center">
+    <footer class="py-6 container-sm text-muted text-center">
+      <%= link_to 'Blog', "https://blog.ecosyste.ms", class: 'link-dark', target: :_blank  %> — 
       <%= link_to 'GitHub', "https://github.com/ecosyste-ms", class: 'link-dark', target: :_blank  %> — 
       <%= link_to 'Open Collective', "https://opencollective.com/ecosystems", class: 'link-dark', target: :_blank  %> — 
-      <%= link_to 'Twitter', "https://twitter.com/ecosyste_ms", class: 'link-dark', target: :_blank  %> — 
+      <%= link_to 'Twitter', "https://twitter.com/ecosyste_ms", class: 'link-dark', target: :_blank  %>
       <br/>
       Code: <%= link_to 'AGPL-3', 'https://github.com/ecosyste-ms/home/blob/main/LICENSE', class: 'link-dark' %>  — 
       Data: <%= link_to 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/', class: 'link-dark', target: :_blank %>
