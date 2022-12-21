@@ -65,18 +65,18 @@ class HomeController < ApplicationController
         repo: 'resolve'
       },
       {
+        name: 'Advisories',
+        url: 'https://advisories.ecosyste.ms',
+        description: 'An open API service providing security vulnerability metadata for many open source software ecosystems.',
+        icon: 'incognito',
+        repo: 'advisories'
+      },
+      {
         name: 'Contributors',
         # url: 'https://contributors.ecosyste.ms',
         description: 'An open API service providing contributor metadata for many open source software ecosystems',
         icon: 'person',
         repo: 'contributors'
-      },
-      {
-        name: 'CVE',
-        # url: 'https://cve.ecosyste.ms',
-        description: 'An open API service providing security vulnerability metadata for many open source software ecosystems.',
-        icon: 'incognito',
-        repo: 'cve'
       },
     ]
   end
