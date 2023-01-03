@@ -124,14 +124,14 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.13.10)
+    nokogiri (1.14.0.rc1)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.10-aarch64-linux)
+    nokogiri (1.14.0.rc1-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.13.10-arm64-darwin)
+    nokogiri (1.14.0.rc1-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.10-x86_64-linux)
+    nokogiri (1.14.0.rc1-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.5)
     popper_js (2.11.6)
@@ -216,6 +216,7 @@ DEPENDENCIES
   bootstrap-icons-helper
   debug
   jbuilder
+  nokogiri (= 1.14.0.rc1)
   pg (~> 1.4)
   puma (~> 6.0)
   rails (~> 7.0.4)
@@ -225,7 +226,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.1.3p185
+   ruby 3.2.0p0
 
 BUNDLED WITH
-   2.3.26
+   2.4.2
