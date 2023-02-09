@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :redirect_subdomain
+  before_action :redirect_subdomain
 
   def redirect_subdomain
     if request.host == 'www.ecosyste.ms'
