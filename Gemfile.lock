@@ -135,7 +135,7 @@ GEM
       racc (~> 1.4)
     pg (1.4.5)
     popper_js (2.11.6)
-    puma (6.0.2)
+    puma (6.1.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
@@ -218,7 +218,7 @@ DEPENDENCIES
   jbuilder
   nokogiri (= 1.14.1)
   pg (~> 1.4)
-  puma (~> 6.0)
+  puma (~> 6.1)
   rails (~> 7.0.4)
   rails-controller-testing
   sassc-rails
