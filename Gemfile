@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
+ruby "3.2.1"
 
 gem "rails", "~> 7.0.4"
 gem "sprockets-rails"
@@ -12,7 +12,7 @@ gem "sassc-rails"
 gem "bootsnap", require: false
 gem 'bootstrap'
 gem 'bootstrap-icons-helper'
-gem 'nokogiri', '1.14.2'
+gem 'nokogiri'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

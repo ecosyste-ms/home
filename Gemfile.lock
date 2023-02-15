@@ -216,7 +216,7 @@ DEPENDENCIES
   bootstrap-icons-helper
   debug
   jbuilder
-  nokogiri (= 1.14.2)
+  nokogiri
   pg (~> 1.4)
   puma (~> 6.1)
   rails (~> 7.0.4)
@@ -226,7 +226,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.2.0p0
+   ruby 3.2.1p0
 
 BUNDLED WITH
    2.4.6
