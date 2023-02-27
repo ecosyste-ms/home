@@ -81,7 +81,7 @@ GEM
       bootstrap-icons (~> 1)
       rails (>= 6)
     builder (3.2.4)
-    concurrent-ruby (1.2.0)
+    concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
     debug (1.7.1)
