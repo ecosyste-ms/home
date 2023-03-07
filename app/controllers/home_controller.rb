@@ -72,11 +72,18 @@ class HomeController < ApplicationController
         repo: 'advisories'
       },
       {
-        name: 'Contributors',
-        # url: 'https://contributors.ecosyste.ms',
-        description: 'An open API service providing contributor metadata for many open source software ecosystems',
-        icon: 'person',
-        repo: 'contributors'
+        name: 'Commits',
+        url: 'https://commits.ecosyste.ms',
+        description: 'An open API service providing commit metadata for open source projects.',
+        icon: 'people',
+        repo: 'commits'
+      },
+      {
+        name: 'Readmes',
+        #url: 'https://readmes.ecosyste.ms',
+        description: 'An open API service for discovering and rendering README files for open source projects.',
+        icon: 'file-earmark-richtext',
+        repo: 'readme'
       },
     ]
   end
