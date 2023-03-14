@@ -79,6 +79,13 @@ class HomeController < ApplicationController
         repo: 'commits'
       },
       {
+        name: 'Docker',
+        url: 'https://docker.ecosyste.ms',
+        description: 'An open API service providing dependency metadata for docker projects.',
+        icon: 'layers',
+        repo: 'docker'
+      },
+      {
         name: 'Readmes',
         #url: 'https://readmes.ecosyste.ms',
         description: 'An open API service for discovering and rendering README files for open source projects.',
