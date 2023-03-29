@@ -6,7 +6,7 @@ ruby "3.2.1"
 gem "rails", "~> 7.0.4"
 gem "sprockets-rails"
 gem "pg", "~> 1.4"
-gem "puma", "~> 6.1"
+gem "puma", "~> 6.2"
 gem "jbuilder"
 gem "sassc-rails"
 gem "bootsnap", require: false
