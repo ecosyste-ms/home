@@ -86,12 +86,19 @@ class HomeController < ApplicationController
         repo: 'docker'
       },
       {
+        name: 'Summary',
+        #url: 'https://summary.ecosyste.ms',
+        description: 'An open API service for producing an overview of a list of open source projects.',
+        icon: 'award',
+        repo: 'summary'
+      },
+      {
         name: 'Readmes',
         #url: 'https://readmes.ecosyste.ms',
         description: 'An open API service for discovering and rendering README files for open source projects.',
         icon: 'file-earmark-richtext',
         repo: 'readme'
-      },
+      }
     ]
   end
 end
