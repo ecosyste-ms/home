@@ -87,7 +87,7 @@ class HomeController < ApplicationController
       },
       {
         name: 'Summary',
-        #url: 'https://summary.ecosyste.ms',
+        url: 'https://summary.ecosyste.ms',
         description: 'An open API service for producing an overview of a list of open source projects.',
         icon: 'award',
         repo: 'summary'
