@@ -93,11 +93,11 @@ class HomeController < ApplicationController
         repo: 'summary'
       },
       {
-        name: 'Readmes',
-        #url: 'https://readmes.ecosyste.ms',
-        description: 'An open API service for discovering and rendering README files for open source projects.',
-        icon: 'file-earmark-richtext',
-        repo: 'readme'
+        name: 'Issues',
+        #url: 'https://issues.ecosyste.ms',
+        description: 'An open API service for providing issue and pull request metadata for open source projects.',
+        icon: 'bug',
+        repo: 'issues'
       }
     ]
   end
