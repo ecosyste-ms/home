@@ -94,7 +94,7 @@ class HomeController < ApplicationController
       },
       {
         name: 'Issues',
-        #url: 'https://issues.ecosyste.ms',
+        url: 'https://issues.ecosyste.ms',
         description: 'An open API service for providing issue and pull request metadata for open source projects.',
         icon: 'bug',
         repo: 'issues'
