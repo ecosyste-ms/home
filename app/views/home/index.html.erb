@@ -19,6 +19,13 @@
             <p class="card-subtitle mb-2 text-muted">
               <%= service[:description] %>
             </p>
+
+            <% if service[:status] %>
+              <p class="card-subtitle mb-2 text-danger">
+                Status: <%= service[:status] %>
+              </p>
+            <% end %>
+
           </div>
           <div class="flex-shrink-0">
             <%= bootstrap_icon service[:icon], width: 40, height: 40 %>

@@ -6,7 +6,8 @@ class HomeController < ApplicationController
         url: 'https://packages.ecosyste.ms',
         description: 'An open API service providing package, version and dependency metadata many open source software ecosystems and registries.',
         icon: 'box-seam',
-        repo: 'packages'
+        repo: 'packages',
+        status: 'Temporarily Offline. Server offline due to host downtime, working on bring up a replacement, will be back soon.'
       },
       {
         name: 'Timeline',
