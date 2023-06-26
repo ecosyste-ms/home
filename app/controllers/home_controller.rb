@@ -55,7 +55,8 @@ class HomeController < ApplicationController
         url: 'https://repos.ecosyste.ms',
         description: 'An open API service providing repository metadata for many open source software ecosystems',
         icon: 'journal-code',
-        repo: 'repos'
+        repo: 'repos',
+        status: 'Undergoing database maintenance, will be back soon.'
       },
       {
         name: 'Resolve',
