@@ -4,7 +4,7 @@ class HomeController < ApplicationController
       {
         name: 'Packages',
         url: 'https://packages.ecosyste.ms',
-        description: 'An open API service providing package, version and dependency metadata many open source software ecosystems and registries.',
+        description: 'An open API service providing package, version and dependency metadata of many open source software ecosystems and registries.',
         icon: 'box-seam',
         repo: 'packages'
       },
