@@ -98,7 +98,14 @@ class HomeController < ApplicationController
         description: 'An open API service for providing issue and pull request metadata for open source projects.',
         icon: 'bug',
         repo: 'issues'
-      }
+      },
+      {
+        name: 'OST',
+        url: 'https://ost.ecosyste.ms',
+        description: 'An open API service for discovering and reviewing projects for opensustain.tech.',
+        icon: 'globe-americas',
+        repo: 'ost'
+      },
     ]
   end
 end
