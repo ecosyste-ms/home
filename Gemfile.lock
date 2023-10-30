@@ -83,10 +83,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap (5.3.1)
+    bootstrap (5.3.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
-      sassc-rails (>= 2.0.0)
     bootstrap-icons (1.0.13)
       nokogiri (~> 1)
     bootstrap-icons-helper (2.0.1)
@@ -197,7 +196,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
-    rake (13.0.6)
+    rake (13.1.0)
     rdoc (6.5.0)
       psych (>= 4.0.0)
     reline (0.3.9)
@@ -261,4 +260,4 @@ RUBY VERSION
    ruby 3.2.2p0
 
 BUNDLED WITH
-   2.4.20
+   2.4.21
