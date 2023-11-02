@@ -106,6 +106,13 @@ class HomeController < ApplicationController
         icon: 'globe-americas',
         repo: 'ost'
       },
+      {
+        name: 'Papers',
+        url: 'https://papers.ecosyste.ms',
+        description: 'An open API service providing mapping between scientific papers and software projects that are mentioned in them.',
+        icon: 'newspaper',
+        repo: 'papers'
+      },
     ]
   end
 end
