@@ -113,6 +113,13 @@ class Service
         icon: 'newspaper',
         repo: 'papers'
       },
+      {
+        name: 'Awesome',
+        url: 'https://awesome.ecosyste.ms',
+        description: 'An open API service indexing awesome lists of open source software.',
+        icon: 'stars',
+        repo: 'awesome'
+      },
     ]
   end
 end
