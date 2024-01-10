@@ -120,6 +120,13 @@ class Service
         icon: 'stars',
         repo: 'awesome'
       },
+      {
+        name: 'Open Collective',
+        url: 'https://opencollective.ecosyste.ms',
+        description: 'An open API service for software projects hosted on opencollective.',
+        icon: 'opencollective',
+        repo: 'opencollective'
+      },
     ]
   end
 end
