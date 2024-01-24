@@ -127,6 +127,13 @@ class Service
         icon: 'opencollective',
         repo: 'opencollective'
       },
+      {
+        name: 'SBOM',
+        url: 'https://sbom.ecosyste.ms',
+        description: 'An open API service to parse and convert between SBOM file formats.',
+        icon: 'receipt-cutoff',
+        repo: 'sbom'
+      },
     ]
   end
 end
