@@ -4,7 +4,7 @@
 
 First things first, you'll need to fork and clone the repository to your local machine.
 
-`git clone https://github.com/ecosyste-ms/home.git`
+`git clone https://github.com/ecosyste-ms/documentation.git`
 
 The project uses ruby on rails which have a number of system dependencies you'll need to install. 
 
@@ -45,7 +45,7 @@ You can run all the tests with:
 
 ## Adding a service
 
-The services listed on the homepage are defined in [app/controllers/home_controller.rb](app/controllers/home_controller.rb), to add a new service append something like the following:
+The services listed on the homepage are defined in [app/controllers/documentation_controller.rb](app/controllers/documentation_controller.rb), to add a new service append something like the following:
 
 ```ruby
 {

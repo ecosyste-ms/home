@@ -1,6 +1,6 @@
-# [Ecosyste.ms: Home](https://ecosyste.ms)
+# [Ecosyste.ms: Documentation](https://ecosyste.ms)
 
-The homepage that lists all Ecosyste.ms services
+The place for all the Ecosyste.ms documentation and services
 
 This project is part of [Ecosyste.ms](https://ecosyste.ms): Tools and open datasets to support, sustain, and secure critical digital infrastructure.
 
@@ -10,9 +10,9 @@ For development and deployment documentation, check out [DEVELOPMENT.md](DEVELOP
 
 ## Contribute
 
-Please do! The source code is hosted at [GitHub](https://github.com/ecosyste-ms/home). If you want something, [open an issue](https://github.com/ecosyste-ms/home/issues/new) or a pull request.
+Please do! The source code is hosted at [GitHub](https://github.com/ecosyste-ms/documentation). If you want something, [open an issue](https://github.com/ecosyste-ms/documentation/issues/new) or a pull request.
 
-If you need want to contribute but don't know where to start, take a look at the issues tagged as ["Help Wanted"](https://github.com/ecosyste-ms/home/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
+If you need want to contribute but don't know where to start, take a look at the issues tagged as ["Help Wanted"](https://github.com/ecosyste-ms/documentation/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
 
 You can also help triage issues. This can include reproducing bug reports, or asking for vital information such as version numbers or reproduction instructions. 
 
@@ -29,7 +29,7 @@ For other updates, follow the project on Twitter: [@ecosyste_ms](https://twitter
 
 ### Vulnerability disclosure
 
-We support and encourage security research on Ecosyste.ms under the terms of our [vulnerability disclosure policy](https://github.com/ecosyste-ms/home/security/policy).
+We support and encourage security research on Ecosyste.ms under the terms of our [vulnerability disclosure policy](https://github.com/ecosyste-ms/documentation/security/policy).
 
 ### Code of Conduct
 

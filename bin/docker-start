@@ -2,7 +2,7 @@
 #!/bin/sh
 set -e
 
-db_host=${DATABASE_HOST:-database.service.home.internal}
+db_host=${DATABASE_HOST:-database.service.documentation.internal}
 while ! nc -z $db_host ${DATABASE_PORT:-5432}; do
   echo "Waiting for database to be available..."
   sleep 1
