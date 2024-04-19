@@ -75,7 +75,7 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    appsignal (3.6.4)
+    appsignal (3.6.5)
       rack
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
@@ -194,7 +194,7 @@ GEM
     rake (13.2.1)
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
-    reline (0.5.1)
+    reline (0.5.2)
       io-console (~> 0.5)
     sassc (2.4.0)
       ffi (~> 1.9)
