@@ -75,7 +75,7 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    appsignal (3.7.4)
+    appsignal (3.7.5)
       rack
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
