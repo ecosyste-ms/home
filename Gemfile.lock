@@ -75,9 +75,9 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    appsignal (3.12.3)
+    appsignal (3.12.6)
       rack
-    autoprefixer-rails (10.4.16.0)
+    autoprefixer-rails (10.4.19.0)
       execjs (~> 2)
     base64 (0.2.0)
     bigdecimal (3.1.8)
@@ -212,7 +212,7 @@ GEM
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
-    sprockets-rails (3.5.1)
+    sprockets-rails (3.5.2)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
@@ -252,4 +252,4 @@ RUBY VERSION
    ruby 3.3.4p55
 
 BUNDLED WITH
-   2.5.16
+   2.5.17
