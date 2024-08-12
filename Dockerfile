@@ -8,7 +8,7 @@ WORKDIR $APP_ROOT
 # System layer
 
 # Will invalidate cache as soon as the Gemfile changes
-COPY Gemfile Gemfile.lock $APP_ROOT/
+COPY Gemfile Gemfile.lock .ruby-version $APP_ROOT/
 
 # * Setup system
 # * Install Ruby dependencies
