@@ -75,7 +75,7 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    appsignal (3.12.6)
+    appsignal (3.13.0)
       rack
     autoprefixer-rails (10.4.19.0)
       execjs (~> 2)
@@ -125,7 +125,7 @@ GEM
     marcel (1.0.4)
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
-    minitest (5.24.1)
+    minitest (5.25.0)
     mutex_m (0.2.0)
     net-imap (0.4.14)
       date
