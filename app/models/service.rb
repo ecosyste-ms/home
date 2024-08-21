@@ -134,6 +134,13 @@ class Service
         icon: 'receipt-cutoff',
         repo: 'sbom'
       },
+      {
+        name: 'Funds',
+        url: 'https://funds.ecosyste.ms',
+        description: 'An open API service to provide information about funding of key open source projects within ecosystems.',
+        icon: 'piggy-bank',
+        repo: 'funds'
+      },
     ]
   end
 end
