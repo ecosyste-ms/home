@@ -71,7 +71,7 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    appsignal (4.0.5)
+    appsignal (4.0.6)
       rack
     autoprefixer-rails (10.4.19.0)
       execjs (~> 2)
