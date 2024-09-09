@@ -144,7 +144,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
-    pg (1.5.7)
+    pg (1.5.8)
     popper_js (2.11.8)
     psych (5.1.2)
       stringio
@@ -195,7 +195,7 @@ GEM
     rake (13.2.1)
     rdoc (6.7.0)
       psych (>= 4.0.0)
-    reline (0.5.9)
+    reline (0.5.10)
       io-console (~> 0.5)
     sassc (2.4.0)
       ffi (~> 1.9)
