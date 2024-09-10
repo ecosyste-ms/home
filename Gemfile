@@ -12,6 +12,7 @@ gem "sassc-rails"
 gem 'bootstrap'
 gem 'bootstrap-icons-helper'
 gem 'appsignal'
+gem 'ostruct'
 
 group :test do
   gem "rails-controller-testing"
