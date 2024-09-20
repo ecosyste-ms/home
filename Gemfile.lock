@@ -71,7 +71,8 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    appsignal (4.0.8)
+    appsignal (4.0.9)
+      logger
       rack
     autoprefixer-rails (10.4.19.0)
       execjs (~> 2)
@@ -149,7 +150,7 @@ GEM
     popper_js (2.11.8)
     psych (5.1.2)
       stringio
-    puma (6.4.2)
+    puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.7)
@@ -252,4 +253,4 @@ RUBY VERSION
    ruby 3.3.5p55
 
 BUNDLED WITH
-   2.5.18
+   2.5.19
