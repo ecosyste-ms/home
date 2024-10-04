@@ -71,7 +71,7 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    appsignal (4.1.1)
+    appsignal (4.1.2)
       logger
       rack
     autoprefixer-rails (10.4.19.0)
@@ -253,4 +253,4 @@ RUBY VERSION
    ruby 3.3.5p55
 
 BUNDLED WITH
-   2.5.20
+   2.5.21
