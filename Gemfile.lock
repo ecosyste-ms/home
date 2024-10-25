@@ -146,7 +146,7 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     ostruct (0.6.0)
-    pg (1.5.8)
+    pg (1.5.9)
     popper_js (2.11.8)
     psych (5.1.2)
       stringio
