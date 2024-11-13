@@ -27,32 +27,38 @@
     <footer class="footer dark-section">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-8">
             <a class="site-logo site-logo--white" href="/">Ecosyste.ms: Funds</a>
             <p>An open source funding solution from <a href="/"><strong>ecosyste.ms</strong></a> &amp; <a href="https://oscollective.org"><strong>Open Source Collective</strong></a>.</p>
             <p>
               Code: <%= link_to 'AGPL-3', 'https://github.com/ecosyste-ms/documentation/blob/main/LICENSE' %>  — 
               Data: <%= link_to 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/', target: :_blank %>
             </p>
+            <p class='footer-icons'>
+              <%= link_to "https://github.com/ecosyste-ms", target: :_blank do %>
+                <%= bootstrap_icon 'github', width: 20, height: 20 %>
+              <% end %>
+              <%= link_to "https://twitter.com/ecosyste_ms", target: :_blank do %>
+                <%= bootstrap_icon 'twitter', width: 20, height: 20 %>
+              <% end %>
+              <%= link_to "https://mastodon.social/@ecosystems", target: :_blank do %>
+                <%= bootstrap_icon 'mastodon', width: 20, height: 20 %>
+              <% end %>
+              <%= link_to "https://opencollective.com/ecosystems", target: :_blank do %>
+                <%= bootstrap_icon 'opencollective', width: 20, height: 20 %>
+              <% end %>
+            </p>
           </div>
-          <div class="col-md-3">
-            <ul class="list-unstyled footer-links">
+          <div class="col-md-4">
+            <ul class="list-unstyled footer-links mt-3">
               <li><strong><%= link_to 'About', 'https://ecosyste.ms' %></strong></li>
               <li><strong><%= link_to 'Blog', 'https://blog.ecosyste.ms' %></strong></li>
               <li><strong><%= link_to 'Contact', 'https://twitter.com/ecosyste_ms' %></strong></li>
               <li><strong><%= link_to 'Privacy', 'https://ecosyste.ms' %></strong></li>
+              <li><strong><%= link_to 'Status', 'https://ecosystems.appsignal-status.com/' %></strong></li>
             </ul>
           </div>
 
-          <div class="col-md-3">
-            <ul class="list-unstyled footer-links">
-              <li><strong><%= link_to 'GitHub', "https://github.com/ecosyste-ms", target: :_blank  %></strong></li>
-              <li><strong><%= link_to 'Open Collective', "https://opencollective.com/ecosystems" ,target: :_blank  %></strong></li>
-              <li><strong><%= link_to 'Twitter', "https://twitter.com/ecosyste_ms", target: :_blank  %></strong></li>
-              <li><strong><%= link_to 'Mastodon', "https://mastodon.social/@ecosystems", target: :_blank  %></strong></li>
-              <li><strong><%= link_to 'Status', 'https://ecosystems.appsignal-status.com/', target: :_blank  %></strong></li>
-            </ul>
-          </div>
 
         </div>
       </div>
