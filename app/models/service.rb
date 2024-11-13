@@ -137,7 +137,7 @@ class Service
       {
         name: 'Funds',
         url: 'https://funds.ecosyste.ms',
-        description: 'An open API service to provide information about funding of key open source projects within ecosystems.',
+        description: 'An open source funding solution from ecosyste.ms & Open Source Collective.',
         icon: 'piggy-bank',
         repo: 'funds'
       },
