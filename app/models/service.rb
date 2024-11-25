@@ -141,6 +141,13 @@ class Service
         icon: 'piggy-bank',
         repo: 'funds'
       },
+      {
+        name: 'Sponsors',
+        url: 'https://sponsors.ecosyste.ms',
+        description: 'An open API service aggregating public data about GitHub Sponsors.',
+        icon: 'github',
+        repo: 'sponsors'
+      }
     ]
   end
 end
