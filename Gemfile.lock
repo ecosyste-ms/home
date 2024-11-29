@@ -198,7 +198,7 @@ GEM
     rake (13.2.1)
     rdoc (6.8.1)
       psych (>= 4.0.0)
-    reline (0.5.11)
+    reline (0.5.12)
       io-console (~> 0.5)
     sassc (2.4.0)
       ffi (~> 1.9)
