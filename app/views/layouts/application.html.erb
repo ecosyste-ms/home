@@ -5,11 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-      Ecosyste.ms
+      <%= @meta_title = 'Ecosyste.ms' %>
     </title>
-    <meta name="description" content="Tools and open datasets to support, sustain, and secure critical digital infrastructure.">
+    <meta name="description" content="<%= @meta_description = 'Tools and open datasets to support, sustain, and secure critical digital infrastructure.'%>">
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:image" content="<%= asset_path('social-share.png') %>" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= meta_title %>" />
+    <meta name="twitter:description" content="<%= meta_description %>" />
+    <meta name="twitter:image" content="<%= asset_path('social-share.png') %>" />
   </head>
   <body>
     <div class="main">
