@@ -45,30 +45,30 @@
 <div class="grey-grad-bg py-5">
   <div class="container">
     <h2 class="mb-3">Trusted by</h2>
-    <div class="row text-center align-items-center">
-      <div class="col ">
+    <div class="row text-center align-items-center trusted-logos">
+      <div class="col">
         <a href="https://snyk.io">
-          <%= image_tag("logo-snyk.png", alt: "Snyk", class: "img-responsive", size: "204x78") %>
+          <%= image_tag("logo-snyk.png", alt: "Snyk", class: "img-fluid p3", size: "204x78") %>
         </a>
       </div>
       <div class="col">
         <a href="https://www.microsoft.com/ ">
-          <%= image_tag("logo-microsoft.png", alt: "Microsoft", class: "img-responsive", size: "201x43") %>
+          <%= image_tag("logo-microsoft.png", alt: "Microsoft", class: "img-fluid p3", size: "201x43") %>
         </a>
       </div>
       <div class="col">
         <a href="https://chanzuckerberg.com">
-          <%= image_tag("logo-chan-z.png", alt: "Chan Zuckerberg Initiative", class: "img-responsive", size: "196x91") %>
+          <%= image_tag("logo-chan-z.png", alt: "Chan Zuckerberg Initiative", class: "img-fluid p3", size: "196x91") %>
         </a>
       </div>
       <div class="col">
         <a href="https://oscollective.org">
-          <%= image_tag("logo-osc.png", alt: "Open Source Collective", class: "img-responsive", size: "204x41") %>
+          <%= image_tag("logo-osc.png", alt: "Open Source Collective", class: "img-fluid p3", size: "204x41") %>
         </a>
       </div>
       <div class="col">
-        <a href="https://socket.io">
-          <%= image_tag("logo-socket.png", alt: "Socket.io", class: "img-responsive", size: "174x87") %>
+        <a href="https://socket.dev">
+          <%= image_tag("logo-socket.png", alt: "Socket.dev", class: "img-fluid p3", size: "171x69") %>
         </a>
       </div>  
     </div>
@@ -85,7 +85,7 @@
     
         <div class="card promotion-card mb-3">
           <div class="row g-0">
-            <div class="col-md-5">
+            <div class="col-md-6 col-lg-5">
               <div class="card-body">
                 <span class="badge badge-info">New</span>
                 <h3 class="card-title mt-3">Ecosyste.ms funds</h3>
@@ -93,8 +93,8 @@
                 <p class="card-text"><a href="https://funds.ecosyste.ms">Find out more</a></p>
               </div>
             </div>
-            <div class="col-md-7 text-center card-image">
-                <%= image_tag("funds-screenshot.png", alt: " ", class: "img-fluid", size: "303x260") %>
+            <div class="col-md-6 col-lg-7 text-center card-image">
+                <%= image_tag("funds-screenshot.png", alt: " ", class: "card-image__img img-fluid", size: "303x260") %>
             </div>
           </div>
         </div>
@@ -126,81 +126,4 @@
       <% end %>
 		</div>
   </div>
-</div>
-
-
-<div class="container-sm">
-
-  <p>
-    Ecosyste.ms provides a set of free, open resources for those working to sustain and secure open-source software.
-    We publish open data and APIs that map software interdependencies, offering insights into usage, creation, and impact.
-    Ecosyste.ms serves as infrastructure for researchers, policymakers, developers, and funders, helping them better understand the open-source ecosystem.
-  </p>
-
-  <p>
-    Ecosyste.ms combines data from package registries, software repositories, vulnerability databases, containers, and operating systems.
-    By integrating this information, we create a comprehensive view of open-source software, identifying critical software ecosystems
-    that form the backbone of our digital infrastructure.
-  </p>
-
-  <p>
-    Discover what we’re building and our plans for the future in our <a href="https://github.com/ecosyste-ms/roadmap">roadmap</a>.
-  </p>
-
-  <h2>Support Our Work</h2>
-  <p>
-    Ecosyste.ms is a project of the Open Source Collective, a non-profit organization focused on creating a sustainable future for open-source software.
-    In 2024, we continue to receive financial support from the Open Source Collective and Schmidt Futures’ Plaintext Group.
-  </p>
-  <p>
-    You can support us via credit/debit cards, bank transfers, or PayPal through
-    <a href="https://opencollective.com/ecosystems">Open Collective</a>. For organizational contributions or if you need an invoice, please contact us at
-    <a href="mailto:hello@oscollective.com">hello@oscollective.com</a>.
-  </p>
-
-  <h2>Work With Us</h2>
-  <p>
-    In 2024, we're expanding our partnerships and working closely with key stakeholders to co-design and refine our services.
-    If you're interested in collaborating or using Ecosyste.ms, reach out to us at
-    <a href="mailto:hello@ecosyste.ms">hello@ecosyste.ms</a>.
-  </p>
-
-
-  <h3 class='mt-5 mb-3'>Our Projects</h3>
-
-  <% @services.each do |service| %>
-    <div class="card mb-3 registry d-flex">
-      <div class="card-body pb-1">
-        <div class="d-flex">
-          
-          <div class="flex-grow-1 ms-3 text-break">
-            <h5 class='card-title'>
-              <% if service[:url] %>
-                <%= link_to service[:name], service[:url], target: :_blank %>
-                <% if service[:repo] %>
-                  <%= link_to bootstrap_icon('github', height: 20), "https://github.com/ecosyste-ms/#{service[:repo]}", target: :_blank %>
-                <% end %>
-              <% else %>
-                <%= service[:name] %> - <i>Coming soon</i>
-              <% end%>
-            </h5>
-          
-            <p class="card-subtitle mb-2 text-muted">
-              <%= service[:description] %>
-            </p>
-
-            <% if service[:status] %>
-              <p class="card-subtitle mb-2 text-danger">
-                Status: <%= service[:status] %>
-              </p>
-            <% end %>
-
-          </div>
-          <div class="flex-shrink-0">
-            <%= bootstrap_icon service[:icon], width: 40, height: 40 %>
-          </div>  
-        </div>
-      </div>
-    </div>
-  <% end %>
 </div>

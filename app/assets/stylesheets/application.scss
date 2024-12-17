@@ -54,20 +54,19 @@
     padding-left: 2rem;
     padding-bottom: 2rem;
   }
-  .card-image {
-    img {
-      position: relative;
-      bottom: -2em;
-    }
+  .card-image__img {
+		position: relative;
+		bottom: -2rem;
+		@include media-breakpoint-only(lg) { 
+			bottom: -5.5rem;
+		}
   }
+	a {
+		@include spesh-link();
+	}
 }
 
 /* gem-bg is how the gems are laid out and behave on the homepage, they stick as you scroll then dissappear behind the following section */
-
-.gem-bg {
-  position: relative;
-}
-
 .gem-bg__container {
   position: relative;
   top: 0;
@@ -81,24 +80,38 @@
 }
 
 .stone-1 {
-  height: 300px;
-  width: 300px;
+  height: 150px;
+  width: 150px;
   right: 10%;
   top: -50px;
+	@include media-breakpoint-up(lg) { 
+		height: 300px;
+		width: 300px;
+	}
 }
 
 .stone-2 {
-  height: 195px;
-  width: 195px;
+  height: 120px;
+  width: 120px;
   right: 30%;
-  top: 200px;
+  top: 90px;
+	@include media-breakpoint-up(lg) { 
+		height: 195px;
+		width: 195px;
+		top: 200px;
+	}
 }
 
 .stone-3 {
-  height: 160px;
-  width: 160px;
+  height: 80px;
+  width: 80px;
   right: 10%;
-  top: 290px;
+  top: 160px;
+	@include media-breakpoint-up(lg) { 
+		height: 160px;
+  	width: 160px;
+		top: 290px;
+	}
 }
 
 .directory {
@@ -109,4 +122,12 @@
 
 .directory-section {
 	border-bottom: 3px solid $color-purple-light;
+}
+
+.trusted-logos {
+	img {
+		min-width: 150px;
+		display: inline-block;
+		margin-bottom: 1rem;
+	}
 }
