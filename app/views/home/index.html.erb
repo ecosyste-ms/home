@@ -101,87 +101,29 @@
       </div>
     </div>
 		<div class="directory mb-5">
-			<div class="directory-section">
-				<div class="directory-header">
-					<div class="row mb-4">
-						<div class="col-3 col-md-2 col-xl-1">
-							<%= image_tag("data.svg", alt: " ", class: "img-fluid", size: "96x96") %>
-						</div>		
-						<div class="col-9 col-md-10 col-xl-11">	
-							<h3 class="h2 mt-4 mb-1">Data</h3>
-							<p>Core ecosyste.ms datasets</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-lg-3">
-						<h4><a href="#">Packages</a></h4>
-						<p>Metadata for 10.7m packages across 63 sources</p>		
-					</div>
-					<div class="col-md-4 col-lg-3">
-						<h4><a href="#">Repositories</a></h4>
-						<p>Metadata for 230m packages across 1877 sources</p>		
-					</div>
-					<div class="col-md-4 col-lg-3">
-						<h4><a href="#">Advisories</a></h4>
-						<p>Metadata for 20k security advisories across 12 languages (under development)</p>		
-					</div>
-				</div>
-			</div>
-			<div class="directory-section">
-				<div class="directory-header">
-					<div class="row mb-4">
-						<div class="col-3 col-md-2 col-xl-1">
-							<%= image_tag("data.svg", alt: " ", class: "img-fluid", size: "96x96") %>
-						</div>		
-						<div class="col-9 col-md-10 col-xl-11">	
-							<h3 class="h2 mt-4 mb-1">Data</h3>
-							<p>Core ecosyste.ms datasets</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-lg-3">
-						<h4><a href="#">Packages</a></h4>
-						<p>Metadata for 10.7m packages across 63 sources</p>		
-					</div>
-					<div class="col-md-4 col-lg-3">
-						<h4><a href="#">Repositories</a></h4>
-						<p>Metadata for 230m packages across 1877 sources</p>		
-					</div>
-					<div class="col-md-4 col-lg-3">
-						<h4><a href="#">Advisories</a></h4>
-						<p>Metadata for 20k security advisories across 12 languages (under development)</p>		
-					</div>
-				</div>
-			</div>
-			<div class="directory-section">
-				<div class="directory-header">
-					<div class="row mb-4">
-						<div class="col-3 col-md-2 col-xl-1">
-							<%= image_tag("data.svg", alt: " ", class: "img-fluid", size: "96x96") %>
-						</div>		
-						<div class="col-9 col-md-10 col-xl-11">	
-							<h3 class="h2 mt-4 mb-1">Data</h3>
-							<p>Core ecosyste.ms datasets</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-lg-3">
-						<h4><a href="#">Packages</a></h4>
-						<p>Metadata for 10.7m packages across 63 sources</p>		
-					</div>
-					<div class="col-md-4 col-lg-3">
-						<h4><a href="#">Repositories</a></h4>
-						<p>Metadata for 230m packages across 1877 sources</p>		
-					</div>
-					<div class="col-md-4 col-lg-3">
-						<h4><a href="#">Advisories</a></h4>
-						<p>Metadata for 20k security advisories across 12 languages (under development)</p>		
-					</div>
-				</div>
-			</div>
+      <% Service.sections.each do |section| %>
+        <div class="directory-section">
+          <div class="directory-header">
+            <div class="row mb-4">
+              <div class="col-3 col-md-2 col-xl-1">
+                <%= image_tag(section[:icon], alt: " ", class: "img-fluid", size: "96x96") %>
+              </div>		
+              <div class="col-9 col-md-10 col-xl-11">	
+                <h3 class="h2 mt-4 mb-1"><%= section[:name] %></h3>
+                <p><%= section[:description] %></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <% section[:services].each do |service| %>
+              <div class="col-md-4 col-lg-3">
+                <h4><%= link_to service[:name], service[:url] %></h4>
+                <p><%= service[:description] %></p>		
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
 		</div>
   </div>
 </div>

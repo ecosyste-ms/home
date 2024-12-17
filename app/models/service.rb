@@ -1,4 +1,39 @@
 class Service
+  def self.sections
+    [
+      {
+        name: 'Data',
+        description: 'Core ecosyste.ms datasets',
+        icon: 'data.svg',
+        services: [
+          {
+            name: 'Packages',
+            url: 'https://packages.ecosyste.ms',
+            description: 'Metadata for 10.7m packages across 63 sources'
+          },
+          {
+            name: 'Repositories',
+            url: 'https://repos.ecosyste.ms',
+            description: 'Metadata for 230m packages across 1877 sources'
+          },
+          {
+            name: 'Advsiories',
+            url: 'https://advisories.ecosyste.ms',
+            description: 'Metadata for 20k security advisories across 12 languages (under development)'
+          }
+        ]
+      },
+      {
+        name: 'Tools',
+        description: 'APIs and tools built on top of ecosyste.ms data',
+        icon: 'tools.svg',
+        services: [
+
+        ]
+      }
+    ]
+  end
+
   def self.all
     [
       {
