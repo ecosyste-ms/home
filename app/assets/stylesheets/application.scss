@@ -10,3 +10,103 @@
 .site-logo--white {
   background-image: asset-url('ecosystems-logo-white.svg');
 }
+
+.home__hero {
+  .container {
+    position: relative;
+  }
+}
+
+.home__hero__title {
+  max-width: 63rem;
+}
+
+.home__stat {
+  z-index: -1;
+  .stat-card {
+    margin-right: 2em;
+    &:last-child {
+      margin-right:0;
+    }
+  }
+  .container {
+    z-index: 2;
+    position: relative;
+  }
+}
+
+.home__stat-lead {
+  max-width: 45rem;
+}
+
+.home__stat-para {
+  max-width: 38rem;
+}
+
+
+.promotion-card {
+  border: 0;
+  border-radius: 1rem;
+  background-image: linear-gradient($color-orange-light 0%, $color-orange 100%);
+  overflow: hidden;
+  .card-body {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+  }
+  .card-image {
+    img {
+      position: relative;
+      bottom: -2em;
+    }
+  }
+}
+
+/* gem-bg is how the gems are laid out and behave on the homepage, they stick as you scroll then dissappear behind the following section */
+
+.gem-bg {
+  position: relative;
+}
+
+.gem-bg__container {
+  position: relative;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  height: 0;
+  width: 100%;
+  img {
+    position: absolute;
+  }
+}
+
+.stone-1 {
+  height: 300px;
+  width: 300px;
+  right: 10%;
+  top: -50px;
+}
+
+.stone-2 {
+  height: 195px;
+  width: 195px;
+  right: 30%;
+  top: 200px;
+}
+
+.stone-3 {
+  height: 160px;
+  width: 160px;
+  right: 10%;
+  top: 290px;
+}
+
+.directory {
+	a {
+		@include spesh-link();
+	}
+}
+
+.directory-section {
+	border-bottom: 3px solid $color-purple-light;
+}
