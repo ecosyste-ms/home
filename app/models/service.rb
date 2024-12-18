@@ -25,163 +25,121 @@ class Service
       },
       {
         name: 'Tools',
-        description: 'APIs and tools built on top of ecosyste.ms data',
+        description: 'Use ecosystems intelligence to get things done',
         icon: 'tools.svg',
         services: [
-
+          {
+            name: 'Dependency Parser',
+            url: 'https://parser.ecosyste.ms',
+            description: 'Resolve the full dependency tree for a repository',
+          },
+          {
+            name: 'Dependency Resolver',
+            url: 'https://resolve.ecosyste.ms',
+            description: 'Resolve the full dependency tree for a package',
+          },
+          {
+            name: 'SBOM Parser',
+            url: 'https://sbom.ecosyste.ms',
+            description: 'Parse and convert between SBOM file formats',
+          },
+          {
+            name: 'License Parser',
+            url: 'https://licenses.ecosyste.ms',
+            description: 'Extract license metadata froma package or repository',
+          },
+          {
+            name: 'Digest',
+            url: 'https://digest.ecosyste.ms',
+            description: 'Check the integrity of a package or repository',
+          },
+          {
+            name: 'Archives',
+            url: 'https://archives.ecosyste.ms',
+            description: 'Extract inspect the contents of a package or repository',
+          },
+          {
+            name: 'Diff',
+            url: 'https://diff.ecosyste.ms',
+            description: 'Compare the contents of two packages or repositories',
+          },
+          {
+            name: 'Summary',
+            url: 'https://summary.ecosyste.ms',
+            description: 'Produce an overview of a list of open source projects',
+          },
         ]
-      }
-    ]
-  end
-
-  def self.all
-    [
-      {
-        name: 'Packages',
-        url: 'https://packages.ecosyste.ms',
-        description: 'An open API service providing package, version and dependency metadata of many open source software ecosystems and registries.',
-        icon: 'box-seam',
-        repo: 'packages'
       },
       {
-        name: 'Timeline',
-        url: 'https://timeline.ecosyste.ms',
-        description: 'An open API service providing the timeline of over 6 Billion events for every public repo on GitHub, all the way back to 2015.',
-        icon: 'clock-history',
-        repo: 'timeline'
+        name: 'Indexes',
+        description: 'Additional data powering ecosystems core services, provided direct for your own use',
+        icon: 'indexes.svg',
+        services: [
+          {
+            name: 'Timeline',
+            url: 'https://timeline.ecosyste.ms',
+            description: '6 Billion events for every public repo on GitHub',
+          },
+          {
+            name: 'Commits',
+            url: 'https://commits.ecosyste.ms',
+            description: '570 million commits across 2.3 million repositories',
+          },
+          {
+            name: 'Issues',
+            url: 'https://issues.ecosyste.ms',
+            description: '20.9 million issues and 44 million pull requests across 5.4 million repositories',
+          },
+          {
+            name: 'Sponsors',
+            url: 'https://sponsors.ecosyste.ms',
+            description: '31k maintainers and 125k sponsors on GitHub Sponsors',
+          },
+          {
+            name: 'Docker',
+            url: 'https://docker.ecosyste.ms',
+            description: '600k Docker images and their dependencies from Docker Hub',
+          },
+          {
+            name: 'Open Collective',
+            url: 'https://opencollective.ecosyste.ms',
+            description: '$48m in open source grants, donations, and sponsorships from Open Collective',
+          },
+        ]
       },
       {
-        name: 'Parser',
-        url: 'https://parser.ecosyste.ms',
-        description: 'An open API service to parse dependency metadata from many open source software ecosystems manifest files.',
-        icon: 'bar-chart-steps',
-        repo: 'parser'
+        name: 'Applications',
+        description: 'Full applications built by the ecosystems team',
+        icon: 'applications.svg',
+        services: [
+          {
+            name: 'Funds',
+            url: 'https://funds.ecosyste.ms',
+            description: 'Support your core open source dependencies'
+          },
+        ]
       },
       {
-        name: 'Archives',
-        url: 'https://archives.ecosyste.ms',
-        description: 'An open API service for inspecting package archives and files from many open source software ecosystems.',
-        icon: 'folder2-open',
-        repo: 'archives'
-      },
-      {
-        name: 'Digest',
-        url: 'https://digest.ecosyste.ms',
-        description: 'An open API service providing digests of packages from many open source software ecosystems',
-        icon: 'hash',
-        repo: 'digest'
-      },
-      {
-        name: 'Diff',
-        url: 'https://diff.ecosyste.ms',
-        description: 'An open API service to generate diffs between package releases for many open source software ecosystems.',
-        icon: 'file-earmark-diff',
-        repo: 'diff'
-      },
-      {
-        name: 'Licenses',
-        url: 'https://licenses.ecosyste.ms',
-        description: 'An open API service to parse license metadata from many open source software ecosystems.',
-        icon: 'check-square',
-        repo: 'licenses'
-      },
-      {
-        name: 'Repos',
-        url: 'https://repos.ecosyste.ms',
-        description: 'An open API service providing repository metadata for many open source software ecosystems',
-        icon: 'journal-code',
-        repo: 'repos'
-      },
-      {
-        name: 'Resolve',
-        url: 'https://resolve.ecosyste.ms',
-        description: 'An open API service to resolve dependency trees of packages for many open source software ecosystems.',
-        icon: 'gear',
-        repo: 'resolve'
-      },
-      {
-        name: 'Advisories',
-        url: 'https://advisories.ecosyste.ms',
-        description: 'An open API service providing security vulnerability metadata for many open source software ecosystems.',
-        icon: 'incognito',
-        repo: 'advisories'
-      },
-      {
-        name: 'Commits',
-        url: 'https://commits.ecosyste.ms',
-        description: 'An open API service providing commit metadata for open source projects.',
-        icon: 'people',
-        repo: 'commits'
-      },
-      {
-        name: 'Docker',
-        url: 'https://docker.ecosyste.ms',
-        description: 'An open API service providing dependency metadata for docker projects.',
-        icon: 'layers',
-        repo: 'docker'
-      },
-      {
-        name: 'Summary',
-        url: 'https://summary.ecosyste.ms',
-        description: 'An open API service for producing an overview of a list of open source projects.',
-        icon: 'award',
-        repo: 'summary'
-      },
-      {
-        name: 'Issues',
-        url: 'https://issues.ecosyste.ms',
-        description: 'An open API service for providing issue and pull request metadata for open source projects.',
-        icon: 'bug',
-        repo: 'issues'
-      },
-      {
-        name: 'OST',
-        url: 'https://ost.ecosyste.ms',
-        description: 'An open API service for discovering and reviewing projects for opensustain.tech.',
-        icon: 'globe-americas',
-        repo: 'ost'
-      },
-      {
-        name: 'Papers',
-        url: 'https://papers.ecosyste.ms',
-        description: 'An open API service providing mapping between scientific papers and software projects that are mentioned in them.',
-        icon: 'newspaper',
-        repo: 'papers'
-      },
-      {
-        name: 'Awesome',
-        url: 'https://awesome.ecosyste.ms',
-        description: 'An open API service indexing awesome lists of open source software.',
-        icon: 'stars',
-        repo: 'awesome'
-      },
-      {
-        name: 'Open Collective',
-        url: 'https://opencollective.ecosyste.ms',
-        description: 'An open API service for software projects hosted on opencollective.',
-        icon: 'opencollective',
-        repo: 'opencollective'
-      },
-      {
-        name: 'SBOM',
-        url: 'https://sbom.ecosyste.ms',
-        description: 'An open API service to parse and convert between SBOM file formats.',
-        icon: 'receipt-cutoff',
-        repo: 'sbom'
-      },
-      {
-        name: 'Funds',
-        url: 'https://funds.ecosyste.ms',
-        description: 'An open source funding solution from ecosyste.ms & Open Source Collective.',
-        icon: 'piggy-bank',
-        repo: 'funds'
-      },
-      {
-        name: 'Sponsors',
-        url: 'https://sponsors.ecosyste.ms',
-        description: 'An open API service aggregating public data about GitHub Sponsors.',
-        icon: 'github',
-        repo: 'sponsors'
+        name: 'Experiments',
+        description: 'The following datasets and services are created as demonstrators or as part or partnershps with the ecosystems team',
+        icon: 'experiment.svg',
+        services: [
+          {
+            name: 'OST',
+            url: 'https://ost.ecosyste.ms',
+            description: 'A curated list of technology projects protecting and sustaining our climate and environment.',
+          },
+          {
+            name: 'Papers',
+            url: 'https://papers.ecosyste.ms',
+            description: 'Indexing and attributing open source software mentioned in academic papers.',
+          },
+          {
+            name: 'Awesome',
+            url: 'https://awesome.ecosyste.ms',
+            description: 'Tracking thousands of "awesome lists" on GitHub',
+          },
+        ]
       }
     ]
   end
