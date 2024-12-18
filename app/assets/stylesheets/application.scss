@@ -43,7 +43,6 @@
   max-width: 38rem;
 }
 
-
 .promotion-card {
   border: 0;
   border-radius: 1rem;
@@ -67,6 +66,8 @@
 }
 
 /* gem-bg is how the gems are laid out and behave on the homepage, they stick as you scroll then dissappear behind the following section */
+
+
 .gem-bg__container {
   position: relative;
   top: 0;
@@ -74,6 +75,7 @@
   z-index: 0;
   height: 0;
   width: 100%;
+	will-change: transform; /* Optimize for smooth animations */
   img {
     position: absolute;
   }
@@ -84,6 +86,10 @@
   width: 150px;
   right: 10%;
   top: -50px;
+	@include media-breakpoint-up(md) { 
+		height: 220px;
+		width: 220px;
+	}
 	@include media-breakpoint-up(lg) { 
 		height: 300px;
 		width: 300px;
@@ -95,6 +101,11 @@
   width: 120px;
   right: 30%;
   top: 90px;
+	@include media-breakpoint-up(md) { 
+		height: 145px;
+		width: 145px;
+		top: 140px;
+	}
 	@include media-breakpoint-up(lg) { 
 		height: 195px;
 		width: 195px;
@@ -107,11 +118,25 @@
   width: 80px;
   right: 10%;
   top: 160px;
+	@include media-breakpoint-up(md) { 
+		height: 110px;
+		width: 110px;
+		top: 190px
+	}
 	@include media-breakpoint-up(lg) { 
 		height: 160px;
   	width: 160px;
 		top: 290px;
 	}
+}
+
+.position-rel {
+	position: relative;
+	z-index: 50;
+}
+
+.white-bg {
+	background-color: $color-white;
 }
 
 .directory {
@@ -124,9 +149,10 @@
 	border-bottom: 3px solid $color-purple-light;
 }
 
-.trusted-logos {
+.logo-grid {
 	img {
 		min-width: 150px;
+		max-width: 250px;
 		display: inline-block;
 		margin-bottom: 1rem;
 	}

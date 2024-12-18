@@ -1,3 +1,29 @@
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+	// Couldn't use position:sticky because of safari stacking order bug 
+	
+  // Select the .gem-bg element
+  const gemBg = document.querySelector('.gem-bg__container');
+
+  // Check if the element exists
+  if (gemBg) {
+    // Add a scroll event listener
+    window.addEventListener('scroll', () => {
+      // Get the current scroll position
+      const scrollPosition = window.scrollY;
+
+      // Apply a slower scrolling effect (adjust the divisor for speed)
+      const offset = scrollPosition * 0.5; // Adjust multiplier for speed control
+
+      // Update the transform property to move the element
+      gemBg.style.transform = `translateY(${offset}px)`;
+    });
+  } else {
+    
+  }
+});
+</script>
+
 <div class="gem-bg">
   <div class="container gem-bg__container">
     <%= image_tag("stone-1.svg", alt: "", class: "stone-1", size: "100x100") %>
@@ -42,13 +68,13 @@
   </div>
 </div>
 
-<div class="grey-grad-bg py-5">
+<div class="grey-grad-bg position-rel py-5">
   <div class="container">
     <h2 class="mb-3">Trusted by</h2>
-    <div class="row text-center align-items-center trusted-logos">
+    <div class="row text-center align-items-center logo-grid">
       <div class="col">
         <a href="https://snyk.io">
-          <%= image_tag("logo-snyk.png", alt: "Snyk", class: "img-fluid p3", size: "204x78") %>
+          <%= image_tag("logo-snyk.svg", alt: "Snyk", class: "img-fluid p3", size: "172x90") %>
         </a>
       </div>
       <div class="col">
@@ -74,7 +100,7 @@
     </div>
   </div>
 </div>
-<div class="pt-5">
+<div class="white-bg position-rel pt-5">
   <div class="container">
     <div class="row">
       <div class="col-lg-5">
