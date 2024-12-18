@@ -9,6 +9,10 @@
     </title>
     <meta name="description" content="<%= @meta_description = 'Tools and open datasets to support, sustain, and secure critical digital infrastructure.'%>">
     <%= csrf_meta_tags %>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "application", :media => "all" %>
 
     <meta property="og:title" content="<%= meta_title %>" />
@@ -70,6 +74,34 @@
             </ul>
           </div>
         </div>
+				<div class="row">
+					<h2 class="mb-3 mt-5 h5">Supported by</h2>
+					<div class="col-lg-9 col-xl-8">
+						<div class="row align-items-center logo-grid">
+							<div class="col">
+								<a href="https://snyk.io">
+									<%= image_tag("logo-snyk-white.svg", alt: "Snyk", class: "img-fluid p3", size: "92x42") %>
+								</a>
+							</div>
+							<div class="col">
+								<a href="https://www.schmidtfutures.org">
+									<%= image_tag("logo-schmidt-white.svg", alt: "Schmidt Futures", class: "img-fluid p3", size: "267x20") %>
+								</a>
+							</div>
+				
+							<div class="col">
+								<a href="https://oscollective.org">
+									<%= image_tag("logo-osc-white.png", alt: "Open Source Collective", class: "img-fluid p3", size: "160x32") %>
+								</a>
+							</div>
+							<div class="col">
+								<a href="https://socket.dev">
+									<%= image_tag("logo-socket-white.png", alt: "Socket.dev", class: "img-fluid p3", size: "116x33") %>
+								</a>
+							</div>  
+						</div>
+					</div>
+				</div>
       </div>
     </footer>
   </body>

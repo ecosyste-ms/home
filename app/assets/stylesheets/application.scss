@@ -1,41 +1,8 @@
 @import "bootstrap"; 
-
-.text-decoration-hover{
-  text-decoration: none;
-  &:hover{
-    text-decoration: underline;
-  }
-}
-
-/* Variables */
-$color-purple: #7878EF;
-$color-purple-light: #BBBBFF;
-$color-purple-dark: #5C5CCF;
-
-$color-orange: #FF807D;
-$color-orange-light: #FEBDB9;
-$color-orange-dark: #C65568;
-
-$color-green: #45E56E;
-$color-green-light: #75D293;
-$color-green-dark: #2EAF6B;
-
-$color-black: #1D1D28;
-$color-white: #FFFFFF;
-
-
+@import "ecosystems";
 
 .site-logo {
-  font-size: 0;
-  line-height: 0;
-  color: transparent;
-
   background-image: asset-url('ecosystems-logo.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: inline-block;
-
   width: 246px;
   height: 50px; 
 }
@@ -44,50 +11,149 @@ $color-white: #FFFFFF;
   background-image: asset-url('ecosystems-logo-white.svg');
 }
 
+.home__hero {
+  .container {
+    position: relative;
+  }
+}
 
-.dark-section {
-  background-color: $color-purple-dark;
-  color: $color-white;
-  a {
-    color: $color-white;
-    &:hover,
-    &:active,
-    &:focus 
-    &:visited {
-      color: $color-white;
+.home__hero__title {
+  max-width: 63rem;
+}
+
+.home__stat {
+  z-index: -1;
+  .stat-card {
+    margin-right: 2em;
+    &:last-child {
+      margin-right:0;
     }
-    
+  }
+  .container {
+    z-index: 2;
+    position: relative;
   }
 }
 
-/*  Header */
-.header {
-  padding: 2em 0;
+.home__stat-lead {
+  max-width: 45rem;
 }
 
-/*  Footer */
-.footer {
-  padding: 2em 0;
-  margin-top: 4em;
+.home__stat-para {
+  max-width: 38rem;
 }
 
-.footer-links {
-  margin-top: 1rem;
-  @include media-breakpoint-up(md) {
-    text-align: right;
+.promotion-card {
+  border: 0;
+  border-radius: 1rem;
+  background-image: linear-gradient($color-orange-light 0%, $color-orange 100%);
+  overflow: hidden;
+  .card-body {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
   }
-  a {
-    text-decoration: none;
+  .card-image__img {
+		position: relative;
+		bottom: -2rem;
+		@include media-breakpoint-only(lg) { 
+			bottom: -5.5rem;
+		}
   }
-  li {
-    margin-bottom: 0.25rem;
+	a {
+		@include spesh-link();
+	}
+}
+
+/* gem-bg is how the gems are laid out and behave on the homepage, they stick as you scroll then dissappear behind the following section */
+
+
+.gem-bg__container {
+  position: relative;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  height: 0;
+  width: 100%;
+	will-change: transform; /* Optimize for smooth animations */
+  img {
+    position: absolute;
   }
 }
 
-.footer-icons {
-  margin-top: 1em;
-  a {
-    margin: 0 0.5em;
-    text-decoration: none;
-  }
+.stone-1 {
+  height: 150px;
+  width: 150px;
+  right: 10%;
+  top: -50px;
+	@include media-breakpoint-up(md) { 
+		height: 220px;
+		width: 220px;
+	}
+	@include media-breakpoint-up(lg) { 
+		height: 300px;
+		width: 300px;
+	}
+}
+
+.stone-2 {
+  height: 120px;
+  width: 120px;
+  right: 30%;
+  top: 90px;
+	@include media-breakpoint-up(md) { 
+		height: 145px;
+		width: 145px;
+		top: 140px;
+	}
+	@include media-breakpoint-up(lg) { 
+		height: 195px;
+		width: 195px;
+		top: 200px;
+	}
+}
+
+.stone-3 {
+  height: 80px;
+  width: 80px;
+  right: 10%;
+  top: 160px;
+	@include media-breakpoint-up(md) { 
+		height: 110px;
+		width: 110px;
+		top: 190px
+	}
+	@include media-breakpoint-up(lg) { 
+		height: 160px;
+  	width: 160px;
+		top: 290px;
+	}
+}
+
+.position-rel {
+	position: relative;
+	z-index: 50;
+}
+
+.white-bg {
+	background-color: $color-white;
+}
+
+.directory {
+	a {
+		@include spesh-link();
+	}
+}
+
+.directory-section {
+	border-bottom: 3px solid $color-purple-light;
+}
+
+.logo-grid {
+	img {
+		min-width: 150px;
+		max-width: 250px;
+		display: inline-block;
+		margin-bottom: 1rem;
+	}
 }
