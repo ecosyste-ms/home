@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 		<div class="directory mb-5">
       <% Service.sections.each do |section| %>
-        <div class="directory-section">
+        <div class="directory-section mb-5 pb-3">
           <div class="directory-header">
             <div class="row mb-4">
               <div class="col-3 col-md-2 col-xl-1">
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row gx-5">
             <% section[:services].each do |service| %>
               <div class="col-md-4 col-lg-3">
                 <h4><%= link_to service[:name], service[:url] %></h4>
