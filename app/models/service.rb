@@ -17,7 +17,7 @@ class Service
             description: 'Metadata for 230m packages across 1877 sources'
           },
           {
-            name: 'Advsiories',
+            name: 'Advisories',
             url: 'https://advisories.ecosyste.ms',
             description: 'Metadata for 20k security advisories across 12 languages (under development)'
           }
@@ -46,7 +46,7 @@ class Service
           {
             name: 'License Parser',
             url: 'https://licenses.ecosyste.ms',
-            description: 'Extract license metadata froma package or repository',
+            description: 'Extract license metadata from a package or repository',
           },
           {
             name: 'Digest',
@@ -121,7 +121,7 @@ class Service
       },
       {
         name: 'Experiments',
-        description: 'The following datasets and services are created as demonstrators or as part or partnershps with the ecosystems team',
+        description: 'The following datasets and services are created as demonstrators or as part of partnershps with the ecosystems team',
         icon: 'experiment.svg',
         services: [
           {
