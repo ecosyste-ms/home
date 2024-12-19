@@ -56,7 +56,7 @@ class Service
           {
             name: 'Archives',
             url: 'https://archives.ecosyste.ms',
-            description: 'Extract inspect the contents of a package or repository',
+            description: 'Inspect the contents of a package or repository',
           },
           {
             name: 'Diff',
