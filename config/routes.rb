@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/422', to: 'errors#unprocessable'
   get '/500', to: 'errors#internal'
 
+  get '/privacy', to: 'pages#privacy'
+  get '/terms', to: 'pages#terms'
+
   # Defines the root path route ("/")
   root "home#index"
 end
