@@ -25,7 +25,7 @@ $bootstrap-primary: $color-purple;
 $bootstrap-secondary: $color-grey;
 $bootstrap-success: $color-green;
 $bootstrap-info: $color-purple-light;
-$bootstrap-warning: $color-orange;
+$bootstrap-warning: $color-orange-light;
 $bootstrap-danger: $color-orange-dark;
 $bootstrap-light: $color-grey-light;
 $bootstrap-dark: $color-black;
@@ -51,6 +51,8 @@ $theme-colors: (
   --bs-info:    $bootstrap-info;
   --bs-light:   $bootstrap-light;
   --bs-dark:    $bootstrap-dark;
+  --bs-list-group-border-color: $color-purple-light;
+  --bs-pagination-color: $color-purple-dark;
 }
 
 /* Typography */
@@ -741,3 +743,73 @@ a {
 .label-pending{
   background-color: $color-grey-dark
 }
+
+.tooltip {
+	max-width: 400px !important;
+	white-space: normal; 
+  }
+  
+  .tooltip-inner {
+	max-width: 400px !important; 
+	text-align: left; 
+  }
+  
+  .logo-grid {
+	  img {
+		  max-height: 60px; 
+			width: auto;
+			object-fit: contain;
+	  }
+  }
+  
+  .logo-grid {
+	display: flex;
+	justify-content: space-around;
+	align-items: center; /* Align logos vertically */
+	flex-wrap: wrap;
+	gap: 2rem 2rem;
+	@include media-breakpoint-up(xl) { 
+	  flex-wrap: nowrap;
+	  justify-content: space-between; 
+	}
+	a {
+	  display: block;
+	}
+  }
+  
+  .logo-grid__logo {
+	max-width: 150px;
+  }
+
+
+//pagination 
+.page-link {
+	color: $color-purple-dark;
+	border-color: $color-grey;
+	&:hover {
+	  color: $color-purple;
+	}
+  }
+  .page-link.active, .active > .page-link {
+	background-color: $color-purple-dark;
+	border-color: $color-purple-dark;
+  }
+
+  .badge-warning {
+	background-color: $bootstrap-warning;
+  }
+  
+  .badge-danger {
+	background-color: $bootstrap-danger;
+	color: $color-white;
+  }
+  
+  .badge-dark {
+	background-color: $color-black;
+	color: $color-white;
+  }
+  
+  .badge-light {
+	background-color: $color-grey-light;
+  }
+  
