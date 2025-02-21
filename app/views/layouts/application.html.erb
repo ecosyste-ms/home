@@ -5,105 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-      <%= @meta_title = 'Ecosyste.ms' %>
+      <%= meta_title %>
     </title>
-    <meta name="description" content="<%= @meta_description = 'Tools and open datasets to support, sustain, and secure critical digital infrastructure.'%>">
+    <meta name="description" content="<%= meta_description %>">
     <%= csrf_meta_tags %>
-    
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/github.min.css">
+    <script defer src="//unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <%= stylesheet_link_tag "application", :media => "all" %>
-
-    <meta property="og:title" content="<%= meta_title %>" />
-    <meta property="og:description" content="<%= meta_description %>" />
-    <meta property="og:image" content="<%= asset_path('social-share.png') %>" />
-    <meta property="og:url" content="<%= request.original_url %>" />
-    <meta property="og:type" content="website" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="<%= meta_title %>" />
-    <meta name="twitter:description" content="<%= meta_description %>" />
-    <meta name="twitter:image" content="<%= asset_path('social-share.png') %>" />
   </head>
   <body>
+		<%= render 'shared/header' %>
+		
     <div class="main">
-      <div class="container">
-        <header class="header">
-          <h1 >
-            <a class="site-logo" href="/" >Ecosyste.ms</a>
-          </h1>
-        </header>
-      </div>
-
       <%= yield %>
     </div>
 
-    <footer class="footer dark-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <a class="site-logo site-logo--white" href="/">Ecosyste.ms</a>
-            <p class='small'>Tools and open datasets to support, sustain, and secure critical digital infrastructure.</p>
-            <p class='small'>
-              Code: <%= link_to 'AGPL-3', 'https://github.com/ecosyste-ms/documentation/blob/main/LICENSE' %>  — 
-              Data: <%= link_to 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/', target: :_blank %>
-            </p>
-            <p class='footer-icons'>
-              <%= link_to "https://github.com/ecosyste-ms", target: :_blank do %>
-                <%= bootstrap_icon 'github', width: 20, height: 20 %>
-              <% end %>
-              <%= link_to "https://twitter.com/ecosyste_ms", target: :_blank do %>
-                <%= bootstrap_icon 'twitter', width: 20, height: 20 %>
-              <% end %>
-              <%= link_to "https://mastodon.social/@ecosystems", target: :_blank do %>
-                <%= bootstrap_icon 'mastodon', width: 20, height: 20 %>
-              <% end %>
-              <%= link_to "https://opencollective.com/ecosystems", target: :_blank do %>
-                <%= bootstrap_icon 'opencollective', width: 20, height: 20 %>
-              <% end %>
-            </p>
-          </div>
-          <div class="col-md-4">
-            <ul class="list-unstyled footer-links mt-3 small">
-              <li><strong><%= link_to 'Blog', 'https://blog.ecosyste.ms' %></strong></li>
-              <li><strong><%= link_to 'Contact', 'https://mastodon.social/@ecosystems' %></strong></li>
-              <li><strong><%= link_to 'Privacy', privacy_path %></strong></li>
-              <li><strong><%= link_to 'Terms', terms_path %></strong></li>
-              <li><strong><%= link_to 'Status', 'https://ecosystems.appsignal-status.com/' %></strong></li>
-            </ul>
-          </div>
-        </div>
-        
-				<div class="row">
-					<h2 class="mb-3 mt-5 h5">Supported by</h2>
-					<div class="col-lg-9 col-xl-8">
-						<div class="row align-items-center logo-grid">
-							<!--<div class="col">
-								<a href="https://snyk.io">
-									<%= image_tag("logo-snyk-white.svg", alt: "Snyk", class: "img-fluid p3", size: "92x42") %>
-								</a>
-							</div>-->
-							<div class="col">
-								<a href="https://www.schmidtfutures.org">
-									<%= image_tag("logo-schmidt-white.svg", alt: "Schmidt Futures", class: "img-fluid p3", size: "267x20") %>
-								</a>
-							</div>
-							<div class="col">
-								<a href="https://oscollective.org">
-									<%= image_tag("logo-osc-white.png", alt: "Open Source Collective", class: "img-fluid p3", size: "160x32") %>
-								</a>
-							</div>
-
-							<!--<div class="col">
-								<a href="https://socket.dev">
-									<%= image_tag("logo-socket-white.png", alt: "Socket.dev", class: "img-fluid p3", size: "116x33") %>
-								</a>
-							</div>  -->
-						</div>
-					</div>
-				</div>
-      </div>
-    </footer>
+    <%= render 'shared/footer' %>
   </body>
 </html>
