@@ -718,27 +718,97 @@ body {
 	&:hover {
 	  color: $color-purple;
 	}
-  }
-  .page-link.active, .active > .page-link {
+}
+
+.page-link.active, .active > .page-link {
 	background-color: $color-purple-dark;
 	border-color: $color-purple-dark;
   }
 
-  .badge-warning {
+.badge-warning {
 	background-color: $bootstrap-warning;
-  }
+}
   
-  .badge-danger {
+.badge-danger {
 	background-color: $bootstrap-danger;
 	color: $color-white;
-  }
+}
   
-  .badge-dark {
+.badge-dark {
 	background-color: $color-black;
 	color: $color-white;
-  }
+}
   
-  .badge-light {
+.badge-light {
 	background-color: $color-grey-light;
-  }
+}
+
+.listing {
+	border: 0;
+	border-radius: 0;
+	border-bottom: 3px solid $color-purple-light;
+	padding: 0;
+}
   
+  
+.listing__title {
+	@include font-size(1rem);
+	a {
+	  text-decoration: none;
+	  color: $color-black;
+	}
+}
+  
+.listing__meta {
+  font-weight: normal;
+  color: $color-grey-dark;
+  @include font-size(0.875rem);
+}
+  
+.listing__details {
+	@include font-size(0.875rem);
+}
+  
+.listing__time {
+	margin-top: 0.3888888889; //gross number but it aligns the baseline with the severity badge
+	@include font-size(0.7777777778rem);
+}
+  
+.listing-filters {
+	.list-group-item {
+	  @include font-size(0.875rem);
+	  border-color: $color-grey;
+	  word-break: break-word;
+	}
+}
+  
+.listing-controls {
+  background-color: $color-grey-light;
+  p {
+    line-height: 2.2222222222rem;
+  }
+	.dropdown-item.active,
+	.dropdown-item:active {
+	  background-color: $color-purple;
+	}
+}
+  
+.listing-header__meta__text {
+	@include font-size(1rem);
+	line-height: 1.4rem;
+}
+  
+.listing-header__title {
+	line-break: anywhere;
+}
+
+.rounded-input-group {
+	.form-control {
+		border-top-left-radius: 800px; //magic number, but it's consistent with bootstrap
+		border-bottom-left-radius: 800px;
+	}
+	.btn {
+		border-top-right-radius: 800px;
+		border-bottom-right-radius: 800px;
+	}
+}
