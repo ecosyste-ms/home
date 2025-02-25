@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/privacy', to: 'pages#privacy'
   get '/terms', to: 'pages#terms'
 
+  get '/styleguide', to: 'pages#styleguide'
+
   # Defines the root path route ("/")
   root "home#index"
 end
