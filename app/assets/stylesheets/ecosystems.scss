@@ -42,19 +42,6 @@ $theme-colors: (
   "dark":       $bootstrap-dark
 );
 
-/* Bootstrap CSS colour variables */
-:root {
-  --bs-primary: $bootstrap-primary;
-  --bs-success: $bootstrap-success;
-  --bs-danger:  $bootstrap-danger;
-  --bs-warning: $bootstrap-warning;
-  --bs-info:    $bootstrap-info;
-  --bs-light:   $bootstrap-light;
-  --bs-dark:    $bootstrap-dark;
-  --bs-list-group-border-color: $color-purple-light;
-  --bs-pagination-color: $color-purple-dark;
-}
-
 /* Typography */
 $font-family-base: "Inter", sans-serif;
 $font-size-base: 1.125rem; //18px
@@ -79,6 +66,9 @@ $btn-padding-y: 0.5em;
 $btn-padding-x: 1em;
 $btn-font-weight: 600;
 $btn-color: $color-white;
+
+$badge-font-weight: 400;
+$badge-padding-y: 0.4em;
 
 @import "bootstrap"; 
 
@@ -529,12 +519,6 @@ body {
   font-weight: 800;
 }
 
-.badge {
-  background-color: $color-purple-light;
-  font-weight: normal;
-  color: $color-black;
-}
-
 .well {
   background-color: $color-grey-light;
   border-radius: $border-radius;
@@ -725,22 +709,8 @@ body {
 	border-color: $color-purple-dark;
   }
 
-.badge-warning {
-	background-color: $bootstrap-warning;
-}
-  
-.badge-danger {
-	background-color: $bootstrap-danger;
-	color: $color-white;
-}
-  
-.badge-dark {
-	background-color: $color-black;
-	color: $color-white;
-}
-  
-.badge-light {
-	background-color: $color-grey-light;
+.bg-secondary {
+	color: $color-black;
 }
 
 .listing {
