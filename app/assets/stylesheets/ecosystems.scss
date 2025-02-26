@@ -21,26 +21,14 @@ $color-grey: #DCDCE0;
 $color-grey-dark: #4C4C61;
 
 /* Tokens to override bootstrap colours */
-$bootstrap-primary: $color-purple;
-$bootstrap-secondary: $color-grey;
-$bootstrap-success: $color-green;
-$bootstrap-info: $color-purple-light;
-$bootstrap-warning: $color-orange-light;
-$bootstrap-danger: $color-orange-dark;
-$bootstrap-light: $color-grey-light;
-$bootstrap-dark: $color-black;
-
-/* Bootstrap SCSS colour variables */
-$theme-colors: (
-  "primary":    $bootstrap-primary,
-  "secondary":  $bootstrap-secondary,
-  "success":    $bootstrap-success,
-  "info":       $bootstrap-info,
-  "warning":    $bootstrap-warning,
-  "danger":     $bootstrap-danger,
-  "light":      $bootstrap-light,
-  "dark":       $bootstrap-dark
-);
+$primary: $color-purple;
+$secondary: $color-grey;
+$success: $color-green;
+$info: $color-purple-light;
+$warning: $color-orange-light;
+$danger: $color-orange-dark;
+$light: $color-grey-light;
+$dark: $color-black;
 
 /* Typography */
 $font-family-base: "Inter", sans-serif;
@@ -59,6 +47,9 @@ $body-font-weight: 400;
 $headings-font-weight: 700;
 $display-font-weight: 900;
 $lead-font-weight: 400;
+
+$link-color: $color-purple-dark;
+$link-hover-color: $color-purple;
 
 $transition-collapse: height .35s ease;
 
@@ -200,44 +191,12 @@ $badge-padding-y: 0.4em;
   border: 0;
 }
 
-.alert-primary {
-  background-color: lighten($color-purple-light, 4%);
-  color: $color-black;
-}
-
-.alert-secondary {
-  background-color: $color-grey-light;
-  color: $color-black;
-}
-
-.alert-success {
-  background-color: lighten($color-green-light, 8%);
-  color: darken( $color-green-dark, 25%);
-}
-
-.alert-danger {
-  background-color: lighten($color-orange-light, 4%);
-  color: darken( $color-orange-dark, 45%);
-}
-
-.alert-warning {
-  background-color: lighten($color-orange-light, 12%);
-  color: darken( $color-orange-dark, 23%);
-}
-
-.alert-info {
-  background-color: lighten($color-purple-light, 12%);
-  color: darken( $color-purple-dark, 33%);
-}
-
-.alert-light {
-  background-color: $color-grey-light;
-  color: lighten( $color-black, 33%);
-}
-
 .alert-dark {
   background-color: $color-grey-dark;
   color: $color-white;
+	a {
+		color: $color-white;
+	}
 }
 
 hr {
@@ -261,7 +220,6 @@ hr {
 body {
   font-optical-sizing: auto;
 }
-
 
 .header__global {
   width: 100%;
@@ -694,21 +652,6 @@ body {
 	max-width: 150px;
 }
 
-
-//pagination 
-.page-link {
-	color: $color-purple-dark;
-	border-color: $color-grey;
-	&:hover {
-	  color: $color-purple;
-	}
-}
-
-.page-link.active, .active > .page-link {
-	background-color: $color-purple-dark;
-	border-color: $color-purple-dark;
-  }
-
 .bg-secondary {
 	color: $color-black;
 }
@@ -781,4 +724,19 @@ body {
 		border-top-right-radius: 800px;
 		border-bottom-right-radius: 800px;
 	}
+}
+
+
+// Form validation
+.invalid-feedback {
+	color: $color-orange-dark;
+}
+
+.was-validated .form-control:valid,
+.form-control.is-valid {
+  border-color: $color-green-dark;
+}
+
+.valid-feedback {
+	color: $color-green-darker;
 }
