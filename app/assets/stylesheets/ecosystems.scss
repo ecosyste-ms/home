@@ -740,3 +740,34 @@ body {
 .valid-feedback {
 	color: $color-green-darker;
 }
+
+.sidebar {
+	background-color: $color-grey-light;
+	p { 
+		@include font-size(1rem);
+	}
+	h2 {
+		@include font-size(1.25rem);
+
+    border-top: 1px solid $color-purple-light;
+    padding-top: 1rem;
+    &:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+	}
+
+	h3 {
+		@include font-size(1rem);
+    
+	}
+
+  code {
+    color: $color-purple-dark;
+  }
+
+  a {
+    @include spesh-link();
+    line-break: anywhere;
+  }
+}
