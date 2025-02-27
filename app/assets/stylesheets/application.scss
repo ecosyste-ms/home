@@ -173,3 +173,107 @@
 		}
 	} 
 }
+
+.color-box {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+// Primary Colors
+.color-box--purple {
+  background-color: $color-purple;
+}
+
+.color-box--purple-light {
+  background-color: $color-purple-light;
+}
+
+.color-box--purple-dark {
+  background-color: $color-purple-dark;
+}
+
+// Secondary Colors
+.color-box--green {
+  background-color: $color-green;
+}
+
+.color-box--green-light {
+  background-color: $color-green-light;
+}
+
+.color-box--green-dark {
+  background-color: $color-green-dark;
+}
+
+.color-box--green-darker {
+  background-color: $color-green-darker;
+}
+
+// Tertiary Colors
+.color-box--orange {
+  background-color: $color-orange;
+}
+
+.color-box--orange-light {
+  background-color: $color-orange-light;
+}
+
+.color-box--orange-dark {
+  background-color: $color-orange-dark;
+}
+
+// Tones
+.color-box--black {
+  background-color: $color-black;
+}
+
+.color-box--white {
+  background-color: $color-white;
+}
+
+.color-box--grey-light {
+  background-color: $color-grey-light;
+}
+
+.color-box--grey {
+  background-color: $color-grey;
+}
+
+.color-box--grey-dark {
+  background-color: $color-grey-dark;
+}
+
+//Gradients {
+.color-box--purple-gradient {
+	background: linear-gradient(0deg, $color-purple-dark 50%, $color-purple 100%);
+}
+.color-box--grey-grad-bg  {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F5FF 100%);
+}
+
+.character-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.character-box {
+	border: 1px solid #DCDCE0;
+	border-radius: 5px;
+	padding: 10px;
+	text-align: center;
+}
+
+.character-box p {
+	margin: 10px 0 0;
+	font-size: 14px;
+	color: #4C4C61;
+}
+
+.page-content--demo {
+	border: 1px solid $color-grey;
+	max-width: 48em;
+}
