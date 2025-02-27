@@ -156,3 +156,20 @@
 		margin-bottom: 1rem;
 	}
 }
+
+.styleguide {
+	article {
+		border-bottom: 3px solid $color-purple-light;
+		margin-bottom: 5em !important;
+		padding-bottom: 5em !important;
+	}
+	section > h2 {
+		@extend .display-3;
+	}
+	.bd-heading{
+		
+		h3 {
+			@extend .h2;
+		}
+	} 
+}
