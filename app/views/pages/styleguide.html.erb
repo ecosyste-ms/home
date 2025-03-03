@@ -3,8 +3,174 @@
 	
 
   <div class="bd-cheatsheet container bg-body styleguide">
+		<h2>Styles</h2>
+		<article>
+			<h3 class="mt-5">Typeface</h3>
+			<p>Inter is a variable font family carefully crafted & designed for computer screens.</p>
+
+			<p>Inter features a tall x-height to aid in readability of mixed-case and lower-case text. Several OpenType features are provided as well, like contextual alternates that adjusts punctuation depending on the shape of surrounding glyphs, slashed zero for when you need to disambiguate "0" from "o", tabular numbers, etc.</p>
+			
+			<p>The Inter project is led by Rasmus Andersson, a Swedish maker–of–software living in San Francisco. To contribute, see <a href="https://github.com/rsms/inter/">github.com/rsms/inter</a></p>
+			
+			<h4 class="mt-5">Weights and styles</h4>
+			<div class="character-grid">
+				
+					<div class="character-box" style="font-weight: 400;">
+							Aa Bb Cc
+							<p>Regular (400)</p>
+					</div>
+					<div class="character-box" style="font-weight: 700;">
+							Aa Bb Cc
+							<p>Bold (700)</p>
+					</div>
+					<div class="character-box" style="font-weight: 900;">
+							Aa Bb Cc
+							<p>Black (900)</p>
+					</div>
+
+					<div class="character-box" style="font-style: normal;">
+							Aa Bb Cc
+							<p>Normal</p>
+					</div>
+					<div class="character-box" style="font-style: italic;">
+							Aa Bb Cc
+							<p>Italic</p>
+					</div>
+			</div>
+			<h4 class="mt-4">Numbers and punctuation</h4>
+			<div class="character-grid">
+					<div class="character-box">
+							0123456789
+							<p>Digits</p>
+					</div>
+					<div class="character-box">
+							. , ; : ! ?
+							<p>Punctuation Marks</p>
+					</div>
+			</div>
+			
+		</article>
+		<article>
+			<h3>Colours</h3>
+			<h4 class="mt-3">Primary Colours</h4>
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4">
+					<div class="col">
+							<div class="color-box color-box--purple"></div>
+							<p><code>$purple (#7878EF)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--purple-light"></div>
+							<p><code>$purple-light (#BBBBFF)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--purple-dark"></div>
+							<p><code>$purple-dark (#5C5CCF)</code></p>
+					</div>
+			</div>
+
+			<h4 class="mt-4">Secondary Colours</h4>
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4">
+					<div class="col">
+							<div class="color-box color-box--green"></div>
+							<p><code>$green (#45E56E)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--green-light"></div>
+							<p><code>$green-light (#87F5AA)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--green-dark"></div>
+							<p><code>$green-dark (#2EAF6B)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--green-darker"></div>
+							<p><code>$green-darker (#189654)</code></p>
+					</div>
+			</div>
+
+			<h4 class="mt-4">Tertiary Colours</h4>
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4">
+					<div class="col">
+							<div class="color-box color-box--orange"></div>
+							<p><code>$orange (#FF807D)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--orange-light"></div>
+							<p><code>$orange-light (#FEBDB9)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--orange-dark"></div>
+							<p><code>$orange-dark (#DE5858)</code></p>
+					</div>
+			</div>
+
+			<h4 class="mt-4">Tones</h4>
+			<div class="row row-cols-1 row-cols-sm-3 row-cols-md-5 g-4">
+					<div class="col">
+							<div class="color-box color-box--black"></div>
+							<p><code>$black (#1D1D28)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--white"></div>
+							<p><code>$white (#FFFFFF)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--grey"></div>
+							<p><code>$grey (#DCDCE0)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--grey-light"></div>
+							<p><code>$grey-light (#F5F5FF)</code></p>
+					</div>
+					<div class="col">
+							<div class="color-box color-box--grey-dark"></div>
+							<p><code>$grey-dark (#4C4C61)</code></p>
+					</div>
+			</div>
+
+			<h4 class="mt-4">Gradients</h4>
+			<div class="row row-cols-1 row-cols-sm-3 row-cols-md-5 g-4">
+				<div class="col">
+						<div class="color-box color-box--purple-gradient"></div>
+						<p>
+							<code>$purple-grad-bg <br />
+							50%  $purple<br />
+							100% $purple-dark</code>
+						</p>
+				</div>
+				<div class="col">
+					<div class="color-box color-box--grey-grad-bg"></div>
+					<p>
+						<code>$grey-grad-bg <br />
+						0%   $white<br />
+						100% $grey-light</code>
+					</p>
+				</div>
+			</div>
+		</article>
 
 	<h2>ecosyste.ms components</h2>
+	<article class="my-3">
+		<h3>Page content</h3>
+		<p>Pages with article-style text require a little help to look their best, add the class <code>.page-content</code> to enhance readability</p>
+		<div class="page-content page-content--demo p-5 rounded">
+			<h1 class="page-content__title display-2">FAQ</h1>
+
+			<p class="lead">ecosystem funds is new, we’ll expand this FAQ as we develop the service, until then here are a few questions we anticipate</p>
+
+			<h2>What is ecosyste.ms?</h2>
+			<p>ecosyste.ms is a set of free services and tools for developers, researchers and policymakers to help identify, secure and sustain open source software. It was developed throughout 2022 by Andrew Nesbitt and Benjamin Nickols, with support from the now disbanded Plaintext Group at Schmidt Futures and Open Source Collective.</p>
+
+			<h2>Who are Open Source Collective?</h2>
+			<p><a href="https://oscollective.org">Open Source Collective</a> is a non-profit working for the common interests of those who create and use open source software. They are best known for their fiscal sponsorship program, accepting and managing the funds for thousands of financially active open source projects and their communities using the <a href="https://opencollective.com/home">Open Collective</a> platform. Open Source Collective continues to provide financial support to develop and maintain ecosyste.ms.</p>
+		</div>
+	</article>
+	<article class="my-3">
+		<div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+			<h3 class="mb-5">Links</h3>
+			<p>Links with our <a href="#" class="spesh-link">signature underline</a> are activated by the class <code>.spesh-link</code> or the SCSS <code>@include spesh-link();</code>
+		</div>
+	</article>
 	<article class="my-3">
 		<div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
 			<h3 class="mb-5">Sidebar</h3>
