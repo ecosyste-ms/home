@@ -1,6 +1,6 @@
 module ApplicationHelper
   def meta_title
-    @meta_title
+    @meta_title ||= "#{app_name} | #{app_description}"
   end
 
   def meta_description
