@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def app_name
-    "Ecosystems"
+    "ecosystems"
   end
 
   def app_description
