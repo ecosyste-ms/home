@@ -10,6 +10,7 @@ gem "puma", "~> 6.4"
 gem "jbuilder"
 gem "sassc-rails"
 gem 'bootstrap'
+gem 'jquery-rails'
 gem 'bootstrap-icons-helper'
 gem 'appsignal'
 gem 'ostruct'
