@@ -275,6 +275,43 @@
 		</div>
 	</article>
 
+	<article class="my-3">
+		<div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+			<h3>Stat cards</h3>
+		</div>
+		<p>Across the various ecosyste.ms sites we use the stat card component to display a significant number with a label and number. They come in two variants, large and small.</p>
+		<div class="bd-example-snippet bd-code-snippet">
+			<div class="bd-example m-0 border-0">
+			<h4>Component description</h4>
+				<div class="stat-card mb-4">
+					<div class="stat-card-body">
+						<span class="stat-card-title stat-card-title">
+							Number
+						</span>
+						<span class="stat-card-text">Label</span>
+					</div>
+				</div>
+			<h4>Component example</h4>
+				<div class="stat-card mb-4">
+					<div class="stat-card-body">
+						<span class="stat-card-title stat-card-title--large">
+							$16,895.00
+						</span>
+						<span class="stat-card-text">Total funded</span>
+					</div>
+				</div>
+				<div class="stat-card mb-2">
+					<div class="stat-card-body">
+						<span class="stat-card-title stat-card-title--small">
+							$16,875.00
+						</span>
+						<span class="stat-card-text stat-card-text--small">Largest donation</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+
 
 	<article class="my-3">
 		<div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
@@ -393,7 +430,7 @@
 
 
 
-	<article class="my-3" id="typography">
+	<article class="my-3">
 		<div class="align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
 			<h3>List group with badges</h3>
 		</div>
@@ -434,11 +471,56 @@
 		</div>
 	</article>
 
+	<article class="my-3">
+		<div class="align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+			<h3>Tables that support small screens</h3>
+		</div>
+		<p><code>.table-wrapper</code> and <code>.table-responsive-lg</code> are used to wrap tables that support small screens. On a small screen the table will overflow, and display a drop shadow to indicate the ability to scroll horizontally</p>
+		<div class="bd-example-snippet bd-code-snippet">
+			<div class="bd-example m-0 border-0">
+				<div class="table-wrapper table-responsive-lg" role="group" tabindex="0" aria-labelledby="table-caption">
+					<figure>
+						<figcaption id="table-caption" class="mb-4">
+							<h2 class="visually-hidden">Table example</h2>
+						</figcaption>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">First</th>
+								<th scope="col">Last</th>
+								<th scope="col">Handle</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td colspan="2">Larry the legend</td>
+								<td>@twitter</td>
+							</tr>
+						</tbody>
+					</table>
+				</figure>
+			</div>
+		</div>
+	</article>
+
 
 	<h2 class="mb-4">Bootstrap components</h2>
-  <section id="content">
-    
-    <article class="my-3" id="typography">
+	<section id="content">
+		<article class="my-3" id="typography">
       <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
         <h3>Typography</h3>
       </div>
@@ -1410,7 +1492,7 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card&#39;s content.</p>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">An item</li>
