@@ -617,6 +617,25 @@ body {
   }
 }
 
+.well {
+	.table-wrapper {
+		/* Add a shadow to indicate there's more to see if you scroll */
+		background: 
+		  linear-gradient(90deg, $color-grey-light 20%, rgba(255, 255, 255, 0)),
+		  linear-gradient(90deg, rgba(255, 255, 255, 0), $color-grey-light 80%) 
+						  100% 0,
+		  radial-gradient(farthest-side at 0 0%, $color-grey, rgba(0, 0, 0, 0)),
+		  radial-gradient(farthest-side at 100% 0%, $color-grey, rgba(0, 0, 0, 0))
+						  100% 0;
+		background-repeat: no-repeat;
+		background-size: 20% 200%, 20% 200%, 8% 400%, 8% 400%;
+		background-attachment: local, local, scroll, scroll;
+		table {
+		  --bs-table-bg: transparent;
+		}
+	  }
+}
+
 .table {
 	tr {
 		vertical-align: middle;
