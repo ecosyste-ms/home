@@ -3,17 +3,22 @@
 	
 
   <div class="bd-cheatsheet container bg-body styleguide">
-		<h2>Styles</h2>
-		<article>
-			<h3 class="mt-5">Typeface</h3>
-			<p>Inter is a variable font family carefully crafted & designed for computer screens.</p>
+    <div class="bd-heading align-self-start mt-5 mb-3">
+      <h2>Styles</h2>
+    </div>
 
-			<p>Inter features a tall x-height to aid in readability of mixed-case and lower-case text. Several OpenType features are provided as well, like contextual alternates that adjusts punctuation depending on the shape of surrounding glyphs, slashed zero for when you need to disambiguate "0" from "o", tabular numbers, etc.</p>
-			
-			<p>The Inter project is led by Rasmus Andersson, a Swedish maker–of–software living in San Francisco. To contribute, see <a href="https://github.com/rsms/inter/">github.com/rsms/inter</a></p>
-			
-			<h4 class="mt-5">Weights and styles</h4>
-			<div class="character-grid">
+    <article id="typeface">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h2>Typeface</h2>
+      </div>
+      <p>Inter is a variable font family carefully crafted & designed for computer screens.</p>
+
+      <p>Inter features a tall x-height to aid in readability of mixed-case and lower-case text. Several OpenType features are provided as well, like contextual alternates that adjusts punctuation depending on the shape of surrounding glyphs, slashed zero for when you need to disambiguate "0" from "o", tabular numbers, etc.</p>
+      
+      <p>The Inter project is led by Rasmus Andersson, a Swedish maker–of–software living in San Francisco. To contribute, see <a href="https://github.com/rsms/inter/">github.com/rsms/inter</a></p>
+      
+      <h4 class="mt-5">Weights and styles</h4>
+      <div class="character-grid">
 				
 					<div class="character-box" style="font-weight: 400;">
 							Aa Bb Cc
@@ -50,8 +55,10 @@
 			</div>
 			
 		</article>
-		<article>
-			<h3>Colours</h3>
+		<article id="colours">
+			<div class="bd-heading align-self-start mt-5 mb-3">
+				<h2>Colours</h2>
+			</div>
 			<h4 class="mt-3">Primary Colours</h4>
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4">
 					<div class="col">
@@ -149,8 +156,10 @@
 			</div>
 		</article>
 
-		<article>
-			<h3>Buttons</h3>
+		<article id="buttons">
+			<div class="bd-heading align-self-start mt-5 mb-3">
+				<h2>Buttons</h2>
+			</div>
 			<p>ecosyste.ms, in most cases, uses Bootstrap&apos;s <code>.btn</code> class, with the <code>.rounded-pill</code> modifier</p>
 			<h4 class="mb-3">Most used</h4>
 			<div class="row row-cols-1 row-cols-sm-3 row-cols-md-5 g-4">
@@ -198,7 +207,9 @@
 
 	<h2>ecosyste.ms components</h2>
 	<article class="my-3">
-		<h3>Page content</h3>
+		<div class="bd-heading align-self-start mt-5 mb-3">
+			<h3>Page content</h3>
+		</div>
 		<p>Pages with article-style text require a little help to look their best, add the class <code>.page-content</code> to enhance readability</p>
 		<div class="page-content page-content--demo p-5 rounded">
 			<h1 class="page-content__title display-2">FAQ</h1>
@@ -213,14 +224,14 @@
 		</div>
 	</article>
 	<article class="my-3">
-		<div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
-			<h3 class="mb-5">Links</h3>
-			<p>Links with our <a href="#" class="spesh-link">signature underline</a> are activated by the class <code>.spesh-link</code> or the SCSS <code>@include spesh-link();</code>
+		<div class="bd-heading align-self-start mt-5 mb-3">
+			<h3>Links</h3>
 		</div>
+		<p>Links with our <a href="#" class="spesh-link">signature underline</a> are activated by the class <code>.spesh-link</code> or the SCSS <code>@include spesh-link();</code>
 	</article>
 	<article class="my-3">
-		<div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
-			<h3 class="mb-5">Sidebar</h3>
+		<div class="bd-heading align-self-start mt-5 mb-3">
+			<h3>Sidebar</h3>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
@@ -276,7 +287,7 @@
 	</article>
 
 	<article class="my-3">
-		<div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+		<div class="bd-heading align-self-start mt-5 mb-3">
 			<h3>Stat cards</h3>
 		</div>
 		<p>Across the various ecosyste.ms sites we use the stat card component to display a significant number with a label and number. They come in two variants, large and small.</p>
@@ -314,7 +325,7 @@
 
 
 	<article class="my-3">
-		<div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+		<div class="bd-heading align-self-start mt-5 mb-3">
 			<h3>Listing</h3>
 			<h4>Component description</h4>
 		</div>
@@ -389,7 +400,14 @@
 					</div>
 				</div>
 	</article>
+  <article>
+    <div class="bd-heading align-self-start mt-5 mb-3">
+      <h3>Dashboard compontents</h3>
+      <h4>Component description</h4>
+    </div>
+  </article>
 
+    
 
 	<h2>Bootstrap components ecosyste.ms combines and customises</h2>
 	<article class="my-3">
@@ -521,7 +539,7 @@
 	<h2 class="mb-4">Bootstrap components</h2>
 	<section id="content">
 		<article class="my-3" id="typography">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Typography</h3>
       </div>
 
@@ -639,7 +657,7 @@
       </div>
     </article>
     <article class="my-3" id="images">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Images</h3>
       </div>
 
@@ -664,7 +682,7 @@
       </div>
     </article>
     <article class="my-3" id="tables">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Tables</h3>
       </div>
 
@@ -847,7 +865,7 @@
       </div>
     </article>
     <article class="my-3" id="figures">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Figures</h3>
       </div>
 
@@ -871,7 +889,7 @@
     <h2 class=" fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">Forms</h2>
 
     <article class="my-3" id="overview">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Overview</h3>
       </div>
 
@@ -934,7 +952,7 @@
       </div>
     </article>
     <article class="my-3" id="disabled-forms">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Disabled forms</h3>
       </div>
 
@@ -995,7 +1013,7 @@
       </div>
     </article>
     <article class="my-3" id="sizing">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Sizing</h3>
       </div>
 
@@ -1046,7 +1064,7 @@
       </div>
     </article>
     <article class="my-3" id="input-group">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Input group</h3>
       </div>
 
@@ -1083,7 +1101,7 @@
       </div>
     </article>
     <article class="my-3" id="floating-labels">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Floating labels</h3>
       </div>
 
@@ -1108,7 +1126,7 @@
       </div>
     </article>
     <article class="my-3" id="validation">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Validation</h3>
       </div>
 
@@ -1192,7 +1210,7 @@
     <h2 class=" fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">Components</h2>
 
     <article class="my-3" id="accordion">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Accordion</h3>
       </div>
 
@@ -1245,7 +1263,7 @@
       </div>
     </article>
     <article class="my-3" id="alerts">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Alerts</h3>
       </div>
 
@@ -1307,7 +1325,7 @@
       </div>
     </article>
     <article class="my-3" id="badge">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Badge</h3>
       </div>
 
@@ -1347,7 +1365,7 @@
       </div>
     </article>
     <article class="my-3" id="breadcrumb">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Breadcrumb</h3>
       </div>
 
@@ -1369,7 +1387,7 @@
       </div>
     </article>
     <article class="my-3" id="buttons">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Buttons</h3>
       </div>
 
@@ -1423,7 +1441,7 @@
       </div>
     </article>
     <article class="my-3" id="button-group">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Button group</h3>
       </div>
 
@@ -1454,7 +1472,7 @@
       </div>
     </article>
     <article class="my-3" id="card">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Card</h3>
       </div>
 
@@ -1529,7 +1547,7 @@
       </div>
     </article>
     <article class="my-3" id="carousel">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Carousel</h3>
       </div>
 
@@ -1582,7 +1600,7 @@
       </div>
     </article>
     <article class="my-3" id="dropdowns">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Dropdowns</h3>
       </div>
 
@@ -1592,7 +1610,7 @@
     
         <div class="btn-group w-100 align-items-center justify-content-between flex-wrap">
           <div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown button
             </button>
             <ul class="dropdown-menu">
@@ -1783,7 +1801,7 @@
       </div>
     </article>
     <article class="my-3" id="list-group">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>List group</h3>
       </div>
 
@@ -1840,7 +1858,7 @@
       </div>
     </article>
     <article class="my-3" id="modal">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Modal</h3>
       </div>
 
@@ -1869,7 +1887,7 @@
       </div>
     </article>
     <article class="my-3" id="navs">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Navs</h3>
       </div>
 
@@ -1938,7 +1956,7 @@
       </div>
     </article>
     <article class="my-3" id="navbar">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Navbar</h3>
       </div>
 
@@ -2031,7 +2049,7 @@
       </div>
     </article>
     <article class="my-3" id="pagination">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Pagination</h3>
       </div>
 
@@ -2103,7 +2121,7 @@
       </div>
     </article>
     <article class="my-3" id="popovers">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Popovers</h3>
       </div>
 
@@ -2139,7 +2157,7 @@
       </div>
     </article>
     <article class="my-3" id="progress">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Progress</h3>
       </div>
 
@@ -2185,7 +2203,7 @@
       </div>
     </article>
     <article class="my-3" id="scrollspy">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Scrollspy</h3>
       </div>
 
@@ -2227,7 +2245,7 @@
       </div>
     </article>
     <article class="my-3" id="spinners">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Spinners</h3>
       </div>
 
@@ -2300,7 +2318,7 @@
       </div>
     </article>
     <article class="my-3" id="toasts">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Toasts</h3>
       </div>
 
@@ -2326,7 +2344,7 @@
       </div>
     </article>
     <article class="mt-3 mb-5 pb-5" id="tooltips">
-      <div class="bd-heading  align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+      <div class="bd-heading align-self-start mt-5 mb-3">
         <h3>Tooltips</h3>
       </div>
 
