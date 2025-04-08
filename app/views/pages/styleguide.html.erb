@@ -400,13 +400,167 @@
 					</div>
 				</div>
 	</article>
+  <h2>Dashboard components</h2>
   <article>
     <div class="bd-heading align-self-start mt-5 mb-3">
-      <h3>Dashboard compontents</h3>
+
+      <h3>Basic dashboard widgets</h3>
       <h4>Component description</h4>
+      <p>Lorem ipsum</p>
+    </div>
+    <h5>Regular dashboard stats</h5>
+    <p>Basic dashboard stat, with a comparison that hasn't changed, or we don't hold comparative data</p>
+    <div class="card well p-3 my-3 border-0">
+      <div class="card-body">
+        <h5 class="card-title small">Donations</h5>
+        <div class="stat-card mb-2">
+					<div class="stat-card-body">
+						<span class="stat-card-title stat-card-title--small stat-card-number-neutral">
+							$16,875.00 <span class="extra-bold">-</span>
+						</span>
+					</div>
+				</div>
+      </div>
+    </div>
+    <p>Basic dashboard stat with a comparison that is negative compared to the last period</p>
+    <div class="card well p-3 my-3 border-0">
+      <div class="card-body">
+        <h5 class="card-title small">Donations</h5>
+        <div class="stat-card mb-2">
+					<div class="stat-card-body">
+						<span class="stat-card-title stat-card-title--small stat-card-number-negative">
+							$16,875.00 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+						</span>
+            <span class="stat-card-text stat-card-text--x-small">$20,815.00 last period</span>
+					</div>
+				</div>
+      </div>
+    </div>
+    <p>Basic dashboard stat with a comparison that is positive compared to the last period</p>
+    <div class="card well p-3 my-3 border-0">
+      <div class="card-body">
+        <h5 class="card-title small">Card title</h5>
+        <div class="stat-card mb-2">
+					<div class="stat-card-body">
+						<span class="stat-card-title stat-card-title--small stat-card-number-positive">
+							$16,875.00 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+						</span>
+						<span class="stat-card-text stat-card-text--x-small">$10,815.00 last period</span>
+					</div>
+				</div>
+      </div>
+    </div>
+    <h5>Large dashboard stats</h5>
+    <p>Large variation of a basic dashboard stat, with a comparison that hasn't changed, or we don't hold comparative data</p>
+    <div class="card well p-3 my-3 border-0">
+      <div class="card-body">
+        <h5 class="card-title">Donations</h5>
+        <div class="stat-card mb-2">
+					<div class="stat-card-body">
+						<span class="stat-card-title stat-card-title--large stat-card-number-neutral">
+							$16,875.00 <span class="extra-bold">-</span>
+						</span>
+					</div>
+				</div>
+      </div>
+    </div>
+    <p>Large variation of a bashboard stat with a comparison that is negative compared to the last period</p>
+    <div class="card well p-3 my-3 border-0">
+      <div class="card-body">
+        <h5 class="card-title">Donations</h5>
+        <div class="stat-card mb-2">
+					<div class="stat-card-body">
+						<span class="stat-card-title stat-card-title--large stat-card-number-negative">
+							$16,875.00 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+						</span>
+            <span class="stat-card-text stat-card-text">$20,815.00 last period</span>
+					</div>
+				</div>
+      </div>
+    </div>
+    <p>Large variation of a basic dashboard stat with a comparison that is positive compared to the last period</p>
+    <div class="card well p-3 my-3 border-0">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <div class="stat-card mb-2">
+					<div class="stat-card-body">
+						<span class="stat-card-title stat-card-title--large stat-card-number-positive">
+							$16,875.00 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+						</span>
+						<span class="stat-card-text stat-card-text">$10,815.00 last period</span>
+					</div>
+				</div>
+      </div>
     </div>
   </article>
+  <article>
+  <div class="bd-heading align-self-start mt-5 mb-3">
+    <h3>Basic dashboard widgets</h3>
+    <h4>Component description</h4>
+    <p>Lorem ipsum</p>
+  </div>
 
+  <div class="card well p-3 my-3 border-0" style="max-width: 530px;">
+    <div class="card-body">
+      <h5 class="card-title">Recurring donors</h5>
+      <div class="stat-card mb-2">
+        <div class="stat-card-body">
+          <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+            75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+          </span>
+          <span class="stat-card-text stat-card-text">65% last period</span>
+          <canvas id="donutChart1" width="400" height="400" ></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  </article>
+  <script type="text/javascript">
+    // Global style defaults
+    Chart.defaults.font.family = "'Inter', sans-serif";
+    Chart.defaults.font.size = 14;
+    Chart.defaults.color = "#1D1D28";
+    
+    const rootStyles = getComputedStyle(document.documentElement);
+
+    const esGreenLight = rootStyles.getPropertyValue('--es-green-light').trim();
+    const esGreenDark = rootStyles.getPropertyValue('--es-green-dark').trim();
+
+    const ctx = document.getElementById('donutChart1').getContext('2d');
+    const donutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Recurring', 'One-off'],
+      datasets: [{
+        data: [75, 25],
+        backgroundColor: [
+          esGreenDark,
+          esGreenLight
+        ],
+        borderWidth: 0,
+        cutout: '55%'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: {
+            usePointStyle: true,
+            boxWidth: 50,
+            padding: 18,
+            font: {
+              size: 14,
+            }
+          }
+        }
+      }
+    }
+  });
+  </script>
     
 
 	<h2>Bootstrap components ecosyste.ms combines and customises</h2>
