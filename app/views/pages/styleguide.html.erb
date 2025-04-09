@@ -464,7 +464,7 @@
 				</div>
       </div>
     </div>
-    <p>Large variation of a bashboard stat with a comparison that is negative compared to the last period</p>
+    <p>Large variation of a dashboard stat with a comparison that is negative compared to the last period</p>
     <div class="card well p-3 my-3 border-0">
       <div class="card-body">
         <h5 class="card-title">Donations</h5>
@@ -499,46 +499,102 @@
     <h4>Component description</h4>
     <p>Lorem ipsum</p>
   </div>
-
-  <div class="card well p-3 my-3 border-0" style="max-width: 530px;">
-    <div class="card-body">
-      <h5 class="card-title">Recurring donors</h5>
-      <div class="stat-card mb-2">
-        <div class="stat-card-body">
-          <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-            75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-          </span>
-          <span class="stat-card-text stat-card-text">65% last period</span>
-          <canvas id="donutChart1" width="400" height="400" ></canvas>
+  <div class="row">
+    <div class="col">
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title">Recurring donors</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+              </span>
+              <span class="stat-card-text stat-card-text">65% last period</span>
+              <canvas id="donutChart1" width="400" height="400" ></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title">Recurring donors</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--large stat-card-number-negative">
+                75% <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+              </span>
+              <span class="stat-card-text stat-card-text">85% last period</span>
+              <canvas id="donutChart2" width="400" height="400" ></canvas>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
-
-  </article>
+  <div class="row">
+    <div class="col">
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title">Commits</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--large stat-card-number-negative">
+                110,978 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+              </span>
+              <span class="stat-card-text stat-card-text">111,262 last period</span>
+              <canvas id="commitChart" width="400" height="210" ></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title">Commits</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--large stat-card-number-neutral">
+                110,978
+              </span>
+              <span class="stat-card-text stat-card-text">111,262 last period</span>
+              <canvas id="barChart" width="400" height="300" ></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
   <script type="text/javascript">
-    // Global style defaults
-    Chart.defaults.font.family = "'Inter', sans-serif";
-    Chart.defaults.font.size = 14;
-    Chart.defaults.color = "#1D1D28";
-    
-    const rootStyles = getComputedStyle(document.documentElement);
 
-    const esGreenLight = rootStyles.getPropertyValue('--es-green-light').trim();
-    const esGreenDark = rootStyles.getPropertyValue('--es-green-dark').trim();
 
-    const ctx = document.getElementById('donutChart1').getContext('2d');
-    const donutChart = new Chart(ctx, {
+  const rootStyles = getComputedStyle(document.documentElement);
+  const esBlack       = rootStyles.getPropertyValue('--es-black').trim();
+  const esGreenLight  = rootStyles.getPropertyValue('--es-green-light').trim();
+  const esGreenDark   = rootStyles.getPropertyValue('--es-green-dark').trim();
+  const esOrangeLight = rootStyles.getPropertyValue('--es-orange-light').trim();
+  const esOrangeDark  = rootStyles.getPropertyValue('--es-orange-dark').trim();
+  const esPurple      = rootStyles.getPropertyValue('--es-purple').trim();
+  const esPurpleLight = rootStyles.getPropertyValue('--es-purple-light').trim();
+  const esPurpleDark  = rootStyles.getPropertyValue('--es-purple-dark').trim();
+
+  // Global style defaults
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.font.size = 14;
+  Chart.defaults.color = esBlack;
+
+  // Donut Chart 1
+  const ctx1 = document.getElementById('donutChart1').getContext('2d');
+  const donutChart1 = new Chart(ctx1, {
     type: 'doughnut',
     data: {
       labels: ['Recurring', 'One-off'],
       datasets: [{
         data: [75, 25],
-        backgroundColor: [
-          esGreenDark,
-          esGreenLight
-        ],
+        backgroundColor: [esGreenDark, esGreenLight],
         borderWidth: 0,
         cutout: '55%'
       }]
@@ -547,20 +603,144 @@
       responsive: true,
       plugins: {
         legend: {
-          position: 'right',
+          position: 'left',
           labels: {
             usePointStyle: true,
             boxWidth: 50,
             padding: 18,
-            font: {
-              size: 14,
-            }
+            font: { size: 14 }
           }
         }
       }
     }
   });
-  </script>
+
+  // Donut Chart 2
+  const ctx2 = document.getElementById('donutChart2').getContext('2d');
+  const donutChart2 = new Chart(ctx2, {
+    type: 'doughnut',
+    data: {
+      labels: ['Recurring', 'One-off'],
+      datasets: [{
+        data: [75, 25],
+        backgroundColor: [esOrangeDark, esOrangeLight],
+        borderWidth: 0,
+        cutout: '55%'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'left',
+          labels: {
+            usePointStyle: true,
+            boxWidth: 50,
+            padding: 18,
+            font: { size: 14 }
+          }
+        }
+      }
+    }
+  });
+
+  // Commit Chart (Line Chart)
+  const ctx3 = document.getElementById('commitChart').getContext('2d');
+  const commitChart = new Chart(ctx3, {
+    type: 'line',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [{
+        label: 'Commits',
+        data: [90000, 100000, 110000, 120000, 115000, 110000],
+        borderColor: esOrangeDark,
+        borderWidth: 3,
+        pointRadius: 3,
+        tension: 0.4,
+        fill: true,
+        backgroundColor: 'rgba(239, 83, 80, 0.1)'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      scales: {
+        x: {
+          display: false,
+          grid: { display: false }
+        },
+        y: {
+          display: false,
+          grid: { display: false },
+          beginAtZero: false,
+          max: 121000
+        }
+      },
+      plugins: {
+        legend: {
+          display: false,
+          usePointStyle: true
+        },
+        tooltip: { enabled: true }
+      }
+    }
+  });
+
+  // Bar Chart
+  const ctx4 = document.getElementById('barChart').getContext('2d');
+  const data = {
+    labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6'],
+    datasets: [{
+      data: [65, 45, 80, 50, 95, 90],
+      backgroundColor: [
+        esPurpleLight,
+        esPurpleLight,
+        esPurpleLight,
+        esPurpleLight,
+        esPurpleLight,
+        esPurpleDark
+      ],
+      hoverBackgroundColor: [
+        esPurple,  // Hover color for the first bar
+        esPurple,  // Hover color for the second bar
+        esPurple,
+        esPurple,
+        esPurple,
+        esPurple   // Hover color for the last bar
+      ],
+      borderWidth: 0,
+      borderRadius: 1
+    }]
+  };
+
+  const myBarChart = new Chart(ctx4, {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: true }
+      },
+      scales: {
+        x: {
+          display: false,
+          grid: { display: false }
+        },
+        y: {
+          display: false,
+          grid: { display: false },
+          beginAtZero: true
+        }
+      },
+      layout: {
+        padding: { top: 10, right: 10, bottom: 10, left: 10 }
+      }
+    }
+  });
+</script>
+
     
 
 	<h2>Bootstrap components ecosyste.ms combines and customises</h2>
