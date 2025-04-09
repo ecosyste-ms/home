@@ -61,6 +61,25 @@ $btn-color: $color-white;
 $badge-font-weight: 400;
 $badge-padding-y: 0.4em;
 
+/* Outputs our colours variables as css variables so that chart.js can access them */
+:root {
+  --es-purple: #{$color-purple};
+  --es-purple-light: #{$color-purple-light};
+  --es-purple-dark: #{$color-purple-dark};
+  --es-orange: #{$color-orange};
+  --es-orange-light: #{$color-orange-light};
+  --es-orange-dark: #{$color-orange-dark};
+  --es-green: #{$color-green};
+  --es-green-light: #{$color-green-light};
+  --es-green-dark: #{$color-green-dark};
+  --es-green-darker: #{$color-green-darker};
+  --es-black: #{$color-black};
+  --es-white: #{$color-white};
+  --es-grey-light: #{$color-grey-light};
+  --es-grey: #{$color-grey};
+  --es-grey-dark: #{$color-grey-dark};
+}
+
 @import "bootstrap"; 
 
 @mixin spesh-link (
@@ -476,6 +495,10 @@ body {
   font-size: 1rem;
 }
 
+.stat-card-text--x-small {
+  font-size: 0.875rem;
+}
+
 .stat-card-title {
   @include font-size(2.1875rem);
   font-weight: 800;
@@ -489,7 +512,17 @@ body {
   font-size: $h3-font-size;
 }
 
+.stat-card-number-neutral {
+  color: $color-purple-dark;
+}
 
+.stat-card-number-positive {
+  color: $color-green-dark;
+}
+
+.stat-card-number-negative {
+  color: $color-orange-dark;
+}
 
 .well {
   background-color: $color-grey-light;
