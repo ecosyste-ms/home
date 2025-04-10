@@ -865,3 +865,48 @@ body {
     line-break: anywhere;
   }
 }
+
+/* Dashboard */
+
+.dboard-filter-controls {
+  .btn-link {
+    text-decoration: none;
+    color: $color-black;
+    font-size: $font-size-small;
+    &:hover,
+    &:active {
+      background-color: darken($color-grey-light, 3%);
+    }
+    &.active {
+      background-color: $color-purple;
+      color: $color-white;
+      &:hover,
+      &:active {
+        background-color: $color-purple-dark;
+      }
+    }
+  }
+  .dropdown-item {
+    font-size: $font-size-small;
+  }
+}
+
+.dboard-nav {
+  .nav-link {
+    color: $color-black;
+    &:hover,
+    &:active {
+      background-color: $color-grey-light;
+    }
+    &.active {
+      &:hover,
+      &:active {
+        background-color: $color-purple-dark;
+      }
+    }
+  }
+}
+
+.dashboard-grid {
+  min-height: 100%;
+}
