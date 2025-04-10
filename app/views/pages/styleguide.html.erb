@@ -499,9 +499,9 @@
     <h4>Component description</h4>
     <p>Lorem ipsum</p>
   </div>
-  <div class="row">
+  <div class="row row-cols-1 row-cols-md-2 mb-3">
     <div class="col">
-      <div class="card well p-3 my-3 border-0">
+      <div class="card well p-3 my-3 border-0  h-100">
         <div class="card-body">
           <h5 class="card-title">Recurring donors</h5>
           <div class="stat-card mb-2">
@@ -510,14 +510,16 @@
                 75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
               </span>
               <span class="stat-card-text stat-card-text">65% last period</span>
-              <canvas id="donutChart1" width="400" height="400" ></canvas>
             </div>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="donutChart1" width="400" height="400"></canvas>
           </div>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card well p-3 my-3 border-0">
+      <div class="card well p-3 my-3 border-0  h-100">
         <div class="card-body">
           <h5 class="card-title">Recurring donors</h5>
           <div class="stat-card mb-2">
@@ -526,16 +528,18 @@
                 75% <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
               </span>
               <span class="stat-card-text stat-card-text">85% last period</span>
-              <canvas id="donutChart2" width="400" height="400" ></canvas>
             </div>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="donutChart2" width="400" height="400" ></canvas>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row row-cols-1 row-cols-md-2 mb-3">
     <div class="col">
-      <div class="card well p-3 my-3 border-0">
+      <div class="card well p-3 my-3 border-0 h-100">
         <div class="card-body">
           <h5 class="card-title">Commits</h5>
           <div class="stat-card mb-2">
@@ -544,14 +548,16 @@
                 110,978 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
               </span>
               <span class="stat-card-text stat-card-text">111,262 last period</span>
-              <canvas id="commitChart" width="400" height="210" ></canvas>
             </div>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="commitChart" width="400" height="210" ></canvas>
           </div>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card well p-3 my-3 border-0">
+      <div class="card well p-3 my-3 border-0 h-100">
         <div class="card-body">
           <h5 class="card-title">Commits</h5>
           <div class="stat-card mb-2">
@@ -560,8 +566,10 @@
                 110,978
               </span>
               <span class="stat-card-text stat-card-text">111,262 last period</span>
-              <canvas id="barChart" width="400" height="300" ></canvas>
             </div>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="barChart" width="400" height="300" ></canvas>
           </div>
         </div>
       </div>
@@ -745,7 +753,7 @@
             </div>
           </div>
           <!-- Row 2: Full-width chart -->
-          <div class="row mb-4">
+          <div class="row mb-1">
             <div class="col">
             <div class="card well p-3 my-3 border-0">
               <div class="card-body">
@@ -756,9 +764,11 @@
                       110,978 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
                     </span>
                     <span class="stat-card-text stat-card-text">111,262 last period</span>
-                    <canvas id="commitChart" width="400" height="210" ></canvas>
                   </div>
                 </div>
+                <div class="chart-wrapper">
+                    <canvas id="commitChart2" width="600  "></canvas>
+                  </div>
               </div>
             </div>
             </div>
@@ -835,7 +845,7 @@
       responsive: true,
       plugins: {
         legend: {
-          position: 'left',
+          position: 'right',
           labels: {
             usePointStyle: true,
             boxWidth: 50,
@@ -864,7 +874,7 @@
       responsive: true,
       plugins: {
         legend: {
-          position: 'left',
+          position: 'right',
           labels: {
             usePointStyle: true,
             boxWidth: 50,
@@ -896,6 +906,48 @@
     options: {
       responsive: true,
       maintainAspectRatio: true,
+      scales: {
+        x: {
+          display: false,
+          grid: { display: false }
+        },
+        y: {
+          display: false,
+          grid: { display: false },
+          beginAtZero: false,
+          max: 121000
+        }
+      },
+      plugins: {
+        legend: {
+          display: false,
+          usePointStyle: true
+        },
+        tooltip: { enabled: true }
+      }
+    }
+  });
+
+  // Commit Chart 2 (Line Chart)
+  const ctx6 = document.getElementById('commitChart2').getContext('2d');
+  const commitChart2 = new Chart(ctx6, {
+    type: 'line',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [{
+        label: 'Commits',
+        data: [90000, 100000, 110000, 120000, 115000, 110000],
+        borderColor: esOrangeDark,
+        borderWidth: 3,
+        pointRadius: 3,
+        tension: 0.4,
+        fill: true,
+        backgroundColor: 'rgba(239, 83, 80, 0.1)'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         x: {
           display: false,
@@ -2344,25 +2396,23 @@
 
 
         <div class="bd-example-snippet bd-code-snippet">
-  <div class="bd-example m-0 border-0">
-    
-        <div class="btn-group">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              End-aligned menu
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><h6 class="dropdown-header">Dropdown header</h6></li>
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
+          <div class="bd-example m-0 border-0">
+            <div class="btn-group">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  End-aligned menu
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><h6 class="dropdown-header">Dropdown header</h6></li>
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+              </div>
+            </div>  
           </div>
         </div>
-        
-  </div>
-</div>
 
       </div>
     </article>

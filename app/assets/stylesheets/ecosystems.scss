@@ -910,3 +910,9 @@ body {
 .dashboard-grid {
   min-height: 100%;
 }
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto; /* Adjust as needed */
+}
