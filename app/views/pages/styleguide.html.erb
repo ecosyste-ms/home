@@ -767,8 +767,8 @@
                   </div>
                 </div>
                 <div class="chart-wrapper">
-                    <canvas id="commitChart2" width="600  "></canvas>
-                  </div>
+                  <canvas id="commitChart2" width="600  "></canvas>
+                </div>
               </div>
             </div>
             </div>
@@ -801,6 +801,56 @@
                       </span>
                       <span class="stat-card-text stat-card-text">65% last period</span>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 4: Two thirds widgets with double row-->
+          <div class="row my-4 g-4">
+            <div class="col">
+              <div class="card well p-3 border-0 mb-2 h-50">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card well p-3 mt-4 border-0 h-50">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="card well p-3 border-0 h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                  <div class="chart-wrapper">
+                    <canvas id="barChart2" width="400" height="300" style="margin-left: 150px;"></canvas>
                   </div>
                 </div>
               </div>
@@ -997,7 +1047,34 @@
     }]
   };
 
-  const myBarChart = new Chart(ctx4, {
+  // Bar Chart
+  const ctx8 = document.getElementById('barChart2').getContext('2d');
+  const data2 = {
+    labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6'],
+    datasets: [{
+      data: [65, 45, 80, 50, 95, 90],
+      backgroundColor: [
+        esPurpleLight,
+        esPurpleLight,
+        esPurpleLight,
+        esPurpleLight,
+        esPurpleLight,
+        esPurpleDark
+      ],
+      hoverBackgroundColor: [
+        esPurple,  // Hover color for the first bar
+        esPurple,  // Hover color for the second bar
+        esPurple,
+        esPurple,
+        esPurple,
+        esPurple   // Hover color for the last bar
+      ],
+      borderWidth: 0,
+      borderRadius: 1
+    }]
+  };
+
+  const myBarChart2 = new Chart(ctx8, {
     type: 'bar',
     data: data,
     options: {
