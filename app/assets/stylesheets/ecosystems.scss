@@ -1002,6 +1002,11 @@ body {
   height: auto; /* Adjust as needed */
   contain: layout paint style;
   position: relative;
-  min-height: 300px; /* Fallback for SSR */
+  min-height: 200px; /* Fallback for SSR */
   aspect-ratio: 16/9; /* Modern aspect control */
+
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
 }
