@@ -835,9 +835,14 @@
                     <span class="stat-card-text stat-card-text">65% last period</span>
                   </div>
                 </div>
-                <div class="chart-wrapper">
-                  <canvas id="barChart2" width="400" height="300" style="margin-left: 150px;"></canvas>
+                <div id="chartContainer" class="chart-wrapper" role="img" aria-describedby="chartDesc">
+                  <canvas id="barChart2" tabindex="0"  width="400" height="300" style="margin-left: 150px;"></canvas>
                 </div>
+
+                <p id="chartDesc" class="visually-hidden">
+                  We need to describe the chart here, for example 'this bar chart shows commits over the last 3 months. January had 110,988 commits, February 232,000, and March 123,989'
+                </p>
+
               </div>
             </div>
           </div>
