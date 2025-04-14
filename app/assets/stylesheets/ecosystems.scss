@@ -868,6 +868,17 @@ body {
 
 /* Dashboard */
 
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  @include media-breakpoint-up(lg) { 
+    grid-template-columns: 25% 75%;
+  }
+}
+
 .dboard-filter-controls {
   .btn-link {
     text-decoration: none;
@@ -908,11 +919,89 @@ body {
 }
 
 .dashboard-grid {
-  min-height: 100%;
+  display: grid;
+  gap: $grid-gutter-width;
+  > * {
+    min-width: 0; /* without this we were seeing grid blowout */
+  }
+}
+
+.three-equal-widgets {
+  display: grid;
+  gap: $grid-gutter-width;
+  @include media-breakpoint-up(md) { 
+    grid-template-columns: repeat(2, 1fr);
+    > .card:first-child {
+      grid-column: span 2;
+    }
+  }
+  @include media-breakpoint-up(lg) { 
+    grid-template-columns: repeat(3, 1fr);
+    > .card:first-child {
+      grid-column: span 1;
+    }
+  }
+}
+
+.full-width-widget {
+  grid-template-columns: 1;
+}
+
+.two-thirds-widgets {
+  display: grid;
+  gap: $grid-gutter-width;
+  grid-template-columns: 1fr;
+  @include media-breakpoint-up(md) { 
+    grid-template-columns: repeat(3, 1fr);
+    .two-thirds-widgets__large {
+      grid-column: span 2;
+    }
+  }
+}
+
+.two-thirds-widget-group {
+  display: grid;
+  gap: $grid-gutter-width;
+  grid-template-columns: 1fr;
+  @include media-breakpoint-up(md) { 
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row dense;
+    
+    /* Make the large card span the full width */
+    .two-thirds-widget-group__large {
+      grid-column: 1 / -1; /* Spans from first to last column line */
+    }
+  }
+  @include media-breakpoint-up(lg) { 
+    grid-template-columns: 1fr 2fr; /* 1/3 for small cards, 2/3 for large card */
+    grid-template-rows: repeat(2, auto);
+
+    .two-thirds-widget-group__small:nth-of-type(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    
+    /* Second small card in bottom-left */
+    .two-thirds-widget-group__small:nth-of-type(2) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    
+    /* Large card spans both rows on the right */
+    .two-thirds-widget-group__large {
+      grid-column: 2;
+      grid-row: 1 / span 2; /* Start at row 1 and span 2 rows */
+    }
+  }
+  
 }
 
 .chart-wrapper {
   position: relative;
   width: 100%;
   height: auto; /* Adjust as needed */
+  contain: layout paint style;
+  position: relative;
+  min-height: 300px; /* Fallback for SSR */
+  aspect-ratio: 16/9; /* Modern aspect control */
 }

@@ -656,8 +656,8 @@
     <h4>Component description</h4>
     <p>Lorem ipsum</p>
   </div>
-  <div class="row">
-    <div class="col-lg-3">
+  <div class="dashboard-layout">
+    <div class="dashboard-layout__navigation">
       <ul class="nav nav-pills flex-column dboard-nav me-4">
         <li class="nav-item">
           <a class="nav-link" href="#">Overview</a>
@@ -682,8 +682,8 @@
         </li>
       </ul>
     </div>
-    <div class="col-lg-9">
-      <div class="dboard-filter-controls d-flex align-items-center  justify-content-md-between well p-2 mb-2">
+    <div class="dashboard-layout__dboard">
+      <div class="dboard-filter-controls d-flex align-items-center  justify-content-md-between well p-2 mb-4">
         <div class="me-3" role="group">
           <button type="button" class="btn btn-link ">All time</button>
           <button type="button" class="btn btn-link">Year</button>
@@ -705,57 +705,51 @@
 
         <div class="dashboard-grid">
           <!-- Row 1: Three equal widgets -->
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card well p-3 my-3 border-0">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
+          <div class="three-equal-widgets">
+            <div class="card well p-3 border-0">
+              <div class="card-body">
+                <h5 class="card-title">Recurring donors</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                    </span>
+                    <span class="stat-card-text stat-card-text">65% last period</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card well p-3 my-3 border-0">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
+            <div class="card well p-3 border-0">
+              <div class="card-body">
+                <h5 class="card-title">Recurring donors</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                    </span>
+                    <span class="stat-card-text stat-card-text">65% last period</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card well p-3 my-3 border-0">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
+
+            <div class="card well p-3 border-0">
+              <div class="card-body">
+                <h5 class="card-title">Recurring donors</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                    </span>
+                    <span class="stat-card-text stat-card-text">65% last period</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <!-- Row 2: Full-width chart -->
-          <div class="row mb-1">
-            <div class="col">
-            <div class="card well p-3 my-3 border-0">
+          <div class="full-width-widget">
+            <div class="card well p-3 border-0">
               <div class="card-body">
                 <h5 class="card-title">Commits</h5>
                 <div class="stat-card mb-2">
@@ -771,36 +765,31 @@
                 </div>
               </div>
             </div>
-            </div>
           </div>
           <!-- Row 3: Two thirds widgets -->
-          <div class="row mb-4 g-4">
-            <div class="col">
-              <div class="card well p-3 my-3 border-0 h-100">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
+          <div class="two-thirds-widgets">
+            <div class="card two-thirds-widgets__large well p-3 border-0">
+              <div class="card-body">
+                <h5 class="card-title">Recurring donors</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                    </span>
+                    <span class="stat-card-text stat-card-text">65% last period</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-8">
-              <div class="card well p-3 my-3 border-0 h-100">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
+            <div class="card two-thirds-widgets__small well p-3 border-0">
+              <div class="card-body">
+                <h5 class="card-title">Recurring donors</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                    </span>
+                    <span class="stat-card-text stat-card-text">65% last period</span>
                   </div>
                 </div>
               </div>
@@ -808,57 +797,52 @@
           </div>
 
           <!-- Row 4: Two thirds widgets with double row-->
-          <div class="row my-4 g-4">
-            <div class="col">
-              <div class="card well p-3 border-0 mb-2 h-50">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card well p-3 mt-4 border-0 h-50">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
+          <div class="two-thirds-widget-group">
+            <div class="card two-thirds-widget-group__small well  p-3 border-0">
+              <div class="card-body">
+                <h5 class="card-title">Recurring donors</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                    </span>
+                    <span class="stat-card-text stat-card-text">65% last period</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-8">
-              <div class="card well p-3 border-0 h-100">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
+            <div class="card two-thirds-widget-group__small well p-3 border-0">
+              <div class="card-body">
+                <h5 class="card-title">Recurring donors</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                    </span>
+                    <span class="stat-card-text stat-card-text">65% last period</span>
                   </div>
-                  <div class="chart-wrapper">
-                    <canvas id="barChart2" width="400" height="300" style="margin-left: 150px;"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="card two-thirds-widget-group__large well p-3 border-0">
+              <div class="card-body">
+                <h5 class="card-title">Recurring donors</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                    </span>
+                    <span class="stat-card-text stat-card-text">65% last period</span>
                   </div>
+                </div>
+                <div class="chart-wrapper">
+                  <canvas id="barChart2" width="400" height="300" style="margin-left: 150px;"></canvas>
                 </div>
               </div>
             </div>
           </div>
         </div>
     </div>
-  </div>
 </article>
   <script type="text/javascript">
 
@@ -1046,6 +1030,33 @@
       borderRadius: 1
     }]
   };
+
+  const myBarChart = new Chart(ctx4, {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: true }
+      },
+      scales: {
+        x: {
+          display: false,
+          grid: { display: false }
+        },
+        y: {
+          display: false,
+          grid: { display: false },
+          beginAtZero: true
+        }
+      },
+      layout: {
+        padding: { top: 10, right: 10, bottom: 10, left: 10 }
+      }
+    }
+  });
 
   // Bar Chart
   const ctx8 = document.getElementById('barChart2').getContext('2d');
