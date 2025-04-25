@@ -72,13 +72,13 @@ class Service
       },
       {
         name: 'Indexes',
-        description: 'Additional data powering ecosystems core services, provided direct for your own use',
+        description: 'Additional data powering ecosyste.ms core services, provided direct for your own use',
         icon: 'indexes.svg',
         services: [
           {
             name: 'Timeline',
             url: 'https://timeline.ecosyste.ms',
-            description: '6 Billion events for every public repo on GitHub',
+            description: '6 billion events for every public repo on GitHub',
           },
           {
             name: 'Commits',
@@ -109,7 +109,7 @@ class Service
       },
       {
         name: 'Applications',
-        description: 'Full applications built by the ecosystems team',
+        description: 'Full applications built by the ecosyste.ms team',
         icon: 'applications.svg',
         services: [
           {
@@ -121,23 +121,23 @@ class Service
       },
       {
         name: 'Experiments',
-        description: 'The following datasets and services are created as demonstrators or as part of partnershps with the ecosystems team',
+        description: 'The following datasets and services are created as demonstrators or as part of partnerships with ecosystem teams',
         icon: 'experiment.svg',
         services: [
           {
             name: 'OST',
             url: 'https://ost.ecosyste.ms',
-            description: 'A curated list of technology projects protecting and sustaining our climate and environment.',
+            description: 'A curated list of technology projects protecting and sustaining our climate and environment',
           },
           {
             name: 'Papers',
             url: 'https://papers.ecosyste.ms',
-            description: 'Indexing and attributing open source software mentioned in academic papers.',
+            description: 'Indexing and attributing open source software mentioned in academic papers',
           },
           {
             name: 'Awesome',
             url: 'https://awesome.ecosyste.ms',
-            description: 'Tracking thousands of "awesome lists" on GitHub',
+            description: 'Tracking thousands of “awesome lists” on GitHub',
           },
         ]
       }
