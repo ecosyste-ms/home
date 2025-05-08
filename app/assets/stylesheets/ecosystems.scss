@@ -19,6 +19,7 @@ $color-white: #FFFFFF;
 $color-grey-light: #F5F5FF;
 $color-grey: #DCDCE0;
 $color-grey-dark: #4C4C61;
+$color-grey-cold: #F0F0F0;
 
 /* Tokens to override bootstrap colours */
 $primary: $color-purple;
@@ -78,6 +79,7 @@ $badge-padding-y: 0.4em;
   --es-grey-light: #{$color-grey-light};
   --es-grey: #{$color-grey};
   --es-grey-dark: #{$color-grey-dark};
+  --es-grey-cold: #{$color-grey-cold};
 }
 
 @import "bootstrap"; 
@@ -529,6 +531,15 @@ body {
   border-radius: $border-radius;
 }
 
+.well--grey {
+  background-color: $color-grey-cold;
+}
+
+.well--empty {
+  background-color: transparent;
+  border: 1px solid $color-purple-light;
+}
+
 .page-content {
   h2, h3, h4, h5 {
     margin-top: 2rem;
@@ -927,6 +938,10 @@ body {
 }
 
 .three-equal-widgets {
+  /* 
+   * Three widgets, same size, one column each wide, one row each deep
+   * | 1 | 2 | 3 |
+   */
   display: grid;
   gap: $grid-gutter-width;
   @include media-breakpoint-up(md) { 
@@ -948,6 +963,12 @@ body {
 }
 
 .two-thirds-widgets {
+  /* 
+   * Two widgets of different widths, split into 1/3 and 2/3, one row each deep.
+   * | 1 |  2   |
+   * The largest widget is the one with the class .two-thirds-widgets__large
+   * It uses source order 
+   */
   display: grid;
   gap: $grid-gutter-width;
   grid-template-columns: 1fr;
@@ -960,6 +981,14 @@ body {
 }
 
 .two-thirds-widget-group {
+  /* 
+   * Three widgets of different widths, split into 1/3 and 2/3
+   * Two small widgets one row deep stacked on the left, a large widget 2x2 on the right
+   * | 1 |  3  |
+   * | 2 |     |
+   * The largest widget is the one with the class .two-thirds-widgets__large
+   * It uses source order 
+   */
   display: grid;
   gap: $grid-gutter-width;
   grid-template-columns: 1fr;
@@ -973,8 +1002,15 @@ body {
     }
   }
   @include media-breakpoint-up(lg) { 
-    grid-template-columns: 1fr 2fr; /* 1/3 for small cards, 2/3 for large card */
-    grid-template-rows: repeat(2, auto);
+      /* subtract 2 gaps (just like the 3-col layout) then split by 3
+      if we don't do this the vertical lines of the grid DON'T LINE UP
+      Thanks maths
+      */
+      grid-template-columns:
+        minmax(0, calc((100% - 2 * #{$grid-gutter-width}) / 3))
+        2fr;
+      grid-template-rows: repeat(2, auto);
+
 
     .two-thirds-widget-group__small:nth-of-type(1) {
       grid-column: 1;
@@ -993,8 +1029,91 @@ body {
       grid-row: 1 / span 2; /* Start at row 1 and span 2 rows */
     }
   }
-  
+
+  &--reverse {
+    @include media-breakpoint-up(lg) {
+     /*
+      * Reverses the layout, stacks the small widgets on the right
+      * |  3  | 1 |
+      * |     | 2 |
+      */
+      grid-template-columns: 
+        2fr
+        minmax(0, calc((100% - 2 * #{$grid-gutter-width}) / 3));
+
+      .two-thirds-widget-group__large {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+      }
+
+      .two-thirds-widget-group__small:nth-of-type(1) {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .two-thirds-widget-group__small:nth-of-type(2) {
+        grid-column: 2;
+        grid-row: 2;
+      }
+    }
+  }
 }
+
+
+
+.one-third-widget-group {
+  /* 
+   * Three widgets of different widths, split into 1/3 and 2/3
+   * One widget 1x2 on the left, two widgets 2x1 stacked on the right
+   * | 1 |  2  |
+   * |   |  3  |
+   * The largest widget is the one with the class .two-thirds-widgets__large
+   * It doesn't use source order 
+   */
+  display: grid;
+  gap: $grid-gutter-width;
+  grid-template-columns: 1fr;
+  
+  @include media-breakpoint-up(md) { 
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row dense;
+    
+    /* Make the large card span the full width on medium screens */
+    .one-third-widget-group__large {
+      grid-column: 1 / -1;
+    }
+  }
+  
+  @include media-breakpoint-up(lg) { 
+    /* subtract 2 gaps (just like the 3-col layout) then split by 3
+    if we don't do this the vertical lines of the grid DON'T LINE UP
+    Thanks maths
+    */
+    grid-template-columns:
+    minmax(0, calc((100% - 2 * #{$grid-gutter-width}) / 3))
+    2fr;
+    grid-template-rows: repeat(2, auto);
+    /* Large card spans both rows on the left */
+    .one-third-widget-group__large {
+      grid-column: 1;
+      grid-row: 1 / span 2; /* Start at row 1 and span 2 rows */
+    }
+    
+    /* First small card in top-right */
+    .one-third-widget-group__small:nth-of-type(1) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    
+    /* Second small card in bottom-right */
+    .one-third-widget-group__small:nth-of-type(2) {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+}
+
+
 
 .chart-wrapper {
   position: relative;
@@ -1010,3 +1129,101 @@ body {
     height: auto;
   }
 }
+
+.project-logo {
+  max-width: 100px;
+  border-radius: 8px;
+  padding: 0.25rem;
+  background-color: $color-white;
+  @include media-breakpoint-up(md) { 
+    max-width: 100%;
+  }
+  @include media-breakpoint-up(lg) { 
+    padding: 0.5rem;
+  }
+}
+
+.stacked-bar {
+  display: flex;
+  width: 100%;
+  height: 0.333rem;
+  background: transparent;
+  overflow: hidden;
+}
+
+.segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--w);
+  color: #fff;
+}
+
+.seg-a { background: $color-orange-dark; }
+.seg-b { background: $color-green-dark; }
+.seg-c { background: $color-purple; }
+.seg-d { background: $color-orange-light; }
+
+.graph-key {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.graph-key__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.dot-a {
+  background-color: $color-orange-dark;
+}
+
+.dot-b {
+  background-color: $color-green-dark;
+}
+
+.dot-c {
+  background-color: $color-purple-dark;
+}
+
+.dot-d {
+  background-color: $color-orange-light;
+}
+
+
+.link-with-icon {
+  display: inline-flex;
+  align-items: flex-start;    /* top-align icon and first line of text */
+  gap: 0.5em; 
+                   
+  .link-with-icon__icon {
+    flex: 0 0 18px; /* shorthand for flex-grow:0, flex-shrink:0, flex-basis:18px */
+    width: 18px;
+    height: 18px;
+    margin-top: 4px;
+  }
+
+  .link-with-icon__text {
+    display: block;
+    overflow-wrap: break-word; 
+    word-break: break-word; 
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    .link-with-icon__text {
+      text-decoration: underline;
+      color: $color-purple-dark;
+    }
+  }
+}
+
