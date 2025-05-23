@@ -2,3 +2,4 @@ production:
   ignore_errors:
     - ActiveRecord::RecordNotFound
     - ActionController::RoutingError
+    - ActionDispatch::Http::MimeNegotiation::InvalidType 
