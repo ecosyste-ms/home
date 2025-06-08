@@ -105,6 +105,11 @@ class Service
             url: 'https://opencollective.ecosyste.ms',
             description: '$48m in open source grants, donations, and sponsorships from Open Collective',
           },
+          {
+            name: 'Dependabot',
+            url: 'https://dependabot.ecosyste.ms',
+            description: '1.2 million pull requests opened by Dependabot',
+          },
         ]
       },
       {
