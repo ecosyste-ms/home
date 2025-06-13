@@ -285,15 +285,33 @@
 			
 		</div>
 	</article>
-
+<article class="my-3">
+		<div class="bd-heading align-self-start mt-5 mb-3">
+			<h3>Heading with right aligned link</h3>
+      <h4>Component description</h4>
+      <p>Simply put a link aligned to the right of another element</p>
+		</div>
+    <div class="bd-example-snippet bd-code-snippet">
+			<div class="bd-example m-0 border-0">
+			<h4>Component example</h4>
+        <div class="d-md-flex justify-content-between align-items-center mb-2">
+          <h2>Github Sponsors</h2>
+          <a href="#" class="spesh-link">View on Github Sponsors</a>
+        </div>
+      </div>
+    </div>
+      
+  </article>
 	<article class="my-3">
 		<div class="bd-heading align-self-start mt-5 mb-3">
 			<h3>Stat cards</h3>
+      <h4>Component description</h4>
+      <p>Across the various ecosyste.ms sites we use the stat card component to display a significant number with a label and number. They come in two variants, large and small.</p>
 		</div>
-		<p>Across the various ecosyste.ms sites we use the stat card component to display a significant number with a label and number. They come in two variants, large and small.</p>
+		
 		<div class="bd-example-snippet bd-code-snippet">
 			<div class="bd-example m-0 border-0">
-			<h4>Component description</h4>
+			<h4>Component example</h4>
 				<div class="stat-card mb-4">
 					<div class="stat-card-body">
 						<span class="stat-card-title stat-card-title">
@@ -302,7 +320,7 @@
 						<span class="stat-card-text">Label</span>
 					</div>
 				</div>
-			<h4>Component example</h4>
+			
 				<div class="stat-card mb-4">
 					<div class="stat-card-body">
 						<span class="stat-card-title stat-card-title--large">
@@ -400,13 +418,48 @@
 					</div>
 				</div>
 	</article>
+
+  <article class="my-3">
+		<div class="bd-heading align-self-start mt-5 mb-3">
+			<h3>Search form</h3>
+			<h4>Component description</h4>
+      <p>Use this component for patterns with a single input, like searching or adding something</p>
+		</div>
+    <div class="bd-example-snippet bd-code-snippet">
+			<div class="bd-example m-0 border-0">
+			<h4>Component example</h4>
+        <div style="max-width: 700px; margin: 0 auto;">
+          <div class="well p-4 my-5">
+            <div class="col-lg-12 container text-center">
+              <form class="row g-2 justify-content-center" action="#" accept-charset="UTF-8" method="post">
+                <label for="url">Enter a github repository URL</label>
+                <div class="input-group rounded-input-group mt-3 mb-4">
+                  <input type="text" name="url" id="url" class="form-control" placeholder="URL: eg https://github.com/ecosyste-ms/packages" size="50">
+                  <input type="submit" name="commit" value="View dashboard" class="btn btn-danger pe-4">
+                </div>
+              </form>          
+            </div>
+          </div>
+        </div>
+        <div style="max-width: 500px; margin: 0 auto;">
+          <form class="mb-4 mt-3 mt-md-0" action="/funds/search" accept-charset="UTF-8" method="get">
+            <label for="query" class="ps-3 mb-2 visually-hidden">Fund name</label>
+            <div class="input-group rounded-input-group">
+              <input type="text" name="query" id="query" class="form-control form-control" placeholder="Find a fund">
+              <button type="submit" class="btn btn-danger pe-4" aria-label="Find a fund">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </article>
   <h2>Dashboard components</h2>
   <article>
     <div class="bd-heading align-self-start mt-5 mb-3">
 
       <h3>Basic dashboard widgets</h3>
       <h4>Component description</h4>
-      <p>Lorem ipsum</p>
+      <p>Basic dashboard widgets are the building blocks of the dashboard. They support multiple number types, in a large or small configuration, with optional comparison</p>
     </div>
     <h5>Regular dashboard stats</h5>
     <p>Basic dashboard stat, with a comparison that hasn't changed, or we don't hold comparative data</p>
@@ -597,7 +650,7 @@
   <div class="bd-heading align-self-start mt-5 mb-3">
     <h3>Dashboard widgets with charts</h3>
     <h4>Component description</h4>
-    <p>Lorem ipsum</p>
+    <p>Dashboard widgets with enough space for a chart.js chart</p>
   </div>
   <div class="row row-cols-1 row-cols-md-2 mb-3">
     <div class="col">
@@ -675,56 +728,271 @@
       </div>
     </div>
   </div>
+    </article>
+  <article>
   <div class="bd-heading align-self-start mt-5 mb-3">
     <h3>Dashboard user interface controls</h3>
     <h4>Component description</h4>
-    <p>Lorem ipsum</p>
+    <p>These controls give access to yearly or monthly comparison, with the ability to compare any two months or years in the past</p>
   </div>
   <h4 class="mt-5">Filtering controls</h4>
-  <div class="dboard-filter-controls d-flex align-items-center mb-3 justify-content-md-between well p-2">
-    <div class="me-3" role="group">
-      <button type="button" class="btn btn-link active">All time</button>
-      <button type="button" class="btn btn-link">Year</button>
-      <button type="button" class="btn btn-link">Month</button>
+  <fieldset class="dboard-filter-controls d-lg-flex align-items-lg-center justify-content-md-between well p-2 mb-4">
+    <legend class="visually-hidden">Date comparison selection</legend>
+    <div class="dboard-filter-controls__section">
+      <span class="small hide-large mt-2 mb-1" aria-hidden="true">Period</span>
+      <a class="btn btn-link active" href="/projects/52/productivity?range=year&amp;year=2025">Year</a>
+      <a class="btn btn-link " href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">Month</a>
     </div>
-    
-  </div>
-  <div class="dboard-filter-controls d-flex align-items-center mb-3  justify-content-md-between well p-2">
-    <div class="me-3" role="group">
-      <button type="button" class="btn btn-link">All time</button>
-      <button type="button" class="btn btn-link  active">Year</button>
-      <button type="button" class="btn btn-link">Month</button>
+    <div class="dboard-filter-controls__comparison">
+      <div class="dboard-filter-controls__section">
+        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">Comparing</span>
+        
+        <button class="btn btn-link dropdown-toggle" type="button" id="previousPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+          2024
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="previousPeriodYearDropdown">
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2025&amp;range=year&amp;year=2025">2025</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2024&amp;range=year&amp;year=2025">2024</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2023&amp;range=year&amp;year=2025">2023</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2022&amp;range=year&amp;year=2025">2022</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2021&amp;range=year&amp;year=2025">2021</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2020&amp;range=year&amp;year=2025">2020</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2019&amp;range=year&amp;year=2025">2019</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2018&amp;range=year&amp;year=2025">2018</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2017&amp;range=year&amp;year=2025">2017</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2016&amp;range=year&amp;year=2025">2016</a>
+            </li>
+        </ul>
+      </div>
+      <div class="dboard-filter-controls__section">
+        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">with</span>
+            
+        <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+          2025
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="currentPeriodYearDropdown">
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2025">2025</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2024">2024</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2023">2023</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2022">2022</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2021">2021</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2020">2020</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2019">2019</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2018">2018</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2017">2017</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2016">2016</a>
+            </li>
+        </ul>
+      </div>
     </div>
-    
-    <div class="dropdown">
-      <button class="btn btn-link dropdown-toggle" type="button" id="periodDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        2025 <i class="fas fa-chevron-down ms-1"></i>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="periodDropdown">
-        <li><a href="#" class="dropdown-item">2024</a></li>
-        <li><a href="#" class="dropdown-item">2023</a></li>
-      </ul>
+  </fieldset>
+      
+  <fieldset class="dboard-filter-controls d-lg-flex align-items-lg-center  justify-content-md-between well p-2 mb-4">
+    <legend class="visually-hidden">Date comparison selection</legend>
+    <div class="dboard-filter-controls__section" role="group">
+      <span class="small hide-large mt-2 mb-1">Period</span>
+      <a class="btn btn-link " href="/projects/52/productivity?range=year&amp;year=2025">Year</a>
+      <a class="btn btn-link active" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">Month</a>
     </div>
-  </div>
-  <div class="dboard-filter-controls d-flex align-items-center  justify-content-md-between well p-2">
-    <div class="me-3" role="group">
-      <button type="button" class="btn btn-link ">All time</button>
-      <button type="button" class="btn btn-link">Year</button>
-      <button type="button" class="btn btn-link active">Month</button>
+    <div class="dboard-filter-controls__comparison">
+      <div class="dboard-filter-controls__section">
+        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">Comparing</span>
+        <button class="btn btn-link btn-link--d dropdown-toggle" type="button" id="previousPeriodMonthDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+          May
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="previousPeriodMonthDropdown">
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=1&amp;previous_year=2025&amp;range=month&amp;year=2025">January</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=2&amp;previous_year=2025&amp;range=month&amp;year=2025">February</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=3&amp;previous_year=2025&amp;range=month&amp;year=2025">March</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=4&amp;previous_year=2025&amp;range=month&amp;year=2025">April</a>
+            </li>
+            <li>
+              <a class="dropdown-item active" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2025&amp;range=month&amp;year=2025">May</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=6&amp;previous_year=2025&amp;range=month&amp;year=2025">June</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=7&amp;previous_year=2025&amp;range=month&amp;year=2025">July</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=8&amp;previous_year=2025&amp;range=month&amp;year=2025">August</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=9&amp;previous_year=2025&amp;range=month&amp;year=2025">September</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=10&amp;previous_year=2025&amp;range=month&amp;year=2025">October</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=11&amp;previous_year=2025&amp;range=month&amp;year=2025">November</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=12&amp;previous_year=2025&amp;range=month&amp;year=2025">December</a>
+            </li>
+        </ul>
+        <button class="btn btn-link dropdown-toggle" type="button" id="previousPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+          2025
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="previousPeriodYearDropdown">
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2025&amp;range=month&amp;year=2025">2025</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2024&amp;range=month&amp;year=2025">2024</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2023&amp;range=month&amp;year=2025">2023</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2022&amp;range=month&amp;year=2025">2022</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2021&amp;range=month&amp;year=2025">2021</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2020&amp;range=month&amp;year=2025">2020</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2019&amp;range=month&amp;year=2025">2019</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2018&amp;range=month&amp;year=2025">2018</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2017&amp;range=month&amp;year=2025">2017</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2016&amp;range=month&amp;year=2025">2016</a>
+            </li>
+        </ul>
+      </div>
+      <div class="dboard-filter-controls__section">
+        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">with</span>
+        <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodMonthDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+          June
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="currentPeriodMonthDropdown">
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=1&amp;range=month&amp;year=2025">January</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=2&amp;range=month&amp;year=2025">February</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=3&amp;range=month&amp;year=2025">March</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=4&amp;range=month&amp;year=2025">April</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=5&amp;range=month&amp;year=2025">May</a>
+            </li>
+            <li>
+              <a class="dropdown-item active" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">June</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=7&amp;range=month&amp;year=2025">July</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=8&amp;range=month&amp;year=2025">August</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=9&amp;range=month&amp;year=2025">September</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=10&amp;range=month&amp;year=2025">October</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=11&amp;range=month&amp;year=2025">November</a>
+            </li>
+            <li>
+              <a class="dropdown-item " href="/projects/52/productivity?month=12&amp;range=month&amp;year=2025">December</a>
+            </li>
+        </ul>
+        <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+          2025
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="currentPeriodYearDropdown">
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">2025</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2024">2024</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2023">2023</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2022">2022</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2021">2021</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2020">2020</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2019">2019</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2018">2018</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2017">2017</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2016">2016</a>
+            </li>
+        </ul>
+      </div>
     </div>
-    
-    <div class="dropdown">
-      <button class="btn btn-link dropdown-toggle" type="button" id="periodDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        December 2025 <i class="fas fa-chevron-down ms-1"></i>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="periodDropdown">
-        <li><a href="#" class="dropdown-item">November 2025</a></li>
-        <li><a href="#" class="dropdown-item">October 2025</a></li>
-        <li><a href="#" class="dropdown-item">September 2025</a></li>
-        <li><a href="#" class="dropdown-item">August 2025</a></li>
-      </ul>
-    </div>
-  </div>
+  </fieldset>
   <h4 class="mt-5">Navigation menu</h4>
   <div style="max-width: 360px" class="mt-3">
     <ul class="nav nav-pills flex-column dboard-nav">
@@ -751,10 +1019,12 @@
       </li>
     </ul>
   </div>
+    </article>
+  <article>
   <div class="bd-heading align-self-start mt-5 mb-3">
     <h3>Dashboard layout</h3>
     <h4>Component description</h4>
-    <p>Lorem ipsum</p>
+    <p>This is a demonstration of a dashboard layout combining the navigation menu, filtering controls and the dashboard widgets</p>
   </div>
   <div class="dashboard-layout">
     <div class="dashboard-layout__navigation">
@@ -783,25 +1053,94 @@
       </ul>
     </div>
     <div class="dashboard-layout__dboard">
-      <div class="dboard-filter-controls d-flex align-items-center  justify-content-md-between well p-2 mb-4">
-        <div class="me-3" role="group">
-          <button type="button" class="btn btn-link ">All time</button>
-          <button type="button" class="btn btn-link">Year</button>
-          <button type="button" class="btn btn-link active">Month</button>
-        </div>
+      <fieldset class="dboard-filter-controls d-lg-flex align-items-lg-center justify-content-md-between well p-2 mb-4">
+    <legend class="visually-hidden">Date comparison selection</legend>
+    <div class="dboard-filter-controls__section">
+      <span class="small hide-large mt-2 mb-1" aria-hidden="true">Period</span>
+      <a class="btn btn-link active" href="/projects/52/productivity?range=year&amp;year=2025">Year</a>
+      <a class="btn btn-link " href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">Month</a>
+    </div>
+    <div class="dboard-filter-controls__comparison">
+      <div class="dboard-filter-controls__section">
+        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">Comparing</span>
         
-        <div class="dropdown">
-          <button class="btn btn-link dropdown-toggle" type="button" id="periodDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            December 2025 <i class="fas fa-chevron-down ms-1"></i>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="periodDropdown">
-            <li><a href="#" class="dropdown-item">November 2025</a></li>
-            <li><a href="#" class="dropdown-item">October 2025</a></li>
-            <li><a href="#" class="dropdown-item">September 2025</a></li>
-            <li><a href="#" class="dropdown-item">August 2025</a></li>
-          </ul>
-        </div>
+        <button class="btn btn-link dropdown-toggle" type="button" id="previousPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+          2024
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="previousPeriodYearDropdown">
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2025&amp;range=year&amp;year=2025">2025</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2024&amp;range=year&amp;year=2025">2024</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2023&amp;range=year&amp;year=2025">2023</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2022&amp;range=year&amp;year=2025">2022</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2021&amp;range=year&amp;year=2025">2021</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2020&amp;range=year&amp;year=2025">2020</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2019&amp;range=year&amp;year=2025">2019</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2018&amp;range=year&amp;year=2025">2018</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2017&amp;range=year&amp;year=2025">2017</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2016&amp;range=year&amp;year=2025">2016</a>
+            </li>
+        </ul>
       </div>
+      <div class="dboard-filter-controls__section">
+        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">with</span>
+            
+        <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+          2025
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="currentPeriodYearDropdown">
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2025">2025</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2024">2024</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2023">2023</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2022">2022</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2021">2021</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2020">2020</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2019">2019</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2018">2018</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2017">2017</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2016">2016</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </fieldset>
 
       <div class="dashboard-grid">
         <!-- Row 1: Three equal widgets -->
@@ -1115,7 +1454,7 @@
   const data = {
     labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6'],
     datasets: [{
-      data: [65, 45, 80, 50, 95, 90],
+      data: [65, 45, 80, 50, 95, 0],
       backgroundColor: [
         esPurpleLight,
         esPurpleLight,
@@ -1133,7 +1472,8 @@
         esPurple   // Hover color for the last bar
       ],
       borderWidth: 0,
-      borderRadius: 1
+      borderRadius: 5,
+      minBarLength: 2
     }]
   };
 
@@ -1149,7 +1489,7 @@
       },
       scales: {
         x: {
-          display: false,
+          display: true,
           grid: { display: false }
         },
         y: {
