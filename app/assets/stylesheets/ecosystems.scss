@@ -68,6 +68,9 @@ $btn-color: $color-white;
 $badge-font-weight: 400;
 $badge-padding-y: 0.4em;
 
+$card-cap-bg: $color-grey-light;
+$card-border-color: $color-grey;
+
 
 /* Outputs our colours variables as css variables so that chart.js can access them */
 :root {
