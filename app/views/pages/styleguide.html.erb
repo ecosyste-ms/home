@@ -1,7 +1,5 @@
 <% content_for :title, "Style Guide" %>
 
-	
-
   <div class="bd-cheatsheet container bg-body styleguide">
     <div class="bd-heading align-self-start mt-5 mb-3">
       <h2>Styles</h2>
@@ -55,6 +53,7 @@
 			</div>
 			
 		</article>
+
 		<article id="colours">
 			<div class="bd-heading align-self-start mt-5 mb-3">
 				<h2>Colours</h2>
@@ -203,879 +202,1252 @@
 				</div>
 			</div>
 		</article>
-		
 
-	<h2>ecosyste.ms components</h2>
-	<article class="my-3">
-		<div class="bd-heading align-self-start mt-5 mb-3">
-			<h3>Page content</h3>
-		</div>
-		<p>Pages with article-style text require a little help to look their best, add the class <code>.page-content</code> to enhance readability</p>
-		<div class="page-content page-content--demo p-5 rounded">
-			<h1 class="page-content__title display-2">FAQ</h1>
+	  <h2>ecosyste.ms components</h2>
+    <article class="my-3" id="page-content">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Page content</h3>
+      </div>
+      <p>Pages with article-style text require a little help to look their best, add the class <code>.page-content</code> to enhance readability</p>
+      <div class="page-content page-content--demo p-5 rounded">
+        <h1 class="page-content__title display-2">FAQ</h1>
 
-			<p class="lead">ecosystem funds is new, we’ll expand this FAQ as we develop the service, until then here are a few questions we anticipate</p>
+        <p class="lead">ecosystem funds is new, we&#39;ll expand this FAQ as we develop the service, until then here are a few questions we anticipate</p>
 
-			<h2>What is ecosyste.ms?</h2>
-			<p>ecosyste.ms is a set of free services and tools for developers, researchers and policymakers to help identify, secure and sustain open source software. It was developed throughout 2022 by Andrew Nesbitt and Benjamin Nickols, with support from the now disbanded Plaintext Group at Schmidt Futures and Open Source Collective.</p>
+        <h2>What is ecosyste.ms?</h2>
+        <p>ecosyste.ms is a set of free services and tools for developers, researchers and policymakers to help identify, secure and sustain open source software. It was developed throughout 2022 by Andrew Nesbitt and Benjamin Nickols, with support from the now disbanded Plaintext Group at Schmidt Futures and Open Source Collective.</p>
 
-			<h2>Who are Open Source Collective?</h2>
-			<p><a href="https://oscollective.org">Open Source Collective</a> is a non-profit working for the common interests of those who create and use open source software. They are best known for their fiscal sponsorship program, accepting and managing the funds for thousands of financially active open source projects and their communities using the <a href="https://opencollective.com/home">Open Collective</a> platform. Open Source Collective continues to provide financial support to develop and maintain ecosyste.ms.</p>
-		</div>
-	</article>
-	<article class="my-3">
-		<div class="bd-heading align-self-start mt-5 mb-3">
-			<h3>Links</h3>
-		</div>
-		<p>Links with our <a href="#" class="spesh-link">signature underline</a> are activated by the class <code>.spesh-link</code> or the SCSS <code>@include spesh-link();</code>
-	</article>
-	<article class="my-3">
-		<div class="bd-heading align-self-start mt-5 mb-3">
-			<h3>Sidebar</h3>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-			<h4>Component description</h4>
-			<div class="sidebar rounded p-4 mt-4">
-				<h2>Major heading</h2>
-				<p>Value</p>
-					
-				<h2>Major heading</h2>
-				<h3>Minor heading</h3>
-				<p><span class="me-4 badge text-bg-info">Badge example</span> </p>
-				<h3>Minor heading</h3>
-				<p>Value</p>
-				<h3>Minor heading</h3>
-				<p>Label <code>code value</code></p>
-				<h2>Major heading</h2>
-				<p><a href="#">Link text</a></p>
-			</div>
-
-			</div>
-			<div class="col-md-6">
-			<h4>Component example</h4>
-			<div class="sidebar rounded p-4 mt-4">
-				<h2>Identifiers</h2>
-					<p>GHSA-4w2w-36vm-c8hf</p>
-					<p>CVE-2022-25773</p>
-				<h2>Risk</h2>
-				<h3>Severity</h3>
-				<p><span class="me-4 badge text-bg-warning">Moderate</span> </p>
-				<h3>Blast radius</h3>
-				<p>2.1 </p>
-					<h3>CVSS</h3>
-					<p>CVSS Score: 4.3 </p>
-					<p>CVSS vector: <code>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L</code></p>
-				<h2>Classification</h2>
-				<p>General</p>
-				<h2>Source</h2>
-				<p>GitHub Advisory Database</p>
-				<h2>Origin</h2>
-				<p>Unspecified</p>
-				<h2>Repository</h2>
-				<p><a target="_blank" href="https://github.com/mautic/mautic">https://github.com/mautic/mautic</a></p>
-				<h2>Date and time</h2>
-				<h3>Published</h3>
-				<p><span title="2025-02-26 20:09:28 UTC">about 13 hours ago</span></p>
-				<h3>Updated</h3>
-				<p><span title="2025-02-26 20:09:28 UTC">about 13 hours ago</span></p>
-			</div>
-		</div>
-
-			
-		</div>
-	</article>
-<article class="my-3">
-		<div class="bd-heading align-self-start mt-5 mb-3">
-			<h3>Heading with right aligned link</h3>
-      <h4>Component description</h4>
-      <p>Simply put a link aligned to the right of another element</p>
-		</div>
-    <div class="bd-example-snippet bd-code-snippet">
-			<div class="bd-example m-0 border-0">
-			<h4>Component example</h4>
-        <div class="d-md-flex justify-content-between align-items-center mb-2">
-          <h2>Github Sponsors</h2>
-          <a href="#" class="spesh-link">View on Github Sponsors</a>
+        <h2>Who are Open Source Collective?</h2>
+        <p><a href="https://oscollective.org">Open Source Collective</a> is a non-profit working for the common interests of those who create and use open source software. They are best known for their fiscal sponsorship program, accepting and managing the funds for thousands of financially active open source projects and their communities using the <a href="https://opencollective.com/home">Open Collective</a> platform. Open Source Collective continues to provide financial support to develop and maintain ecosyste.ms.</p>
+      </div>
+    </article>
+	  <article class="my-3" id="links">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Links</h3>
+      </div>
+      <p>Links with our <a href="#" class="spesh-link">signature underline</a> are activated by the class <code>.spesh-link</code> or the SCSS <code>@include spesh-link();</code>
+	  </article>
+	  <article class="my-3" id="sidebar">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Sidebar</h3>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Component description</h4>
+          <div class="sidebar rounded p-4 mt-4">
+            <h2>Major heading</h2>
+            <p>Value</p>
+              
+            <h2>Major heading</h2>
+            <h3>Minor heading</h3>
+            <p><span class="me-4 badge text-bg-info">Badge example</span> </p>
+            <h3>Minor heading</h3>
+            <p>Value</p>
+            <h3>Minor heading</h3>
+            <p>Label <code>code value</code></p>
+            <h2>Major heading</h2>
+            <p><a href="#">Link text</a></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h4>Component example</h4>
+          <div class="sidebar rounded p-4 mt-4">
+            <h2>Identifiers</h2>
+              <p>GHSA-4w2w-36vm-c8hf</p>
+              <p>CVE-2022-25773</p>
+            <h2>Risk</h2>
+            <h3>Severity</h3>
+            <p><span class="me-4 badge text-bg-warning">Moderate</span> </p>
+            <h3>Blast radius</h3>
+            <p>2.1 </p>
+              <h3>CVSS</h3>
+              <p>CVSS Score: 4.3 </p>
+              <p>CVSS vector: <code>CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L</code></p>
+            <h2>Classification</h2>
+            <p>General</p>
+            <h2>Source</h2>
+            <p>GitHub Advisory Database</p>
+            <h2>Origin</h2>
+            <p>Unspecified</p>
+            <h2>Repository</h2>
+            <p><a target="_blank" href="https://github.com/mautic/mautic">https://github.com/mautic/mautic</a></p>
+            <h2>Date and time</h2>
+            <h3>Published</h3>
+            <p><span title="2025-02-26 20:09:28 UTC">about 13 hours ago</span></p>
+            <h3>Updated</h3>
+            <p><span title="2025-02-26 20:09:28 UTC">about 13 hours ago</span></p>
+          </div>
         </div>
       </div>
-    </div>
+	  </article>
+    <article class="my-3" id="heading-link">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Heading with right aligned link</h3>
+        <h4>Component description</h4>
+        <p>Simply put a link aligned to the right of another element</p>
+      </div>
+      <div class="bd-example-snippet bd-code-snippet">
+        <div class="bd-example m-0 border-0">
+        <h4>Component example</h4>
+          <div class="d-md-flex justify-content-between align-items-center mb-2">
+            <h2>Github Sponsors</h2>
+            <a href="#" class="spesh-link">View on Github Sponsors</a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="my-3" id="stat-cards">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Stat cards</h3>
+        <h4>Component description</h4>
+        <p>Across the various ecosyste.ms sites we use the stat card component to display a significant number with a label and number. They come in two variants, large and small.</p>
+      </div>
       
-  </article>
-	<article class="my-3">
-		<div class="bd-heading align-self-start mt-5 mb-3">
-			<h3>Stat cards</h3>
-      <h4>Component description</h4>
-      <p>Across the various ecosyste.ms sites we use the stat card component to display a significant number with a label and number. They come in two variants, large and small.</p>
-		</div>
-		
-		<div class="bd-example-snippet bd-code-snippet">
-			<div class="bd-example m-0 border-0">
-			<h4>Component example</h4>
-				<div class="stat-card mb-4">
-					<div class="stat-card-body">
-						<span class="stat-card-title stat-card-title">
-							Number
-						</span>
-						<span class="stat-card-text">Label</span>
-					</div>
-				</div>
-			
-				<div class="stat-card mb-4">
-					<div class="stat-card-body">
-						<span class="stat-card-title stat-card-title--large">
-							$16,895.00
-						</span>
-						<span class="stat-card-text">Total funded</span>
-					</div>
-				</div>
-				<div class="stat-card mb-2">
-					<div class="stat-card-body">
-						<span class="stat-card-title stat-card-title--small">
-							$16,875.00
-						</span>
-						<span class="stat-card-text stat-card-text--small">Largest donation</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</article>
-
-
-	<article class="my-3">
-		<div class="bd-heading align-self-start mt-5 mb-3">
-			<h3>Listing</h3>
-			<h4>Component description</h4>
-		</div>
-		<div class="card mb-4 pb-4 listing d-flex flex-row align-items-center">
-			
-			<div class="card-body p-0">
-				<span class="listing__badge badge bg-danger">
-					Optional badge
-				</span>
-				<div class="text-muted float-end listing__time">
-						<span title="2025-02-26 18:30:39 UTC">Optional time</span>
-				</div>
-				<h3 class="card-title listing__title mt-3">
-					<a href="#">
-						Mandatory Title<span class="listing__meta"> Optional meta information</span>
-					</a>
-				</h3>
-				<div class="mt-3 listing__details">
-					<div class="d-flex align-items-top">
-        		<%= bootstrap_icon 'border', width: 18, height: 18, class: 'flex-shrink-0 me-2' %>
-						<span class="me-3">Optional label with icon</span>
-        		<%= bootstrap_icon 'border', width: 18, height: 18, class: 'flex-shrink-0 me-2' %>
-						<span>Optional label with icon</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<h4>Component example</h4>
-		<p class="mt-3 mb-3">Advisory listing</p>
-		<div class="card mb-4 pb-4 listing">
-			<div class="card-body p-0">
-				<span class="listing__badge badge bg-danger">
-					High
-				</span>
-				<div class="text-muted float-end listing__time">
-						<span title="2025-02-26 18:30:39 UTC">about 15 hours ago</span>
-				</div>
-				<h3 class="card-title listing__title mt-3">
-					<a href="/advisories/GSA_kwCzR0hTQS00ZndyLW1oNXEtaGNoaM4ABEx1">
-						io.quarkus:quarkus-resteasy: Memory Leak in Quarkus RESTEasy Classic When Client Requests Timeout<span class="listing__meta"> GSA_kwCzR0hTQS00ZndyLW1oNXEtaGNoaM4ABEx1 </span>
-					</a>
-				</h3>
-				<div class="mt-3 listing__details">
-					<div class="d-flex align-items-top">
-						<svg width="18" height="18" class="bi bi-boxes flex-shrink-0 me-2" viewBox="0 0 16 16" fill="currentColor" version="1.1" aria-hidden="true"><path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z"></path></svg>
-						<span class="me-3">maven</span>
-						<svg width="18" height="18" class="bi bi-box flex-shrink-0 me-2" viewBox="0 0 16 16" fill="currentColor" version="1.1" aria-hidden="true"><path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"></path></svg>
-						<span>io.quarkus:quarkus-resteasy</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<p class="mt-3 mb-3">Search listing</p>
-		<div class="card mb-4 pb-4 listing d-flex flex-row align-items-center">
-					<a href="/funds/wagtail">
-						<img src="https://explore-feed.github.com/topics/wagtail/wagtail.png" alt="" class="card-img img-fluid" onerror="this.style.display='none'" style="max-width: 60px;">
-					</a>
-					<div class="card-body p-0 ms-3">
-						<h3 class="card-title listing__title mt-3">
-							<a href="/funds/wagtail">
-								Wagtail <span class="listing__meta">Wagtail is an open source CMS written in Python and built on the Django web framework.</span>
-							</a>
-						</h3>
-						<div class="mt-3 listing__details">
-							<div class="d-flex align-items-top">
-								<svg width="18" height="18" class="bi bi-box flex-shrink-0 me-2" viewBox="0 0 16 16" fill="currentColor" version="1.1" aria-hidden="true"><path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"></path></svg>
-								<span class="me-3">0 Projects</span>
-								<svg width="18" height="18" class="bi bi-wallet flex-shrink-0 me-2" viewBox="0 0 16 16" fill="currentColor" version="1.1" aria-hidden="true"><path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"></path></svg>
-								0 Funders
-							</div>
-						</div>
-					</div>
-				</div>
-	</article>
-
-  <article class="my-3">
-		<div class="bd-heading align-self-start mt-5 mb-3">
-			<h3>Search form</h3>
-			<h4>Component description</h4>
-      <p>Use this component for patterns with a single input, like searching or adding something</p>
-		</div>
-    <div class="bd-example-snippet bd-code-snippet">
-			<div class="bd-example m-0 border-0">
-			<h4>Component example</h4>
-        <div style="max-width: 700px; margin: 0 auto;">
-          <div class="well p-4 my-5">
-            <div class="col-lg-12 container text-center">
-              <form class="row g-2 justify-content-center" action="#" accept-charset="UTF-8" method="post">
-                <label for="url">Enter a github repository URL</label>
-                <div class="input-group rounded-input-group mt-3 mb-4">
-                  <input type="text" name="url" id="url" class="form-control" placeholder="URL: eg https://github.com/ecosyste-ms/packages" size="50">
-                  <input type="submit" name="commit" value="View dashboard" class="btn btn-danger pe-4">
-                </div>
-              </form>          
+      <div class="bd-example-snippet bd-code-snippet">
+        <div class="bd-example m-0 border-0">
+        <h4>Component example</h4>
+          <div class="stat-card mb-4">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title">
+                Number
+              </span>
+              <span class="stat-card-text">Label</span>
+            </div>
+          </div>
+        
+          <div class="stat-card mb-4">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--large">
+                $16,895.00
+              </span>
+              <span class="stat-card-text">Total funded</span>
+            </div>
+          </div>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--small">
+                $16,875.00
+              </span>
+              <span class="stat-card-text stat-card-text--small">Largest donation</span>
             </div>
           </div>
         </div>
-        <div style="max-width: 500px; margin: 0 auto;">
-          <form class="mb-4 mt-3 mt-md-0" action="/funds/search" accept-charset="UTF-8" method="get">
-            <label for="query" class="ps-3 mb-2 visually-hidden">Fund name</label>
-            <div class="input-group rounded-input-group">
-              <input type="text" name="query" id="query" class="form-control form-control" placeholder="Find a fund">
-              <button type="submit" class="btn btn-danger pe-4" aria-label="Find a fund">Search</button>
+      </div>
+    </article>
+
+
+    <article class="my-3" id="listing">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Listing</h3>
+        <h4>Component description</h4>
+      </div>
+      <div class="card mb-4 pb-4 listing d-flex flex-row align-items-center">	
+        <div class="card-body p-0">
+          <span class="listing__badge badge bg-danger">
+            Optional badge
+          </span>
+          <div class="text-muted float-end listing__time">
+              <span title="2025-02-26 18:30:39 UTC">Optional time</span>
+          </div>
+          <h3 class="card-title listing__title mt-3">
+            <a href="#">
+              Mandatory Title<span class="listing__meta"> Optional meta information</span>
+            </a>
+          </h3>
+          <div class="mt-3 listing__details">
+            <div class="d-flex align-items-top">
+              <%= bootstrap_icon 'border', width: 18, height: 18, class: 'flex-shrink-0 me-2' %>
+              <span class="me-3">Optional label with icon</span>
+              <%= bootstrap_icon 'border', width: 18, height: 18, class: 'flex-shrink-0 me-2' %>
+              <span>Optional label with icon</span>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
-  </article>
-  <h2>Dashboard components</h2>
-  <article>
-    <div class="bd-heading align-self-start mt-5 mb-3">
-
-      <h3>Basic dashboard widgets</h3>
-      <h4>Component description</h4>
-      <p>Basic dashboard widgets are the building blocks of the dashboard. They support multiple number types, in a large or small configuration, with optional comparison</p>
-    </div>
-    <h5>Regular dashboard stats</h5>
-    <p>Basic dashboard stat, with a comparison that hasn't changed, or we don't hold comparative data</p>
-    <div class="card well p-3 my-3 border-0">
-      <div class="card-body">
-        <h5 class="card-title small">Donations</h5>
-        <div class="stat-card mb-2">
-					<div class="stat-card-body">
-						<span class="stat-card-title stat-card-title--small stat-card-number-neutral">
-							$16,875.00 <span class="extra-bold">-</span>
-						</span>
-					</div>
-				</div>
+      <h4>Component example</h4>
+      <p class="mt-3 mb-3">Advisory listing</p>
+      <div class="card mb-4 pb-4 listing">
+        <div class="card-body p-0">
+          <span class="listing__badge badge bg-danger">
+            High
+          </span>
+          <div class="text-muted float-end listing__time">
+              <span title="2025-02-26 18:30:39 UTC">about 15 hours ago</span>
+          </div>
+          <h3 class="card-title listing__title mt-3">
+            <a href="/advisories/GSA_kwCzR0hTQS00ZndyLW1oNXEtaGNoaM4ABEx1">
+              io.quarkus:quarkus-resteasy: Memory Leak in Quarkus RESTEasy Classic When Client Requests Timeout<span class="listing__meta"> GSA_kwCzR0hTQS00ZndyLW1oNXEtaGNoaM4ABEx1 </span>
+            </a>
+          </h3>
+          <div class="mt-3 listing__details">
+            <div class="d-flex align-items-top">
+              <svg width="18" height="18" class="bi bi-boxes flex-shrink-0 me-2" viewBox="0 0 16 16" fill="currentColor" version="1.1" aria-hidden="true"><path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z"></path></svg>
+              <span class="me-3">maven</span>
+              <svg width="18" height="18" class="bi bi-box flex-shrink-0 me-2" viewBox="0 0 16 16" fill="currentColor" version="1.1" aria-hidden="true"><path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"></path></svg>
+              <span>io.quarkus:quarkus-resteasy</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <p>Basic dashboard stat with a comparison that is negative compared to the last period</p>
-    <div class="card well p-3 my-3 border-0">
-      <div class="card-body">
-        <h5 class="card-title small">Donations</h5>
-        <div class="stat-card mb-2">
-					<div class="stat-card-body">
-						<span class="stat-card-title stat-card-title--small stat-card-number-negative">
-							$16,875.00 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-						</span>
-            <span class="stat-card-text stat-card-text--x-small">$20,815.00 last period</span>
-					</div>
-				</div>
-      </div>
-    </div>
-    <p>Basic dashboard stat with a comparison that is positive compared to the last period</p>
-    <div class="card well p-3 my-3 border-0">
-      <div class="card-body">
-        <h5 class="card-title small">Card title</h5>
-        <div class="stat-card mb-2">
-					<div class="stat-card-body">
-						<span class="stat-card-title stat-card-title--small stat-card-number-positive">
-							$16,875.00 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-						</span>
-						<span class="stat-card-text stat-card-text--x-small">$10,815.00 last period</span>
-					</div>
-				</div>
-      </div>
-    </div>
-    <h5>Large dashboard stats</h5>
-    <p>Large variation of a basic dashboard stat, with a comparison that hasn't changed, or we don't hold comparative data</p>
-    <div class="card well p-3 my-3 border-0">
-      <div class="card-body">
-        <h5 class="card-title">Donations</h5>
-        <div class="stat-card mb-2">
-					<div class="stat-card-body">
-						<span class="stat-card-title stat-card-title--large stat-card-number-neutral">
-							$16,875.00 <span class="extra-bold">-</span>
-						</span>
-					</div>
-				</div>
-      </div>
-    </div>
-    <p>Large variation of a dashboard stat with a comparison that is negative compared to the last period</p>
-    <div class="card well p-3 my-3 border-0">
-      <div class="card-body">
-        <h5 class="card-title">Donations</h5>
-        <div class="stat-card mb-2">
-					<div class="stat-card-body">
-						<span class="stat-card-title stat-card-title--large stat-card-number-negative">
-							$16,875.00 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-						</span>
-            <span class="stat-card-text">$20,815.00 last period</span>
-					</div>
-				</div>
-      </div>
-    </div>
-    <p>Large variation of a basic dashboard stat with a comparison that is positive compared to the last period</p>
-    <div class="card well p-3 my-3 border-0">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <div class="stat-card mb-2">
-					<div class="stat-card-body">
-						<span class="stat-card-title stat-card-title--large stat-card-number-positive">
-							$16,875.00 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-						</span>
-						<span class="stat-card-text">$10,815.00 last period</span>
-					</div>
-				</div>
-      </div>
-    </div>
-  </article>
-  <article>
-    <div class="bd-heading align-self-start mt-5 mb-3">
-      <h3>Dashboard widget states</h3>
-      <h4>Component description</h4>
-      <p>Use these widget states to communicate the state of the data behind the widgets</p>
-    </div>
-    <div class="dashboard-grid">
-      <div class="three-equal-widgets">
-        <div>
-          <div class="card  well p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title card-title small">Dependent packages</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number  stat-card-number-neutral"><span class="extra-bold">-</span></span>
-                  <span class="stat-card-text">Data coming soon <a href="#">
-                      <%= bootstrap_icon 'question-circle',
-                      width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'what is ranking?'
-                      %>
-                      <span class="visually-hidden">What does 'Data coming soon' mean?</span>
-                    </a>
-                  </span>
+      <p class="mt-3 mb-3">Search listing</p>
+      <div class="card mb-4 pb-4 listing d-flex flex-row align-items-center">
+            <a href="/funds/wagtail">
+              <img src="https://explore-feed.github.com/topics/wagtail/wagtail.png" alt="" class="card-img img-fluid" onerror="this.style.display='none'" style="max-width: 60px;">
+            </a>
+            <div class="card-body p-0 ms-3">
+              <h3 class="card-title listing__title mt-3">
+                <a href="/funds/wagtail">
+                  Wagtail <span class="listing__meta">Wagtail is an open source CMS written in Python and built on the Django web framework.</span>
+                </a>
+              </h3>
+              <div class="mt-3 listing__details">
+                <div class="d-flex align-items-top">
+                  <svg width="18" height="18" class="bi bi-box flex-shrink-0 me-2" viewBox="0 0 16 16" fill="currentColor" version="1.1" aria-hidden="true"><path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"></path></svg>
+                  <span class="me-3">0 Projects</span>
+                  <svg width="18" height="18" class="bi bi-wallet flex-shrink-0 me-2" viewBox="0 0 16 16" fill="currentColor" version="1.1" aria-hidden="true"><path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"></path></svg>
+                  0 Funders
                 </div>
               </div>
             </div>
           </div>
-          <p class="mt-3">There's no stats right now but there will be soon (Eg. a feature that will make this possible is coming soon)</p>
-        </div>
-        <div>
-          <div class="card  well well--grey p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title card-title small">Dependent packages</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number stat-card-number-negative"><span class="extra-bold">?</span></span>
-                  <span class="stat-card-text">Data unavailable <a href="#">
-                      <%= bootstrap_icon 'question-circle',
-                      width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'what is ranking?'
-                      %>
-                      <span class="visually-hidden">What does 'Data unavailable' mean?</span>
-                    </a>
-                  </span>
-                </div>
+    </article>
+
+    <article class="my-3" id="search-form">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Search form</h3>
+        <h4>Component description</h4>
+        <p>Use this component for patterns with a single input, like searching or adding something</p>
+      </div>
+      <div class="bd-example-snippet bd-code-snippet">
+        <div class="bd-example m-0 border-0">
+        <h4>Component example</h4>
+          <div style="max-width: 700px; margin: 0 auto;">
+            <div class="well p-4 my-5">
+              <div class="col-lg-12 container text-center">
+                <form class="row g-2 justify-content-center" action="#" accept-charset="UTF-8" method="post">
+                  <label for="url">Enter a github repository URL</label>
+                  <div class="input-group rounded-input-group mt-3 mb-4">
+                    <input type="text" name="url" id="url" class="form-control" placeholder="URL: eg https://github.com/ecosyste-ms/packages" size="50">
+                    <input type="submit" name="commit" value="View dashboard" class="btn btn-danger pe-4">
+                  </div>
+                </form>          
               </div>
             </div>
           </div>
-          <p class="mt-3">There's no stats because we can't get them due to a design or policy decision on behalf of the data provider</p>
-        </div>
-        <div>
-          <div class="card  well well--empty p-3">
-            <div class="card-body">
-              <h5 class="card-title card-title small">Dependent packages</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number stat-card-number-neutral"><span class="extra-bold">-</span></span>
-                  <span class="stat-card-text">Not applicable <a href="#">
-                      <%= bootstrap_icon 'question-circle',
-                      width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'what is ranking?'
-                      %>
-                      <span class="visually-hidden">What does 'Not applicable' mean?</span>
-                    </a>
-                  </span>
-                </div>
+          <div style="max-width: 500px; margin: 0 auto;">
+            <form class="mb-4 mt-3 mt-md-0" action="/funds/search" accept-charset="UTF-8" method="get">
+              <label for="query" class="ps-3 mb-2 visually-hidden">Fund name</label>
+              <div class="input-group rounded-input-group">
+                <input type="text" name="query" id="query" class="form-control form-control" placeholder="Find a fund">
+                <button type="submit" class="btn btn-danger pe-4" aria-label="Find a fund">Search</button>
               </div>
-            </div>
+            </form>
           </div>
-          <p class="mt-3">There's no stats because this isn't applicable in this instance</p>
         </div>
       </div>
-      <div>
+    </article>
+    <h2>Dashboard components</h2>
+    <article id="dashboard-components">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+
+        <h3>Basic dashboard widgets</h3>
+        <h4>Component description</h4>
+        <p>Basic dashboard widgets are the building blocks of the dashboard. They support multiple number types, in a large or small configuration, with optional comparison</p>
+      </div>
+      <h5>Regular dashboard stats</h5>
+      <p>Basic dashboard stat, with a comparison that hasn't changed, or we don't hold comparative data</p>
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title small">Donations</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--small stat-card-number-neutral">
+                $16,875.00 <span class="extra-bold">-</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>Basic dashboard stat with a comparison that is negative compared to the last period</p>
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title small">Donations</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--small stat-card-number-negative">
+                $16,875.00 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+              </span>
+              <span class="stat-card-text stat-card-text--x-small">$20,815.00 last period</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>Basic dashboard stat with a comparison that is positive compared to the last period</p>
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title small">Card title</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--small stat-card-number-positive">
+                $16,875.00 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+              </span>
+              <span class="stat-card-text stat-card-text--x-small">$10,815.00 last period</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h5>Large dashboard stats</h5>
+      <p>Large variation of a basic dashboard stat, with a comparison that hasn't changed, or we don't hold comparative data</p>
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title">Donations</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--large stat-card-number-neutral">
+                $16,875.00 <span class="extra-bold">-</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>Large variation of a dashboard stat with a comparison that is negative compared to the last period</p>
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title">Donations</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--large stat-card-number-negative">
+                $16,875.00 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+              </span>
+              <span class="stat-card-text">$20,815.00 last period</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>Large variation of a basic dashboard stat with a comparison that is positive compared to the last period</p>
+      <div class="card well p-3 my-3 border-0">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <div class="stat-card mb-2">
+            <div class="stat-card-body">
+              <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                $16,875.00 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+              </span>
+              <span class="stat-card-text">$10,815.00 last period</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article id="dashboard-widget-states">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Dashboard widget states</h3>
+        <h4>Component description</h4>
+        <p>Use these widget states to communicate the state of the data behind the widgets</p>
+      </div>
+      <div class="dashboard-grid">
         <div class="three-equal-widgets">
           <div>
-            <div class="card well border-0 p-3">
+            <div class="card  well p-3 border-0">
               <div class="card-body">
                 <h5 class="card-title card-title small">Dependent packages</h5>
                 <div class="stat-card mb-2">
                   <div class="stat-card-body">
-                    <span class="stat-card-title stat-card-title--large stat-card-number stat-card-number-negative">
-                      <%= bootstrap_icon 'exclamation-triangle',
-                        width: 42, height: 42, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'what is ranking?'
-                        %>
-                    </span>
-                    <span class="stat-card-text">There was an issue <a href="#">
+                    <span class="stat-card-title stat-card-title--large stat-card-number  stat-card-number-neutral"><span class="extra-bold">-</span></span>
+                    <span class="stat-card-text">Data coming soon <a href="#">
                         <%= bootstrap_icon 'question-circle',
                         width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'what is ranking?'
                         %>
-                        <span class="visually-hidden">What does 'There was an issue' mean?</span>
+                        <span class="visually-hidden">What does 'Data coming soon' mean?</span>
                       </a>
                     </span>
                   </div>
                 </div>
               </div>
             </div>
-            <p class="mt-3">There's no stats because the data in the package isn't correct, or there's a technical issue</p>
+            <p class="mt-3">There&#39;s no stats right now but there will be soon (Eg. a feature that will make this possible is coming soon)</p>
+          </div>
+          <div>
+            <div class="card  well well--grey p-3 border-0">
+              <div class="card-body">
+                <h5 class="card-title card-title small">Dependent packages</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number stat-card-number-negative"><span class="extra-bold">?</span></span>
+                    <span class="stat-card-text">Data unavailable <a href="#">
+                        <%= bootstrap_icon 'question-circle',
+                        width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'what is ranking?'
+                        %>
+                        <span class="visually-hidden">What does &#39;Data unavailable&#39; mean?</span>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="mt-3">There&#39;s no stats because we can&#39;t get them due to a design or policy decision on behalf of the data provider</p>
+          </div>
+          <div>
+            <div class="card  well well--empty p-3">
+              <div class="card-body">
+                <h5 class="card-title card-title small">Dependent packages</h5>
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number stat-card-number-neutral"><span class="extra-bold">-</span></span>
+                    <span class="stat-card-text">Not applicable <a href="#">
+                        <%= bootstrap_icon 'question-circle',
+                        width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'what is ranking?'
+                        %>
+                        <span class="visually-hidden">What does &#39;Not applicable&#39; mean?</span>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="mt-3">There&#39;s no stats because this isn&#39;t applicable in this instance</p>
           </div>
         </div>
-      </div>
-    </div>
-  </article>
-   
-  <article>
-  <div class="bd-heading align-self-start mt-5 mb-3">
-    <h3>Dashboard widgets with charts</h3>
-    <h4>Component description</h4>
-    <p>Dashboard widgets with enough space for a chart.js chart</p>
-  </div>
-  <div class="row row-cols-1 row-cols-md-2 mb-3">
-    <div class="col">
-      <div class="card well p-3 my-3 border-0  h-100">
-        <div class="card-body">
-          <h5 class="card-title">Recurring donors</h5>
-          <div class="stat-card mb-2">
-            <div class="stat-card-body">
-              <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-              </span>
-              <span class="stat-card-text stat-card-text">65% last period</span>
+        <div>
+          <div class="three-equal-widgets">
+            <div>
+              <div class="card well border-0 p-3">
+                <div class="card-body">
+                  <h5 class="card-title card-title small">Dependent packages</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number stat-card-number-negative">
+                        <%= bootstrap_icon 'exclamation-triangle',
+                          width: 42, height: 42, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'what is ranking?'
+                          %>
+                      </span>
+                      <span class="stat-card-text">There was an issue <a href="#">
+                          <%= bootstrap_icon 'question-circle',
+                          width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'what is ranking?'
+                          %>
+                          <span class="visually-hidden">What does 'There was an issue' mean?</span>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3">There&#39;s no stats because the data in the package isn&#39;t correct, or there&#39;s a technical issue</p>
             </div>
           </div>
-          <div class="chart-wrapper">
-            <canvas id="donutChart1" width="400" height="400"></canvas>
-          </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card well p-3 my-3 border-0  h-100">
-        <div class="card-body">
-          <h5 class="card-title">Recurring donors</h5>
-          <div class="stat-card mb-2">
-            <div class="stat-card-body">
-              <span class="stat-card-title stat-card-title--large stat-card-number-negative">
-                75% <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-              </span>
-              <span class="stat-card-text stat-card-text">85% last period</span>
-            </div>
-          </div>
-          <div class="chart-wrapper">
-            <canvas id="donutChart2" width="400" height="400" ></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row row-cols-1 row-cols-md-2 mb-3">
-    <div class="col">
-      <div class="card well p-3 my-3 border-0 h-100">
-        <div class="card-body">
-          <h5 class="card-title">Commits</h5>
-          <div class="stat-card mb-2">
-            <div class="stat-card-body">
-              <span class="stat-card-title stat-card-title--large stat-card-number-negative">
-                110,978 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-              </span>
-              <span class="stat-card-text">111,262 last period</span>
-            </div>
-          </div>
-          <div class="chart-wrapper">
-            <canvas id="commitChart" width="400" height="210" ></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card well p-3 my-3 border-0 h-100">
-        <div class="card-body">
-          <h5 class="card-title">Commits</h5>
-          <div class="stat-card mb-2">
-            <div class="stat-card-body">
-              <span class="stat-card-title stat-card-title--large stat-card-number-neutral">
-                110,978
-              </span>
-              <span class="stat-card-text">111,262 last period</span>
-            </div>
-          </div>
-          <div class="chart-wrapper">
-            <canvas id="barChart" width="400" height="300" ></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
     </article>
-  <article>
-  <div class="bd-heading align-self-start mt-5 mb-3">
-    <h3>Dashboard user interface controls</h3>
-    <h4>Component description</h4>
-    <p>These controls give access to yearly or monthly comparison, with the ability to compare any two months or years in the past</p>
-  </div>
-  <h4 class="mt-5">Filtering controls</h4>
-  <fieldset class="dboard-filter-controls d-lg-flex align-items-lg-center justify-content-md-between well p-2 mb-4">
-    <legend class="visually-hidden">Date comparison selection</legend>
-    <div class="dboard-filter-controls__section">
-      <span class="small hide-large mt-2 mb-1" aria-hidden="true">Period</span>
-      <a class="btn btn-link active" href="/projects/52/productivity?range=year&amp;year=2025">Year</a>
-      <a class="btn btn-link " href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">Month</a>
-    </div>
-    <div class="dboard-filter-controls__comparison">
-      <div class="dboard-filter-controls__section">
-        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">Comparing</span>
-        
-        <button class="btn btn-link dropdown-toggle" type="button" id="previousPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-          2024
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="previousPeriodYearDropdown">
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2025&amp;range=year&amp;year=2025">2025</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2024&amp;range=year&amp;year=2025">2024</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2023&amp;range=year&amp;year=2025">2023</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2022&amp;range=year&amp;year=2025">2022</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2021&amp;range=year&amp;year=2025">2021</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2020&amp;range=year&amp;year=2025">2020</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2019&amp;range=year&amp;year=2025">2019</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2018&amp;range=year&amp;year=2025">2018</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2017&amp;range=year&amp;year=2025">2017</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2016&amp;range=year&amp;year=2025">2016</a>
-            </li>
-        </ul>
+   
+    <article id="dashboard-widget-charts">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Dashboard widgets with charts</h3>
+        <h4>Component description</h4>
+        <p>Dashboard widgets with enough space for a chart.js chart</p>
       </div>
-      <div class="dboard-filter-controls__section">
-        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">with</span>
+      <div class="row row-cols-1 row-cols-md-2 mb-3">
+        <div class="col">
+          <div class="card well p-3 my-3 border-0  h-100">
+            <div class="card-body">
+              <h5 class="card-title">Recurring donors</h5>
+              <div class="stat-card mb-2">
+                <div class="stat-card-body">
+                  <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                    75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                  </span>
+                  <span class="stat-card-text stat-card-text">65% last period</span>
+                </div>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="donutChart1" width="400" height="400"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card well p-3 my-3 border-0  h-100">
+            <div class="card-body">
+              <h5 class="card-title">Recurring donors</h5>
+              <div class="stat-card mb-2">
+                <div class="stat-card-body">
+                  <span class="stat-card-title stat-card-title--large stat-card-number-negative">
+                    75% <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                  </span>
+                  <span class="stat-card-text stat-card-text">85% last period</span>
+                </div>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="donutChart2" width="400" height="400" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2 mb-3">
+        <div class="col">
+          <div class="card well p-3 my-3 border-0 h-100">
+            <div class="card-body">
+              <h5 class="card-title">Commits</h5>
+              <div class="stat-card mb-2">
+                <div class="stat-card-body">
+                  <span class="stat-card-title stat-card-title--large stat-card-number-negative">
+                    110,978 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                  </span>
+                  <span class="stat-card-text">111,262 last period</span>
+                </div>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="commitChart" width="400" height="210" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card well p-3 my-3 border-0 h-100">
+            <div class="card-body">
+              <h5 class="card-title">Commits</h5>
+              <div class="stat-card mb-2">
+                <div class="stat-card-body">
+                  <span class="stat-card-title stat-card-title--large stat-card-number-neutral">
+                    110,978
+                  </span>
+                  <span class="stat-card-text">111,262 last period</span>
+                </div>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="barChart" width="400" height="300" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article id="dashboard-ui-controls">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Dashboard user interface controls</h3>
+        <h4>Component description</h4>
+        <p>These controls give access to yearly or monthly comparison, with the ability to compare any two months or years in the past</p>
+      </div>
+      <h4 class="mt-5">Filtering controls</h4>
+      <fieldset class="dboard-filter-controls d-lg-flex align-items-lg-center justify-content-md-between well p-2 mb-4">
+        <legend class="visually-hidden">Date comparison selection</legend>
+        <div class="dboard-filter-controls__section">
+          <span class="small hide-large mt-2 mb-1" aria-hidden="true">Period</span>
+          <a class="btn btn-link active" href="/projects/52/productivity?range=year&amp;year=2025">Year</a>
+          <a class="btn btn-link " href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">Month</a>
+        </div>
+        <div class="dboard-filter-controls__comparison">
+          <div class="dboard-filter-controls__section">
+            <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">Comparing</span>
             
-        <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-          2025
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="currentPeriodYearDropdown">
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2025">2025</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2024">2024</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2023">2023</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2022">2022</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2021">2021</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2020">2020</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2019">2019</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2018">2018</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2017">2017</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2016">2016</a>
-            </li>
+            <button class="btn btn-link dropdown-toggle" type="button" id="previousPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+              2024
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="previousPeriodYearDropdown">
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2025&amp;range=year&amp;year=2025">2025</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2024&amp;range=year&amp;year=2025">2024</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2023&amp;range=year&amp;year=2025">2023</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2022&amp;range=year&amp;year=2025">2022</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2021&amp;range=year&amp;year=2025">2021</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2020&amp;range=year&amp;year=2025">2020</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2019&amp;range=year&amp;year=2025">2019</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2018&amp;range=year&amp;year=2025">2018</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2017&amp;range=year&amp;year=2025">2017</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?previous_year=2016&amp;range=year&amp;year=2025">2016</a>
+                </li>
+            </ul>
+          </div>
+          <div class="dboard-filter-controls__section">
+            <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">with</span>
+                
+            <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+              2025
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="currentPeriodYearDropdown">
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2025">2025</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2024">2024</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2023">2023</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2022">2022</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2021">2021</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2020">2020</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2019">2019</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2018">2018</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2017">2017</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2016">2016</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </fieldset>
+          
+      <fieldset class="dboard-filter-controls d-lg-flex align-items-lg-center  justify-content-md-between well p-2 mb-4">
+        <legend class="visually-hidden">Date comparison selection</legend>
+        <div class="dboard-filter-controls__section" role="group">
+          <span class="small hide-large mt-2 mb-1">Period</span>
+          <a class="btn btn-link " href="/projects/52/productivity?range=year&amp;year=2025">Year</a>
+          <a class="btn btn-link active" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">Month</a>
+        </div>
+        <div class="dboard-filter-controls__comparison">
+          <div class="dboard-filter-controls__section">
+            <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">Comparing</span>
+            <button class="btn btn-link btn-link--d dropdown-toggle" type="button" id="previousPeriodMonthDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+              May
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="previousPeriodMonthDropdown">
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=1&amp;previous_year=2025&amp;range=month&amp;year=2025">January</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=2&amp;previous_year=2025&amp;range=month&amp;year=2025">February</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=3&amp;previous_year=2025&amp;range=month&amp;year=2025">March</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=4&amp;previous_year=2025&amp;range=month&amp;year=2025">April</a>
+                </li>
+                <li>
+                  <a class="dropdown-item active" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2025&amp;range=month&amp;year=2025">May</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=6&amp;previous_year=2025&amp;range=month&amp;year=2025">June</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=7&amp;previous_year=2025&amp;range=month&amp;year=2025">July</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=8&amp;previous_year=2025&amp;range=month&amp;year=2025">August</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=9&amp;previous_year=2025&amp;range=month&amp;year=2025">September</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=10&amp;previous_year=2025&amp;range=month&amp;year=2025">October</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=11&amp;previous_year=2025&amp;range=month&amp;year=2025">November</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=12&amp;previous_year=2025&amp;range=month&amp;year=2025">December</a>
+                </li>
+            </ul>
+            <button class="btn btn-link dropdown-toggle" type="button" id="previousPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+              2025
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="previousPeriodYearDropdown">
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2025&amp;range=month&amp;year=2025">2025</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2024&amp;range=month&amp;year=2025">2024</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2023&amp;range=month&amp;year=2025">2023</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2022&amp;range=month&amp;year=2025">2022</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2021&amp;range=month&amp;year=2025">2021</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2020&amp;range=month&amp;year=2025">2020</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2019&amp;range=month&amp;year=2025">2019</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2018&amp;range=month&amp;year=2025">2018</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2017&amp;range=month&amp;year=2025">2017</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2016&amp;range=month&amp;year=2025">2016</a>
+                </li>
+            </ul>
+          </div>
+          <div class="dboard-filter-controls__section">
+            <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">with</span>
+            <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodMonthDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+              June
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="currentPeriodMonthDropdown">
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=1&amp;range=month&amp;year=2025">January</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=2&amp;range=month&amp;year=2025">February</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=3&amp;range=month&amp;year=2025">March</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=4&amp;range=month&amp;year=2025">April</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=5&amp;range=month&amp;year=2025">May</a>
+                </li>
+                <li>
+                  <a class="dropdown-item active" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">June</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=7&amp;range=month&amp;year=2025">July</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=8&amp;range=month&amp;year=2025">August</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=9&amp;range=month&amp;year=2025">September</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=10&amp;range=month&amp;year=2025">October</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=11&amp;range=month&amp;year=2025">November</a>
+                </li>
+                <li>
+                  <a class="dropdown-item " href="/projects/52/productivity?month=12&amp;range=month&amp;year=2025">December</a>
+                </li>
+            </ul>
+            <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+              2025
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="currentPeriodYearDropdown">
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">2025</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2024">2024</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2023">2023</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2022">2022</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2021">2021</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2020">2020</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2019">2019</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2018">2018</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2017">2017</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2016">2016</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </fieldset>
+      <h4 class="mt-5">Navigation menu</h4>
+      <div style="max-width: 360px" class="mt-3">
+        <ul class="nav nav-pills flex-column dboard-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Productivity</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Responsiveness</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Finance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Engagement</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Adoption</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dependency</a>
+          </li>
         </ul>
       </div>
-    </div>
-  </fieldset>
-      
-  <fieldset class="dboard-filter-controls d-lg-flex align-items-lg-center  justify-content-md-between well p-2 mb-4">
-    <legend class="visually-hidden">Date comparison selection</legend>
-    <div class="dboard-filter-controls__section" role="group">
-      <span class="small hide-large mt-2 mb-1">Period</span>
-      <a class="btn btn-link " href="/projects/52/productivity?range=year&amp;year=2025">Year</a>
-      <a class="btn btn-link active" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">Month</a>
-    </div>
-    <div class="dboard-filter-controls__comparison">
-      <div class="dboard-filter-controls__section">
-        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">Comparing</span>
-        <button class="btn btn-link btn-link--d dropdown-toggle" type="button" id="previousPeriodMonthDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-          May
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="previousPeriodMonthDropdown">
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=1&amp;previous_year=2025&amp;range=month&amp;year=2025">January</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=2&amp;previous_year=2025&amp;range=month&amp;year=2025">February</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=3&amp;previous_year=2025&amp;range=month&amp;year=2025">March</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=4&amp;previous_year=2025&amp;range=month&amp;year=2025">April</a>
-            </li>
-            <li>
-              <a class="dropdown-item active" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2025&amp;range=month&amp;year=2025">May</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=6&amp;previous_year=2025&amp;range=month&amp;year=2025">June</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=7&amp;previous_year=2025&amp;range=month&amp;year=2025">July</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=8&amp;previous_year=2025&amp;range=month&amp;year=2025">August</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=9&amp;previous_year=2025&amp;range=month&amp;year=2025">September</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=10&amp;previous_year=2025&amp;range=month&amp;year=2025">October</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=11&amp;previous_year=2025&amp;range=month&amp;year=2025">November</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=6&amp;previous_month=12&amp;previous_year=2025&amp;range=month&amp;year=2025">December</a>
-            </li>
-        </ul>
-        <button class="btn btn-link dropdown-toggle" type="button" id="previousPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-          2025
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="previousPeriodYearDropdown">
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2025&amp;range=month&amp;year=2025">2025</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2024&amp;range=month&amp;year=2025">2024</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2023&amp;range=month&amp;year=2025">2023</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2022&amp;range=month&amp;year=2025">2022</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2021&amp;range=month&amp;year=2025">2021</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2020&amp;range=month&amp;year=2025">2020</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2019&amp;range=month&amp;year=2025">2019</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2018&amp;range=month&amp;year=2025">2018</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2017&amp;range=month&amp;year=2025">2017</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;previous_month=5&amp;previous_year=2016&amp;range=month&amp;year=2025">2016</a>
-            </li>
-        </ul>
+    </article>
+    <article id="dashboard-widget-config">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Widget configurations</h3>
+        <h4>Component description</h4>
+        <p>Different widget configurations available</p>
       </div>
-      <div class="dboard-filter-controls__section">
-        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">with</span>
-        <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodMonthDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-          June
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="currentPeriodMonthDropdown">
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=1&amp;range=month&amp;year=2025">January</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=2&amp;range=month&amp;year=2025">February</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=3&amp;range=month&amp;year=2025">March</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=4&amp;range=month&amp;year=2025">April</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=5&amp;range=month&amp;year=2025">May</a>
-            </li>
-            <li>
-              <a class="dropdown-item active" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">June</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=7&amp;range=month&amp;year=2025">July</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=8&amp;range=month&amp;year=2025">August</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=9&amp;range=month&amp;year=2025">September</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=10&amp;range=month&amp;year=2025">October</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=11&amp;range=month&amp;year=2025">November</a>
-            </li>
-            <li>
-              <a class="dropdown-item " href="/projects/52/productivity?month=12&amp;range=month&amp;year=2025">December</a>
-            </li>
-        </ul>
-        <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-          2025
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="currentPeriodYearDropdown">
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">2025</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2024">2024</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2023">2023</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2022">2022</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2021">2021</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2020">2020</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2019">2019</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2018">2018</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2017">2017</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?month=6&amp;range=month&amp;year=2016">2016</a>
-            </li>
-        </ul>
+      <div> 
+        <div class="dashboard-layout">
+          <div class="dashboard-layout__navigation">
+          </div>
+          <div class="dashboard-layout__dboard">
+            <h4>Three equal widgets</h4>
+            <div class="three-equal-widgets">
+              <div class="card well p-3 border-0">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card well p-3 border-0">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card well p-3 border-0">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 class="mt-5">Full width widget</h4>
+            <div class="dashboard-layout__dboard">
+              <div class="full-width-widget">
+                <div class="card well p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Commits</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--large stat-card-number-negative">
+                          110,978 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text stat-card-text">111,262 last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <h4 class="mt-5">Two thirds widgets</h4>
+            <div class="dashboard-layout__dboard">
+              <div class="two-thirds-widgets">
+                <div class="card two-thirds-widgets__large well p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                          75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text">65% last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card two-thirds-widgets__small well p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--small stat-card-number-positive">
+                          128,123,123 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text stat-card-text--small">128,123,127 last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 class="mt-5">Two thirds widgets reversed</h4>
+            <div class="dashboard-layout__dboard">
+              <div class="two-thirds-widgets">
+                <div class="card two-thirds-widgets__small well p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--small stat-card-number-positive">
+                          128,123,123 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text stat-card-text--small">128,123,127 last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card two-thirds-widgets__large well p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                          75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text">65% last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 class="mt-5">Two thirds widgets with a double row</h4>
+            <div class="dashboard-layout__dboard">
+              <div class="two-thirds-widget-group">
+                <div class="card two-thirds-widget-group__small well  p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                          75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text stat-card-text">65% last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card two-thirds-widget-group__small well p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                          75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text stat-card-text">65% last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card two-thirds-widget-group__large well p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                          75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text">65% last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 class="mt-5">Two thirds widgets with a double row reversed</h4>
+            <div class="dashboard-layout__dboard">
+              <div class="two-thirds-widget-group two-thirds-widget-group--reverse">
+                <div class="card two-thirds-widget-group__large well p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                          75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text">65% last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card two-thirds-widget-group__small well  p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                          75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text stat-card-text">65% last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card two-thirds-widget-group__small well p-3 border-0">
+                  <div class="card-body">
+                    <h5 class="card-title">Recurring donors</h5>
+                    <div class="stat-card mb-2">
+                      <div class="stat-card-body">
+                        <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                          75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                        </span>
+                        <span class="stat-card-text stat-card-text">65% last period</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 class="mt-5">One thirds widget with vertical stack</h4>
+            <div class="dashboard-layout__dboard">
+            <div class="one-third-widget-group">
+              <div class="card one-third-widget-group__large well p-3 border-0">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card one-third-widget-group__small well p-3 border-0">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card one-third-widget-group__small well p-3 border-0">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
       </div>
-    </div>
-  </fieldset>
-  <h4 class="mt-5">Navigation menu</h4>
-  <div style="max-width: 360px" class="mt-3">
-    <ul class="nav nav-pills flex-column dboard-nav">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Overview</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Productivity</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Responsiveness</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Finance</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Engagement</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Adoption</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Dependency</a>
-      </li>
-    </ul>
-  </div>
-  </article>
-  <article>
-    <div class="bd-heading align-self-start mt-5 mb-3">
-      <h3>Widget configurations</h3>
-      <h4>Component description</h4>
-      <p>Different widget configurations available</p>
-    </div>
-    <div>
-      
+    </article>
+    <article id="dashboard-layout">
+      <div class="bd-heading align-self-start mt-5 mb-3">
+        <h3>Dashboard layout</h3>
+        <h4>Component description</h4>
+        <p>This is a demonstration of a dashboard layout combining the navigation menu, filtering controls and the dashboard widgets</p>
+      </div>
       <div class="dashboard-layout">
         <div class="dashboard-layout__navigation">
+          <ul class="nav nav-pills flex-column dboard-nav me-4">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"  href="#">Productivity</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Responsiveness</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Finance</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Engagement</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Adoption</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dependency</a>
+            </li>
+          </ul>
         </div>
         <div class="dashboard-layout__dboard">
-          <h4>Three equal widgets</h4>
-          <div class="three-equal-widgets">
-            <div class="card well p-3 border-0">
-              <div class="card-body">
-                <h5 class="card-title">Recurring donors</h5>
-                <div class="stat-card mb-2">
-                  <div class="stat-card-body">
-                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                    </span>
-                    <span class="stat-card-text">65% last period</span>
+          <fieldset class="dboard-filter-controls d-lg-flex align-items-lg-center justify-content-md-between well p-2 mb-4">
+            <legend class="visually-hidden">Date comparison selection</legend>
+            <div class="dboard-filter-controls__section">
+              <span class="small hide-large mt-2 mb-1" aria-hidden="true">Period</span>
+              <a class="btn btn-link active" href="/projects/52/productivity?range=year&amp;year=2025">Year</a>
+              <a class="btn btn-link " href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">Month</a>
+            </div>
+            <div class="dboard-filter-controls__comparison">
+              <div class="dboard-filter-controls__section">
+                <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">Comparing</span>
+                
+                <button class="btn btn-link dropdown-toggle" type="button" id="previousPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                  2024
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="previousPeriodYearDropdown">
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2025&amp;range=year&amp;year=2025">2025</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2024&amp;range=year&amp;year=2025">2024</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2023&amp;range=year&amp;year=2025">2023</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2022&amp;range=year&amp;year=2025">2022</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2021&amp;range=year&amp;year=2025">2021</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2020&amp;range=year&amp;year=2025">2020</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2019&amp;range=year&amp;year=2025">2019</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2018&amp;range=year&amp;year=2025">2018</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2017&amp;range=year&amp;year=2025">2017</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/projects/52/productivity?previous_year=2016&amp;range=year&amp;year=2025">2016</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="dboard-filter-controls__section">
+                <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">with</span>
+                    
+                <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                  2025
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="currentPeriodYearDropdown">
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2025">2025</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2024">2024</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2023">2023</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2022">2022</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2021">2021</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2020">2020</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2019">2019</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2018">2018</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2017">2017</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2016">2016</a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="dashboard-grid">
+            <!-- Row 1: Three equal widgets -->
+            <div class="three-equal-widgets">
+              <div class="card well p-3 border-0">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card well p-3 border-0">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text">65% last period</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card well p-3 border-0">
+                <div class="card-body">
+                  <h5 class="card-title">Recurring donors</h5>
+                  <div class="stat-card mb-2">
+                    <div class="stat-card-body">
+                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
+                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
+                      </span>
+                      <span class="stat-card-text">65% last period</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card well p-3 border-0">
-              <div class="card-body">
-                <h5 class="card-title">Recurring donors</h5>
-                <div class="stat-card mb-2">
-                  <div class="stat-card-body">
-                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                    </span>
-                    <span class="stat-card-text">65% last period</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card well p-3 border-0">
-              <div class="card-body">
-                <h5 class="card-title">Recurring donors</h5>
-                <div class="stat-card mb-2">
-                  <div class="stat-card-body">
-                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                    </span>
-                    <span class="stat-card-text">65% last period</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h4 class="mt-5">Full width widget</h4>
-          <div class="dashboard-layout__dboard">
+            <!-- Row 2: Full-width chart -->
             <div class="full-width-widget">
               <div class="card well p-3 border-0">
                 <div class="card-body">
@@ -1088,13 +1460,13 @@
                       <span class="stat-card-text stat-card-text">111,262 last period</span>
                     </div>
                   </div>
+                  <div class="chart-wrapper">
+                    <canvas id="commitChart2" width="600  "></canvas>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <h4 class="mt-5">Two thirds widgets</h4>
-          <div class="dashboard-layout__dboard">
+            <!-- Row 3: Two thirds widgets -->
             <div class="two-thirds-widgets">
               <div class="card two-thirds-widgets__large well p-3 border-0">
                 <div class="card-body">
@@ -1123,40 +1495,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <h4 class="mt-5">Two thirds widgets reversed</h4>
-          <div class="dashboard-layout__dboard">
-            <div class="two-thirds-widgets">
-              <div class="card two-thirds-widgets__small well p-3 border-0">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--small stat-card-number-positive">
-                        128,123,123 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text--small">128,123,127 last period</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card two-thirds-widgets__large well p-3 border-0">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text">65% last period</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h4 class="mt-5">Two thirds widgets with a double row</h4>
-          <div class="dashboard-layout__dboard">
+
+            <!-- Row 4: Two thirds widgets with double row-->
             <div class="two-thirds-widget-group">
               <div class="card two-thirds-widget-group__small well  p-3 border-0">
                 <div class="card-body">
@@ -1195,790 +1535,438 @@
                       <span class="stat-card-text">65% last period</span>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h4 class="mt-5">Two thirds widgets with a double row reversed</h4>
-          <div class="dashboard-layout__dboard">
-            <div class="two-thirds-widget-group two-thirds-widget-group--reverse">
-              <div class="card two-thirds-widget-group__large well p-3 border-0">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text">65% last period</span>
-                    </div>
+                  <div id="chartContainer" class="chart-wrapper" role="img" aria-describedby="chartDesc">
+                    <canvas id="barChart2" tabindex="0"  width="400" height="300" style="margin-left: 150px;"></canvas>
                   </div>
-                </div>
-              </div>
-               <div class="card two-thirds-widget-group__small well  p-3 border-0">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card two-thirds-widget-group__small well p-3 border-0">
-                <div class="card-body">
-                  <h5 class="card-title">Recurring donors</h5>
-                  <div class="stat-card mb-2">
-                    <div class="stat-card-body">
-                      <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                        75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                      </span>
-                      <span class="stat-card-text stat-card-text">65% last period</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h4 class="mt-5">One thirds widget with vertical stack</h4>
-          <div class="dashboard-layout__dboard">
-          <div class="one-third-widget-group">
-            <div class="card one-third-widget-group__large well p-3 border-0">
-              <div class="card-body">
-                <h5 class="card-title">Recurring donors</h5>
-                <div class="stat-card mb-2">
-                  <div class="stat-card-body">
-                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                    </span>
-                    <span class="stat-card-text">65% last period</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card one-third-widget-group__small well p-3 border-0">
-              <div class="card-body">
-                <h5 class="card-title">Recurring donors</h5>
-                <div class="stat-card mb-2">
-                  <div class="stat-card-body">
-                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                    </span>
-                    <span class="stat-card-text">65% last period</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card one-third-widget-group__small well p-3 border-0">
-              <div class="card-body">
-                <h5 class="card-title">Recurring donors</h5>
-                <div class="stat-card mb-2">
-                  <div class="stat-card-body">
-                    <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                      75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                    </span>
-                    <span class="stat-card-text">65% last period</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>
-  </article>
-  <article>
-  <div class="bd-heading align-self-start mt-5 mb-3">
-    <h3>Dashboard layout</h3>
-    <h4>Component description</h4>
-    <p>This is a demonstration of a dashboard layout combining the navigation menu, filtering controls and the dashboard widgets</p>
-  </div>
-  <div class="dashboard-layout">
-    <div class="dashboard-layout__navigation">
-      <ul class="nav nav-pills flex-column dboard-nav me-4">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Overview</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page"  href="#">Productivity</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Responsiveness</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Finance</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Engagement</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Adoption</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Dependency</a>
-        </li>
-      </ul>
-    </div>
-    <div class="dashboard-layout__dboard">
-      <fieldset class="dboard-filter-controls d-lg-flex align-items-lg-center justify-content-md-between well p-2 mb-4">
-    <legend class="visually-hidden">Date comparison selection</legend>
-    <div class="dboard-filter-controls__section">
-      <span class="small hide-large mt-2 mb-1" aria-hidden="true">Period</span>
-      <a class="btn btn-link active" href="/projects/52/productivity?range=year&amp;year=2025">Year</a>
-      <a class="btn btn-link " href="/projects/52/productivity?month=6&amp;range=month&amp;year=2025">Month</a>
-    </div>
-    <div class="dboard-filter-controls__comparison">
-      <div class="dboard-filter-controls__section">
-        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">Comparing</span>
-        
-        <button class="btn btn-link dropdown-toggle" type="button" id="previousPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-          2024
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="previousPeriodYearDropdown">
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2025&amp;range=year&amp;year=2025">2025</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2024&amp;range=year&amp;year=2025">2024</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2023&amp;range=year&amp;year=2025">2023</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2022&amp;range=year&amp;year=2025">2022</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2021&amp;range=year&amp;year=2025">2021</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2020&amp;range=year&amp;year=2025">2020</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2019&amp;range=year&amp;year=2025">2019</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2018&amp;range=year&amp;year=2025">2018</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2017&amp;range=year&amp;year=2025">2017</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?previous_year=2016&amp;range=year&amp;year=2025">2016</a>
-            </li>
-        </ul>
-      </div>
-      <div class="dboard-filter-controls__section">
-        <span class="small mt-3 mt-lg-0 mb-1 mb-lg-0">with</span>
-            
-        <button class="btn btn-link dropdown-toggle" type="button" id="currentPeriodYearDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-          2025
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="currentPeriodYearDropdown">
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2025">2025</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2024">2024</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2023">2023</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2022">2022</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2021">2021</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2020">2020</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2019">2019</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2018">2018</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2017">2017</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/projects/52/productivity?range=year&amp;year=2016">2016</a>
-            </li>
-        </ul>
-      </div>
-    </div>
-  </fieldset>
 
-      <div class="dashboard-grid">
-        <!-- Row 1: Three equal widgets -->
-        <div class="three-equal-widgets">
-          <div class="card well p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title">Recurring donors</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                    75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                  </span>
-                  <span class="stat-card-text">65% last period</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card well p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title">Recurring donors</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                    75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                  </span>
-                  <span class="stat-card-text">65% last period</span>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <p id="chartDesc" class="visually-hidden">
+                    We need to describe the chart here, for example 'this bar chart shows commits over the last 3 months. January had 110,988 commits, February 232,000, and March 123,989'
+                  </p>
 
-          <div class="card well p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title">Recurring donors</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                    75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                  </span>
-                  <span class="stat-card-text">65% last period</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Row 2: Full-width chart -->
-        <div class="full-width-widget">
-          <div class="card well p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title">Commits</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number-negative">
-                    110,978 <%= bootstrap_icon 'caret-down-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                  </span>
-                  <span class="stat-card-text stat-card-text">111,262 last period</span>
-                </div>
-              </div>
-              <div class="chart-wrapper">
-                <canvas id="commitChart2" width="600  "></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Row 3: Two thirds widgets -->
-        <div class="two-thirds-widgets">
-          <div class="card two-thirds-widgets__large well p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title">Recurring donors</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                    75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                  </span>
-                  <span class="stat-card-text">65% last period</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card two-thirds-widgets__small well p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title">Recurring donors</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--small stat-card-number-positive">
-                    128,123,123 <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                  </span>
-                  <span class="stat-card-text stat-card-text--small">128,123,127 last period</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 4: Two thirds widgets with double row-->
-        <div class="two-thirds-widget-group">
-          <div class="card two-thirds-widget-group__small well  p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title">Recurring donors</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                    75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                  </span>
-                  <span class="stat-card-text stat-card-text">65% last period</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card two-thirds-widget-group__small well p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title">Recurring donors</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                    75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                  </span>
-                  <span class="stat-card-text stat-card-text">65% last period</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card two-thirds-widget-group__large well p-3 border-0">
-            <div class="card-body">
-              <h5 class="card-title">Recurring donors</h5>
-              <div class="stat-card mb-2">
-                <div class="stat-card-body">
-                  <span class="stat-card-title stat-card-title--large stat-card-number-positive">
-                    75% <%= bootstrap_icon 'caret-up-fill', width: 18, height: 18, class: 'flex-shrink-0' %>
-                  </span>
-                  <span class="stat-card-text">65% last period</span>
-                </div>
-              </div>
-              <div id="chartContainer" class="chart-wrapper" role="img" aria-describedby="chartDesc">
-                <canvas id="barChart2" tabindex="0"  width="400" height="300" style="margin-left: 150px;"></canvas>
-              </div>
-
-              <p id="chartDesc" class="visually-hidden">
-                We need to describe the chart here, for example 'this bar chart shows commits over the last 3 months. January had 110,988 commits, February 232,000, and March 123,989'
-              </p>
-
-            </div>
-          </div>
-        </div>
-        
       </div>
-    </div>
-</article>
-  <script type="text/javascript">
+    </article>
+    <script type="text/javascript">
 
 
-  const rootStyles = getComputedStyle(document.documentElement);
-  const esBlack       = rootStyles.getPropertyValue('--es-black').trim();
-  const esGreenLight  = rootStyles.getPropertyValue('--es-green-light').trim();
-  const esGreenDark   = rootStyles.getPropertyValue('--es-green-dark').trim();
-  const esOrangeLight = rootStyles.getPropertyValue('--es-orange-light').trim();
-  const esOrangeDark  = rootStyles.getPropertyValue('--es-orange-dark').trim();
-  const esPurple      = rootStyles.getPropertyValue('--es-purple').trim();
-  const esPurpleLight = rootStyles.getPropertyValue('--es-purple-light').trim();
-  const esPurpleDark  = rootStyles.getPropertyValue('--es-purple-dark').trim();
+      const rootStyles = getComputedStyle(document.documentElement);
+      const esBlack       = rootStyles.getPropertyValue('--es-black').trim();
+      const esGreenLight  = rootStyles.getPropertyValue('--es-green-light').trim();
+      const esGreenDark   = rootStyles.getPropertyValue('--es-green-dark').trim();
+      const esOrangeLight = rootStyles.getPropertyValue('--es-orange-light').trim();
+      const esOrangeDark  = rootStyles.getPropertyValue('--es-orange-dark').trim();
+      const esPurple      = rootStyles.getPropertyValue('--es-purple').trim();
+      const esPurpleLight = rootStyles.getPropertyValue('--es-purple-light').trim();
+      const esPurpleDark  = rootStyles.getPropertyValue('--es-purple-dark').trim();
 
-  // Global style defaults
-  Chart.defaults.font.family = "'Inter', sans-serif";
-  Chart.defaults.font.size = 14;
-  Chart.defaults.color = esBlack;
+      // Global style defaults
+      Chart.defaults.font.family = "'Inter', sans-serif";
+      Chart.defaults.font.size = 14;
+      Chart.defaults.color = esBlack;
 
-  // Donut Chart 1
-  const ctx1 = document.getElementById('donutChart1').getContext('2d');
-  const donutChart1 = new Chart(ctx1, {
-    type: 'doughnut',
-    data: {
-      labels: ['Recurring', 'One-off'],
-      datasets: [{
-        data: [75, 25],
-        backgroundColor: [esGreenDark, esGreenLight],
-        borderWidth: 0,
-        cutout: '55%'
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'right',
-          labels: {
-            usePointStyle: true,
-            boxWidth: 50,
-            padding: 18,
-            font: { size: 14 }
+      // Donut Chart 1
+      const ctx1 = document.getElementById('donutChart1').getContext('2d');
+      const donutChart1 = new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+          labels: ['Recurring', 'One-off'],
+          datasets: [{
+            data: [75, 25],
+            backgroundColor: [esGreenDark, esGreenLight],
+            borderWidth: 0,
+            cutout: '55%'
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: {
+                usePointStyle: true,
+                boxWidth: 50,
+                padding: 18,
+                font: { size: 14 }
+              }
+            }
           }
-        }
-      }
-    }
-  });
-
-  // Donut Chart 2
-  const ctx2 = document.getElementById('donutChart2').getContext('2d');
-  const donutChart2 = new Chart(ctx2, {
-    type: 'doughnut',
-    data: {
-      labels: ['Recurring', 'One-off'],
-      datasets: [{
-        data: [75, 25],
-        backgroundColor: [esOrangeDark, esOrangeLight],
-        borderWidth: 0,
-        cutout: '55%'
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'right',
-          labels: {
-            usePointStyle: true,
-            boxWidth: 50,
-            padding: 18,
-            font: { size: 14 }
-          }
-        }
-      }
-    }
-  });
-
-  // Commit Chart (Line Chart)
-  const ctx3 = document.getElementById('commitChart').getContext('2d');
-  const commitChart = new Chart(ctx3, {
-    type: 'line',
-    data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-      datasets: [{
-        label: 'Commits',
-        data: [90000, 100000, 110000, 120000, 115000, 110000],
-        borderColor: esOrangeDark,
-        borderWidth: 3,
-        pointRadius: 3,
-        tension: 0.4,
-        fill: true,
-        backgroundColor: 'rgba(239, 83, 80, 0.1)'
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      scales: {
-        x: {
-          display: false,
-          grid: { display: false }
-        },
-        y: {
-          display: false,
-          grid: { display: false },
-          beginAtZero: false,
-          max: 121000
-        }
-      },
-      plugins: {
-        legend: {
-          display: false,
-          usePointStyle: true
-        },
-        tooltip: { enabled: true }
-      }
-    }
-  });
-
-  // Commit Chart 2 (Line Chart)
-  const ctx6 = document.getElementById('commitChart2').getContext('2d');
-  const commitChart2 = new Chart(ctx6, {
-    type: 'line',
-    data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-      datasets: [{
-        label: 'Commits',
-        data: [90000, 100000, 110000, 120000, 115000, 110000],
-        borderColor: esOrangeDark,
-        borderWidth: 3,
-        pointRadius: 3,
-        tension: 0.4,
-        fill: true,
-        backgroundColor: 'rgba(239, 83, 80, 0.1)'
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          display: false,
-          grid: { display: false }
-        },
-        y: {
-          display: false,
-          grid: { display: false },
-          beginAtZero: false,
-          max: 121000
-        }
-      },
-      plugins: {
-        legend: {
-          display: false,
-          usePointStyle: true
-        },
-        tooltip: { enabled: true }
-      }
-    }
-  });
-
-  // Bar Chart
-  const ctx4 = document.getElementById('barChart').getContext('2d');
-  const data = {
-    labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6'],
-    datasets: [{
-      data: [65, 45, 80, 50, 95, 0],
-      backgroundColor: [
-        esPurpleLight,
-        esPurpleLight,
-        esPurpleLight,
-        esPurpleLight,
-        esPurpleLight,
-        esPurpleDark
-      ],
-      hoverBackgroundColor: [
-        esPurple,  // Hover color for the first bar
-        esPurple,  // Hover color for the second bar
-        esPurple,
-        esPurple,
-        esPurple,
-        esPurple   // Hover color for the last bar
-      ],
-      borderWidth: 0,
-      borderRadius: 5,
-      minBarLength: 2
-    }]
-  };
-
-  const myBarChart = new Chart(ctx4, {
-    type: 'bar',
-    data: data,
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      plugins: {
-        legend: { display: false },
-        tooltip: { enabled: true }
-      },
-      scales: {
-        x: {
-          display: true,
-          grid: { display: false }
-        },
-        y: {
-          display: false,
-          grid: { display: false },
-          beginAtZero: true
-        }
-      },
-      layout: {
-        padding: { top: 10, right: 10, bottom: 10, left: 10 }
-      }
-    }
-  });
-
-  // Bar Chart
-  const ctx8 = document.getElementById('barChart2').getContext('2d');
-  const data2 = {
-    labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6'],
-    datasets: [{
-      data: [65, 45, 80, 50, 95, 90],
-      backgroundColor: [
-        esPurpleLight,
-        esPurpleLight,
-        esPurpleLight,
-        esPurpleLight,
-        esPurpleLight,
-        esPurpleDark
-      ],
-      hoverBackgroundColor: [
-        esPurple,  // Hover color for the first bar
-        esPurple,  // Hover color for the second bar
-        esPurple,
-        esPurple,
-        esPurple,
-        esPurple   // Hover color for the last bar
-      ],
-      borderWidth: 0,
-      borderRadius: 1
-    }]
-  };
-
-  const myBarChart2 = new Chart(ctx8, {
-    type: 'bar',
-    data: data,
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      plugins: {
-        legend: { display: false },
-        tooltip: { enabled: true }
-      },
-      scales: {
-        x: {
-          display: false,
-          grid: { display: false }
-        },
-        y: {
-          display: false,
-          grid: { display: false },
-          beginAtZero: true
-        }
-      },
-      layout: {
-        padding: { top: 10, right: 10, bottom: 10, left: 10 }
-      }
-    }
-  });
-
-
-  document.addEventListener('DOMContentLoaded', () => {
-  // Create a ResizeObserver to monitor changes in .chart-wrapper elements
-  const resizeObserver = new ResizeObserver(entries => {
-    entries.forEach(entry => {
-      // Within each observed .chart-wrapper, find all canvas elements
-      entry.target.querySelectorAll('canvas').forEach(canvas => {
-        // Retrieve the Chart instance tied to this canvas
-        const chartInstance = Chart.getChart(canvas);
-        if (chartInstance) {
-          // Resize the chart instance to match the parent container
-          chartInstance.resize();
         }
       });
+
+      // Donut Chart 2
+      const ctx2 = document.getElementById('donutChart2').getContext('2d');
+      const donutChart2 = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Recurring', 'One-off'],
+          datasets: [{
+            data: [75, 25],
+            backgroundColor: [esOrangeDark, esOrangeLight],
+            borderWidth: 0,
+            cutout: '55%'
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: {
+                usePointStyle: true,
+                boxWidth: 50,
+                padding: 18,
+                font: { size: 14 }
+              }
+            }
+          }
+        }
+      });
+
+      // Commit Chart (Line Chart)
+      const ctx3 = document.getElementById('commitChart').getContext('2d');
+      const commitChart = new Chart(ctx3, {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [{
+            label: 'Commits',
+            data: [90000, 100000, 110000, 120000, 115000, 110000],
+            borderColor: esOrangeDark,
+            borderWidth: 3,
+            pointRadius: 3,
+            tension: 0.4,
+            fill: true,
+            backgroundColor: 'rgba(239, 83, 80, 0.1)'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            x: {
+              display: false,
+              grid: { display: false }
+            },
+            y: {
+              display: false,
+              grid: { display: false },
+              beginAtZero: false,
+              max: 121000
+            }
+          },
+          plugins: {
+            legend: {
+              display: false,
+              usePointStyle: true
+            },
+            tooltip: { enabled: true }
+          }
+        }
+      });
+
+      // Commit Chart 2 (Line Chart)
+      const ctx6 = document.getElementById('commitChart2').getContext('2d');
+      const commitChart2 = new Chart(ctx6, {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [{
+            label: 'Commits',
+            data: [90000, 100000, 110000, 120000, 115000, 110000],
+            borderColor: esOrangeDark,
+            borderWidth: 3,
+            pointRadius: 3,
+            tension: 0.4,
+            fill: true,
+            backgroundColor: 'rgba(239, 83, 80, 0.1)'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              display: false,
+              grid: { display: false }
+            },
+            y: {
+              display: false,
+              grid: { display: false },
+              beginAtZero: false,
+              max: 121000
+            }
+          },
+          plugins: {
+            legend: {
+              display: false,
+              usePointStyle: true
+            },
+            tooltip: { enabled: true }
+          }
+        }
+      });
+
+      // Bar Chart
+      const ctx4 = document.getElementById('barChart').getContext('2d');
+      const data = {
+        labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6'],
+        datasets: [{
+          data: [65, 45, 80, 50, 95, 0],
+          backgroundColor: [
+            esPurpleLight,
+            esPurpleLight,
+            esPurpleLight,
+            esPurpleLight,
+            esPurpleLight,
+            esPurpleDark
+          ],
+          hoverBackgroundColor: [
+            esPurple,  // Hover color for the first bar
+            esPurple,  // Hover color for the second bar
+            esPurple,
+            esPurple,
+            esPurple,
+            esPurple   // Hover color for the last bar
+          ],
+          borderWidth: 0,
+          borderRadius: 5,
+          minBarLength: 2
+        }]
+      };
+
+      const myBarChart = new Chart(ctx4, {
+        type: 'bar',
+        data: data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: true }
+          },
+          scales: {
+            x: {
+              display: true,
+              grid: { display: false }
+            },
+            y: {
+              display: false,
+              grid: { display: false },
+              beginAtZero: true
+            }
+          },
+          layout: {
+            padding: { top: 10, right: 10, bottom: 10, left: 10 }
+          }
+        }
+      });
+
+      // Bar Chart
+      const ctx8 = document.getElementById('barChart2').getContext('2d');
+      const data2 = {
+        labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6'],
+        datasets: [{
+          data: [65, 45, 80, 50, 95, 90],
+          backgroundColor: [
+            esPurpleLight,
+            esPurpleLight,
+            esPurpleLight,
+            esPurpleLight,
+            esPurpleLight,
+            esPurpleDark
+          ],
+          hoverBackgroundColor: [
+            esPurple,  // Hover color for the first bar
+            esPurple,  // Hover color for the second bar
+            esPurple,
+            esPurple,
+            esPurple,
+            esPurple   // Hover color for the last bar
+          ],
+          borderWidth: 0,
+          borderRadius: 1
+        }]
+      };
+
+      const myBarChart2 = new Chart(ctx8, {
+        type: 'bar',
+        data: data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: true }
+          },
+          scales: {
+            x: {
+              display: false,
+              grid: { display: false }
+            },
+            y: {
+              display: false,
+              grid: { display: false },
+              beginAtZero: true
+            }
+          },
+          layout: {
+            padding: { top: 10, right: 10, bottom: 10, left: 10 }
+          }
+        }
+      });
+
+
+      document.addEventListener('DOMContentLoaded', () => {
+      // Create a ResizeObserver to monitor changes in .chart-wrapper elements
+      const resizeObserver = new ResizeObserver(entries => {
+        entries.forEach(entry => {
+          // Within each observed .chart-wrapper, find all canvas elements
+          entry.target.querySelectorAll('canvas').forEach(canvas => {
+            // Retrieve the Chart instance tied to this canvas
+            const chartInstance = Chart.getChart(canvas);
+            if (chartInstance) {
+              // Resize the chart instance to match the parent container
+              chartInstance.resize();
+            }
+          });
+        });
+      });
+
+      // Attach the ResizeObserver to every element with the class .chart-wrapper
+      document.querySelectorAll('.chart-wrapper').forEach(wrapper => {
+        resizeObserver.observe(wrapper);
+      });
     });
-  });
 
-  // Attach the ResizeObserver to every element with the class .chart-wrapper
-  document.querySelectorAll('.chart-wrapper').forEach(wrapper => {
-    resizeObserver.observe(wrapper);
-  });
-});
+    </script>
 
-</script>
-
-    
-
-	<h2>Bootstrap components ecosyste.ms combines and customises</h2>
-	<article class="my-3">
+    <h2>Bootstrap components ecosyste.ms combines and customises</h2>
+    <article class="my-3" id="nav-tabs-badges">
       <div class="align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
         <h3>Nav in tabs with badges</h3>
       </div>
-			<ul class="nav nav-tabs my-3">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page">
-						Projects
-						<span class="badge bg-secondary rounded-pill">
-							17,540
-						</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/papers">
-						Papers
-						<span class="badge bg-secondary rounded-pill">
-							277,365
-						</span>
-					</a>
-				</li>
-						<li class="nav-item ms-auto">
-					<div class="dropdown">
-						<button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Sort
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item " href="/projects?order=asc&amp;sort=ecosystem">Ecosystem</a></li>
-							<li><a class="dropdown-item " href="/projects?order=asc&amp;sort=name">Name</a></li>
-							<li><a class="dropdown-item " href="/projects?order=desc&amp;sort=mentions_count">Mentions</a></li>
-						</ul>
-					</div>
-				</li>
-			</ul>
-	</article>
+      <ul class="nav nav-tabs my-3">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page">
+            Projects
+            <span class="badge bg-secondary rounded-pill">
+              17,540
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/papers">
+            Papers
+            <span class="badge bg-secondary rounded-pill">
+              277,365
+            </span>
+          </a>
+        </li>
+            <li class="nav-item ms-auto">
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sort
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item " href="/projects?order=asc&amp;sort=ecosystem">Ecosystem</a></li>
+              <li><a class="dropdown-item " href="/projects?order=asc&amp;sort=name">Name</a></li>
+              <li><a class="dropdown-item " href="/projects?order=desc&amp;sort=mentions_count">Mentions</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </article>
 
+	  <article class="my-3" id="list-group-badges">
+      <div class="align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+        <h3>List group with badges</h3>
+      </div>
+      <div class="card mb-3 "  style="max-width: 500px;">
+        <div class="card-header">
+          Keywords
+        </div>
+        <div class="list-group list-group-flush">
+          <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=lists">
+            lists
+            <span class="badge bg-primary rounded-pill">193</span>
+          </a>
+          <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=javascript">
+            javascript
+            <span class="badge bg-primary rounded-pill">177</span>
+          </a>
+          <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=ai">
+            ai
+            <span class="badge bg-primary rounded-pill">160</span>
+          </a>
+          <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=programming">
+            programming
+            <span class="badge bg-primary rounded-pill">155</span>
+          </a>
+          <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=security">
+            security
+            <span class="badge bg-primary rounded-pill">153</span>
+          </a>
+          <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active" href="/lists?topic=computer-vision">
+            computer-vision
+            <span class="badge bg-primary rounded-pill">133</span>
+          </a>
+          <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=artificial-intelligence">
+            artificial-intelligence
+            <span class="badge bg-primary rounded-pill">131</span>
+          </a>
+        </div>
+      </div>
+	  </article>
 
-
-	<article class="my-3">
-		<div class="align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
-			<h3>List group with badges</h3>
-		</div>
-		<div class="card mb-3 "  style="max-width: 500px;">
-			<div class="card-header">
-				Keywords
-			</div>
-			<div class="list-group list-group-flush">
-					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=lists">
-						lists
-						<span class="badge bg-primary rounded-pill">193</span>
-					</a>
-					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=javascript">
-						javascript
-						<span class="badge bg-primary rounded-pill">177</span>
-					</a>
-					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=ai">
-						ai
-						<span class="badge bg-primary rounded-pill">160</span>
-					</a>
-					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=programming">
-						programming
-						<span class="badge bg-primary rounded-pill">155</span>
-					</a>
-					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=security">
-						security
-						<span class="badge bg-primary rounded-pill">153</span>
-					</a>
-					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active" href="/lists?topic=computer-vision">
-						computer-vision
-						<span class="badge bg-primary rounded-pill">133</span>
-					</a>
-					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center " href="/lists?topic=artificial-intelligence">
-						artificial-intelligence
-						<span class="badge bg-primary rounded-pill">131</span>
-					</a>
-			</div>
-		</div>
-	</article>
-
-	<article class="my-3">
-		<div class="align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
-			<h3>Tables that support small screens</h3>
-		</div>
-		<p><code>.table-wrapper</code> and <code>.table-responsive-lg</code> are used to wrap tables that support small screens. On a small screen the table will overflow, and display a drop shadow to indicate the ability to scroll horizontally</p>
-		<div class="bd-example-snippet bd-code-snippet">
-			<div class="bd-example m-0 border-0">
-				<div class="table-wrapper table-responsive-lg" role="group" tabindex="0" aria-labelledby="table-caption">
-					<figure>
-						<figcaption id="table-caption" class="mb-4">
-							<h2 class="visually-hidden">Table example</h2>
-						</figcaption>
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">First</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td colspan="2">Larry the legend</td>
-								<td>@twitter</td>
-							</tr>
-						</tbody>
-					</table>
-				</figure>
-			</div>
-		</div>
-	</article>
+    <article class="my-3" id="responsive-tables">
+      <div class="align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+        <h3>Tables that support small screens</h3>
+      </div>
+      <p><code>.table-wrapper</code> and <code>.table-responsive-lg</code> are used to wrap tables that support small screens. On a small screen the table will overflow, and display a drop shadow to indicate the ability to scroll horizontally</p>
+      <div class="bd-example-snippet bd-code-snippet">
+        <div class="bd-example m-0 border-0">
+          <div class="table-wrapper table-responsive-lg" role="group" tabindex="0" aria-labelledby="table-caption">
+            <figure>
+              <figcaption id="table-caption" class="mb-4">
+                <h2 class="visually-hidden">Table example</h2>
+              </figcaption>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the legend</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+        </div>
+      </div>
+    </article>
 
 
 	<h2 class="mb-4">Bootstrap components</h2>
