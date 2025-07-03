@@ -24,3 +24,5 @@
 #   # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only
 #   # config.content_security_policy_report_only = true
 # end
+
+SecureHeaders::Configuration.default

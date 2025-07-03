@@ -229,6 +229,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    secure_headers (7.1.0)
     securerandom (0.4.1)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
@@ -278,6 +279,7 @@ DEPENDENCIES
   rails (~> 8.0.0)
   rails-controller-testing
   sassc-rails
+  secure_headers (~> 7.1)
   sprockets-rails
 
 CHECKSUMS
@@ -367,6 +369,7 @@ CHECKSUMS
   reline (0.6.1) sha256=1afcc9d7cb1029cdbe780d72f2f09251ce46d3780050f3ec39c3ccc6b60675fb
   sassc (2.4.0) sha256=4c60a2b0a3b36685c83b80d5789401c2f678c1652e3288315a1551d811d9f83e
   sassc-rails (2.1.2) sha256=5f4fdf3881fc9bdc8e856ffbd9850d70a2878866feae8114aa45996179952db5
+  secure_headers (7.1.0) sha256=6b1f9d5f9507af2948f4636452c41c09371927836396c2185438ffdf0a731124
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   sprockets (4.2.2) sha256=761e5a49f1c288704763f73139763564c845a8f856d52fba013458f8af1b59b1
   sprockets-rails (3.5.2) sha256=a9e88e6ce9f8c912d349aa5401509165ec42326baf9e942a85de4b76dbc4119e
