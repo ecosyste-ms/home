@@ -1333,3 +1333,67 @@ a.project-badge {
     background-color: $color-purple !important;
   }
 }
+
+/* Generic homepages */
+
+.generic-home__hero {
+  .lead {
+    max-width: 42rem;
+  }
+}
+
+.generic-home__hero__para {
+  max-width: 44ch;
+}
+
+.generic-home__hero--center {
+  text-align: center;
+  .lead {
+    margin: 0 auto;
+  }
+}
+
+.generic-home__hero--left {
+  
+}
+
+.generic-home__benefits {
+  p {
+    @include media-breakpoint-up(lg) {
+      max-width: 32ch;
+    }
+  }
+}
+
+.generic-home__ecosystems-banner {
+
+  padding-bottom: 300px;
+  padding-top: 3rem;
+
+  background-image: asset-url('advisories-screen.png');
+  background-size: 426px 270px; //25%
+  background-repeat: no-repeat;
+
+  background-position-x: 50%;
+  background-position-y: 107%;
+
+  @include media-breakpoint-up(md) {
+    background-size: 852px 540px; //50%
+    background-position-y: 220%;
+  }
+
+  @include media-breakpoint-up(lg) {
+    background-position-x: calc(50% + 440px);
+    background-position-y: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.scrollable-window {
+  max-height: 28rem;
+}
+
+.scrollable-window--vulnerability-list {
+
+}
