@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="col-md-6 col-lg-5">
               <div class="card-body">
                 <span class="badge bg-primary">New</span>
-                <h3 class="card-title mt-3">Ecosyste.ms funds</h3>
+                <h3 id="funds" class="card-title mt-3">Ecosyste.ms funds</h3>
                 <p class="card-text">Sponsor the technology you rely on, we’ll do the rest</p>
                 <p class="card-text"><a href="https://funds.ecosyste.ms">Find out more</a></p>
               </div>
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <%= image_tag(section[:icon], alt: " ", class: "img-fluid", size: "96x96") %>
               </div>		
               <div class="col-9 col-md-10 col-xl-11">	
-                <h3 class="h2 mt-4 mb-1"><%= section[:name] %></h3>
+                <h3 id="<%= section[:name].downcase.gsub(/\s+/, '-') %>" class="h2 mt-4 mb-1"><%= section[:name] %></h3>
                 <p><%= section[:description] %></p>
               </div>
             </div>
