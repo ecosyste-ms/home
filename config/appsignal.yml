@@ -3,3 +3,4 @@ production:
     - ActiveRecord::RecordNotFound
     - ActionController::RoutingError
     - ActionDispatch::Http::MimeNegotiation::InvalidType 
+    - ActionController::UnknownFormat
