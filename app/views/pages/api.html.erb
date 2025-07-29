@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 ">
+      <h1 class="page-content__title display-2">API Documentation</h1>
+
+      <p class="lead">Explore the ecosyste.ms APIs to access open source package ecosystem data programmatically.</p>
+
+      <p>All APIs follow OpenAPI 3.0.1 specifications and are available under CC-BY-SA-4.0 license. Each service provides both machine-readable specifications and interactive documentation.</p>
+
+      <div class="mb-4">
+        <h2>Root OpenAPI Specification</h2>
+        <p>A consolidated specification that references all individual service APIs:</p>
+        <div class="api-link">
+          <a href="/openapi.yml" class="btn btn-primary rounded-pill">Download openapi.yml</a>
+        </div>
+      </div>
+
+      <% Service.sections.each do |section| %>
+        <% services_with_apis = section[:services].select { |service| @services_with_apis.any? { |api_service| api_service[:url] == service[:url] } } %>
+        <% if services_with_apis.any? %>
+          <div class="api-section mb-5">
+            <h2><%= section[:name] %></h2>
+            <p class="text-muted"><%= section[:description] %></p>
+            
+            <div class="row">
+              <% services_with_apis.each do |service| %>
+                <% api_service = @services_with_apis.find { |s| s[:url] == service[:url] } %>
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= service[:name] %></h5>
+                      <p class="card-text"><%= service[:description] %></p>
+                      <div class="api-links">
+                        <a href="<%= api_service[:api_url] %>" class="btn btn-outline-primary btn-sm">OpenAPI Spec</a>
+                        <a href="<%= api_service[:docs_url] %>" class="btn btn-outline-secondary btn-sm">Interactive Docs</a>
+                        <a href="<%= service[:url] %>" class="btn btn-outline-info btn-sm">Service</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="api-section mb-5">
+        <h2>Services without APIs</h2>
+        <p class="text-muted">The following services provide web interfaces only:</p>
+        <ul>
+          <li><strong>Digest</strong> - Check the integrity of a package or repository (<a href="https://digest.ecosyste.ms">digest.ecosyste.ms</a>)</li>
+          <li><strong>Funds</strong> - Support your core open source dependencies (<a href="https://funds.ecosyste.ms">funds.ecosyste.ms</a>)</li>
+        </ul>
+      </div>
+
+      <div class="api-section">
+        <h2>Getting Started</h2>
+        <p>All APIs follow consistent patterns:</p>
+        <ul>
+          <li><strong>Base URL</strong>: <code>https://{service}.ecosyste.ms/api/v1</code></li>
+          <li><strong>OpenAPI Spec</strong>: <code>https://{service}.ecosyste.ms/docs/api/v1/openapi.yaml</code></li>
+          <li><strong>Interactive Docs</strong>: <code>https://{service}.ecosyste.ms/docs</code></li>
+          <li><strong>Format</strong>: JSON responses</li>
+          <li><strong>Authentication</strong>: Most endpoints are public, some may require API keys</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

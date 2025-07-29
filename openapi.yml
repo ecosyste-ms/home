@@ -1,0 +1,120 @@
+openapi: 3.0.1
+info:
+  title: Ecosyste.ms APIs
+  description: |
+    Root OpenAPI specification that references all ecosyste.ms service APIs.
+    
+    Ecosyste.ms provides datasets and tools for open source package ecosystems.
+    This specification aggregates all available APIs across the platform for easy discovery.
+    
+    For more information about ecosyste.ms, visit https://ecosyste.ms
+  version: "1.0.0"
+  license:
+    name: CC-BY-SA-4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+  contact:
+    url: https://ecosyste.ms
+servers:
+  - url: https://ecosyste.ms
+    description: Ecosyste.ms documentation hub
+
+paths: {}
+
+components:
+  schemas:
+    ServiceReference:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        api_url:
+          type: string
+          format: uri
+        docs_url:
+          type: string  
+          format: uri
+
+tags:
+  - name: Data Services
+    description: Core ecosyste.ms datasets
+    externalDocs:
+      description: API specifications for data services
+      url: https://ecosyste.ms
+  - name: Tools
+    description: Use ecosystems intelligence to get things done
+    externalDocs:
+      description: API specifications for tool services
+      url: https://ecosyste.ms
+  - name: Indexes
+    description: Additional data powering ecosyste.ms core services
+    externalDocs:
+      description: API specifications for index services
+      url: https://ecosyste.ms
+  - name: Experiments
+    description: Demonstrator datasets and services
+    externalDocs:
+      description: API specifications for experimental services
+      url: https://ecosyste.ms
+
+externalDocs:
+  description: |
+    Individual Service APIs:
+
+    ## Data Services
+    - **Packages API**: https://packages.ecosyste.ms/docs/api/v1/openapi.yaml
+      Metadata for 10.7m packages across 63 sources
+    - **Repositories API**: https://repos.ecosyste.ms/docs/api/v1/openapi.yaml
+      Metadata for 230m packages across 1877 sources
+    - **Advisories API**: https://advisories.ecosyste.ms/docs/api/v1/openapi.yaml
+      Metadata for 20k security advisories across 12 languages
+
+    ## Tools
+    - **Dependency Parser API**: https://parser.ecosyste.ms/docs/api/v1/openapi.yaml
+      Resolve the full dependency tree for a repository
+    - **Dependency Resolver API**: https://resolve.ecosyste.ms/docs/api/v1/openapi.yaml
+      Resolve the full dependency tree for a package
+    - **SBOM Parser API**: https://sbom.ecosyste.ms/docs/api/v1/openapi.yaml
+      Parse and convert between SBOM file formats
+    - **License Parser API**: https://licenses.ecosyste.ms/docs/api/v1/openapi.yaml
+      Extract license metadata from a package or repository
+    - **Archives API**: https://archives.ecosyste.ms/docs/api/v1/openapi.yaml
+      Inspect the contents of a package or repository
+    - **Diff API**: https://diff.ecosyste.ms/docs/api/v1/openapi.yaml
+      Compare the contents of two packages or repositories
+    - **Summary API**: https://summary.ecosyste.ms/docs/api/v1/openapi.yaml
+      Produce an overview of a list of open source projects
+
+    ## Indexes
+    - **Timeline API**: https://timeline.ecosyste.ms/docs/api/v1/openapi.yaml
+      6 billion events for every public repo on GitHub
+    - **Commits API**: https://commits.ecosyste.ms/docs/api/v1/openapi.yaml
+      570 million commits across 2.3 million repositories
+    - **Issues API**: https://issues.ecosyste.ms/docs/api/v1/openapi.yaml
+      20.9 million issues and 44 million pull requests across 5.4 million repositories
+    - **Sponsors API**: https://sponsors.ecosyste.ms/docs/api/v1/openapi.yaml
+      31k maintainers and 125k sponsors on GitHub Sponsors
+    - **Docker API**: https://docker.ecosyste.ms/docs/api/v1/openapi.yaml
+      600k Docker images and their dependencies from Docker Hub
+    - **Open Collective API**: https://opencollective.ecosyste.ms/docs/api/v1/openapi.yaml
+      $48m in open source grants, donations, and sponsorships from Open Collective
+    - **Dependabot API**: https://dependabot.ecosyste.ms/docs/api/v1/openapi.yaml
+      1.2 million pull requests opened by Dependabot
+
+    ## Experiments
+    - **OST API**: https://ost.ecosyste.ms/docs/api/v1/openapi.yaml
+      A curated list of technology projects protecting and sustaining our climate and environment
+    - **Papers API**: https://papers.ecosyste.ms/docs/api/v1/openapi.yaml
+      Indexing and attributing open source software mentioned in academic papers
+    - **Awesome API**: https://awesome.ecosyste.ms/docs/api/v1/openapi.yaml
+      Tracking thousands of "awesome lists" on GitHub
+
+    ## Services without APIs
+    - **Digest**: https://digest.ecosyste.ms (Web interface only)
+    - **Funds**: https://funds.ecosyste.ms (Web interface only)
+
+    ## Interactive Documentation
+    Each service provides Swagger UI documentation at:
+    https://{service}.ecosyste.ms/docs
+  url: https://ecosyste.ms

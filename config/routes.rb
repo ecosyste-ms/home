@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/privacy', to: 'pages#privacy'
   get '/terms', to: 'pages#terms'
+  get '/api', to: 'pages#api'
+  get '/openapi.yml', to: 'pages#openapi'
 
   get '/styleguide', to: 'pages#styleguide'
 
