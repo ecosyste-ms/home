@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/terms', to: 'pages#terms'
   get '/api', to: 'pages#api'
   get '/openapi.yml', to: 'pages#openapi'
+  get '/commercial', to: 'pages#commercial'
 
   get '/styleguide', to: 'pages#styleguide'
 
