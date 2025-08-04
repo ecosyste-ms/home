@@ -280,12 +280,12 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   ostruct
-  pg (~> 1.5)
-  puma (~> 6.4)
+  pg
+  puma
   rails (~> 8.0.0)
   rails-controller-testing
   sassc-rails
-  secure_headers (~> 7.1)
+  secure_headers
   sprockets-rails
 
 CHECKSUMS
