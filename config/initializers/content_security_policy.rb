@@ -4,6 +4,8 @@
 # For further information see the following documentation
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
+SecureHeaders::Configuration.default
+
 # Rails.application.configure do
 #   config.content_security_policy do |policy|
 #     policy.default_src :self, :https
@@ -24,5 +26,3 @@
 #   # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only
 #   # config.content_security_policy_report_only = true
 # end
-
-SecureHeaders::Configuration.default
