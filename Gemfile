@@ -4,9 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby file: ".ruby-version"
 
 gem "rails", "~> 8.0.0"
+
+gem "secure_headers"
 gem "sprockets-rails"
-gem "pg", "~> 1.5"
-gem "puma", "~> 6.4"
+gem "pg"
+gem "puma"
 gem "jbuilder"
 gem "sassc-rails"
 gem 'bootstrap'
@@ -19,4 +21,4 @@ group :test do
   gem "rails-controller-testing"
 end
 
-gem "secure_headers", "~> 7.1"
+gem "secure_headers"
