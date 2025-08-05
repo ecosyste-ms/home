@@ -304,10 +304,14 @@
 }
 
 .commercial-hero {
+	background-image: asset-url('pipes.svg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: 238px 524px;
+	padding-top: 524px;
 	@include media-breakpoint-up(lg) {
-		background-image: asset-url('pipes.svg');
-		background-repeat: no-repeat;
 		background-position: right -100px;
 		background-size: 476px 1048px;
+		padding-top: 0;
 	}
 }
