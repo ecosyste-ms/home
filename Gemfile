@@ -20,5 +20,3 @@ gem 'ostruct'
 group :test do
   gem "rails-controller-testing"
 end
-
-gem "secure_headers"
