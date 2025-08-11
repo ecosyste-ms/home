@@ -314,3 +314,25 @@
 		padding-top: 0;
 	}
 }
+
+.three-equal-widgets--wrap-sooner {
+  /* 
+   * variant that wraps sooner at lg rather than md, just used for commercial homepage but maybe we'll bring it to the main dashboard?
+   */
+  @include media-breakpoint-up(lg) { 
+    grid-template-columns: repeat(2, 1fr);
+    > .card:first-child {
+      grid-column: span 2;
+    }
+  }
+  @include media-breakpoint-up(xl) { 
+    grid-template-columns: repeat(3, 1fr);
+    > .card:first-child {
+      grid-column: span 1;
+    }
+  }
+}
+
+.nobr {
+  white-space: nowrap;
+}
