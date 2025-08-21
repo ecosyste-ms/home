@@ -64,11 +64,11 @@ externalDocs:
 
     ## Data Services
     - **Packages API**: https://packages.ecosyste.ms/docs/api/v1/openapi.yaml
-      Metadata for 10.7m packages across 63 sources
+      Metadata for 11.7m packages across 63 sources
     - **Repositories API**: https://repos.ecosyste.ms/docs/api/v1/openapi.yaml
-      Metadata for 230m packages across 1877 sources
+      Metadata for 278m repositories across 1,938 sources
     - **Advisories API**: https://advisories.ecosyste.ms/docs/api/v1/openapi.yaml
-      Metadata for 20k security advisories across 12 languages
+      Metadata for 24k security advisories across 12 languages
 
     ## Tools
     - **Dependency Parser API**: https://parser.ecosyste.ms/docs/api/v1/openapi.yaml
@@ -90,17 +90,17 @@ externalDocs:
     - **Timeline API**: https://timeline.ecosyste.ms/docs/api/v1/openapi.yaml
       6 billion events for every public repo on GitHub
     - **Commits API**: https://commits.ecosyste.ms/docs/api/v1/openapi.yaml
-      570 million commits across 2.3 million repositories
+      882 million commits across 2.3 million repositories
     - **Issues API**: https://issues.ecosyste.ms/docs/api/v1/openapi.yaml
-      20.9 million issues and 44 million pull requests across 5.4 million repositories
+      16 million issues and 38 million pull requests across 8.5 million repositories
     - **Sponsors API**: https://sponsors.ecosyste.ms/docs/api/v1/openapi.yaml
-      31k maintainers and 125k sponsors on GitHub Sponsors
+      34k maintainers and 150k sponsors on GitHub Sponsors
     - **Docker API**: https://docker.ecosyste.ms/docs/api/v1/openapi.yaml
-      600k Docker images and their dependencies from Docker Hub
+      755k Docker images and their dependencies from Docker Hub
     - **Open Collective API**: https://opencollective.ecosyste.ms/docs/api/v1/openapi.yaml
       $48m in open source grants, donations, and sponsorships from Open Collective
     - **Dependabot API**: https://dependabot.ecosyste.ms/docs/api/v1/openapi.yaml
-      1.2 million pull requests opened by Dependabot
+      3.1 mllion pull requests opened by Dependabot
 
     ## Experiments
     - **OST API**: https://ost.ecosyste.ms/docs/api/v1/openapi.yaml
