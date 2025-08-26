@@ -1245,6 +1245,10 @@ body {
   }
 }
 
+.chart-wrapper--shallow {
+  aspect-ratio: 10/2; /* Modern aspect control */
+}
+
 .project-logo {
   max-width: 100px;
   border-radius: 8px;

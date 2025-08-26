@@ -1035,7 +1035,7 @@
           </div>
         </div>
       </div>
-      <div class="row row-cols-1 row-cols-md-2 mb-3">
+      <div class="row row-cols-1 row-cols-md-2 mb-5">
         <div class="col">
           <div class="card well p-3 my-3 border-0 h-100">
             <div class="card-body">
@@ -1068,6 +1068,31 @@
               </div>
               <div class="chart-wrapper">
                 <canvas id="barChart" width="400" height="300" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="full-width-widget">
+        <div class="card well p-3 border-0">
+
+          <div class="card-body">
+            <h5 class="card-title">Commits</h5>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="stat-card mb-2">
+                  <div class="stat-card-body">
+                    <span class="stat-card-title stat-card-title--large stat-card-number-negative">
+                      110,978 </svg>
+                    </span>
+                    <span class="stat-card-text stat-card-text">111,262 last period</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="chart-wrapper chart-wrapper--shallow">
+                  <canvas id="commitChart5" width="400" height="210" ></canvas>
+                </div>
               </div>
             </div>
           </div>
@@ -2066,6 +2091,48 @@
         }
       });
 
+      // Commit Chart 3 (Line Chart)
+      const ctx10 = document.getElementById('commitChart5').getContext('2d');
+      const commitChart5 = new Chart(ctx10, {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [{
+            label: 'Commits',
+            data: [90000, 100000, 110000, 120000, 115000, 110000],
+            borderColor: esOrangeDark,
+            borderWidth: 3,
+            pointRadius: 3,
+            tension: 0.4,
+            fill: true,
+            backgroundColor: 'rgba(239, 83, 80, 0.1)'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              display: false,
+              grid: { display: false }
+            },
+            y: {
+              display: false,
+              grid: { display: false },
+              beginAtZero: false,
+              max: 121000
+            }
+          },
+          plugins: {
+            legend: {
+              display: false,
+              usePointStyle: true
+            },
+            tooltip: { enabled: true }
+          }
+        }
+      });
+
       // Bar Chart
       const ctx4 = document.getElementById('barChart').getContext('2d');
       const data = {
@@ -2150,7 +2217,7 @@
 
       const myBarChart2 = new Chart(ctx8, {
         type: 'bar',
-        data: data,
+        data: data2,
         options: {
           responsive: true,
           maintainAspectRatio: true,
