@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
+  <h1 class="page-content__title display-2 mt-5">API Documentation</h1>
     <div class="col-lg-8 ">
-      <h1 class="page-content__title display-2">API Documentation</h1>
+      
 
       <p class="lead">Explore the ecosyste.ms APIs to access open source package ecosystem data programmatically.</p>
 
       <p>All APIs follow OpenAPI 3.0.1 specifications and are available under CC-BY-SA-4.0 license. Each service provides both machine-readable specifications and interactive documentation.</p>
-
+      <hr class="my-5"/>
       <div class="mb-4">
         <h2>Root OpenAPI Specification</h2>
         <p>A consolidated specification that references all individual service APIs:</p>
@@ -14,7 +15,7 @@
           <a href="/openapi.yml" class="btn btn-primary rounded-pill">Download openapi.yml</a>
         </div>
       </div>
-
+      <hr class="my-5"/>
       <% Service.sections.each do |section| %>
         <% services_with_apis = section[:services].select { |service| @services_with_apis.any? { |api_service| api_service[:url] == service[:url] } } %>
         <% if services_with_apis.any? %>
@@ -41,6 +42,7 @@
               <% end %>
             </div>
           </div>
+          <hr class="my-5"/>
         <% end %>
       <% end %>
 
@@ -63,6 +65,12 @@
           <li><strong>Format</strong>: JSON responses</li>
           <li><strong>Authentication</strong>: Most endpoints are public, some may require API keys</li>
         </ul>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="well p-4">
+      <h2 class="h4">Commercial user?</h2>
+      <p>To operate an instance of ecosyste.ms or utilise ecosyste.ms&apos; data for your own use, we offer less restrictive licences.</p> <p><a href="/commercial">Find out about commercial use</a></p>
       </div>
     </div>
   </div>

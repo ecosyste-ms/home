@@ -241,6 +241,43 @@ $card-border-color: $color-grey;
   }
 }
 
+.btn-outline-primary {
+  &:hover,
+  &:focus {
+    color: $color-white;
+  }
+}
+
+.btn-outline-secondary {
+  color: $color-black;
+}
+
+.btn-outline-success {
+  &:hover,
+  &:focus {
+    color: $color-white;
+  }
+}
+
+.btn-outline-info {
+  color: $color-black;
+}
+
+.btn-outline-warning {
+  color: $color-orange;
+}
+
+.btn-outline-danger {
+  &:hover,
+  &:focus {
+    color: $color-white;
+  }
+}
+
+.btn-outline-light {
+  color: $color-grey-dark;
+}
+
 .alert {
   border: 0;
 }
