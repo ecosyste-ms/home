@@ -1,12 +1,20 @@
 <div class="container">
   <div class="row">
   <h1 class="page-content__title display-2 mt-5">API Documentation</h1>
-    <div class="col-lg-8 ">
-      
+        <p class="lead">Explore the ecosyste.ms APIs to access open source package ecosystem data programmatically.</p>
 
-      <p class="lead">Explore the ecosyste.ms APIs to access open source package ecosystem data programmatically.</p>
-
-      <p>All APIs follow OpenAPI 3.0.1 specifications and are available under CC-BY-SA-4.0 license. Each service provides both machine-readable specifications and interactive documentation.</p>
+      <p style="max-width: 880px;">All APIs follow OpenAPI 3.0.1 specifications and are available under CC-BY-SA-4.0 license. Each service provides both machine-readable specifications and interactive documentation.</p>
+      <hr class="my-5"/>
+      <div class="col-lg-8 ">
+      <h2>Rate limits and pooling</h2>
+      <p>We split API users into two pools: the polite pool, and the common pool.</p>
+      <p>The polite pool is our priority pool of known users. To access the polite pool you will need to provide an email address so that we can contact you should we need to discuss fair usage and rate limits. 
+      <p>To access the polite pool:</p>
+        <ul>
+          <li>Add <code>mailto=you@example.com</code> as a parameter to your API request, or</li>
+          <li>Add <code>mailto:you@exmaple.com</code> somewhere in your user-agent request header</li>
+        </ul>
+      <p>The common pool is for everyone else. It will have less consistent response times, especially during peak periods so that we can prioritse polite requests more easily.</p>
       <hr class="my-5"/>
       <div class="mb-4">
         <h2>Root OpenAPI Specification</h2>
@@ -70,7 +78,7 @@
     <div class="col-lg-4">
       <div class="well p-4">
       <h2 class="h4">Commercial user?</h2>
-      <p>To operate an instance of ecosyste.ms or utilise ecosyste.ms&apos; data for your own use, we offer less restrictive licences.</p> <p><a href="/commercial">Find out about commercial use</a></p>
+      <p>To operate an instance of ecosyste.ms or utilise ecosyste.ms&apos; data for your own use, we offer less restrictive licences and generous rate limits</p> <p><a href="/commercial" class="spesh-link">Find out about commercial use</a></p>
       </div>
     </div>
   </div>
