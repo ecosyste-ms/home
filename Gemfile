@@ -21,4 +21,6 @@ group :test do
   gem "rails-controller-testing"
 end
 
-gem "dotenv-rails", "~> 3.1"
+group :development, :test do
+  gem "dotenv-rails", "~> 3.1"
+end
