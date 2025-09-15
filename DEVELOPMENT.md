@@ -6,15 +6,17 @@ First things first, you'll need to fork and clone the repository to your local m
 
 `git clone https://github.com/ecosyste-ms/documentation.git`
 
-The project uses ruby on rails which have a number of system dependencies you'll need to install. 
+The project uses ruby on rails which have a number of system dependencies you'll need to install.
 
 - [ruby](https://www.ruby-lang.org/en/documentation/installation/)
 - [node.js 16+](https://nodejs.org/en/download/)
 
+You'll also need a running [PostgresQL](https://www.postgresql.org) server.
+
 Once you've got all of those installed, from the root directory of the project run the following commands:
 
 ```
-bundle install
+bin/setup
 rails server
 ```
 
@@ -24,7 +26,7 @@ You can then load up [http://localhost:3000](http://localhost:3000) to access th
 
 Alternatively you can use the existing docker configuration files to run the app in a container.
 
-Run this command from the root directory of the project to start the service.
+Run this command from the root directory of the project to start the service (and PostgreSQL).
 
 `docker-compose up --build`
 
