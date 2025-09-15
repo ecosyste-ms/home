@@ -13,6 +13,8 @@ The project uses ruby on rails which have a number of system dependencies you'll
 
 You'll also need a running [PostgresQL](https://www.postgresql.org) server.
 
+You will then need to set some configuration environment variables. Copy `env.example` to `.env.development` and customise the values to suit your local setup.
+
 Once you've got all of those installed, from the root directory of the project run the following commands:
 
 ```
