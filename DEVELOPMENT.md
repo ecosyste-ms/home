@@ -11,6 +11,8 @@ The project uses ruby on rails which have a number of system dependencies you'll
 - [ruby](https://www.ruby-lang.org/en/documentation/installation/)
 - [node.js 16+](https://nodejs.org/en/download/)
 
+You will then need to set some configuration environment variables. Copy `env.example` to `.env.development` and customise the values to suit your local setup.
+
 Once you've got all of those installed, from the root directory of the project run the following commands:
 
 ```

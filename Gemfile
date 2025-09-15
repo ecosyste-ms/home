@@ -20,3 +20,5 @@ gem 'ostruct'
 group :test do
   gem "rails-controller-testing"
 end
+
+gem "dotenv-rails", "~> 3.1"
