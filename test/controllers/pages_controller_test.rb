@@ -9,6 +9,13 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'a[href="/openapi.yml"]', 'Download openapi.yml'
   end
 
+  test 'api page has custom meta title and description' do
+    get '/api'
+    assert_response :success
+    assert_select 'title', 'API Documentation - ecosyste.ms | Rate Limits & OpenAPI Specs'
+    assert_select 'meta[name="description"][content="RESTful APIs with OpenAPI 3.0.1 specs for package ecosystem data. Polite pool access with email authentication, consistent JSON responses, and CC-BY-SA-4.0 licensing."]'
+  end
+
   test 'api page shows services with APIs grouped by section' do
     get '/api'
     assert_response :success

@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   def api
+    @meta_title = "API Documentation - ecosyste.ms | Rate Limits & OpenAPI Specs"
+    @meta_description = "RESTful APIs with OpenAPI 3.0.1 specs for package ecosystem data. Polite pool access with email authentication, consistent JSON responses, and CC-BY-SA-4.0 licensing."
     @services_with_apis = Service.sections.flat_map do |section|
       section[:services].select { |service| has_api?(service[:url]) }.map do |service|
         service.merge(
