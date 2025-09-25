@@ -122,6 +122,11 @@ class Service
             url: 'https://funds.ecosyste.ms',
             description: 'Support your core open source dependencies'
           },
+          {
+            name: 'Dashboards',
+            url: 'https://dashboards.ecosyste.ms',
+            description: 'Understand the impact of your open source software contributions.'
+          }
         ]
       },
       {
