@@ -1486,3 +1486,20 @@ a.project-badge {
 .scrollable-window--vulnerability-list {
 
 }
+
+.breadcrumb-section {
+  
+  background-color: $color-purple-dark;
+  .breadcrumb {
+    margin: 0;
+    --bs-breadcrumb-divider-color: #{$color-purple-light};
+  }
+
+  .breadcrumb-item {
+    font-size: $font-size-small ;
+    color: $color-white;
+    a { 
+      color: $color-white;
+    }
+  }
+}
