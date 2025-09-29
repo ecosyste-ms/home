@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get '/styleguide', to: 'pages#styleguide'
 
+  get "/accountblank", to: "pages#accountblank"
+
   # Defines the root path route ("/")
   root "home#index"
 end
