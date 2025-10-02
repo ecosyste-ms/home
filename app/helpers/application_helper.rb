@@ -14,4 +14,10 @@ module ApplicationHelper
   def app_description
     'Tools and datasets to support, sustain, and secure critical digital infrastructure.'
   end
+
+  def bootstrap_icon(symbol, options = {})
+    return "" if symbol.nil?
+    icon = BootstrapIcons::BootstrapIcon.new(symbol, options)
+    content_tag(:svg, icon.path.html_safe, icon.options)
+  end
 end
