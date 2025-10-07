@@ -77,7 +77,7 @@ GEM
       rack (>= 2.0.0)
     base64 (0.3.0)
     benchmark (0.4.1)
-    bigdecimal (3.2.3)
+    bigdecimal (3.3.0)
     bootstrap (5.3.5)
       popper_js (>= 2.11.8, < 3)
     bootstrap-icons (1.0.15)
@@ -311,7 +311,7 @@ CHECKSUMS
   appsignal (4.7.4) sha256=86cc15a7a64bf6bff899c3910597414b22c702057406ffcb97c20a1d8f9c8979
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   benchmark (0.4.1) sha256=d4ef40037bba27f03b28013e219b950b82bace296549ec15a78016552f8d2cce
-  bigdecimal (3.2.3) sha256=ffd11d1ac67a0d3b2f44aec0a6487210b3f813f363dd11f1fcccf5ba00da4e1b
+  bigdecimal (3.3.0) sha256=e116f692049da02a180f7b1d49859e828eb3a70d01e2efd8f78fb675738554f5
   bootstrap (5.3.5) sha256=d57c9b7a21eaf2182c32fe93d1c0eaa0e1ebe82c46676c5a1fd66dd3a6ac41f8
   bootstrap-icons (1.0.15) sha256=4a19c2360f88263c1606235813b8575ff3d6c0773174ed4ceb368628e5541ae9
   bootstrap-icons-helper (2.0.3) sha256=b021ed92708ccda4912418862d12a0ce8bea4a1945e21e5fe52e265dde0a93b5
