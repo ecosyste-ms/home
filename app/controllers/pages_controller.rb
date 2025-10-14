@@ -17,6 +17,12 @@ class PagesController < ApplicationController
     send_file Rails.root.join('openapi.yml'), type: 'application/x-yaml', disposition: 'inline'
   end
 
+  def pricing
+    @meta_title = "Pricing - ecosyste.ms | API Rate Limits & Plans"
+    @meta_description = "Choose the right plan for your needs. From free community access to enterprise-grade rate limits with dedicated support."
+    @plans = Plan.all
+  end
+
   private
 
   def has_api?(service_url)

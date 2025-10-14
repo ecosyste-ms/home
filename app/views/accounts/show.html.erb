@@ -1,0 +1,61 @@
+<%= render 'accounts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      <%= render 'accounts/navigation' %>
+    </div>
+    <div class="col-12 col-lg-9">
+      <h1 class="mb-4">Overview</h1>
+
+      <div class="d-md-flex justify-content-between align-items-center mb-2">
+        <h2 class="fs-6 fw-normal mb-0">Your details</h2>
+        <%= link_to 'Change', details_account_path, class: 'small' %>
+      </div>
+      <div class="well p-3 mb-5">
+        <p><strong><%= @account.name %></strong></p>
+        <p class="mb-0"><%= @account.email %></p>
+      </div>
+
+      <div class="d-md-flex justify-content-between align-items-center mb-2">
+        <h2 class="fs-6 fw-normal mb-0">Plan</h2>
+        <%= link_to 'Change', plan_account_path, class: 'small' %>
+      </div>
+      <div class="well p-3 mb-5">
+        <h3><%= @account.plan_name %></h3>
+        <p><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour at <strong>$<%= @account.plan_price %></strong> per month</p>
+        <p class="small mb-0">Billed <em><%= @account.plan_billing_period %></em></p>
+      </div>
+
+      <div class="d-md-flex justify-content-between align-items-center mb-2">
+        <h2 class="fs-6 fw-normal mb-0">API Key</h2>
+        <%= link_to 'View', api_key_account_path, class: 'small' %>
+      </div>
+      <div class="well p-3 mb-5">
+        <p class="mb-0">You have <strong>one</strong> active API key</p>
+      </div>
+
+      <div class="d-md-flex justify-content-between align-items-center mb-2">
+        <h2 class="fs-6 fw-normal mb-0">Billing status</h2>
+        <%= link_to 'View', billing_account_path, class: 'small' %>
+      </div>
+      <div class="well p-3 mb-5">
+        <p><strong>Next invoice:</strong> <%= @account.next_payment_date.strftime('%d %B %Y') %></p>
+        <p class="mb-0"><strong>Payment method:</strong> <%= @account.payment_method_type %> via Stripe</p>
+      </div>
+
+      <div class="d-md-flex justify-content-between align-items-center mb-2">
+        <h2 class="fs-6 fw-normal mb-0">Password and security</h2>
+        <%= link_to 'Change', security_account_path, class: 'small' %>
+      </div>
+      <div class="well p-3 mb-5">
+        <% github_identity = @account.identities.find { |i| i.provider == 'github' } %>
+        <% if github_identity %>
+          <p class="mb-0">Login via <strong><%= github_identity.display_name %></strong></p>
+        <% else %>
+          <p class="mb-0">Email and password login</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

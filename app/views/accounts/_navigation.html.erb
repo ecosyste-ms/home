@@ -1,0 +1,20 @@
+<ul class="nav nav-pills flex-column dboard-nav me-4">
+  <li class="nav-item">
+    <%= link_to 'Overview', account_path, class: "nav-link #{current_page?(account_path) ? 'active' : ''}", aria_current: current_page?(account_path) ? 'page' : nil %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Your details', details_account_path, class: "nav-link #{current_page?(details_account_path) ? 'active' : ''}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Plan', plan_account_path, class: "nav-link #{current_page?(plan_account_path) ? 'active' : ''}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'API Key', api_key_account_path, class: "nav-link #{current_page?(api_key_account_path) ? 'active' : ''}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Billing', billing_account_path, class: "nav-link #{current_page?(billing_account_path) ? 'active' : ''}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Password and security', security_account_path, class: "nav-link #{current_page?(security_account_path) ? 'active' : ''}" %>
+  </li>
+</ul>

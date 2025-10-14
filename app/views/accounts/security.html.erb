@@ -1,0 +1,54 @@
+<%= render 'accounts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      <%= render 'accounts/navigation' %>
+    </div>
+    <div class="col-12 col-lg-9">
+      <h1 class="mb-4">Password and security</h1>
+
+      <% github_identity = @account.identities.find { |i| i.provider == 'github' } %>
+      <% if github_identity %>
+        <div class="alert alert-info" role="alert">
+          Your account is linked to GitHub, change your password or security settings in your <a href="https://github.com/settings/security">GitHub Account</a>.
+        </div>
+      <% end %>
+
+      <%= form_with url: update_security_account_path, method: :patch, local: true do |f| %>
+        <label class="form-label" for="password">
+          <p class="mb-0">Change password</p>
+        </label>
+        <%= f.password_field :password, class: 'form-control border-purple-light mb-4', title: 'Password' %>
+
+        <label class="form-label" for="password_confirmation">
+          <p class="mb-0">Confirm password</p>
+        </label>
+        <%= f.password_field :password_confirmation, class: 'form-control border-purple-light mb-5', title: 'Password' %>
+
+        <hr />
+        <%= f.submit 'Save', class: 'btn btn-primary rounded-pill' %>
+      <% end %>
+
+      <h2 class="mb-4 mt-5">Linked accounts</h2>
+      <% @account.identities.each do |identity| %>
+        <div class="well p-3 mb-3">
+          <p>
+            <%= bootstrap_icon identity.icon_name, width: 20, height: 20, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'me-1' %>
+            <strong><%= identity.display_name %></strong>
+          </p>
+          <p class="mb-0">
+            <% if identity.username %>
+              @<%= identity.username %>
+            <% else %>
+              <%= identity.email %>
+            <% end %>
+            <% if identity.can_unlink? %>
+              <a href="#">Unlink</a>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

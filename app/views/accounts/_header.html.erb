@@ -1,0 +1,29 @@
+<div class="breadcrumb-section py-3  mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Your account</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<div class="project-header purple-grad-bg pt-4 pb-4 mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 col-lg-1 mb-3 pt-1 d-flex align-items-start">
+        <% if @account.profile_picture_url && @account.show_profile_picture %>
+          <img src="<%= @account.profile_picture_url %>" alt=" " class="img-fluid project-logo" onerror="this.style.display='none'">
+        <% end %>
+      </div>
+      <div class="col-12 col-md-10 col-lg-11">
+        <h1 class="display-1 extra-bold"><%= @account.name %></h1>
+        <div class="d-xl-flex justify-content-between align-items-center mb-2">
+          <div>
+            <p>Your account</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

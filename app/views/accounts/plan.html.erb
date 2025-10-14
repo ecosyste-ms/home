@@ -1,0 +1,21 @@
+<%= render 'accounts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      <%= render 'accounts/navigation' %>
+    </div>
+    <div class="col-12 col-lg-9">
+      <h1 class="mb-4">Plan</h1>
+      <h2 class="h6 fw-normal">Your plan</h2>
+      <div class="well p-3 mb-5">
+        <h3 class="h4"><%= @account.plan_name %></h3>
+        <p class="small"><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour at <strong>$<%= @account.plan_price %></strong> per month</p>
+        <p class="small mb-0">Billed <em><%= @account.plan_billing_period %></em></p>
+        <p class="small"><a href="#">Change</a></p>
+        <hr />
+        <p class="small mb-0">Next payment due <strong><%= @account.next_payment_date.strftime('%b %d, %Y') %></strong></p>
+      </div>
+    </div>
+  </div>
+</div>

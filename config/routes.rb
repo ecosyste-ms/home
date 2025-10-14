@@ -10,11 +10,19 @@ Rails.application.routes.draw do
   get '/api', to: 'pages#api'
   get '/openapi.yml', to: 'pages#openapi'
   get '/commercial', to: 'pages#commercial'
+  get '/pricing', to: 'pages#pricing'
 
   get '/styleguide', to: 'pages#styleguide'
 
-  get "/accountblank", to: "pages#accountblank"
+  resource :account, only: [:show] do
+    get :details, on: :member
+    patch :update_details, on: :member
+    get :plan, on: :member
+    get :api_key, on: :member
+    get :billing, on: :member
+    get :security, on: :member
+    patch :update_security, on: :member
+  end
 
-  # Defines the root path route ("/")
   root "home#index"
 end

@@ -1,0 +1,24 @@
+<%= render 'accounts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      <%= render 'accounts/navigation' %>
+    </div>
+    <div class="col-12 col-lg-9">
+      <h1 class="mb-4">API Key</h1>
+      <div class="well p-3 mb-5">
+        <h2 class="h3" id="api-key-label">Your API key</h2>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" aria-label="API Key" aria-describedby="api-key-label" value="<%= @account.api_key %>" readonly>
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+            <%= bootstrap_icon 'copy', width: 12, height: 12, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'me-1' %> Copy
+          </button>
+        </div>
+        <p class="small"><a href="#">How to use your API key</a></p>
+      </div>
+      <p class="small mt-5">Your API key is how we manage your rate limits. Sharing your API key is against our terms of service and will result in throttling. If you think your API key has been shared generate a new one to revoke any existing keys.</p>
+      <p class="mt-4"><a href="#" class="btn btn-danger rounded-pill">Generate a new key</a></p>
+    </div>
+  </div>
+</div>
