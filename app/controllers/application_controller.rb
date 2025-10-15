@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :require_login
+
   helper_method :current_account, :logged_in?
 
   def current_account

@@ -135,4 +135,26 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
       assert_select 'h1.display-1', @account.name
     end
   end
+
+  test 'redirects to login when not authenticated' do
+    get account_path
+    assert_redirected_to login_path
+    assert_equal 'You must be logged in to access this page.', flash[:alert]
+  end
+
+  test 'all account pages redirect when not authenticated' do
+    pages = [
+      account_path,
+      details_account_path,
+      plan_account_path,
+      api_key_account_path,
+      billing_account_path,
+      security_account_path
+    ]
+
+    pages.each do |page|
+      get page
+      assert_redirected_to login_path
+    end
+  end
 end

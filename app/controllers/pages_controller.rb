@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :require_login
+
   def api
     @meta_title = "API Documentation - ecosyste.ms | Rate Limits & OpenAPI Specs"
     @meta_description = "RESTful APIs with OpenAPI 3.0.1 specs for package ecosystem data. Polite pool access with email authentication, consistent JSON responses, and CC-BY-SA-4.0 licensing."

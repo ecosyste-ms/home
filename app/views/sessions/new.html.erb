@@ -6,7 +6,7 @@
           <h1 class="h3 mb-4 text-center">Sign in to your account</h1>
 
           <div class="d-grid gap-3">
-            <%= button_to auth_github_path, method: :post, class: "btn btn-dark", data: { turbo: false } do %>
+            <%= button_to auth_path('github'), method: :post, class: "btn btn-dark", data: { turbo: false } do %>
               <%= bootstrap_icon 'github', width: 20, height: 20, class: 'me-2' %>
               Continue with GitHub
             <% end %>
