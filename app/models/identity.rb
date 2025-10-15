@@ -1,9 +1,6 @@
 class Identity < ApplicationRecord
   belongs_to :account
 
-  encrypts :token
-  encrypts :refresh_token
-
   validates :provider, presence: true, inclusion: { in: %w[github email google] }
   validates :uid, presence: true
   validates :provider, uniqueness: { scope: :uid }

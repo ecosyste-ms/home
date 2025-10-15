@@ -31,4 +31,4 @@
 /config/master.key
 
 # Ignore dotenv files
-.env.*
+.env*
