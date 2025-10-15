@@ -7,14 +7,74 @@
     </div>
     <div class="col-12 col-lg-9">
       <h1 class="mb-4">Plan</h1>
-      <h2 class="h6 fw-normal">Your plan</h2>
-      <div class="well p-3 mb-5">
-        <h3 class="h4"><%= @account.plan_name %></h3>
-        <p class="small"><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour at <strong>$<%= @account.plan_price %></strong> per month</p>
-        <p class="small mb-0">Billed <em><%= @account.plan_billing_period %></em></p>
-        <p class="small"><a href="#">Change</a></p>
-        <hr />
-        <p class="small mb-0">Next payment due <strong><%= @account.next_payment_date.strftime('%b %d, %Y') %></strong></p>
+
+      <% if @account.plan %>
+        <h2 class="h6 fw-normal">Your current plan</h2>
+        <div class="well p-3 mb-4 border-primary" style="border-width: 2px !important;">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h3 class="h4"><%= @account.plan_name %></h3>
+              <p class="small mb-2"><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour at <strong>$<%= @account.plan_price.to_i %></strong> per <%= @account.plan_billing_period %></p>
+              <% if @account.next_payment_date %>
+                <p class="small text-muted mb-0">Next payment due <strong><%= @account.next_payment_date.strftime('%b %d, %Y') %></strong></p>
+              <% end %>
+            </div>
+            <span class="badge bg-primary">Current</span>
+          </div>
+        </div>
+      <% else %>
+        <div class="alert alert-info mb-4">
+          <p class="mb-0">You don't have an active subscription. Choose a plan below to get started.</p>
+        </div>
+      <% end %>
+
+      <h2 class="h5 mt-5 mb-3">Available plans</h2>
+      <div class="row">
+        <% @plans.each do |plan| %>
+          <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="card h-100 <%= 'border-primary' if @account.plan == plan %>">
+              <div class="card-body">
+                <h3 class="h5 card-title"><%= plan.name %></h3>
+                <p class="card-text">
+                  <span class="h3"><%= plan.formatted_price %></span>
+                  <% unless plan.free? %>
+                    <span class="text-muted">/ <%= plan.billing_period %></span>
+                  <% end %>
+                </p>
+                <p class="card-text text-muted">
+                  <%= number_with_delimiter(plan.requests_per_hour) %> requests/hour
+                </p>
+                <% if plan.description %>
+                  <p class="card-text small"><%= plan.description %></p>
+                <% end %>
+                <% if plan.features.present? %>
+                  <ul class="list-unstyled small">
+                    <% plan.features.each do |feature| %>
+                      <li class="mb-1">
+                        <%= bootstrap_icon 'check', width: 16, height: 16, class: 'text-success me-1' %>
+                        <%= feature %>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <% if @account.plan == plan %>
+                  <button class="btn btn-outline-primary w-100" disabled>Current plan</button>
+                <% else %>
+                  <button class="btn btn-primary w-100" disabled>
+                    <%= @account.plan ? 'Upgrade' : 'Choose plan' %> (Coming soon)
+                  </button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="alert alert-info mt-4">
+        <p class="small mb-0">
+          <strong>Note:</strong> Plan upgrades and downgrades require Stripe integration which is not yet implemented.
+          This is a placeholder UI for demonstration purposes.
+        </p>
       </div>
     </div>
   </div>

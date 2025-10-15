@@ -1,0 +1,117 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><%= @account.name %></h1>
+    <div>
+      <% if @account.suspended? %>
+        <%= button_to 'Unsuspend', unsuspend_admin_account_path(@account), method: :post, class: 'btn btn-success' %>
+      <% elsif @account.active? %>
+        <%= button_to 'Suspend', suspend_admin_account_path(@account), method: :post, class: 'btn btn-warning', data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <%= button_to 'Impersonate', impersonate_admin_account_path(@account), method: :post, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Account Details</h5>
+        </div>
+        <div class="card-body">
+          <dl class="row mb-0">
+            <dt class="col-sm-4">Email:</dt>
+            <dd class="col-sm-8"><%= @account.email %></dd>
+
+            <dt class="col-sm-4">Status:</dt>
+            <dd class="col-sm-8"><span class="badge bg-<%= @account.active? ? 'success' : 'secondary' %>"><%= @account.status %></span></dd>
+
+            <dt class="col-sm-4">Admin:</dt>
+            <dd class="col-sm-8"><%= @account.admin? ? 'Yes' : 'No' %></dd>
+
+            <dt class="col-sm-4">Created:</dt>
+            <dd class="col-sm-8"><%= @account.created_at.strftime('%B %d, %Y at %I:%M %p') %></dd>
+
+            <dt class="col-sm-4">Stripe ID:</dt>
+            <dd class="col-sm-8"><%= @account.stripe_customer_id || 'Not set' %></dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Identities</h5>
+        </div>
+        <div class="card-body">
+          <% @identities.each do |identity| %>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div>
+                <%= bootstrap_icon identity.icon_name, width: 16, height: 16, class: 'me-2' %>
+                <strong><%= identity.display_name %></strong>
+                <% if identity.username %>
+                  <span class="text-muted">@<%= identity.username %></span>
+                <% end %>
+              </div>
+              <small class="text-muted"><%= identity.created_at.strftime('%b %d, %Y') %></small>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <% if @subscription %>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0">Current Subscription</h5>
+          </div>
+          <div class="card-body">
+            <h6><%= @subscription.plan.name %></h6>
+            <p class="mb-2">
+              <strong>$<%= @subscription.plan.price_dollars.to_i %></strong> / <%= @subscription.plan.billing_period %>
+            </p>
+            <p class="mb-2">
+              Status: <span class="badge bg-<%= @subscription.active? ? 'success' : 'warning' %>"><%= @subscription.status %></span>
+            </p>
+            <% if @subscription.current_period_end %>
+              <p class="mb-0">
+                <small>Next billing: <%= @subscription.current_period_end.strftime('%b %d, %Y') %></small>
+              </p>
+            <% end %>
+            <div class="mt-3">
+              <%= link_to 'View Subscription', admin_subscription_path(@subscription), class: 'btn btn-sm btn-outline-primary' %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="alert alert-info">No active subscription</div>
+      <% end %>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">API Keys</h5>
+        </div>
+        <div class="card-body">
+          <% if @api_keys.any? %>
+            <% @api_keys.each do |api_key| %>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div>
+                  <code><%= api_key.key_prefix %>•••</code>
+                  <% if api_key.name %>
+                    <small class="text-muted"><%= api_key.name %></small>
+                  <% end %>
+                </div>
+                <% if api_key.revoked? %>
+                  <span class="badge bg-secondary">Revoked</span>
+                <% else %>
+                  <span class="badge bg-success">Active</span>
+                <% end %>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-muted mb-0">No API keys</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

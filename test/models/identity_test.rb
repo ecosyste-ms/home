@@ -1,8 +1,15 @@
 require 'test_helper'
 
 class IdentityTest < ActiveSupport::TestCase
+  def setup
+    @account = Account.create!(
+      name: 'Test User',
+      email: 'test@example.com'
+    )
+  end
+
   test 'creates an identity with valid attributes' do
-    identity = Identity.new(
+    identity = @account.identities.new(
       provider: 'github',
       uid: '12345',
       username: 'testuser'
@@ -15,19 +22,19 @@ class IdentityTest < ActiveSupport::TestCase
   end
 
   test 'requires provider' do
-    identity = Identity.new(uid: '12345')
+    identity = @account.identities.new(uid: '12345')
     assert_not identity.valid?
     assert_includes identity.errors[:provider], "can't be blank"
   end
 
   test 'requires uid' do
-    identity = Identity.new(provider: 'github')
+    identity = @account.identities.new(provider: 'github')
     assert_not identity.valid?
     assert_includes identity.errors[:uid], "can't be blank"
   end
 
   test 'validates provider is in allowed list' do
-    identity = Identity.new(provider: 'invalid', uid: '12345')
+    identity = @account.identities.new(provider: 'invalid', uid: '12345')
     assert_not identity.valid?
     assert_includes identity.errors[:provider], 'is not included in the list'
   end
@@ -58,8 +65,15 @@ class IdentityTest < ActiveSupport::TestCase
     assert_equal 'envelope', email_identity.icon_name
   end
 
-  test 'can_unlink? returns true' do
-    identity = Identity.new(provider: 'github', uid: '123')
-    assert identity.can_unlink?
+  test 'can_unlink? returns false when only identity' do
+    identity = @account.identities.create!(provider: 'github', uid: '123')
+    assert_not identity.can_unlink?
+  end
+
+  test 'can_unlink? returns true when multiple identities' do
+    identity1 = @account.identities.create!(provider: 'github', uid: '123')
+    identity2 = @account.identities.create!(provider: 'google', uid: '456')
+    assert identity1.can_unlink?
+    assert identity2.can_unlink?
   end
 end

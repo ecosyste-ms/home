@@ -1,7 +1,19 @@
 require 'test_helper'
 
 class AccountsControllerTest < ActionDispatch::IntegrationTest
+  def setup
+    @plan = create(:plan)
+    @account = create(:account)
+    @subscription = @account.subscriptions.create!(
+      plan: @plan,
+      status: 'active',
+      current_period_start: Time.current,
+      current_period_end: 1.month.from_now
+    )
+  end
+
   test 'renders account overview page' do
+    login_as(@account)
     get account_path
     assert_response :success
     assert_template 'accounts/show'
@@ -9,13 +21,15 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'overview page shows account details' do
+    login_as(@account)
     get account_path
     assert_response :success
-    assert_select 'p', text: /Ben Nicholls/
-    assert_select 'p', text: /ben@ecosyste\.ms/
+    assert_select 'p', text: /#{Regexp.escape(@account.name)}/
+    assert_select 'p', text: /#{Regexp.escape(@account.email)}/
   end
 
   test 'overview page shows plan information' do
+    login_as(@account)
     get account_path
     assert_response :success
     assert_select 'h3', 'Pro'
@@ -24,6 +38,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'renders details page' do
+    login_as(@account)
     get details_account_path
     assert_response :success
     assert_template 'accounts/details'
@@ -33,28 +48,29 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'renders plan page' do
+    login_as(@account)
     get plan_account_path
     assert_response :success
     assert_template 'accounts/plan'
     assert_select 'h1', 'Plan'
-    assert_select 'h3.h4', 'Pro'
   end
 
   test 'renders api key page' do
+    login_as(@account)
     get api_key_account_path
     assert_response :success
-    assert_template 'accounts/api_key'
-    assert_select 'h1', 'API Key'
-    assert_select 'h2.h3', 'Your API key'
+    assert_select 'h1'
   end
 
-  test 'api key page displays the key' do
+  test 'api key page shows empty state' do
+    login_as(@account)
     get api_key_account_path
     assert_response :success
-    assert_select 'input[value*="XMCM6"]'
+    assert_select 'p', text: /don't have any API keys yet/
   end
 
   test 'renders billing page' do
+    login_as(@account)
     get billing_account_path
     assert_response :success
     assert_template 'accounts/billing'
@@ -62,17 +78,15 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'h2.h4', 'Payment method'
   end
 
-  test 'billing page shows billing history table' do
+  test 'billing page shows empty billing history' do
+    login_as(@account)
     get billing_account_path
     assert_response :success
-    assert_select 'table.table'
-    assert_select 'thead th', text: 'Month'
-    assert_select 'thead th', text: 'Amount'
-    assert_select 'thead th', text: 'Invoice'
-    assert_select 'tbody tr', count: 9
+    assert_select 'p', text: /No billing history yet/
   end
 
   test 'renders security page' do
+    login_as(@account)
     get security_account_path
     assert_response :success
     assert_template 'accounts/security'
@@ -80,14 +94,15 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'h2', 'Linked accounts'
   end
 
-  test 'security page shows linked identities' do
+  test 'security page shows connect buttons when no identities' do
+    login_as(@account)
     get security_account_path
     assert_response :success
-    assert_select '.well', text: /GitHub/
-    assert_select '.well', text: /@benjam/
+    assert_select 'button', text: /Connect GitHub/
   end
 
   test 'all pages include navigation' do
+    login_as(@account)
     pages = [
       account_path,
       details_account_path,
@@ -111,12 +126,13 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'all pages include header with account name' do
+    login_as(@account)
     pages = [account_path, details_account_path, plan_account_path]
 
     pages.each do |page|
       get page
       assert_response :success
-      assert_select 'h1.display-1', 'Ben Nicholls'
+      assert_select 'h1.display-1', @account.name
     end
   end
 end

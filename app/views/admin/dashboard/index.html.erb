@@ -1,0 +1,100 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Admin Dashboard</h1>
+
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Total Accounts</h5>
+          <p class="display-4"><%= @total_accounts %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Active Subscriptions</h5>
+          <p class="display-4"><%= @total_subscriptions %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Suspended</h5>
+          <p class="display-4"><%= @suspended_accounts %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-muted">MRR</h5>
+          <p class="display-4">$<%= number_with_delimiter(@mrr.to_i) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Recent Accounts</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Created</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @recent_accounts.each do |account| %>
+                <tr>
+                  <td><%= account.name %></td>
+                  <td><%= account.email %></td>
+                  <td><%= account.created_at.strftime('%b %d') %></td>
+                  <td><%= link_to 'View', admin_account_path(account), class: 'btn btn-sm btn-outline-primary' %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Plans</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Subscribers</th>
+                <th>Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @plans.each do |plan| %>
+                <tr>
+                  <td><%= plan.name %></td>
+                  <td><%= plan.subscriber_count %></td>
+                  <td><%= plan.formatted_price %></td>
+                  <td><%= link_to 'View', admin_plan_path(plan), class: 'btn btn-sm btn-outline-primary' %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

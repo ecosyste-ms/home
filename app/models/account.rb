@@ -1,36 +1,28 @@
-class Account
-  include ActiveModel::Model
-  include ActiveModel::Attributes
-
-  attribute :name, :string
-  attribute :email, :string
-  attribute :show_profile_picture, :boolean, default: true
-  attribute :plan_name, :string, default: 'Pro'
-  attribute :next_payment_date, :date
-  attribute :api_key, :string
-  attribute :payment_method_type, :string, default: 'Mastercard'
-  attribute :payment_method_last4, :string
-  attribute :payment_method_expiry, :string
+class Account < ApplicationRecord
+  has_many :identities, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
+  has_many :plans, through: :subscriptions
+  has_many :api_keys, dependent: :destroy
+  has_many :invoices, dependent: :destroy
 
   validates :name, presence: true
-  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :status, inclusion: { in: %w[active suspended deleted] }
 
-  def identities
-    @identities ||= []
-  end
+  scope :active, -> { where(status: 'active').where(deleted_at: nil) }
+  scope :suspended, -> { where(status: 'suspended') }
+  scope :deleted, -> { where.not(deleted_at: nil) }
 
-  def add_identity(identity)
-    identities << identity
-  end
-
-  def profile_picture_url
-    github_identity = identities.find { |i| i.provider == 'github' }
-    return "https://github.com/#{github_identity.username}.png" if github_identity
-    nil
+  def current_subscription
+    subscriptions.where(status: ['active', 'trialing']).order(created_at: :desc).first
   end
 
   def plan
-    @plan ||= Plan.find_by_name(plan_name)
+    current_subscription&.plan
+  end
+
+  def plan_name
+    plan&.name || 'Free'
   end
 
   def plan_requests
@@ -38,38 +30,55 @@ class Account
   end
 
   def plan_price
-    plan&.price_per_month || 0
+    plan&.price_dollars || 0
   end
 
   def plan_billing_period
-    plan&.billing_period || 'monthly'
+    plan&.billing_period || 'month'
   end
 
-  # Mock data for demonstration
-  def self.current
-    account = new(
-      name: 'Ben Nicholls',
-      email: 'ben@ecosyste.ms',
-      plan_name: 'Pro',
-      next_payment_date: Date.new(2026, 6, 18),
-      api_key: 'XMCM6-DKYCQ-2BHQH-4PCHR-TBJCR',
-      payment_method_type: 'Mastercard',
-      payment_method_last4: '2342',
-      payment_method_expiry: '09/2026',
-      show_profile_picture: true
-    )
+  def next_payment_date
+    current_subscription&.current_period_end
+  end
 
-    # Add mock identities
-    account.add_identity(Identity.new(
-      provider: 'github',
-      username: 'benjam',
-      uid: '12345'
-    ))
-
-    account
+  def pending_invoice
+    invoices.where(status: ['draft', 'open']).order(due_date: :asc).first
   end
 
   def billing_history
-    Billing.for_account(email)
+    invoices.where(status: 'paid').order(created_at: :desc)
+  end
+
+  def active?
+    status == 'active' && deleted_at.nil?
+  end
+
+  def suspended?
+    status == 'suspended'
+  end
+
+  def deleted?
+    deleted_at.present?
+  end
+
+  def suspend!
+    update(status: 'suspended', suspended_at: Time.current)
+  end
+
+  def activate!
+    update(status: 'active', suspended_at: nil)
+  end
+
+  def soft_delete!
+    update(status: 'deleted', deleted_at: Time.current)
+  end
+
+  def profile_picture_url
+    return super if super.present?
+
+    github_identity = identities.find_by(provider: 'github')
+    return "https://github.com/#{github_identity.username}.png" if github_identity&.username
+
+    nil
   end
 end

@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  before_action :require_login
   before_action :set_account
 
   def show
@@ -11,12 +12,8 @@ class AccountsController < ApplicationController
   end
 
   def update_details
-    @account.assign_attributes(account_params)
-
-    if @account.valid?
-      # In a real implementation, this would save to database or session
-      flash[:notice] = 'Your details have been updated successfully.'
-      redirect_to details_account_path
+    if @account.update(account_params)
+      redirect_to details_account_path, notice: 'Your details have been updated successfully.'
     else
       flash.now[:alert] = 'Please correct the errors below.'
       render :details
@@ -25,10 +22,27 @@ class AccountsController < ApplicationController
 
   def plan
     @meta_title = "Plan - #{@account.name}"
+    @plans = Plan.available
   end
 
   def api_key
     @meta_title = "API Key - #{@account.name}"
+    @api_keys = @account.api_keys.active.order(created_at: :desc)
+  end
+
+  def create_api_key
+    api_key = @account.api_keys.create!(
+      name: params[:name] || "API Key #{@account.api_keys.count + 1}"
+    )
+
+    redirect_to api_key_account_path, notice: "API Key created: #{api_key.raw_key}. Save this key - you won't see it again!"
+  end
+
+  def revoke_api_key
+    api_key = @account.api_keys.find(params[:api_key_id])
+    api_key.revoke!
+
+    redirect_to api_key_account_path, notice: 'API Key has been revoked.'
   end
 
   def billing
@@ -37,18 +51,24 @@ class AccountsController < ApplicationController
 
   def security
     @meta_title = "Password and Security - #{@account.name}"
+    @identities = @account.identities.order(created_at: :asc)
   end
 
-  def update_security
-    # Password update logic would go here
-    flash[:notice] = 'Your security settings have been updated successfully.'
-    redirect_to security_account_path
+  def unlink_identity
+    identity = @account.identities.find(params[:identity_id])
+
+    if identity.can_unlink?
+      identity.destroy
+      redirect_to security_account_path, notice: "#{identity.display_name} has been unlinked."
+    else
+      redirect_to security_account_path, alert: "Cannot unlink your only authentication method."
+    end
   end
 
   private
 
   def set_account
-    @account = Account.current
+    @account = current_account
   end
 
   def account_params

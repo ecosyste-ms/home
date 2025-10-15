@@ -24,6 +24,27 @@ rails server
 
 You can then load up [http://localhost:3000](http://localhost:3000) to access the service.
 
+### GitHub OAuth Setup
+
+The account system uses GitHub OAuth for authentication. To set this up for local development:
+
+1. Create a new GitHub OAuth App at https://github.com/settings/developers
+   - Application name: `Ecosyste.ms (Local)`
+   - Homepage URL: `http://localhost:3000`
+   - Authorization callback URL: `http://localhost:3000/auth/github/callback`
+
+2. Copy the Client ID and Client Secret
+
+3. Add them to your `.env.development` file:
+   ```
+   GITHUB_CLIENT_ID=your_client_id_here
+   GITHUB_CLIENT_SECRET=your_client_secret_here
+   ```
+
+4. Restart your Rails server
+
+You can now access the account system at http://localhost:3000/login
+
 ### Docker
 
 Alternatively you can use the existing docker configuration files to run the app in a container.
@@ -37,6 +58,48 @@ You can then load up [http://localhost:3000](http://localhost:3000) to access th
 For access the rails console use the following command:
 
 `docker-compose exec app rails console`
+
+## Account System
+
+The application includes a complete account management system with the following features:
+
+### Features
+
+- **Authentication**: GitHub OAuth (real), with placeholders for Google OAuth and Email/Password
+- **Multi-provider support**: Users can link multiple OAuth providers to one account
+- **Subscription plans**: Three tiers (Free, Pro, Enterprise) with different rate limits
+- **API Key management**: Create and revoke multiple API keys per account
+- **Billing**: Support for both card-based and invoice-based payments (Stripe integration pending)
+- **Profile management**: Update account details and manage security settings
+
+### Database Schema
+
+The account system uses the following tables:
+
+- `accounts` - User accounts with Stripe customer data
+- `identities` - OAuth provider identities (supports multiple per account)
+- `plans` - Subscription plan definitions
+- `subscriptions` - Account subscriptions with trial and cancellation support
+- `api_keys` - API keys with BCrypt hashing and expiration
+- `invoices` - Billing invoices (for both card and invoice payments)
+
+Seed data includes three default plans. Run `rails db:seed` to populate them.
+
+### Current Implementation Status
+
+✅ Fully implemented:
+- GitHub OAuth authentication
+- Account management UI
+- API key creation/revocation
+- Database schema and models
+- Session-based authentication (cookie-only)
+
+⏳ Placeholder/Coming soon:
+- Stripe payment integration
+- Google OAuth
+- Email/Password authentication
+- Actual payment processing
+- Rate limiting (handled by APISIX gateway)
 
 ## Tests
 

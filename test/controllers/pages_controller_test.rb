@@ -1,6 +1,27 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
+  def setup
+    create(:plan, :free,
+      name: 'Free',
+      price_cents: 0,
+      requests_per_hour: 300,
+      features: ['Basic rate limiting', 'Community support', 'Access to all APIs']
+    )
+    create(:plan,
+      name: 'Pro',
+      price_cents: 20000,
+      requests_per_hour: 5000,
+      features: ['Enhanced rate limiting', 'Priority support', 'Access to all APIs', 'Usage analytics']
+    )
+    create(:plan, :enterprise,
+      name: 'Enterprise',
+      price_cents: 80000,
+      requests_per_hour: 20000,
+      features: ['Maximum rate limiting', 'Dedicated support', 'Access to all APIs', 'Advanced analytics', 'Custom integrations', 'SLA guarantee']
+    )
+  end
+
   test 'renders api page' do
     get '/api'
     assert_response :success
@@ -19,22 +40,18 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   test 'api page shows services with APIs grouped by section' do
     get '/api'
     assert_response :success
-    
-    # Check that major sections are present
+
     assert_select 'h2', text: 'Data'
     assert_select 'h2', text: 'Tools'
     assert_select 'h2', text: 'Indexes'
-    
-    # Check that services with APIs are shown
+
     assert_select '.card-title', text: 'Packages'
     assert_select '.card-title', text: 'Repositories'
     assert_select '.card-title', text: 'Dependency Parser'
-    
-    # Check that API links are present
+
     assert_select 'a[href*="openapi.yaml"]', text: 'OpenAPI Spec'
     assert_select 'a[href*="/docs"]', text: 'Interactive Docs'
-    
-    # Check that services without APIs are mentioned
+
     assert_select 'h2', text: 'Services without APIs'
     assert_response_includes 'Digest'
     assert_response_includes 'Funds'
@@ -43,8 +60,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   test 'api page filters out services without APIs from cards' do
     get '/api'
     assert_response :success
-    
-    # These services should NOT appear in the cards since they don't have APIs
+
     assert_select '.card-title', text: 'Digest', count: 0
     assert_select '.card-title', text: 'Funds', count: 0
   end
@@ -76,7 +92,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get '/pricing'
     assert_response :success
 
-    # Check all plan names are displayed
     assert_select '.card-title', text: 'Free'
     assert_select '.card-title', text: 'Pro'
     assert_select '.card-title', text: 'Enterprise'
@@ -86,12 +101,10 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get '/pricing'
     assert_response :success
 
-    # Check for request limits
     assert_response_includes '300 requests'
     assert_response_includes '5,000 requests'
     assert_response_includes '20,000 requests'
 
-    # Check for pricing
     assert_response_includes 'Free'
     assert_response_includes '$200'
     assert_response_includes '$800'
@@ -101,7 +114,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get '/pricing'
     assert_response :success
 
-    # Check that features are shown
     assert_response_includes 'Basic rate limiting'
     assert_response_includes 'Priority support'
     assert_response_includes 'Dedicated support'

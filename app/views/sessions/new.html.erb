@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-body p-4">
+          <h1 class="h3 mb-4 text-center">Sign in to your account</h1>
+
+          <div class="d-grid gap-3">
+            <%= button_to auth_github_path, method: :post, class: "btn btn-dark", data: { turbo: false } do %>
+              <%= bootstrap_icon 'github', width: 20, height: 20, class: 'me-2' %>
+              Continue with GitHub
+            <% end %>
+
+            <button class="btn btn-outline-secondary" disabled>
+              <%= bootstrap_icon 'google', width: 20, height: 20, class: 'me-2' %>
+              Continue with Google
+              <small class="text-muted">(Coming soon)</small>
+            </button>
+
+            <div class="position-relative">
+              <hr class="my-3">
+              <span class="position-absolute top-50 start-50 translate-middle bg-white px-2 text-muted small">or</span>
+            </div>
+
+            <button class="btn btn-outline-secondary" disabled>
+              <%= bootstrap_icon 'envelope', width: 20, height: 20, class: 'me-2' %>
+              Continue with Email
+              <small class="text-muted">(Coming soon)</small>
+            </button>
+          </div>
+
+          <p class="text-center text-muted small mt-4 mb-0">
+            By signing in, you agree to our Terms of Service and Privacy Policy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
