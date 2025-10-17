@@ -1,36 +1,23 @@
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <div class="card-body p-4">
-          <h1 class="h3 mb-4 text-center">Sign in to your account</h1>
-
-          <div class="d-grid gap-3">
+      <div class="card well border-0">
+        <div class="card-body p-4 text-center">
+          <h1 class="h3 mb-4 mx-5">Welcome to your ecosyste.ms account</h1>
+          <p class="small mb-4 mx-5">Sign in with your Github profile to access your API keys, and manage your account and payment options.</p>
+          <div class="d-grid gap-3 mb-5">
             <%= button_to auth_path('github'), method: :post, class: "btn btn-dark", data: { turbo: false } do %>
               <%= bootstrap_icon 'github', width: 20, height: 20, class: 'me-2' %>
               Continue with GitHub
             <% end %>
 
-            <button class="btn btn-outline-secondary" disabled>
-              <%= bootstrap_icon 'google', width: 20, height: 20, class: 'me-2' %>
-              Continue with Google
-              <small class="text-muted">(Coming soon)</small>
-            </button>
+           
 
-            <div class="position-relative">
-              <hr class="my-3">
-              <span class="position-absolute top-50 start-50 translate-middle bg-white px-2 text-muted small">or</span>
-            </div>
 
-            <button class="btn btn-outline-secondary" disabled>
-              <%= bootstrap_icon 'envelope', width: 20, height: 20, class: 'me-2' %>
-              Continue with Email
-              <small class="text-muted">(Coming soon)</small>
-            </button>
           </div>
 
           <p class="text-center text-muted small mt-4 mb-0">
-            By signing in, you agree to our Terms of Service and Privacy Policy.
+            By signing in, you agree to our <a href="https://ecosyste.ms/terms">Terms</a></strong> and <a href="https://ecosyste.ms/privacy">Privacy Policy</a>.
           </p>
         </div>
       </div>

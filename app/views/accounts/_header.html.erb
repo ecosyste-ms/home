@@ -11,12 +11,14 @@
 <div class="project-header purple-grad-bg pt-4 pb-4 mb-5">
   <div class="container">
     <div class="row">
+      <% if @account.profile_picture_url && @account.show_profile_picture %>
       <div class="col-md-2 col-lg-1 mb-3 pt-1 d-flex align-items-start">
-        <% if @account.profile_picture_url && @account.show_profile_picture %>
           <img src="<%= @account.profile_picture_url %>" alt=" " class="img-fluid project-logo" onerror="this.style.display='none'">
-        <% end %>
       </div>
       <div class="col-12 col-md-10 col-lg-11">
+      <% else %>
+      <div class="col-12">
+      <% end %>
         <h1 class="display-1 extra-bold"><%= @account.name %></h1>
         <div class="d-xl-flex justify-content-between align-items-center mb-2">
           <div>
