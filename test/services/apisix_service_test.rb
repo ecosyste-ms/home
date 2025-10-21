@@ -14,7 +14,6 @@ class ApisixServiceTest < ActiveSupport::TestCase
 
     stub_request(:put, "#{@base_url}/apisix/admin/consumers/#{consumer_name}")
       .with(
-        headers: { 'X-API-KEY' => @admin_key },
         body: hash_including(
           username: consumer_name,
           plugins: hash_including('key-auth' => { key: api_key })
@@ -35,7 +34,6 @@ class ApisixServiceTest < ActiveSupport::TestCase
     consumer_name = 'test_key_prefix'
 
     stub_request(:delete, "#{@base_url}/apisix/admin/consumers/#{consumer_name}")
-      .with(headers: { 'X-API-KEY' => @admin_key })
       .to_return(status: 200, body: '{"deleted":"1"}', headers: { 'Content-Type' => 'application/json' })
 
     result = @service.delete_consumer(consumer_name: consumer_name)
@@ -52,7 +50,6 @@ class ApisixServiceTest < ActiveSupport::TestCase
     }.to_json
 
     stub_request(:get, "#{@base_url}/apisix/admin/consumers/#{consumer_name}")
-      .with(headers: { 'X-API-KEY' => @admin_key })
       .to_return(status: 200, body: response_body, headers: { 'Content-Type' => 'application/json' })
 
     result = @service.get_consumer(consumer_name)
@@ -63,7 +60,6 @@ class ApisixServiceTest < ActiveSupport::TestCase
     consumer_name = 'nonexistent'
 
     stub_request(:get, "#{@base_url}/apisix/admin/consumers/#{consumer_name}")
-      .with(headers: { 'X-API-KEY' => @admin_key })
       .to_return(status: 404, body: '{"error_msg":"not found"}', headers: { 'Content-Type' => 'application/json' })
 
     result = @service.get_consumer(consumer_name)
