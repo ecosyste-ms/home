@@ -1,0 +1,66 @@
+<%= render 'accounts/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      <%= render 'accounts/navigation' %>
+    </div>
+    <div class="col-12 col-lg-9">
+      <h1 class="mb-4">Password and security</h1>
+
+      <% github_identity = @identities.find { |i| i.provider == 'github' } %>
+      <% if github_identity %>
+        <div class="alert alert-info" role="alert">
+          Your account is linked to GitHub, change your password or security settings in your <a href="https://github.com/settings/security">GitHub Account</a>.
+        </div>
+      <% end %>
+
+      <div class="well p-3 mb-4">
+        <h2 class="h5 mb-3">Password authentication</h2>
+        <p class="text-muted mb-0">
+          <small>Email/password authentication is coming soon. For now, use OAuth providers below.</small>
+        </p>
+      </div>
+
+      <h2 class="mb-4 mt-5">Linked accounts</h2>
+      <% @identities.each do |identity| %>
+        <div class="well p-3 mb-3 d-flex justify-content-between align-items-center">
+          <div>
+            <p class="mb-1">
+              <%= bootstrap_icon identity.icon_name, width: 20, height: 20, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'me-1' %>
+              <strong><%= identity.display_name %></strong>
+            </p>
+            <p class="mb-0 text-muted small">
+              <% if identity.username %>
+                @<%= identity.username %>
+              <% elsif identity.email %>
+                <%= identity.email %>
+              <% else %>
+                Connected
+              <% end %>
+            </p>
+          </div>
+          <div>
+            <% if identity.can_unlink? %>
+              <%= button_to 'Unlink', unlink_identity_account_path(identity_id: identity.id), method: :delete, class: 'btn btn-sm btn-outline-danger', data: { confirm: "Are you sure you want to unlink #{identity.display_name}?" } %>
+            <% else %>
+              <span class="badge bg-secondary">Primary</span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="mt-4">
+        <h3 class="h6 mb-3">Connect additional accounts</h3>
+        <%= button_to auth_path('github'), method: :post, class: "btn btn-sm btn-outline-dark", data: { turbo: false }, disabled: github_identity.present? do %>
+          <%= bootstrap_icon 'github', width: 16, height: 16, class: 'me-1' %>
+          <%= github_identity ? 'Already connected' : 'Connect GitHub' %>
+        <% end %>
+        <button class="btn btn-sm btn-outline-secondary ms-2" disabled>
+          <%= bootstrap_icon 'google', width: 16, height: 16, class: 'me-1' %>
+          Connect Google (Coming soon)
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

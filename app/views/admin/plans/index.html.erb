@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Plans</h1>
+    <%= link_to 'New Plan', new_admin_plan_path, class: 'btn btn-primary' %>
+  </div>
+
+  <% @plans_by_family.each do |family, plans| %>
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5 class="mb-0"><%= family.titleize %> Plans</h5>
+      </div>
+      <div class="card-body">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Version</th>
+              <th>Price</th>
+              <th>Requests/hour</th>
+              <th>Subscribers</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% plans.each do |plan| %>
+              <tr>
+                <td><%= plan.name %></td>
+                <td>v<%= plan.version %></td>
+                <td><%= plan.formatted_price %></td>
+                <td><%= number_with_delimiter(plan.requests_per_hour) %></td>
+                <td><%= plan.subscriber_count %></td>
+                <td>
+                  <% if plan.public %>
+                    <span class="badge bg-success">Public</span>
+                  <% elsif plan.grandfathered? %>
+                    <span class="badge bg-warning">Grandfathered</span>
+                  <% elsif plan.deprecated? %>
+                    <span class="badge bg-secondary">Deprecated</span>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to 'View', admin_plan_path(plan), class: 'btn btn-sm btn-outline-primary' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

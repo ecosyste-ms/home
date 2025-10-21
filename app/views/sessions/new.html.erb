@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card well border-0">
+        <div class="card-body p-4 text-center">
+          <h1 class="h3 mb-4 mx-5">Welcome to your ecosyste.ms account</h1>
+          <p class="small mb-4 mx-5">Sign in with your Github profile to access your API keys, and manage your account and payment options.</p>
+          <div class="d-grid gap-3 mb-5">
+            <%= button_to auth_path('github'), method: :post, class: "btn btn-dark", data: { turbo: false } do %>
+              <%= bootstrap_icon 'github', width: 20, height: 20, class: 'me-2' %>
+              Continue with GitHub
+            <% end %>
+
+           
+
+
+          </div>
+
+          <p class="text-center text-muted small mt-4 mb-0">
+            By signing in, you agree to our <a href="https://ecosyste.ms/terms">Terms</a></strong> and <a href="https://ecosyste.ms/privacy">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="breadcrumb-section py-3 mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Pricing</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="project-header purple-grad-bg pt-4 pb-4 mb-5">
+  <div class="container text-center">
+    <h1 class="display-1 extra-bold mb-3">Pricing</h1>
+    <p class="lead">Choose the plan that works for you</p>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <div class="row">
+    <% @plans.each do |plan| %>
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 <%= 'border-primary' if plan.name == 'Pro' %>">
+          <div class="card-body d-flex flex-column">
+            <h2 class="card-title h3"><%= plan.name %></h2>
+
+            <div class="my-4">
+              <div class="display-4 fw-bold">
+                <%= plan.formatted_price %>
+                <% unless plan.free? %>
+                  <small class="fs-6 fw-normal text-muted">/month</small>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <p class="mb-1"><strong><%= number_with_delimiter(plan.requests_per_hour) %> requests</strong></p>
+              <p class="text-muted small mb-0">per hour</p>
+            </div>
+
+            <% if plan.features.present? %>
+              <ul class="list-unstyled mb-4">
+                <% plan.features.each do |feature| %>
+                  <li class="mb-2">
+                    <%= bootstrap_icon 'check-circle-fill', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-success me-2' %>
+                    <%= feature %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+
+            <div class="mt-auto">
+              <% if plan.free? %>
+                <a href="#" class="btn btn-outline-primary rounded-pill w-100">Get Started</a>
+              <% elsif plan.name == 'Pro' %>
+                <a href="#" class="btn btn-primary rounded-pill w-100">Choose <%= plan.name %></a>
+              <% else %>
+                <a href="#" class="btn btn-outline-secondary rounded-pill w-100">Contact Sales</a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12 col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="h4 mb-3">All plans include</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
+                  Access to all APIs
+                </li>
+                <li class="mb-2">
+                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
+                  OpenAPI 3.0 specifications
+                </li>
+                <li class="mb-2">
+                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
+                  JSON responses
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
+                  Interactive documentation
+                </li>
+                <li class="mb-2">
+                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
+                  CC-BY-SA-4.0 licensing
+                </li>
+                <li class="mb-2">
+                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
+                  RESTful endpoints
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <h3 class="h4 mb-3">Questions about pricing?</h3>
+      <p class="text-muted mb-4">Contact us to discuss custom enterprise plans or volume pricing.</p>
+      <a href="#" class="btn btn-outline-primary rounded-pill">Contact Us</a>
+    </div>
+  </div>
+</div>

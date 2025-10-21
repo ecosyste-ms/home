@@ -4,6 +4,16 @@ The homepage for all of Ecosyste.ms, lists of services, accounts and apis.
 
 This project is part of [Ecosyste.ms](https://ecosyste.ms): Tools and open datasets to support, sustain, and secure critical digital infrastructure.
 
+## Features
+
+This application provides:
+
+- **Service documentation** for all Ecosyste.ms services
+- **Account management** with GitHub OAuth authentication
+- **Subscription plans** (Free, Pro, Enterprise) with different API rate limits
+- **API key management** for authenticated API access
+- **Billing support** for both card and invoice-based payments (Stripe integration pending)
+
 ## Development
 
 For development and deployment documentation, check out [DEVELOPMENT.md](DEVELOPMENT.md)

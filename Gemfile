@@ -21,8 +21,16 @@ gem 'bootstrap-icons', require: "bootstrap_icons"
 gem 'appsignal'
 gem 'ostruct'
 
+# Authentication
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
+gem 'bcrypt'
+
 group :test do
   gem "rails-controller-testing"
+  gem "mocha"
+  gem "factory_bot_rails"
 end
 
 group :development, :test do
