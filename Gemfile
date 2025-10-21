@@ -31,6 +31,7 @@ group :test do
   gem "rails-controller-testing"
   gem "mocha"
   gem "factory_bot_rails"
+  gem "webmock"
 end
 
 group :development, :test do

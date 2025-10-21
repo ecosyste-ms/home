@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_15_092530) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_21_093419) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -48,7 +48,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_092530) do
     t.json "metadata"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "apisix_consumer_id"
     t.index ["account_id"], name: "index_api_keys_on_account_id"
+    t.index ["apisix_consumer_id"], name: "index_api_keys_on_apisix_consumer_id", unique: true
     t.index ["key_hash"], name: "index_api_keys_on_key_hash", unique: true
     t.index ["key_prefix"], name: "index_api_keys_on_key_prefix"
     t.index ["revoked_at"], name: "index_api_keys_on_revoked_at"

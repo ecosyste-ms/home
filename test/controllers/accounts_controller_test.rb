@@ -157,4 +157,131 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to login_path
     end
   end
+
+  test 'create_api_key creates API key and syncs to APISIX' do
+    login_as(@account)
+
+    service_mock = mock('apisix_service')
+    service_mock.expects(:create_consumer).returns('test_consumer_id')
+    ApisixService.expects(:new).returns(service_mock)
+
+    assert_difference '@account.api_keys.count', 1 do
+      post create_api_key_account_path, params: { name: 'My API Key' }
+    end
+
+    assert_redirected_to api_key_account_path
+    assert_match(/API Key created/, flash[:notice])
+
+    api_key = @account.api_keys.last
+    assert_equal 'My API Key', api_key.name
+    assert_equal 'test_consumer_id', api_key.apisix_consumer_id
+  end
+
+  test 'create_api_key auto-generates name if not provided' do
+    login_as(@account)
+
+    service_mock = mock('apisix_service')
+    service_mock.expects(:create_consumer).returns('test_consumer_id')
+    ApisixService.expects(:new).returns(service_mock)
+
+    post create_api_key_account_path
+    assert_redirected_to api_key_account_path
+
+    api_key = @account.api_keys.last
+    assert_match(/API Key \d+/, api_key.name)
+  end
+
+  test 'create_api_key fails when APISIX is unreachable' do
+    login_as(@account)
+
+    service_mock = mock('apisix_service')
+    service_mock.expects(:create_consumer).raises(ApisixService::ConnectionError.new('Failed to connect'))
+    ApisixService.expects(:new).returns(service_mock)
+
+    assert_no_difference '@account.api_keys.count' do
+      post create_api_key_account_path, params: { name: 'My API Key' }
+    end
+
+    assert_redirected_to api_key_account_path
+    assert_match(/Failed to create API key/, flash[:alert])
+  end
+
+  test 'create_api_key fails when APISIX returns error' do
+    login_as(@account)
+
+    service_mock = mock('apisix_service')
+    service_mock.expects(:create_consumer).raises(ApisixService::ApiError.new('Internal error'))
+    ApisixService.expects(:new).returns(service_mock)
+
+    assert_no_difference '@account.api_keys.count' do
+      post create_api_key_account_path, params: { name: 'My API Key' }
+    end
+
+    assert_redirected_to api_key_account_path
+    assert_match(/Failed to create API key/, flash[:alert])
+  end
+
+  test 'revoke_api_key revokes key and deletes from APISIX' do
+    login_as(@account)
+
+    # Create a valid API key
+    api_key = @account.api_keys.build(name: 'Test Key')
+    api_key.send(:generate_key)
+    api_key.apisix_consumer_id = 'test_prefix'
+    api_key.save!
+
+    service_mock = mock('apisix_service')
+    service_mock.expects(:delete_consumer).with(consumer_name: 'test_prefix').returns(true)
+    ApisixService.expects(:new).returns(service_mock)
+
+    delete revoke_api_key_account_path(api_key_id: api_key.id)
+
+    assert_redirected_to api_key_account_path
+    assert_match(/API Key has been revoked/, flash[:notice])
+
+    api_key.reload
+    assert api_key.revoked?
+  end
+
+  test 'revoke_api_key handles keys without APISIX consumer ID' do
+    login_as(@account)
+
+    # Create a valid API key without consumer ID
+    api_key = @account.api_keys.build(name: 'Test Key')
+    api_key.send(:generate_key)
+    api_key.save!
+
+    # Should not call APISIX service
+    ApisixService.expects(:new).never
+
+    delete revoke_api_key_account_path(api_key_id: api_key.id)
+
+    assert_redirected_to api_key_account_path
+    assert_match(/API Key has been revoked/, flash[:notice])
+
+    api_key.reload
+    assert api_key.revoked?
+  end
+
+  test 'revoke_api_key fails when APISIX delete fails' do
+    login_as(@account)
+
+    # Create a valid API key
+    api_key = @account.api_keys.build(name: 'Test Key')
+    api_key.send(:generate_key)
+    api_key.apisix_consumer_id = 'test_prefix'
+    api_key.save!
+
+    service_mock = mock('apisix_service')
+    service_mock.expects(:delete_consumer).raises(ApisixService::ApiError.new('Internal error'))
+    ApisixService.expects(:new).returns(service_mock)
+
+    delete revoke_api_key_account_path(api_key_id: api_key.id)
+
+    assert_redirected_to api_key_account_path
+    assert_match(/Failed to revoke API key/, flash[:alert])
+
+    api_key.reload
+    assert_not api_key.revoked?
+  end
 end

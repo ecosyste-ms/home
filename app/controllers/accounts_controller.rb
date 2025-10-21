@@ -30,18 +30,51 @@ class AccountsController < ApplicationController
   end
 
   def create_api_key
-    api_key = @account.api_keys.create!(
+    # Build the API key without saving
+    api_key = @account.api_keys.build(
       name: params[:name] || "API Key #{@account.api_keys.count + 1}"
     )
 
+    # Generate the key (triggers before_create callback)
+    api_key.send(:generate_key)
+    api_key.key_hash = BCrypt::Password.create(api_key.raw_key)
+    api_key.key_prefix = api_key.raw_key[0, 8]
+
+    # Create consumer in APISIX first
+    apisix_service = ApisixService.new
+    consumer_id = apisix_service.create_consumer(
+      consumer_name: api_key.key_prefix,
+      api_key: api_key.raw_key,
+      metadata: {
+        name: api_key.name,
+        account_id: @account.id
+      }
+    )
+
+    # Only save to database if APISIX succeeded
+    api_key.apisix_consumer_id = consumer_id
+    api_key.save!
+
     redirect_to api_key_account_path, notice: "API Key created: #{api_key.raw_key}. Save this key - you won't see it again!"
+  rescue ApisixService::ApisixError => e
+    redirect_to api_key_account_path, alert: "Failed to create API key: #{e.message}"
   end
 
   def revoke_api_key
     api_key = @account.api_keys.find(params[:api_key_id])
+
+    # Delete from APISIX first
+    if api_key.apisix_consumer_id.present?
+      apisix_service = ApisixService.new
+      apisix_service.delete_consumer(consumer_name: api_key.apisix_consumer_id)
+    end
+
+    # Only revoke in database if APISIX succeeded
     api_key.revoke!
 
     redirect_to api_key_account_path, notice: 'API Key has been revoked.'
+  rescue ApisixService::ApisixError => e
+    redirect_to api_key_account_path, alert: "Failed to revoke API key: #{e.message}"
   end
 
   def billing
