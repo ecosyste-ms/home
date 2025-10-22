@@ -9,12 +9,12 @@ class Service
           {
             name: 'Packages',
             url: 'https://packages.ecosyste.ms',
-            description: 'Metadata for 11.9m packages across 63 sources'
+            description: 'Metadata for 12.1m packages across 75 sources'
           },
           {
             name: 'Repositories',
             url: 'https://repos.ecosyste.ms',
-            description: 'Metadata for 285m repositories across 1,952 sources'
+            description: 'Metadata for 287m repositories across 1,952 sources'
           },
           {
             name: 'Advisories',
@@ -78,17 +78,17 @@ class Service
           {
             name: 'Timeline',
             url: 'https://timeline.ecosyste.ms',
-            description: '6 billion events for every public repo on GitHub',
+            description: '7 billion events for every public repo on GitHub',
           },
           {
             name: 'Commits',
             url: 'https://commits.ecosyste.ms',
-            description: '947 million commits across 6 million repositories',
+            description: '950 million commits across 6 million repositories',
           },
           {
             name: 'Issues',
             url: 'https://issues.ecosyste.ms',
-            description: '35 million issues and 113 million pull requests across 11 million repositories',
+            description: '35 million issues and 112 million pull requests across 11 million repositories',
           },
           {
             name: 'Sponsors',
@@ -108,7 +108,7 @@ class Service
           {
             name: 'Dependabot',
             url: 'https://dependabot.ecosyste.ms',
-            description: '4.97 mllion pull requests opened by Dependabot',
+            description: '5.22 mllion pull requests opened by Dependabot',
           },
         ]
       },
