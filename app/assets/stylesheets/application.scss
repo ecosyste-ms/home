@@ -3,7 +3,7 @@
 .site-logo {
   background-image: asset-url('ecosystems-logo.svg');
   width: 246px;
-  height: 50px; 
+  height: 50px;
 }
 
 .site-logo--white {
@@ -22,12 +22,15 @@
 
 .home__stat {
   z-index: -1;
+
   .stat-card {
     margin-right: 2em;
+
     &:last-child {
-      margin-right:0;
+      margin-right: 0;
     }
   }
+
   .container {
     z-index: 2;
     position: relative;
@@ -47,20 +50,24 @@
   border-radius: 1rem;
   background-image: linear-gradient($color-orange-light 0%, $color-orange 100%);
   overflow: hidden;
+
   .card-body {
     padding-left: 2rem;
     padding-bottom: 2rem;
   }
+
   .card-image__img {
-		position: relative;
-		top: 0;
-		@include media-breakpoint-only(lg) { 
-			top: 0;
-		}
+    position: relative;
+    top: 0;
+
+    @include media-breakpoint-only(lg) {
+      top: 0;
+    }
   }
-	a {
-		@include spesh-link();
-	}
+
+  a {
+    @include spesh-link();
+  }
 }
 
 /* gem-bg is how the gems are laid out and behave on the homepage, they stick as you scroll then dissappear behind the following section */
@@ -73,7 +80,9 @@
   z-index: 0;
   height: 0;
   width: 100%;
-	will-change: transform; /* Optimize for smooth animations */
+  will-change: transform;
+
+  /* Optimize for smooth animations */
   img {
     position: absolute;
   }
@@ -84,14 +93,16 @@
   width: 150px;
   right: 10%;
   top: -50px;
-	@include media-breakpoint-up(md) { 
-		height: 220px;
-		width: 220px;
-	}
-	@include media-breakpoint-up(lg) { 
-		height: 300px;
-		width: 300px;
-	}
+
+  @include media-breakpoint-up(md) {
+    height: 220px;
+    width: 220px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: 300px;
+    width: 300px;
+  }
 }
 
 .stone-2 {
@@ -99,16 +110,18 @@
   width: 120px;
   right: 30%;
   top: 90px;
-	@include media-breakpoint-up(md) { 
-		height: 145px;
-		width: 145px;
-		top: 140px;
-	}
-	@include media-breakpoint-up(lg) { 
-		height: 195px;
-		width: 195px;
-		top: 200px;
-	}
+
+  @include media-breakpoint-up(md) {
+    height: 145px;
+    width: 145px;
+    top: 140px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: 195px;
+    width: 195px;
+    top: 200px;
+  }
 }
 
 .stone-3 {
@@ -116,61 +129,65 @@
   width: 80px;
   right: 10%;
   top: 160px;
-	@include media-breakpoint-up(md) { 
-		height: 110px;
-		width: 110px;
-		top: 190px
-	}
-	@include media-breakpoint-up(lg) { 
-		height: 160px;
-  	width: 160px;
-		top: 290px;
-	}
+
+  @include media-breakpoint-up(md) {
+    height: 110px;
+    width: 110px;
+    top: 190px
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: 160px;
+    width: 160px;
+    top: 290px;
+  }
 }
 
 .position-rel {
-	position: relative;
-	z-index: 50;
+  position: relative;
+  z-index: 50;
 }
 
 .white-bg {
-	background-color: $color-white;
+  background-color: $color-white;
 }
 
 .directory {
-	a {
-		@include spesh-link();
-	}
+  a {
+    @include spesh-link();
+  }
 }
 
 .directory-section {
-	border-bottom: 3px solid $color-purple-light;
+  border-bottom: 3px solid $color-purple-light;
 }
 
 .logo-grid {
-	img {
-		min-width: 150px;
-		max-width: 250px;
-		display: inline-block;
-		margin-bottom: 1rem;
-	}
+  img {
+    min-width: 150px;
+    max-width: 250px;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
 }
 
 .styleguide {
-	article {
-		border-bottom: 3px solid $color-purple-light;
-		margin-bottom: 5em !important;
-		padding-bottom: 5em !important;
-	}
-	section > h2 {
-		@extend .display-3;
-	}
-	.bd-heading{
-		
-		h3 {
-			@extend .h2;
-		}
-	} 
+  article {
+    border-bottom: 3px solid $color-purple-light;
+    margin-bottom: 5em !important;
+    padding-bottom: 5em !important;
+  }
+
+  section>h2 {
+    @extend .display-3;
+  }
+
+  .bd-heading {
+
+    h3 {
+      @extend .h2;
+    }
+  }
 }
 
 .color-box {
@@ -246,35 +263,36 @@
 
 //Gradients {
 .color-box--purple-gradient {
-	background: linear-gradient(0deg, $color-purple-dark 50%, $color-purple 100%);
+  background: linear-gradient(0deg, $color-purple-dark 50%, $color-purple 100%);
 }
-.color-box--grey-grad-bg  {
+
+.color-box--grey-grad-bg {
   background: linear-gradient(180deg, #FFFFFF 0%, #F5F5FF 100%);
 }
 
 .character-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-	gap: 20px;
-	margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .character-box {
-	border: 1px solid #DCDCE0;
-	border-radius: 5px;
-	padding: 10px;
-	text-align: center;
+  border: 1px solid #DCDCE0;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
 }
 
 .character-box p {
-	margin: 10px 0 0;
-	font-size: 14px;
-	color: #4C4C61;
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #4C4C61;
 }
 
 .page-content--demo {
-	border: 1px solid $color-grey;
-	max-width: 48em;
+  border: 1px solid $color-grey;
+  max-width: 48em;
 }
 
 .commercial-home__ecosystems-data {
@@ -303,31 +321,36 @@
 }
 
 .commercial-hero {
-	background-image: asset-url('pipes.svg');
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: 238px 524px;
-	padding-top: 524px;
-	@include media-breakpoint-up(lg) {
-		background-position: right -100px;
-		background-size: 476px 1048px;
-		padding-top: 0;
-	}
+  background-image: asset-url('pipes.svg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 238px 524px;
+  padding-top: 524px;
+
+  @include media-breakpoint-up(lg) {
+    background-position: right -100px;
+    background-size: 476px 1048px;
+    padding-top: 0;
+  }
 }
 
 .three-equal-widgets--wrap-sooner {
+
   /* 
    * variant that wraps sooner at lg rather than md, just used for commercial homepage but maybe we'll bring it to the main dashboard?
    */
-  @include media-breakpoint-up(lg) { 
+  @include media-breakpoint-up(lg) {
     grid-template-columns: repeat(2, 1fr);
-    > .card:first-child {
+
+    >.card:first-child {
       grid-column: span 2;
     }
   }
-  @include media-breakpoint-up(xl) { 
+
+  @include media-breakpoint-up(xl) {
     grid-template-columns: repeat(3, 1fr);
-    > .card:first-child {
+
+    >.card:first-child {
       grid-column: span 1;
     }
   }
@@ -335,4 +358,60 @@
 
 .nobr {
   white-space: nowrap;
+}
+
+.table-rounded {
+  border: 1px solid $color-purple-light;
+  overflow: hidden; // this is the magic line
+  background: white; // optional, to cover cell background gaps
+  border-radius: $border-radius;
+}
+
+.pricing-table {
+  border-color: $color-purple-light;
+  margin-bottom: 0;
+
+  th {
+    font-weight: normal;
+  }
+
+  th:first-child,
+  td:first-child {
+    background-color: $color-grey-light;
+  }
+
+  // Thanks bootstrap for this selector :)
+  > :not(caption)>*>* {
+    padding: .75rem 1rem;
+  }
+  .help-link {
+    box-shadow: 0;
+  }
+}
+
+.pricing-table__th {
+  vertical-align: top !important;
+}
+
+/* Make accordion header behave like a card */
+.pricing-accordion {
+  .card-toggle {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    &:after {
+      
+    }
+  }
+  .pricing-table__card {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+
+
+.text-primary-dark {
+  color: $color-purple-dark !important;
 }

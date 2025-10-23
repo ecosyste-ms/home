@@ -2,22 +2,23 @@ require 'test_helper'
 
 class PlanTest < ActiveSupport::TestCase
   def setup
+    # canonical three plans used across the app now
     Plan.find_or_create_by(name: 'Free') do |plan|
       plan.price_cents = 0
       plan.billing_period = 'month'
       plan.requests_per_hour = 300
     end
 
-    Plan.find_or_create_by(name: 'Pro') do |plan|
-      plan.price_cents = 20000
+    Plan.find_or_create_by(name: 'Researcher') do |plan|
+      plan.price_cents = 10000   # $100/mo
       plan.billing_period = 'month'
-      plan.requests_per_hour = 5000
+      plan.requests_per_hour = 2000
     end
 
-    Plan.find_or_create_by(name: 'Enterprise') do |plan|
-      plan.price_cents = 80000
+    Plan.find_or_create_by(name: 'Developer') do |plan|
+      plan.price_cents = 50000   # $500/mo
       plan.billing_period = 'month'
-      plan.requests_per_hour = 20000
+      plan.requests_per_hour = 5000
     end
   end
 
@@ -57,18 +58,19 @@ class PlanTest < ActiveSupport::TestCase
     plans = Plan.all
 
     assert_operator plans.length, :>=, 3
-    assert_includes plans.map(&:name), 'Free'
-    assert_includes plans.map(&:name), 'Pro'
-    assert_includes plans.map(&:name), 'Enterprise'
+    names = plans.map(&:name)
+    assert_includes names, 'Free'
+    assert_includes names, 'Researcher'
+    assert_includes names, 'Developer'
   end
 
   test 'find_by returns correct plan' do
-    plan = Plan.find_by(name: 'Pro')
+    plan = Plan.find_by(name: 'Developer')
 
     assert_not_nil plan
-    assert_equal 'Pro', plan.name
+    assert_equal 'Developer', plan.name
     assert_equal 5000, plan.requests_per_hour
-    assert_equal 200, plan.price_dollars
+    assert_equal 500, plan.price_dollars
   end
 
   test 'free? returns true for free plan' do
@@ -77,7 +79,7 @@ class PlanTest < ActiveSupport::TestCase
   end
 
   test 'free? returns false for paid plans' do
-    plan = Plan.find_by(name: 'Pro')
+    plan = Plan.find_by(name: 'Researcher')
     assert_not plan.free?
   end
 
@@ -87,12 +89,12 @@ class PlanTest < ActiveSupport::TestCase
   end
 
   test 'formatted_price returns dollar amount for paid plans' do
-    plan = Plan.find_by(name: 'Pro')
-    assert_equal '$200', plan.formatted_price
+    plan = Plan.find_by(name: 'Researcher')
+    assert_equal '$100', plan.formatted_price
   end
 
   test 'formatted_requests returns formatted string' do
-    plan = Plan.find_by(name: 'Pro')
+    plan = Plan.find_by(name: 'Developer')
     assert_equal '5,000', plan.formatted_requests
   end
 end

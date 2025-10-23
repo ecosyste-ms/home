@@ -546,7 +546,7 @@ body {
   }
 }
 
-.table a {
+.table a:not(.btn, .help-link) {
   @include spesh-link();
 }
 

@@ -10,109 +10,274 @@
 </div>
 
 <div class="project-header purple-grad-bg pt-4 pb-4 mb-5">
-  <div class="container text-center">
-    <h1 class="display-1 extra-bold mb-3">Pricing</h1>
+  <div class="container">
+    <h1 class="display-1 extra-bold mb-3">API Plans and Pricing</h1>
     <p class="lead">Choose the plan that works for you</p>
   </div>
 </div>
 
 <div class="container mb-5">
-  <div class="row">
-    <% @plans.each do |plan| %>
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <div class="card h-100 <%= 'border-primary' if plan.name == 'Pro' %>">
-          <div class="card-body d-flex flex-column">
-            <h2 class="card-title h3"><%= plan.name %></h2>
+  
 
-            <div class="my-4">
-              <div class="display-4 fw-bold">
-                <%= plan.formatted_price %>
-                <% unless plan.free? %>
-                  <small class="fs-6 fw-normal text-muted">/month</small>
-                <% end %>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <p class="mb-1"><strong><%= number_with_delimiter(plan.requests_per_hour) %> requests</strong></p>
-              <p class="text-muted small mb-0">per hour</p>
-            </div>
-
-            <% if plan.features.present? %>
-              <ul class="list-unstyled mb-4">
-                <% plan.features.each do |feature| %>
-                  <li class="mb-2">
-                    <%= bootstrap_icon 'check-circle-fill', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-success me-2' %>
-                    <%= feature %>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-
-            <div class="mt-auto">
-              <% if plan.free? %>
-                <a href="#" class="btn btn-outline-primary rounded-pill w-100">Get Started</a>
-              <% elsif plan.name == 'Pro' %>
-                <a href="#" class="btn btn-primary rounded-pill w-100">Choose <%= plan.name %></a>
-              <% else %>
-                <a href="#" class="btn btn-outline-secondary rounded-pill w-100">Contact Sales</a>
+  <!-- Comparison table (md+) -->
+  <div class="row mt-5 d-none d-md-block">
+    <div class="col-12">
+      <div class="table-responsive table-rounded">
+        <table class="table pricing-table align-middle">
+          <caption class="visually-hidden">Compare plan features and limits</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="w-25"><span class="visually-hidden">Feature</span></th>
+              <% @plans.each do |p| %>
+                <th scope="col" class="pricing-table__th>
+                  <%= render 'plan_card', plan: p %>
+                </th>
               <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="row mt-5">
-    <div class="col-12 col-lg-8 offset-lg-2">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="h4 mb-3">All plans include</h3>
-          <div class="row">
-            <div class="col-md-6">
-              <ul class="list-unstyled">
-                <li class="mb-2">
-                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
-                  Access to all APIs
-                </li>
-                <li class="mb-2">
-                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
-                  OpenAPI 3.0 specifications
-                </li>
-                <li class="mb-2">
-                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
-                  JSON responses
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <ul class="list-unstyled">
-                <li class="mb-2">
-                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
-                  Interactive documentation
-                </li>
-                <li class="mb-2">
-                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
-                  CC-BY-SA-4.0 licensing
-                </li>
-                <li class="mb-2">
-                  <%= bootstrap_icon 'check-circle', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'text-primary me-2' %>
-                  RESTful endpoints
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">API Access
+                <a href="#" aria-labelledby="access-help" class="help-link">
+                  <%= bootstrap_icon 'question-circle',
+                  width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'Explain API access methods'
+                  %>
+                  <span id="access-help" class="visually-hidden">Explain API access methods</span>
+                </a>
+              </th>
+              <% @plans.each { |p| %><td><%= p.access_type %></td><% } %>
+            </tr>
+            <tr>
+              <th scope="row">Rate limit
+                <a href="#" aria-labelledby="rate-help" class="help-link">
+                  <%= bootstrap_icon 'question-circle',
+                  width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'What are rate limits?'
+                  %>
+                  <span id="rate-help" class="visually-hidden">What are rate limits?</span>
+                </a>
+              </th>
+              <% @plans.each { |p| %><td><%= p.formatted_requests %> requests per hour</td><% } %>
+            </tr>
+            <tr>
+              <th scope="row">Quota reset
+                <a href="#" aria-labelledby="quota-help" class="help-link">
+                  <%= bootstrap_icon 'question-circle',
+                  width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'What are Quota Resets?'
+                  %>
+                  <span id="quota-help" class="visually-hidden">What are Quota Resets?</span>
+                </a>
+              </th>
+              <% @plans.each do |p| %>
+                <td>
+                  <% if p.quota_reset == 'daily' %>
+                    Every day
+                    <% if p.daily_quota_total_int.present? %>
+                      <small class="text-muted">(<%= p.daily_quota_total_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> total requests)</small>
+                    <% end %>
+                  <% else %>
+                    Every hour
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+            <tr>
+              <th scope="row">Burst requests
+                <a href="#" aria-labelledby="burst-help" class="help-link">
+                  <%= bootstrap_icon 'question-circle',
+                  width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'What are burst requests?'
+                  %>
+                  <span id="burst-help" class="visually-hidden">What are burst requests?</span>
+                </a>
+              </th>
+              <% @plans.each { |p| %><td><%= p.burst_requests ? 'Yes' : 'No' %></td><% } %>
+            </tr>
+            <tr>
+              <th scope="row">Request priority
+                <a href="#" aria-labelledby="request-priority-help" class="help-link">
+                  <%= bootstrap_icon 'question-circle',
+                  width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'What is request priority?'
+                  %>
+                  <span id="request-priority-help" class="visually-hidden">What is request priority?</span>
+                </a>
+              </th>
+              <% @plans.each { |p| %><td><%= p.priority %></td><% } %>
+            </tr>
+            <tr>
+              <th scope="row">License</th>
+              <% @plans.each { |p| %><td><a href="#"><%= p.license_name %></a></td><% } %>
+            </tr>
+            <tr>
+              <th scope="row">Support
+                <a href="#" aria-labelledby="support-help" class="help-link">
+                  <%= bootstrap_icon 'question-circle',
+                  width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'Explain levels of support'
+                  %>
+                  <span id="support-help" class="visually-hidden">Explain levels of support</span>
+                </a>
+              </th>
+              <% @plans.each { |p| %><td><%= p.support_level %></td><% } %>
+            </tr>
+            <tr>
+              <th scope="row">SLA
+                <a href="#" aria-labelledby="sla-help" class="help-link">
+                  <%= bootstrap_icon 'question-circle',
+                  width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'Explain Service Level Agreements'
+                  %>
+                  <span id="sla-help" class="visually-hidden">Explain Service Level Agreements</span>
+                </a>
+              </th>
+              <% @plans.each { |p| %><td><%= p.sla_level %></td><% } %>
+            </tr>
+            <tr>
+              <th scope="row">Dashboard access
+                <a href="#" aria-labelledby="dashboard-help" class="help-link">
+                  <%= bootstrap_icon 'question-circle',
+                  width: 18, height: 18, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'mb-1', title: 'Explain dashboards'
+                  %>
+                  <span id="dashboard-help" class="visually-hidden">Explain dashboards</span>
+                </a>
+              </th>
+              <% @plans.each { |p| %><td><%= p.dashboard_access ? 'Included' : 'No' %></td><% } %>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 
+  <!-- Mobile accordion (xs–sm only) -->
+<div class="row d-md-none mt-4">
+  <div class="col-12">
+    <div class="accordion pricing-accordion" id="planFeatures">
+      <% @plans.each_with_index do |p, i| %>
+        <div class="accordion-item p-3">
+          <h2 class="accordion-header" id="head-<%= i %>">
+            <!-- Card-as-header -->
+            <button class="accordion-button card-toggle <%= i.zero? ? '' : 'collapsed' %>" 
+                    type="button"
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#body-<%= i %>"
+                    aria-expanded="<%= i.zero? %>"
+                    aria-controls="body-<%= i %>">
+              <%= render 'plan_card', plan: p %>
+            </button>
+          </h2>
+
+          <div id="body-<%= i %>" 
+               class="accordion-collapse collapse <%= 'show' if i.zero? %>" 
+               data-bs-parent="#planFeatures">
+            <div class="accordion-body">
+              <ul class="list-unstyled mb-0">
+
+                <li class="mb-2">
+                  <strong>API Access</strong>
+                  <a href="#" aria-labelledby="m-access-help-<%= i %>" class="help-link ms-1 align-middle">
+                    <%= bootstrap_icon 'question-circle', width: 18, height: 18, aria_hidden: 'true', focusable: 'false', class: 'mb-1', title: 'Explain API access methods' %>
+                    <span id="m-access-help-<%= i %>" class="visually-hidden">Explain API access methods</span>
+                  </a>
+                  <div><%= p.access_type %></div>
+                </li>
+
+                <li class="mb-2">
+                  <strong>Rate limit</strong>
+                  <a href="#" aria-labelledby="m-rate-help-<%= i %>" class="help-link ms-1 align-middle">
+                    <%= bootstrap_icon 'question-circle', width: 18, height: 18, aria_hidden: 'true', focusable: 'false', class: 'mb-1', title: 'What are rate limits?' %>
+                    <span id="m-rate-help-<%= i %>" class="visually-hidden">What are rate limits?</span>
+                  </a>
+                  <div><%= p.formatted_requests %> requests per hour</div>
+                </li>
+
+                <li class="mb-2">
+                  <strong>Quota reset</strong>
+                  <a href="#" aria-labelledby="m-quota-help-<%= i %>" class="help-link ms-1 align-middle">
+                    <%= bootstrap_icon 'question-circle', width: 18, height: 18, aria_hidden: 'true', focusable: 'false', class: 'mb-1', title: 'What are quota resets?' %>
+                    <span id="m-quota-help-<%= i %>" class="visually-hidden">What are quota resets?</span>
+                  </a>
+                  <div>
+                    <% if p.quota_reset == 'daily' %>
+                      Every day
+                      <% if p.daily_quota_total_int.present? %>
+                        <small class="text-muted">( <%= number_with_delimiter(p.daily_quota_total_int) %> total requests )</small>
+                      <% end %>
+                    <% else %>
+                      Every hour
+                    <% end %>
+                  </div>
+                </li>
+
+                <li class="mb-2">
+                  <strong>Burst requests</strong>
+                  <a href="#" aria-labelledby="m-burst-help-<%= i %>" class="help-link ms-1 align-middle">
+                    <%= bootstrap_icon 'question-circle', width: 18, height: 18, aria_hidden: 'true', focusable: 'false', class: 'mb-1', title: 'What are burst requests?' %>
+                    <span id="m-burst-help-<%= i %>" class="visually-hidden">What are burst requests?</span>
+                  </a>
+                  <div><%= p.burst_requests ? 'Yes' : 'No' %></div>
+                </li>
+
+                <li class="mb-2">
+                  <strong>Request priority</strong>
+                  <a href="#" aria-labelledby="m-priority-help-<%= i %>" class="help-link ms-1 align-middle">
+                    <%= bootstrap_icon 'question-circle', width: 18, height: 18, aria_hidden: 'true', focusable: 'false', class: 'mb-1', title: 'Explain request priority' %>
+                    <span id="m-priority-help-<%= i %>" class="visually-hidden">Explain request priority</span>
+                  </a>
+                  <div><%= p.priority %></div>
+                </li>
+
+                <li class="mb-2">
+                  <strong>License</strong>
+                  <div><a href="#"><%= p.license_name %></a></div>
+                </li>
+
+                <li class="mb-2">
+                  <strong>Support</strong>
+                  <a href="#" aria-labelledby="m-support-help-<%= i %>" class="help-link ms-1 align-middle">
+                    <%= bootstrap_icon 'question-circle', width: 18, height: 18, aria_hidden: 'true', focusable: 'false', class: 'mb-1', title: 'Explain levels of support' %>
+                    <span id="m-support-help-<%= i %>" class="visually-hidden">Explain levels of support</span>
+                  </a>
+                  <div><%= p.support_level %></div>
+                </li>
+
+                <li class="mb-2">
+                  <strong>SLA</strong>
+                  <a href="#" aria-labelledby="m-sla-help-<%= i %>" class="help-link ms-1 align-middle">
+                    <%= bootstrap_icon 'question-circle', width: 18, height: 18, aria_hidden: 'true', focusable: 'false', class: 'mb-1', title: 'Explain service level agreements' %>
+                    <span id="m-sla-help-<%= i %>" class="visually-hidden">Explain service level agreements</span>
+                  </a>
+                  <div><%= p.sla_level %></div>
+                </li>
+
+                <li class="mb-2">
+                  <strong>Dashboard access</strong>
+                  <a href="#" aria-labelledby="m-dashboard-help-<%= i %>" class="help-link ms-1 align-middle">
+                    <%= bootstrap_icon 'question-circle', width: 18, height: 18, aria_hidden: 'true', focusable: 'false', class: 'mb-1', title: 'Explain dashboards' %>
+                    <span id="m-dashboard-help-<%= i %>" class="visually-hidden">Explain dashboards</span>
+                  </a>
+                  <div><%= p.dashboard_access ? 'Included' : 'No' %></div>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
   <div class="row mt-5">
-    <div class="col-12 text-center">
-      <h3 class="h4 mb-3">Questions about pricing?</h3>
-      <p class="text-muted mb-4">Contact us to discuss custom enterprise plans or volume pricing.</p>
-      <a href="#" class="btn btn-outline-primary rounded-pill">Contact Us</a>
+    <div class="col-12 col-md-4 col-xl-3">
+      <div class="py-5 px-3">
+        <h2>Contact us</h2>
+        <p>Have questions about pricing or your use case?</p>
+        <p><a href="#" class="btn btn-primary rounded-pill">Contact us</a></p>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 col-xl-9">
+      <div class="well p-5">
+        <h2 class="text-primary-dark">Enterprise and volume licensing</h2>
+        <p>If you require rate limits that exceed our paid plans, or custom licensing get in touch to discuss your needs</p>
+        <p><a href="#" class="btn btn-primary rounded-pill">Talk to us</a></p>
+      </div>
     </div>
   </div>
 </div>
