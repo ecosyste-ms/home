@@ -23,8 +23,6 @@ upsert_plan(
   metadata: {
     tagline: 'For small-scale projects and hobbyists looking to add ecosystems data to their project',
     access_type: 'Common or polite pools',
-    quota_reset: 'hourly',
-    burst_requests: false,
     priority: 'Standard',
     support_level: 'Community',
     sla_level: 'None',
@@ -45,9 +43,6 @@ upsert_plan(
   metadata: {
     tagline: 'For those who require bulk and volume downloads but don’t depend on the fastest access',
     access_type: 'API Key',
-    quota_reset: 'daily',
-    daily_quota_total: 48_000,
-    burst_requests: true,
     priority: 'Standard',
     support_level: 'Community',
     sla_level: 'Standard',
@@ -68,8 +63,6 @@ upsert_plan(
   metadata: {
     tagline: 'Fast, responsive, and supported access to our data APIs for your production application',
     access_type: 'API Key',
-    quota_reset: 'hourly',
-    burst_requests: false,
     priority: 'High priority',
     support_level: 'Priority',
     sla_level: 'Commercial',

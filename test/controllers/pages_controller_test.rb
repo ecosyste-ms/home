@@ -82,8 +82,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     # table/accordion feature labels
     assert_response_includes 'API Access'
     assert_response_includes 'Rate limit'
-    assert_response_includes 'Quota reset'
-    assert_response_includes 'Burst requests'
     assert_response_includes 'Request priority'
     assert_response_includes 'License'
     assert_response_includes 'Support'

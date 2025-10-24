@@ -19,9 +19,6 @@ class Plan < ApplicationRecord
   store_accessor :metadata,
     :tagline,            # short blurb
     :access_type,        # "Common or polite pools" | "API Key"
-    :quota_reset,        # "hourly" | "daily"
-    :daily_quota_total,  # integer (for daily plans)
-    :burst_requests,     # true/false
     :priority,           # "Standard" | "High priority"
     :support_level,      # "Community" | "Priority"
     :sla_level,          # "None" | "Standard" | "Commercial"
@@ -49,33 +46,12 @@ class Plan < ApplicationRecord
     requests_per_hour.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
   end
 
-  def daily_quota_total_int
-    daily_quota_total.to_i if daily_quota_total.present?
-  end
-
-  def rate_summary
-    if quota_reset == "daily"
-      total = daily_quota_total_int ? " (#{daily_quota_total_int.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse} total requests)" : ""
-      "#{formatted_requests} req/hour • resets daily#{total}"
-    else
-      "#{formatted_requests} req/hour • resets hourly"
-    end
-  end
-
   def license_name
     super.presence || "CC BY-SA 4.0"
   end
 
   def access_type
     super.presence || "API Key"
-  end
-
-  def quota_reset
-    super.presence || "hourly"
-  end
-
-  def burst_requests
-    ActiveModel::Type::Boolean.new.cast(super)
   end
 
   def priority
