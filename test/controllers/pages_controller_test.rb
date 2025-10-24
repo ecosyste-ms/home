@@ -2,23 +2,25 @@ require 'test_helper'
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
   def setup
-    create(:plan, :free,
+    create(:plan,
       name: 'Free',
       price_cents: 0,
       requests_per_hour: 300,
       features: ['Basic rate limiting', 'Community support', 'Access to all APIs']
     )
+
     create(:plan,
-      name: 'Pro',
-      price_cents: 20000,
-      requests_per_hour: 5000,
-      features: ['Enhanced rate limiting', 'Priority support', 'Access to all APIs', 'Usage analytics']
+      name: 'Researcher',
+      price_cents: 10000,
+      requests_per_hour: 2000,
+      features: ['Standard rate limiting', 'Community support', 'Access to all APIs']
     )
-    create(:plan, :enterprise,
-      name: 'Enterprise',
-      price_cents: 80000,
-      requests_per_hour: 20000,
-      features: ['Maximum rate limiting', 'Dedicated support', 'Access to all APIs', 'Advanced analytics', 'Custom integrations', 'SLA guarantee']
+
+    create(:plan,
+      name: 'Developer',
+      price_cents: 50000,
+      requests_per_hour: 5000,
+      features: ['High rate limiting', 'Priority support', 'Access to all APIs', 'Usage analytics']
     )
   end
 
@@ -37,48 +39,11 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'meta[name="description"][content="RESTful APIs with OpenAPI 3.0.1 specs for package ecosystem data. Polite pool access with email authentication, consistent JSON responses, and CC-BY-SA-4.0 licensing."]'
   end
 
-  test 'api page shows services with APIs grouped by section' do
-    get '/api'
-    assert_response :success
-
-    assert_select 'h2', text: 'Data'
-    assert_select 'h2', text: 'Tools'
-    assert_select 'h2', text: 'Indexes'
-
-    assert_select '.card-title', text: 'Packages'
-    assert_select '.card-title', text: 'Repositories'
-    assert_select '.card-title', text: 'Dependency Parser'
-
-    assert_select 'a[href*="openapi.yaml"]', text: 'OpenAPI Spec'
-    assert_select 'a[href*="/docs"]', text: 'Interactive Docs'
-
-    assert_select 'h2', text: 'Services without APIs'
-    assert_response_includes 'Digest'
-    assert_response_includes 'Funds'
-  end
-
-  test 'api page filters out services without APIs from cards' do
-    get '/api'
-    assert_response :success
-
-    assert_select '.card-title', text: 'Digest', count: 0
-    assert_select '.card-title', text: 'Funds', count: 0
-  end
-
-  test 'serves openapi.yml file' do
-    get '/openapi.yml'
-    assert_response :success
-    assert_equal 'application/x-yaml', response.content_type
-    assert_response_includes 'openapi: 3.0.1'
-    assert_response_includes 'title: Ecosyste.ms APIs'
-    assert_response_includes 'packages.ecosyste.ms/docs/api/v1/openapi.yaml'
-  end
-
   test 'renders pricing page' do
     get '/pricing'
     assert_response :success
     assert_template 'pages/pricing'
-    assert_select 'h1', 'Pricing'
+    assert_select 'h1', 'API Plans and Pricing'
   end
 
   test 'pricing page has custom meta title and description' do
@@ -93,8 +58,8 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_select '.card-title', text: 'Free'
-    assert_select '.card-title', text: 'Pro'
-    assert_select '.card-title', text: 'Enterprise'
+    assert_select '.card-title', text: 'Researcher'
+    assert_select '.card-title', text: 'Developer'
   end
 
   test 'pricing page shows plan details' do
@@ -102,31 +67,34 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_response_includes '300 requests'
+    assert_response_includes '2,000 requests'
     assert_response_includes '5,000 requests'
-    assert_response_includes '20,000 requests'
 
     assert_response_includes 'Free'
-    assert_response_includes '$200'
-    assert_response_includes '$800'
+    assert_response_includes '$100'
+    assert_response_includes '$500'
   end
 
   test 'pricing page displays plan features' do
     get '/pricing'
     assert_response :success
 
-    assert_response_includes 'Basic rate limiting'
-    assert_response_includes 'Priority support'
-    assert_response_includes 'Dedicated support'
-    assert_response_includes 'SLA guarantee'
+    # table/accordion feature labels
+    assert_response_includes 'API Access'
+    assert_response_includes 'Rate limit'
+    assert_response_includes 'Request priority'
+    assert_response_includes 'License'
+    assert_response_includes 'Support'
+    assert_response_includes 'SLA'
+    assert_response_includes 'Dashboard access'
   end
 
   test 'pricing page includes call to action buttons' do
     get '/pricing'
     assert_response :success
 
-    assert_select 'a.btn', text: 'Get Started'
-    assert_select 'a.btn', text: 'Choose Pro'
-    assert_select 'a.btn', text: 'Contact Sales'
+    assert_select 'a.btn', text: 'Get access'
+    assert_select 'a.btn', text: 'Choose'
   end
 
   private

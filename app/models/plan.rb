@@ -16,6 +16,15 @@ class Plan < ApplicationRecord
   scope :grandfathered, -> { where(active: true, public: false, deleted_at: nil) }
   scope :by_position, -> { order(:position) }
 
+  store_accessor :metadata,
+    :tagline,            # short blurb
+    :access_type,        # "Common or polite pools" | "API Key"
+    :priority,           # "Standard" | "High priority"
+    :support_level,      # "Community" | "Priority"
+    :sla_level,          # "None" | "Standard" | "Commercial"
+    :license_name,       # default: "CC BY-SA 4.0"
+    :dashboard_access    # true/false
+
   def price_dollars
     price_cents / 100.0
   end
@@ -35,6 +44,30 @@ class Plan < ApplicationRecord
 
   def formatted_requests
     requests_per_hour.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+  end
+
+  def license_name
+    super.presence || "CC BY-SA 4.0"
+  end
+
+  def access_type
+    super.presence || "API Key"
+  end
+
+  def priority
+    super.presence || "Standard"
+  end
+
+  def support_level
+    super.presence || "Community"
+  end
+
+  def sla_level
+    super.presence || "None"
+  end
+
+  def dashboard_access
+    ActiveModel::Type::Boolean.new.cast(super)
   end
 
   def active?

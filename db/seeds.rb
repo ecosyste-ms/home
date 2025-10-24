@@ -1,55 +1,76 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+# db/seeds.rb
+puts "Resetting and creating plans…"
 
-puts "Creating plans..."
+# ⚠️ Dev-only: clear out all existing plans
+Plan.delete_all
 
-Plan.find_or_create_by(slug: 'free') do |plan|
-  plan.name = 'Free'
-  plan.price_cents = 0
-  plan.billing_period = 'month'
-  plan.requests_per_hour = 300
-  plan.description = 'Perfect for getting started and trying out the API'
-  plan.features = [
-    'Basic rate limiting',
-    'Community support',
-    'Access to all APIs'
-  ]
-  plan.position = 1
-  plan.visible = true
+# Helper: update existing or create new
+def upsert_plan(slug:, **attrs)
+  Plan.find_or_initialize_by(slug: slug).tap do |p|
+    p.assign_attributes(attrs)
+    p.save!
+  end
 end
 
-Plan.find_or_create_by(slug: 'pro') do |plan|
-  plan.name = 'Pro'
-  plan.price_cents = 20000
-  plan.billing_period = 'month'
-  plan.requests_per_hour = 5000
-  plan.description = 'For developers building production applications'
-  plan.features = [
-    'Enhanced rate limiting',
-    'Priority support',
-    'Access to all APIs',
-    'Usage analytics'
-  ]
-  plan.position = 2
-  plan.visible = true
-end
+upsert_plan(
+  slug: 'free',
+  name: 'Free',
+  display_name: 'Free',
+  price_cents: 0,
+  billing_period: 'month',
+  requests_per_hour: 300,
+  description: 'For small-scale projects and hobbyists looking to add ecosystems data to their project',
+  metadata: {
+    tagline: 'For small-scale projects and hobbyists looking to add ecosystems data to their project',
+    access_type: 'Common or polite pools',
+    priority: 'Standard',
+    support_level: 'Community',
+    sla_level: 'None',
+    license_name: 'CC BY-SA 4.0',
+    dashboard_access: false
+  },
+  features: ['Access to all APIs'],
+  position: 1, public: true, visible: true, active: true
+)
 
-Plan.find_or_create_by(slug: 'enterprise') do |plan|
-  plan.name = 'Enterprise'
-  plan.price_cents = 80000
-  plan.billing_period = 'month'
-  plan.requests_per_hour = 20000
-  plan.description = 'For large scale applications with enterprise needs'
-  plan.features = [
-    'Maximum rate limiting',
-    'Dedicated support',
-    'Access to all APIs',
-    'Advanced analytics',
-    'Custom integrations',
-    'SLA guarantee'
-  ]
-  plan.position = 3
-  plan.visible = true
-end
+upsert_plan(
+  slug: 'researcher',
+  name: 'Researcher',
+  price_cents: 10000,
+  billing_period: 'month',
+  requests_per_hour: 2000,
+  description: 'For bulk and volume downloads that don’t depend on the fastest access',
+  metadata: {
+    tagline: 'For those who require bulk and volume downloads but don’t depend on the fastest access',
+    access_type: 'API Key',
+    priority: 'Standard',
+    support_level: 'Community',
+    sla_level: 'Standard',
+    license_name: 'CC BY-SA 4.0',
+    dashboard_access: true
+  },
+  features: [],
+  position: 2, public: true, visible: true, active: true
+)
 
-puts "Created #{Plan.count} plans"
+upsert_plan(
+  slug: 'developer',
+  name: 'Developer',
+  price_cents: 50000,
+  billing_period: 'month',
+  requests_per_hour: 5000,
+  description: 'Fast, responsive, and supported access to our data APIs for your production application',
+  metadata: {
+    tagline: 'Fast, responsive, and supported access to our data APIs for your production application',
+    access_type: 'API Key',
+    priority: 'High priority',
+    support_level: 'Priority',
+    sla_level: 'Commercial',
+    license_name: 'CC BY-SA 4.0',
+    dashboard_access: true
+  },
+  features: [],
+  position: 3, public: true, visible: true, active: true
+)
+
+puts "Plans ready: #{Plan.count}"
