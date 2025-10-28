@@ -30,18 +30,23 @@ class AccountsController < ApplicationController
   end
 
   def create_api_key
+    Rails.logger.info "[API Key Creation] Starting for account_id=#{@account.id}, name=#{params[:name].inspect}"
+
     # Build the API key without saving
     api_key = @account.api_keys.build(
       name: params[:name] || "API Key #{@account.api_keys.count + 1}"
     )
+    Rails.logger.info "[API Key Creation] Built API key with name=#{api_key.name}"
 
     # Generate the key (triggers before_create callback)
     api_key.send(:generate_key)
     api_key.key_hash = BCrypt::Password.create(api_key.raw_key)
     api_key.key_prefix = api_key.raw_key[0, 8]
+    Rails.logger.info "[API Key Creation] Generated key with prefix=#{api_key.key_prefix}"
 
     # Create consumer in APISIX first
     apisix_service = ApisixService.new
+    Rails.logger.info "[API Key Creation] Calling APISIX to create consumer with prefix=#{api_key.key_prefix}"
     consumer_id = apisix_service.create_consumer(
       consumer_name: api_key.key_prefix,
       api_key: api_key.raw_key,
@@ -50,13 +55,22 @@ class AccountsController < ApplicationController
         account_id: @account.id
       }
     )
+    Rails.logger.info "[API Key Creation] APISIX consumer created successfully, consumer_id=#{consumer_id}"
 
     # Only save to database if APISIX succeeded
     api_key.apisix_consumer_id = consumer_id
+    Rails.logger.info "[API Key Creation] Saving API key to database"
     api_key.save!
+    Rails.logger.info "[API Key Creation] API key saved successfully, id=#{api_key.id}"
 
     redirect_to api_key_account_path, notice: "API Key created: #{api_key.raw_key}. Save this key - you won't see it again!"
   rescue ApisixService::ApisixError => e
+    Rails.logger.error "[API Key Creation] APISIX error: #{e.class} - #{e.message}"
+    Rails.logger.error "[API Key Creation] Backtrace: #{e.backtrace.first(5).join("\n")}"
+    redirect_to api_key_account_path, alert: "Failed to create API key: #{e.message}"
+  rescue StandardError => e
+    Rails.logger.error "[API Key Creation] Unexpected error: #{e.class} - #{e.message}"
+    Rails.logger.error "[API Key Creation] Backtrace: #{e.backtrace.first(5).join("\n")}"
     redirect_to api_key_account_path, alert: "Failed to create API key: #{e.message}"
   end
 
