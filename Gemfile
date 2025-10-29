@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby file: ".ruby-version"
 
-gem "activerecord", "~> 8.1.0"
+gem "activerecord", "~> 8.1.1"
 gem "actionpack", "~> 8.1.0"
 gem "actionview", "~> 8.1.0"
 gem "railties", "~> 8.1.0"
