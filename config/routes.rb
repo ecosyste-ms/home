@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/openapi.yml', to: 'pages#openapi'
   get '/commercial', to: 'pages#commercial'
   get '/pricing', to: 'pages#pricing'
+  get '/checkout', to: 'pages#checkout'
 
   get '/styleguide', to: 'pages#styleguide'
 
