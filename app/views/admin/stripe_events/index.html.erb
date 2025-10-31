@@ -1,0 +1,118 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Stripe Webhook Events</h1>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <%= form_with url: admin_stripe_events_path, method: :get, class: "row g-3" do |f| %>
+        <div class="col-md-3">
+          <%= f.select :status,
+                options_for_select([['All Statuses', ''], ['Pending', 'pending'], ['Processed', 'processed'], ['Failed', 'failed']], params[:status]),
+                {},
+                class: "form-select" %>
+        </div>
+        <div class="col-md-4">
+          <%= f.select :event_type,
+                options_for_select([['All Event Types', '']] + @event_types.map { |t| [t, t] }, params[:event_type]),
+                {},
+                class: "form-select" %>
+        </div>
+        <div class="col-md-2">
+          <%= f.submit "Filter", class: "btn btn-primary" %>
+        </div>
+        <% if params[:status].present? || params[:event_type].present? %>
+          <div class="col-md-2">
+            <%= link_to "Clear", admin_stripe_events_path, class: "btn btn-secondary" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <div class="d-flex gap-3">
+        <div class="card flex-fill">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Total Events</h6>
+            <h3 class="card-title mb-0"><%= StripeEvent.count %></h3>
+          </div>
+        </div>
+        <div class="card flex-fill">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Processed</h6>
+            <h3 class="card-title mb-0 text-success"><%= StripeEvent.processed.count %></h3>
+          </div>
+        </div>
+        <div class="card flex-fill">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Failed</h6>
+            <h3 class="card-title mb-0 text-danger"><%= StripeEvent.failed.count %></h3>
+          </div>
+        </div>
+        <div class="card flex-fill">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Pending</h6>
+            <h3 class="card-title mb-0 text-warning"><%= StripeEvent.pending.count %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Event ID</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Received</th>
+          <th>Processed</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stripe_events.each do |event| %>
+          <tr>
+            <td>
+              <code class="small"><%= event.event_id %></code>
+            </td>
+            <td><%= event.event_type %></td>
+            <td>
+              <% if event.processed? %>
+                <span class="badge bg-success">Processed</span>
+              <% elsif event.failed? %>
+                <span class="badge bg-danger">Failed</span>
+              <% else %>
+                <span class="badge bg-warning">Pending</span>
+              <% end %>
+            </td>
+            <td><%= event.created_at.strftime('%b %d, %Y %H:%M') %></td>
+            <td>
+              <% if event.processed_at %>
+                <%= event.processed_at.strftime('%b %d, %Y %H:%M') %>
+              <% else %>
+                <span class="text-muted">-</span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to 'View', admin_stripe_event_path(event), class: 'btn btn-sm btn-outline-primary' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <% if @stripe_events.any? %>
+    <div class="d-flex justify-content-center">
+      <%== pagy_bootstrap_nav(@pagy) if defined?(@pagy) %>
+    </div>
+  <% else %>
+    <div class="alert alert-info">
+      No webhook events found.
+    </div>
+  <% end %>
+</div>

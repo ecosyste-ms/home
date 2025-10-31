@@ -1,0 +1,268 @@
+<div class="breadcrumb-section py-3 mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= plan_account_path %>">Plans</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="project-header purple-grad-bg pt-4 pb-4 mb-5">
+  <div class="container">
+    <h1 class="display-1 extra-bold mb-3">Complete your order</h1>
+    <p class="lead">Thank you for choosing ecosyste.ms</p>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-12 col-lg-7">
+      <form id="checkout-form" class="pe-lg-5">
+        <fieldset class="mb-5" aria-labelledby="details-heading">
+          <legend id="details-heading" class="h3 mb-4 fw-bold">Your details</legend>
+
+          <div class="mb-4">
+            <label for="full_name" class="form-label">Your name</label>
+            <input type="text"
+                  class="form-control border-primary-subtle"
+                  id="full_name"
+                  name="full_name"
+                  value="<%= current_account.name %>"
+                  autocomplete="name"
+                  required>
+          </div>
+
+          <div class="mb-1">
+            <label for="email" class="form-label">Email</label>
+            <input type="email"
+                  class="form-control border-primary-subtle"
+                  id="email"
+                  name="email"
+                  value="<%= current_account.email %>"
+                  autocomplete="email"
+                  required>
+          </div>
+        </fieldset>
+
+        <hr class="my-4" aria-hidden="true" role="presentation">
+
+        <fieldset class="mb-5" aria-labelledby="payment-heading">
+          <legend id="payment-heading" class="h3 mb-4 fw-bold">Payment</legend>
+
+          <div class="mb-3">
+            <label for="card-element" class="form-label">Card information</label>
+            <div id="card-element" class="form-control border-primary-subtle" style="height: 40px; padding-top: 10px;">
+              <!-- Stripe Element will be inserted here -->
+            </div>
+            <div id="card-errors" class="text-danger small mt-2" role="alert"></div>
+          </div>
+        </fieldset>
+
+        <hr class="my-4" aria-hidden="true" role="presentation">
+
+        <fieldset class="mb-5" aria-labelledby="agree-heading">
+          <legend id="agree-heading" class="h3 mb-4 fw-bold">Agreement</legend>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkAgree" required>
+            <label class="form-check-label" for="checkAgree">
+              I agree to the <a href="<%= terms_path %>" target="_blank">terms</a> and <a href="<%= privacy_path %>" target="_blank">privacy policy</a>
+            </label>
+          </div>
+          <div>
+            <button type="submit" id="submit-button" class="btn btn-primary rounded-pill mt-4">
+              <span id="button-text">Pay now</span>
+              <span id="button-spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div id="payment-message" class="mt-3"></div>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <% if @current_plan %>
+        <aside class="well mb-4" aria-labelledby="current-plan-title">
+          <div class="card-body p-3 p-md-4">
+            <h2 id="current-plan-title" class="h4 mb-4">Your current plan</h2>
+
+            <p class="fw-bold text-secondary-emphasis fs-4"><%= @current_plan.name %></p>
+            <div class="d-md-flex justify-content-between align-items-center mb-2">
+              <p class="small mb-0"><%= number_with_delimiter(@current_plan.requests_per_hour) %> requests/hour</p>
+              <p class="small mb-0"><%= @current_plan.formatted_price %> / <%= @current_plan.billing_period %></p>
+            </div>
+          </div>
+        </aside>
+      <% end %>
+
+      <aside class="well mb-4" aria-labelledby="order-summary-title">
+        <div class="card-body p-3 p-md-4">
+          <h2 id="order-summary-title" class="h4 mb-4">Your new plan</h2>
+
+          <p class="fw-bold text-primary-dark fs-4"><%= @plan.name %></p>
+          <div class="d-md-flex justify-content-between align-items-center mb-2">
+            <p class="small mb-0"><%= number_with_delimiter(@plan.requests_per_hour) %> requests/hour</p>
+            <a href="<%= plan_account_path %>" class="small">Change</a>
+          </div>
+        </div>
+      </aside>
+
+      <aside class="well" aria-labelledby="payment-summary-title">
+        <div class="card-body p-3 p-md-4">
+          <h2 id="payment-summary-title" class="h4 mb-4">Payment summary</h2>
+
+          <dl class="row gy-2 mb-4">
+            <dt class="col-6 col-md-4 fw-normal">Plan</dt>
+            <dd class="col-6 col-md-8 mb-0 fw-bold text-end"><%= @plan.name %></dd>
+
+            <dt class="col-6 col-md-4 fw-normal">Duration</dt>
+            <dd class="col-6 col-md-8 mb-0 fw-bold text-end"><%= @plan.billing_period.titleize %></dd>
+
+            <dt class="col-6 col-md-4 fw-normal">Price</dt>
+            <dd class="col-6 col-md-8 mb-0 fw-bold text-end">
+              <data value="<%= @plan.price_dollars %>"><%= @plan.formatted_price %></data> per <%= @plan.billing_period %>
+              <span class="visually-hidden">US dollars</span>
+            </dd>
+          </dl>
+
+          <hr class="my-4" aria-hidden="true" role="presentation">
+
+          <dl class="row gy-2 mb-4">
+            <dt class="col-6 col-md-4 text-body-emphasis">To pay today</dt>
+            <dd class="col-6 col-md-8 mb-0 fw-bold text-end">
+              <data value="<%= @plan.price_dollars %>"><%= @plan.formatted_price %></data>
+            </dd>
+          </dl>
+
+          <p class="small">
+            We'll take payment <strong>today</strong>, and your first recurring payment will
+            happen <strong><%= @plan.billing_period == 'month' ? '1 month' : '1 year' %> from today</strong>.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  // Initialize Stripe
+  const stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
+  const elements = stripe.elements();
+
+  // Create card element
+  const cardElement = elements.create('card', {
+    style: {
+      base: {
+        fontSize: '16px',
+        color: '#32325d',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        '::placeholder': {
+          color: '#aab7c4'
+        }
+      },
+      invalid: {
+        color: '#dc3545'
+      }
+    }
+  });
+
+  cardElement.mount('#card-element');
+
+  // Handle real-time validation errors
+  cardElement.on('change', (event) => {
+    const displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = '';
+    }
+  });
+
+  // Handle form submission
+  const form = document.getElementById('checkout-form');
+  const submitButton = document.getElementById('submit-button');
+  const buttonText = document.getElementById('button-text');
+  const buttonSpinner = document.getElementById('button-spinner');
+  const paymentMessage = document.getElementById('payment-message');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    setLoading(true);
+
+    // Create payment method
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
+      billing_details: {
+        name: document.getElementById('full_name').value,
+        email: document.getElementById('email').value
+      }
+    });
+
+    if (error) {
+      showMessage(error.message, 'danger');
+      setLoading(false);
+      return;
+    }
+
+    // Submit to server
+    try {
+      const response = await fetch('<%= create_checkout_path(@plan) %>', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+        },
+        body: JSON.stringify({
+          payment_method_id: paymentMethod.id
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        showMessage(result.error || 'An error occurred', 'danger');
+        setLoading(false);
+        return;
+      }
+
+      if (result.requires_action) {
+        // Handle 3D Secure authentication
+        const {error: confirmError} = await stripe.confirmCardPayment(result.client_secret);
+
+        if (confirmError) {
+          showMessage(confirmError.message, 'danger');
+          setLoading(false);
+        } else {
+          // Payment successful
+          window.location.href = result.redirect_url || '<%= billing_account_path %>';
+        }
+      } else {
+        // Success
+        window.location.href = result.redirect_url || '<%= billing_account_path %>';
+      }
+    } catch (error) {
+      showMessage('An unexpected error occurred', 'danger');
+      setLoading(false);
+    }
+  });
+
+  function setLoading(isLoading) {
+    submitButton.disabled = isLoading;
+    buttonText.classList.toggle('d-none', isLoading);
+    buttonSpinner.classList.toggle('d-none', !isLoading);
+  }
+
+  function showMessage(message, type = 'info') {
+    paymentMessage.innerHTML = `<div class="alert alert-${type}" role="alert">${message}</div>`;
+  }
+</script>

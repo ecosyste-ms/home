@@ -93,13 +93,163 @@ Seed data includes three default plans. Run `rails db:seed` to populate them.
 - API key creation/revocation
 - Database schema and models
 - Session-based authentication (cookie-only)
+- Stripe payment integration (requires configuration)
 
 ⏳ Placeholder/Coming soon:
-- Stripe payment integration
 - Google OAuth
 - Email/Password authentication
-- Actual payment processing
 - Rate limiting (handled by APISIX gateway)
+
+### Stripe Integration
+
+The application includes a complete Stripe integration for subscription billing using Stripe Elements.
+
+#### What's Implemented
+
+**Core Components:**
+- **StripeService** (`app/services/stripe_service.rb`) - Handles all Stripe API operations
+- **CheckoutController** (`app/controllers/checkout_controller.rb`) - Manages checkout flow
+- **Webhooks::StripeController** (`app/controllers/webhooks/stripe_controller.rb`) - Processes Stripe webhook events
+- **Checkout View** (`app/views/checkout/new.html.erb`) - Stripe Elements payment form
+- **Routes** - Checkout and webhook endpoints configured
+- **Tests** - Full test coverage for all components
+
+**Features:**
+- Subscription creation with Stripe Elements (card payments only)
+- Payment method storage and display
+- Webhook handling for subscription lifecycle events
+- Invoice tracking and billing history
+- 3D Secure (SCA) support
+
+#### Setup Steps
+
+**1. Get Stripe API Keys**
+
+1. Create or log in to your Stripe account at https://dashboard.stripe.com
+2. Get your API keys from the Developers > API keys section
+3. Add the following environment variables to `.env.development`:
+
+```bash
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+```
+
+For production, use the live keys in your production environment.
+
+**2. Create Stripe Products and Prices**
+
+For each plan in your database, create corresponding Stripe Products and Prices:
+
+1. Go to Products in your Stripe Dashboard
+2. Create a product for each plan
+3. Add a recurring price to each product
+4. Copy the Price ID (starts with `price_`)
+5. Update your Plan records in Rails console:
+
+```ruby
+# Example - update with your actual Stripe Price IDs
+Plan.find_by(slug: 'free')&.update(stripe_price_id: nil) # Free plans don't need a price ID
+Plan.find_by(slug: 'developer')&.update(stripe_price_id: 'price_YOUR_DEVELOPER_PRICE_ID')
+Plan.find_by(slug: 'business')&.update(stripe_price_id: 'price_YOUR_BUSINESS_PRICE_ID')
+```
+
+**3. Configure Webhooks**
+
+1. Go to Developers > Webhooks in Stripe Dashboard
+2. Click "Add endpoint"
+3. Enter your webhook URL:
+   - Development: Use Stripe CLI or a service like ngrok
+   - Production: `https://yourdomain.com/webhooks/stripe`
+4. Select the following events to listen for:
+   - `customer.subscription.created`
+   - `customer.subscription.updated`
+   - `customer.subscription.deleted`
+   - `invoice.payment_succeeded`
+   - `invoice.payment_failed`
+   - `invoice.finalized`
+5. Copy the webhook signing secret and add it to your environment:
+
+```bash
+STRIPE_WEBHOOK_SECRET=whsec_...
+```
+
+**4. Test with Stripe CLI (Development)**
+
+```bash
+# Install Stripe CLI
+brew install stripe/stripe-cli/stripe
+
+# Login
+stripe login
+
+# Forward webhooks to your local server
+stripe listen --forward-to localhost:3000/webhooks/stripe
+
+# This will give you a webhook secret starting with whsec_
+# Add it to your .env.development file
+```
+
+**5. Test Card Numbers**
+
+Use these test cards in development:
+
+- **Success**: `4242 4242 4242 4242`
+- **3D Secure**: `4000 0027 6000 3184`
+- **Decline**: `4000 0000 0000 0002`
+- Any future expiry date, any CVC, any postal code
+
+Full list: https://stripe.com/docs/testing
+
+#### How It Works
+
+**Checkout Flow:**
+
+1. User selects a plan on `/account/plan`
+2. Clicks "Choose plan" → redirects to `/checkout/:plan_id`
+3. Enters payment details (Stripe Elements handles card input securely)
+4. Submits form → creates PaymentMethod via Stripe.js
+5. Frontend sends PaymentMethod ID to backend
+6. Backend creates Subscription via StripeService
+7. Handles 3D Secure if required
+8. Redirects to billing page on success
+
+**Webhook Flow:**
+
+1. Stripe sends webhook events to `/webhooks/stripe`
+2. Signature is verified using webhook secret
+3. Events are processed:
+   - Subscription events update local Subscription records
+   - Invoice events create/update local Invoice records
+4. Changes sync automatically (no manual updates needed)
+
+#### Environment Variables Required
+
+```bash
+# Stripe API Keys
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+
+# Stripe Webhook Secret
+STRIPE_WEBHOOK_SECRET=whsec_...
+```
+
+#### API Version
+
+Using Stripe API version: **2025-10-29.clover**
+
+#### Security Notes
+
+- Webhook signature verification is enabled
+- CSRF protection skipped for webhooks (required by Stripe)
+- Authentication skipped for webhooks (Stripe validates via signature)
+- Payment card data never touches your servers (Stripe Elements handles it)
+- All Stripe API calls are server-side only
+
+#### Additional Resources
+
+- Stripe Documentation: https://stripe.com/docs
+- Stripe Elements Guide: https://stripe.com/docs/payments/elements
+- Testing Guide: https://stripe.com/docs/testing
 
 ## Tests
 

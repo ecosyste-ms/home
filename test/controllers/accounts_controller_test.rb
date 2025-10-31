@@ -101,6 +101,38 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'button', text: /Connect GitHub/
   end
 
+  test 'updates payment method' do
+    login_as(@account)
+    @account.update(stripe_customer_id: 'cus_123')
+
+    stripe_service = mock('stripe_service')
+    stripe_service.expects(:update_payment_method).with('pm_123')
+
+    StripeService.expects(:new).with(@account).returns(stripe_service)
+
+    post update_payment_method_account_path, params: { payment_method_id: 'pm_123' }, as: :json
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert json['success']
+  end
+
+  test 'handles payment method update errors' do
+    login_as(@account)
+    @account.update(stripe_customer_id: 'cus_123')
+
+    stripe_service = mock('stripe_service')
+    stripe_service.expects(:update_payment_method).raises(StripeService::StripeError.new('Card declined'))
+
+    StripeService.expects(:new).with(@account).returns(stripe_service)
+
+    post update_payment_method_account_path, params: { payment_method_id: 'pm_123' }, as: :json
+
+    assert_response :unprocessable_entity
+    json = JSON.parse(response.body)
+    assert_equal 'Card declined', json['error']
+  end
+
   test 'all pages include navigation' do
     login_as(@account)
     pages = [

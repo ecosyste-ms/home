@@ -59,10 +59,12 @@
                 <% end %>
                 <% if @account.plan == plan %>
                   <button class="btn btn-outline-primary w-100" disabled>Current plan</button>
+                <% elsif plan.free? %>
+                  <p class="text-muted small mb-0">Contact us to downgrade</p>
                 <% else %>
-                  <button class="btn btn-primary w-100" disabled>
-                    <%= @account.plan ? 'Upgrade' : 'Choose plan' %> (Coming soon)
-                  </button>
+                  <%= link_to checkout_path(plan), class: "btn btn-primary w-100" do %>
+                    <%= @account.plan ? 'Upgrade' : 'Choose plan' %>
+                  <% end %>
                 <% end %>
               </div>
             </div>
@@ -70,12 +72,6 @@
         <% end %>
       </div>
 
-      <div class="alert alert-info mt-4">
-        <p class="small mb-0">
-          <strong>Note:</strong> Plan upgrades and downgrades require Stripe integration which is not yet implemented.
-          This is a placeholder UI for demonstration purposes.
-        </p>
-      </div>
     </div>
   </div>
 </div>

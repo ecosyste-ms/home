@@ -93,8 +93,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get '/pricing'
     assert_response :success
 
-    assert_select 'a.btn', text: 'Get access'
-    assert_select 'a.btn', text: 'Choose'
+    assert_select 'a.btn', text: 'Sign in to choose'
   end
 
   private
