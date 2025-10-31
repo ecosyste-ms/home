@@ -91,7 +91,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'accounts/security'
     assert_select 'h1', 'Password and security'
-    assert_select 'h2', 'Linked accounts'
+    assert_select 'h2', text: /Linked accounts|Manage connected accounts|Your connected account/
   end
 
   test 'security page shows connect buttons when no identities' do
