@@ -24,54 +24,26 @@
         </div>
       <% else %>
         <div class="alert alert-info mb-4">
-          <p class="mb-0">You don't have an active subscription. Choose a plan below to get started.</p>
+          <p class="mb-0">You don&apos;t have an active subscription. Choose a plan below to get started.</p>
         </div>
       <% end %>
 
-      <h2 class="h5 mt-5 mb-3">Available plans</h2>
-      <div class="row">
-        <% @plans.each do |plan| %>
-          <div class="col-12 col-md-6 col-lg-4 mb-3">
-            <div class="card h-100 <%= 'border-primary' if @account.plan == plan %>">
-              <div class="card-body">
-                <h3 class="h5 card-title"><%= plan.name %></h3>
-                <p class="card-text">
-                  <span class="h3"><%= plan.formatted_price %></span>
-                  <% unless plan.free? %>
-                    <span class="text-muted">/ <%= plan.billing_period %></span>
-                  <% end %>
-                </p>
-                <p class="card-text text-muted">
-                  <%= number_with_delimiter(plan.requests_per_hour) %> requests/hour
-                </p>
-                <% if plan.description %>
-                  <p class="card-text small"><%= plan.description %></p>
-                <% end %>
-                <% if plan.features.present? %>
-                  <ul class="list-unstyled small">
-                    <% plan.features.each do |feature| %>
-                      <li class="mb-1">
-                        <%= bootstrap_icon 'check', width: 16, height: 16, class: 'text-success me-1' %>
-                        <%= feature %>
-                      </li>
-                    <% end %>
-                  </ul>
-                <% end %>
-                <% if @account.plan == plan %>
-                  <button class="btn btn-outline-primary w-100" disabled>Current plan</button>
-                <% elsif plan.free? %>
-                  <p class="text-muted small mb-0">Contact us to downgrade</p>
-                <% else %>
-                  <%= link_to checkout_path(plan), class: "btn btn-primary w-100" do %>
-                    <%= @account.plan ? 'Upgrade' : 'Choose plan' %>
-                  <% end %>
-                <% end %>
+      
+      <div class="d-md-flex justify-content-between align-items-center  mt-5 mb-3">
+            <h2 class="h5">Available plans</h2>
+            <a href="/pricing" class="spesh-link">View plans and pricing</a>
+          </div>
+    
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+          <% @plans.each do |plan| %>
+            <div class="col d-flex">
+              <div class="w-100 h-100 border rounded-3 p-3 d-flex">
+                <%= render 'pages/plan_card', plan: plan %>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-
+          <% end %>
+        </div>
+    
     </div>
   </div>
 </div>
