@@ -93,6 +93,32 @@ class AccountsController < ApplicationController
 
   def billing
     @meta_title = "Billing - #{@account.name}"
+
+    # Fetch payment method from Stripe if available
+    if @account.stripe_customer_id.present? && @account.payment_method_type.blank?
+      stripe_service = StripeService.new(@account)
+      payment_method = stripe_service.retrieve_payment_method
+
+      if payment_method && payment_method.type == 'card'
+        @account.update(
+          payment_method_type: payment_method.card.brand.titleize,
+          payment_method_last4: payment_method.card.last4,
+          payment_method_expiry: "#{payment_method.card.exp_month}/#{payment_method.card.exp_year}"
+        )
+      end
+    end
+  end
+
+  def update_payment_method
+    stripe_service = StripeService.new(@account)
+
+    begin
+      stripe_service.update_payment_method(params[:payment_method_id])
+      render json: { success: true }
+    rescue StripeService::StripeError => e
+      Rails.logger.error "[Account] Failed to update payment method: #{e.message}"
+      render json: { error: e.message }, status: :unprocessable_entity
+    end
   end
 
   def security

@@ -30,9 +30,17 @@ Rails.application.routes.draw do
     post :create_api_key, on: :member
     delete 'api_keys/:api_key_id', to: 'accounts#revoke_api_key', on: :member, as: :revoke_api_key
     get :billing, on: :member
+    post :update_payment_method, on: :member
     get :security, on: :member
     delete 'identities/:identity_id', to: 'accounts#unlink_identity', on: :member, as: :unlink_identity
   end
+
+  # Checkout and subscriptions
+  get '/checkout/:plan_id', to: 'checkout#new', as: :checkout
+  post '/checkout/:plan_id', to: 'checkout#create', as: :create_checkout
+
+  # Stripe webhooks
+  post '/webhooks/stripe', to: 'webhooks/stripe#create'
 
   # Admin panel
   namespace :admin do
@@ -61,6 +69,8 @@ Rails.application.routes.draw do
         post :reactivate
       end
     end
+
+    resources :stripe_events, only: [:index, :show]
   end
 
   root "home#index"

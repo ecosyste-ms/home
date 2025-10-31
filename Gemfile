@@ -27,6 +27,9 @@ gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'bcrypt'
 
+# Payment processing
+gem 'stripe'
+
 group :test do
   gem "rails-controller-testing"
   gem "mocha"

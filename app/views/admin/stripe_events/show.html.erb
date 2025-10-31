@@ -1,0 +1,128 @@
+<div class="container mt-4">
+  <div class="mb-4">
+    <%= link_to '← Back to Events', admin_stripe_events_path, class: 'btn btn-sm btn-outline-secondary' %>
+  </div>
+
+  <h1 class="mb-4">Stripe Webhook Event</h1>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Event Details</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm">
+            <tbody>
+              <tr>
+                <th style="width: 200px;">Event ID</th>
+                <td><code><%= @stripe_event.event_id %></code></td>
+              </tr>
+              <tr>
+                <th>Event Type</th>
+                <td><code><%= @stripe_event.event_type %></code></td>
+              </tr>
+              <tr>
+                <th>Status</th>
+                <td>
+                  <% if @stripe_event.processed? %>
+                    <span class="badge bg-success">Processed</span>
+                  <% elsif @stripe_event.failed? %>
+                    <span class="badge bg-danger">Failed</span>
+                  <% else %>
+                    <span class="badge bg-warning">Pending</span>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th>Received At</th>
+                <td><%= @stripe_event.created_at.strftime('%B %d, %Y at %H:%M:%S %Z') %></td>
+              </tr>
+              <tr>
+                <th>Processed At</th>
+                <td>
+                  <% if @stripe_event.processed_at %>
+                    <%= @stripe_event.processed_at.strftime('%B %d, %Y at %H:%M:%S %Z') %>
+                  <% else %>
+                    <span class="text-muted">Not yet processed</span>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <% if @stripe_event.error_message.present? %>
+            <div class="alert alert-danger mt-3">
+              <h6 class="alert-heading">Error Message</h6>
+              <pre class="mb-0"><%= @stripe_event.error_message %></pre>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Event Data (JSON)</h5>
+          <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboard()">Copy</button>
+        </div>
+        <div class="card-body">
+          <pre id="event-data" class="mb-0" style="max-height: 600px; overflow-y: auto;"><%= JSON.pretty_generate(@stripe_event.data) %></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Quick Info</h5>
+        </div>
+        <div class="card-body">
+          <h6 class="text-muted">Timeline</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <small class="text-muted">Received</small><br>
+              <strong><%= @stripe_event.created_at.strftime('%b %d, %Y %H:%M') %></strong>
+            </li>
+            <% if @stripe_event.processed_at %>
+              <li class="mb-2">
+                <small class="text-muted">Processed</small><br>
+                <strong><%= @stripe_event.processed_at.strftime('%b %d, %Y %H:%M') %></strong>
+              </li>
+              <li>
+                <small class="text-muted">Processing Time</small><br>
+                <strong><%= distance_of_time_in_words(@stripe_event.created_at, @stripe_event.processed_at) %></strong>
+              </li>
+            <% end %>
+          </ul>
+
+          <hr>
+
+          <h6 class="text-muted mt-3">Related Objects</h6>
+          <% if @stripe_event.data['data'] && @stripe_event.data['data']['object'] %>
+            <% obj = @stripe_event.data['data']['object'] %>
+            <ul class="list-unstyled small">
+              <% if obj['customer'] %>
+                <li><strong>Customer:</strong> <code><%= obj['customer'] %></code></li>
+              <% end %>
+              <% if obj['subscription'] %>
+                <li><strong>Subscription:</strong> <code><%= obj['subscription'] %></code></li>
+              <% end %>
+              <% if obj['invoice'] %>
+                <li><strong>Invoice:</strong> <code><%= obj['invoice'] %></code></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function copyToClipboard() {
+  const text = document.getElementById('event-data').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Copied to clipboard!');
+  });
+}
+</script>

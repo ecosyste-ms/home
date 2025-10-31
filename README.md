@@ -12,7 +12,7 @@ This application provides:
 - **Account management** with GitHub OAuth authentication
 - **Subscription plans** (Free, Pro, Enterprise) with different API rate limits
 - **API key management** for authenticated API access
-- **Billing support** for both card and invoice-based payments (Stripe integration pending)
+- **Billing support** for both card and invoice-based payments
 
 ## Development
 

@@ -15,10 +15,16 @@
     </div>
 
     <div class="mt-1 mb-4">
-      <% if plan.free? %>
-        <a href="#" class="btn btn-outline-primary rounded-pill">Get access</a>
+      <% if logged_in? %>
+        <% if current_account.plan == plan %>
+          <button class="btn btn-outline-primary rounded-pill" disabled>Current plan</button>
+        <% elsif plan.free? %>
+          <p class="text-muted small mb-0">Contact us to downgrade</p>
+        <% else %>
+          <%= link_to "Choose plan", checkout_path(plan), class: "btn btn-primary rounded-pill" %>
+        <% end %>
       <% else %>
-        <a href="#" class="btn btn-primary rounded-pill">Choose</a>
+        <%= link_to "Sign in to choose", login_path, class: "btn btn-primary rounded-pill" %>
       <% end %>
     </div>
   </div>

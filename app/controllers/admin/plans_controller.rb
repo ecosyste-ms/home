@@ -66,7 +66,7 @@ class Admin::PlansController < Admin::BaseController
   private
 
   def set_plan
-    @plan = Plan.find(params[:id])
+    @plan = Plan.find_by!(uuid: params[:id])
   end
 
   def plan_params

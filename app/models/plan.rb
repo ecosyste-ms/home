@@ -98,6 +98,10 @@ class Plan < ApplicationRecord
     subscriptions.where(status: ['active', 'trialing']).count
   end
 
+  def to_param
+    uuid
+  end
+
   private
 
   def generate_slug
