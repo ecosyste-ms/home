@@ -38,6 +38,7 @@ class Account < ApplicationRecord
   end
 
   def formatted_billing_period
+    return 'Not billed' if plan&.free? || plan_price.to_f.zero?
     case plan_billing_period
       when 'month' then 'monthly'
       when 'year'  then 'annually'
