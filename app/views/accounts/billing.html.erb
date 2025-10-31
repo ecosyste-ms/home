@@ -70,7 +70,7 @@
               <p class="small text-muted mb-0">No payment required</p>
             <% else %>
               <p class="small"><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour at <strong>$<%= @account.plan_price.to_i %></strong> per <%= @account.plan_billing_period %></p>
-              <p class="small mb-0">Billed <em><%= @account.plan_billing_period %>ly</em></p>
+              <p class="small mb-0">Billed <em><%= @account.formatted_billing_period %></em></p>
             <% end %>
           <% else %>
             <p class="small text-muted">No active plan</p>
