@@ -53,10 +53,6 @@
                 <p class="small">
                   <a href="#" data-bs-toggle="modal" data-bs-target="#updatePaymentMethodModal" class="btn btn-sm btn-primary">Add payment method</a>
                 </p>
-              <% else %>
-                <p class="small text-muted">
-                  <a href="<%= plan_account_path %>">Subscribe to a plan</a> to add a payment method
-                </p>
               <% end %>
             <% end %>
           </div>
@@ -72,8 +68,6 @@
               <p class="small"><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour at <strong>$<%= @account.plan_price.to_i %></strong> per <%= @account.plan_billing_period %></p>
               <p class="small mb-0">Billed <em><%= @account.formatted_billing_period %></em></p>
             <% end %>
-          <% else %>
-            <p class="small text-muted">No active plan</p>
           <% end %>
           <p class="small"><a href="<%= plan_account_path %>">Change plan</a></p>
           <hr />
