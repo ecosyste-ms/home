@@ -62,7 +62,7 @@
           <h2 class="h6 fw-normal">Your plan</h2>
           <h3 class="h4"><%= @account.plan_name %></h3>
           <p class="small"><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour at <strong>$<%= @account.plan_price %></strong> per month</p>
-          <p class="small mb-0">Billed <em><%= @account.plan_billing_period %></em></p>
+          <p class="small mb-0">Billed <em><%= @account.formatted_billing_period %></em></p>
           <p class="small"><a href="<%= plan_account_path %>">Change</a></p>
           <hr />
           <% if @account.next_payment_date %>

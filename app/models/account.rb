@@ -37,6 +37,14 @@ class Account < ApplicationRecord
     plan&.billing_period || 'month'
   end
 
+  def formatted_billing_period
+    case plan_billing_period
+      when 'month' then 'monthly'
+      when 'year'  then 'annually'
+    else plan_billing_period.to_s.humanize
+    end
+  end
+
   def next_payment_date
     current_subscription&.current_period_end
   end
