@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_10_31_115157) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_31_121500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "pgcrypto"
 
   create_table "accounts", force: :cascade do |t|
     t.boolean "admin", default: false, null: false
@@ -120,10 +121,12 @@ ActiveRecord::Schema[8.1].define(version: 2025_10_31_115157) do
     t.string "slug", null: false
     t.string "stripe_price_id"
     t.datetime "updated_at", null: false
+    t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.integer "version", default: 1
     t.boolean "visible", default: true
     t.index ["slug"], name: "index_plans_on_slug", unique: true
     t.index ["stripe_price_id"], name: "index_plans_on_stripe_price_id", unique: true
+    t.index ["uuid"], name: "index_plans_on_uuid", unique: true
   end
 
   create_table "stripe_events", force: :cascade do |t|

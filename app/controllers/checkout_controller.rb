@@ -46,7 +46,9 @@ class CheckoutController < ApplicationController
   private
 
   def set_plan
-    @plan = Plan.available.find(params[:plan_id])
+    # Allow checkout of any active plan (including private/grandfathered ones) via direct UUID link
+    # This enables sharing private plan links with specific customers
+    @plan = Plan.active_plans.find_by!(uuid: params[:plan_id])
   rescue ActiveRecord::RecordNotFound
     redirect_to plan_account_path, alert: 'Plan not found.'
   end
