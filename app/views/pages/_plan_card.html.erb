@@ -1,4 +1,5 @@
-<!-- app/views/shared/_plan_card.html.erb (or wherever yours lives) -->
+<% show_usage ||= false %>
+
 <div class="card pricing-table__card border-0 h-100">
   <div class="card-body d-flex flex-column">
     <h2 class="card-title h2 text-primary-dark mb-3 mt-3 mt-md-5"><%= plan.name %></h2>
@@ -12,6 +13,9 @@
         <%= plan.formatted_price %>
         <% unless plan.free? %> per month <% end %>
       </div>
+      <% if show_usage %>
+        <p class="small"><%= plan.formatted_requests %> requests per hour</p>
+      <% end %>
     </div>
 
     <div class="mt-1 mb-4 mt-auto">

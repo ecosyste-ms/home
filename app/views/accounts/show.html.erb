@@ -23,8 +23,12 @@
       </div>
       <div class="well p-3 mb-5">
         <h3><%= @account.plan_name %></h3>
-        <p><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour at <strong>$<%= @account.plan_price %></strong> per month</p>
-        <p class="small mb-0">Billed <em><%= @account.plan_billing_period %></em></p>
+      <% if @account.plan %>
+        <p class="mb-0"><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour at <strong>$<%= @account.plan_price %></strong> per month</p>
+        <p class="small mt-3 mb-0">Billed <%= @account.formatted_billing_period %></em></p>  
+      <% else %>
+        <p class="mb-0"><strong><%= number_with_delimiter(@account.plan_requests) %> requests</strong> per hour</p>
+      <% end %>
       </div>
 
       <div class="d-md-flex justify-content-between align-items-center mb-2">
@@ -48,12 +52,12 @@
         <% if @account.next_payment_date %>
           <p><strong>Next invoice:</strong> <%= @account.next_payment_date.strftime('%d %B %Y') %></p>
         <% else %>
-          <p><strong>Next invoice:</strong> No active subscription</p>
+          <p><strong>Next invoice:</strong> You don&apos;t have an active subscription</p>
         <% end %>
         <% if @account.payment_method_type %>
           <p class="mb-0"><strong>Payment method:</strong> <%= @account.payment_method_type %> via Stripe</p>
         <% else %>
-          <p class="mb-0"><strong>Payment method:</strong> Not set</p>
+          <p class="mb-0"><strong>Payment method:</strong> No payment method on file</p>
         <% end %>
       </div>
 

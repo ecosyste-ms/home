@@ -38,7 +38,7 @@
           <% @plans.each do |plan| %>
             <div class="col d-flex">
               <div class="w-100 h-100 border rounded-3 p-3 d-flex">
-                <%= render 'pages/plan_card', plan: plan %>
+                <%= render 'pages/plan_card', plan: plan, show_usage: true %>
               </div>
             </div>
           <% end %>
