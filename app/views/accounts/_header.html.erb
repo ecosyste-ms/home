@@ -8,12 +8,12 @@
     </nav>
   </div>
 </div>
-<div class="project-header purple-grad-bg pt-4 pb-4 mb-5">
+<div class="purple-grad-bg pt-4 pb-4 mb-5">
   <div class="container">
     <div class="row">
       <% if @account.profile_picture_url && @account.show_profile_picture %>
       <div class="col-md-2 col-lg-1 mb-3 pt-1 d-flex align-items-start">
-          <img src="<%= @account.profile_picture_url %>" alt=" " class="img-fluid project-logo" onerror="this.style.display='none'">
+          <img src="<%= @account.profile_picture_url %>" alt=" " class="img-fluid avatar" onerror="this.style.display='none'">
       </div>
       <div class="col-12 col-md-10 col-lg-11">
       <% else %>
