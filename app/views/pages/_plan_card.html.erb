@@ -23,6 +23,7 @@
         <% if current_account.plan == plan %>
           <button class="btn btn-outline-primary rounded-pill" disabled>Current plan</button>
         <% elsif plan.free? %>
+          <p class="mb-1"><strong class="text-primary-dark">Your current plan</strong></p>
           <p class="text-muted small mb-0">Contact us to downgrade</p>
         <% else %>
           <%= link_to "Choose plan", checkout_path(plan), class: "btn btn-primary rounded-pill" %>
