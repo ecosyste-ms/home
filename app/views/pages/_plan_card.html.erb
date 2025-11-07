@@ -21,7 +21,7 @@
     <div class="mt-1 mb-4 mt-auto">
       <% if logged_in? %>
         <% if current_account.plan == plan %>
-          <button class="btn btn-outline-primary rounded-pill" disabled>Current plan</button>
+          <button class="btn btn-outline-primary rounded-pill" disabled>Your current plan</button>
         <% elsif plan.free? %>
           <p class="mb-1"><strong class="text-primary-dark">Your current plan</strong></p>
           <p class="text-muted small mb-0">Contact us to downgrade</p>
