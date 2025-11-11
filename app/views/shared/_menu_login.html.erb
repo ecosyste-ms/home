@@ -1,0 +1,23 @@
+<nav class="header__local__login-navigation">
+  <ul class="nav">
+    <% if logged_in? %>
+    <li class="nav-item">
+      <div class="dropdown nav-item user-menu" id="user-menu">
+        <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="<%= current_account.profile_picture_url %>" alt="User menu" height="36" width="36" class="rounded-circle user-menu__image" />
+        </a>
+
+        <ul class="dropdown-menu" aria-labelledby="user-menu" role="menu">
+          <li><p class="dropdown-header"><%= current_account.name %></p></li>
+          <li><a class="dropdown-item" href="/account">Account</a></li>
+          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </li>
+    <% else %>
+    <li class="nav-item">  
+      <a class="nav-link small" href="/login">Login</a>
+    </li>
+    <% end %>
+  </ul>
+</nav>

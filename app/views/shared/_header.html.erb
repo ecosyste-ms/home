@@ -1,14 +1,14 @@
 <header class="header">
   <div class="header__global">
     <div class="container">
-      <div class="row mb-4">
+      <div class="row align-items-center my-3">
         <div class="col-md-6 header__global__site-logo-wrapper mb-3 mb-lg-0">
           <h1>
             <a class="site-logo" href="/">ecosyste.ms</a>
           </h1>
         </div>
         <div class="col-md-6 text-md-end">
-			<a class="header__global__menu-link" role="button" aria-expanded="false" aria-controls="header__global__menu" data-bs-toggle="collapse" href="#header__global__menu">All services <%= bootstrap_icon 'caret-down-fill', width: 12, height: 12 %></a>
+			    <a class="header__global__menu-link d-inline-flex align-items-center" role="button" aria-expanded="false" aria-controls="header__global__menu" data-bs-toggle="collapse" href="#header__global__menu">All services <%= bootstrap_icon 'caret-down-fill', width: 12, height: 12 %></a>
         </div>
       </div>
       
@@ -29,9 +29,9 @@
     </div>
   </div>
 
-  <div class="header__local pt-3">
+  <div class="header__local pt-2">
     <div class="container">
-      <div class="row">
+      <div class="row flex align-items-center">
         <div class="col-lg-3 col-md-4">
           <h1 class="h3 header__local__sitename">
             <a class="header__local__homelink" href="/">
@@ -39,14 +39,33 @@
             </a>
           </h1>
         </div>
-        <div class="col-lg-5 col-md-8">
-          <p class="header__local__description">
+        <div class="col-lg-5 col-md-7">
+          <p class="header__local__description mb-0">
             <%= app_description %>
           </p>
         </div>
-        <div class="col-lg-4 col-md-12">
-          <%= render 'shared/menu' %>
+        <div class="col-12 col-lg-4 col-md-1 d-flex justify-content-between justify-content-md-end my-3 my-md-0">
+         <button class="btn btn-secondary btn-sm d-flex align-items-center gap-2 d-md-none" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#headerLocalNav"
+            aria-controls="headerLocalNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            id="headerLocalNavToggler"
+          >
+          <%= bootstrap_icon "list", id: "headerLocalNavIcon", aria_hidden: true, width: 20, height: 20 %>
+                Menu
+          </button>
+          <%= render 'shared/menu_login' %>
         </div>
+      </div>
+      <hr aria-hidden="true" class="d-none d-md-block" role="presentation">
+      <div
+        id="headerLocalNav"
+        class="collapse d-lg-flex align-items-lg-center justify-content-lg-between"
+      >
+        <%= render 'shared/menu' %>
+        <%= render 'shared/menu_secondary' %>
       </div>
     </div>
   </div>
