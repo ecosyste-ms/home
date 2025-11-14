@@ -415,3 +415,23 @@
 .text-primary-dark {
   color: $color-purple-dark !important;
 }
+
+.about-photo {
+  position: relative;
+  @include media-breakpoint-up(lg) {
+    margin-top: -220px;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 268px;
+    height: 223px;
+    background-image: asset-url('green-arrow.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 40%;
+    left: -50px;
+  }
+}
