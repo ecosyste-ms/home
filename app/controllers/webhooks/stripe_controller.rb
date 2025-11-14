@@ -66,6 +66,9 @@ module Webhooks
     private
 
     def handle_subscription_created(stripe_subscription)
+      # Fetch full object if thin payload (id is a string, not object)
+      stripe_subscription = fetch_object_if_needed(stripe_subscription, Stripe::Subscription)
+
       subscription = Subscription.find_by(stripe_subscription_id: stripe_subscription.id)
 
       if subscription
@@ -81,6 +84,9 @@ module Webhooks
     end
 
     def handle_subscription_updated(stripe_subscription)
+      # Fetch full object if thin payload
+      stripe_subscription = fetch_object_if_needed(stripe_subscription, Stripe::Subscription)
+
       subscription = Subscription.find_by(stripe_subscription_id: stripe_subscription.id)
 
       if subscription
@@ -97,6 +103,9 @@ module Webhooks
     end
 
     def handle_subscription_deleted(stripe_subscription)
+      # Fetch full object if thin payload
+      stripe_subscription = fetch_object_if_needed(stripe_subscription, Stripe::Subscription)
+
       subscription = Subscription.find_by(stripe_subscription_id: stripe_subscription.id)
 
       if subscription
@@ -111,13 +120,18 @@ module Webhooks
     end
 
     def handle_invoice_payment_succeeded(stripe_invoice)
-      account = Account.find_by(stripe_customer_id: stripe_invoice.customer)
+      # Fetch full object if thin payload
+      stripe_invoice = fetch_object_if_needed(stripe_invoice, Stripe::Invoice)
+
+      customer_id = stripe_invoice.customer.is_a?(String) ? stripe_invoice.customer : stripe_invoice.customer.id
+      account = Account.find_by(stripe_customer_id: customer_id)
       unless account
-        Rails.logger.warn "[Stripe Webhook] Account not found for customer #{stripe_invoice.customer}"
+        Rails.logger.warn "[Stripe Webhook] Account not found for customer #{customer_id}"
         return
       end
 
-      subscription = account.subscriptions.find_by(stripe_subscription_id: stripe_invoice.subscription)
+      subscription_id = stripe_invoice.subscription.is_a?(String) ? stripe_invoice.subscription : stripe_invoice.subscription.id
+      subscription = account.subscriptions.find_by(stripe_subscription_id: subscription_id)
 
       invoice = account.invoices.find_or_initialize_by(stripe_invoice_id: stripe_invoice.id)
       invoice.assign_attributes(
@@ -139,13 +153,18 @@ module Webhooks
     end
 
     def handle_invoice_payment_failed(stripe_invoice)
-      account = Account.find_by(stripe_customer_id: stripe_invoice.customer)
+      # Fetch full object if thin payload
+      stripe_invoice = fetch_object_if_needed(stripe_invoice, Stripe::Invoice)
+
+      customer_id = stripe_invoice.customer.is_a?(String) ? stripe_invoice.customer : stripe_invoice.customer.id
+      account = Account.find_by(stripe_customer_id: customer_id)
       unless account
-        Rails.logger.warn "[Stripe Webhook] Account not found for customer #{stripe_invoice.customer}"
+        Rails.logger.warn "[Stripe Webhook] Account not found for customer #{customer_id}"
         return
       end
 
-      subscription = account.subscriptions.find_by(stripe_subscription_id: stripe_invoice.subscription)
+      subscription_id = stripe_invoice.subscription.is_a?(String) ? stripe_invoice.subscription : stripe_invoice.subscription.id
+      subscription = account.subscriptions.find_by(stripe_subscription_id: subscription_id)
 
       invoice = account.invoices.find_or_initialize_by(stripe_invoice_id: stripe_invoice.id)
       invoice.assign_attributes(
@@ -167,13 +186,18 @@ module Webhooks
     end
 
     def handle_invoice_finalized(stripe_invoice)
-      account = Account.find_by(stripe_customer_id: stripe_invoice.customer)
+      # Fetch full object if thin payload
+      stripe_invoice = fetch_object_if_needed(stripe_invoice, Stripe::Invoice)
+
+      customer_id = stripe_invoice.customer.is_a?(String) ? stripe_invoice.customer : stripe_invoice.customer.id
+      account = Account.find_by(stripe_customer_id: customer_id)
       unless account
-        Rails.logger.warn "[Stripe Webhook] Account not found for customer #{stripe_invoice.customer}"
+        Rails.logger.warn "[Stripe Webhook] Account not found for customer #{customer_id}"
         return
       end
 
-      subscription = account.subscriptions.find_by(stripe_subscription_id: stripe_invoice.subscription)
+      subscription_id = stripe_invoice.subscription.is_a?(String) ? stripe_invoice.subscription : stripe_invoice.subscription.id
+      subscription = account.subscriptions.find_by(stripe_subscription_id: subscription_id)
 
       invoice = account.invoices.find_or_initialize_by(stripe_invoice_id: stripe_invoice.id)
       invoice.assign_attributes(
@@ -192,6 +216,17 @@ module Webhooks
       invoice.save!
 
       Rails.logger.info "[Stripe Webhook] Invoice #{invoice.id} finalized"
+    end
+
+    # Handle both thin and snapshot payloads
+    # If object is just an ID string, fetch the full object from Stripe
+    def fetch_object_if_needed(object, klass)
+      if object.is_a?(String)
+        Rails.logger.info "[Stripe Webhook] Thin payload detected, fetching #{klass.name} #{object}"
+        klass.retrieve(object)
+      else
+        object
+      end
     end
   end
 end

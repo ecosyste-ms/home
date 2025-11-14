@@ -138,19 +138,40 @@ For production, use the live keys in your production environment.
 
 **2. Create Stripe Products and Prices**
 
+You have two options:
+
+**Option A: Automatic (Recommended)**
+
+Use the rake task to automatically create Stripe prices from your local plans:
+
+```bash
+# This will create products and prices in Stripe for all plans without price IDs
+rails stripe:create_prices
+```
+
+**Option B: Manual**
+
 For each plan in your database, create corresponding Stripe Products and Prices:
 
 1. Go to Products in your Stripe Dashboard
 2. Create a product for each plan
 3. Add a recurring price to each product
-4. Copy the Price ID (starts with `price_`)
-5. Update your Plan records in Rails console:
+4. Copy the Price ID (starts with `price_test_` in test mode or `price_` in live mode)
+5. Run the sync task or update manually:
 
-```ruby
-# Example - update with your actual Stripe Price IDs
-Plan.find_by(slug: 'free')&.update(stripe_price_id: nil) # Free plans don't need a price ID
-Plan.find_by(slug: 'developer')&.update(stripe_price_id: 'price_YOUR_DEVELOPER_PRICE_ID')
-Plan.find_by(slug: 'business')&.update(stripe_price_id: 'price_YOUR_BUSINESS_PRICE_ID')
+```bash
+# Sync price IDs from Stripe to your local database
+rails stripe:sync_prices
+
+# Or update manually in Rails console:
+Plan.find_by(slug: 'developer')&.update(stripe_price_id: 'price_test_YOUR_ID')
+```
+
+**View Current State**
+
+```bash
+# See all Stripe prices and local plan mappings
+rails stripe:list_prices
 ```
 
 **3. Configure Webhooks**
@@ -175,11 +196,32 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 
 **4. Test with Stripe CLI (Development)**
 
+The Stripe CLI is optional but recommended for testing webhooks locally.
+
+**Install Stripe CLI:**
+
 ```bash
-# Install Stripe CLI
+# macOS
 brew install stripe/stripe-cli/stripe
 
-# Login
+# Linux
+curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public | gpg --dearmor | sudo tee /usr/share/keyrings/stripe.gpg
+echo "deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main" | sudo tee -a /etc/apt/sources.list.d/stripe.list
+sudo apt update
+sudo apt install stripe
+
+# Windows (using Scoop)
+scoop bucket add stripe https://github.com/stripe/scoop-stripe-cli.git
+scoop install stripe
+
+# Verify installation
+stripe --version
+```
+
+**Set up webhook forwarding:**
+
+```bash
+# Login to Stripe (opens browser)
 stripe login
 
 # Forward webhooks to your local server
@@ -188,6 +230,8 @@ stripe listen --forward-to localhost:3000/webhooks/stripe
 # This will give you a webhook secret starting with whsec_
 # Add it to your .env.development file
 ```
+
+**Note:** The rake tasks (`rails stripe:create_prices`, etc.) don't require Stripe CLI - they use the Ruby gem directly. You only need the CLI for local webhook testing.
 
 **5. Test Card Numbers**
 
