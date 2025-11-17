@@ -6,6 +6,20 @@
       <%= render 'accounts/navigation' %>
     </div>
     <div class="col-12 col-lg-9">
+      <% if flash[:new_api_key] %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <h4 class="alert-heading">API Key Created!</h4>
+          <p class="mb-2">Save this key - you won't see it again!</p>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control font-monospace" id="newApiKey" value="<%= flash[:new_api_key] %>" readonly>
+            <button class="btn btn-success" type="button" onclick="copyApiKey()">
+              <%= bootstrap_icon 'copy', width: 16, height: 16, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'me-1' %> Copy
+            </button>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="mb-0">API Keys</h1>
         <%= button_to 'Create new key', create_api_key_account_path, method: :post, class: 'btn btn-primary rounded-pill' %>
@@ -28,11 +42,8 @@
               </div>
               <%= button_to 'Revoke', revoke_api_key_account_path(api_key_id: api_key.id), method: :delete, class: 'btn btn-sm btn-outline-danger', data: { confirm: 'Are you sure you want to revoke this API key?' } %>
             </div>
-            <div class="input-group">
-              <input type="text" class="form-control font-monospace" value="<%= api_key.key_prefix %>••••••••••••••••••••••••" readonly>
-              <button class="btn btn-outline-secondary" type="button" onclick="alert('Copy functionality would be implemented here')">
-                <%= bootstrap_icon 'copy', width: 12, height: 12, aria_hidden: 'true', focusable: 'false', role: 'img', class: 'me-1' %> Copy
-              </button>
+            <div>
+              <code class="font-monospace"><%= api_key.key_prefix %>••••••••••••••••••••••••</code>
             </div>
           </div>
         <% end %>
