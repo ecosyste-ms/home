@@ -195,14 +195,15 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
     service_mock = mock('apisix_service')
     service_mock.expects(:create_consumer).returns('test_consumer_id')
-    ApisixService.expects(:new).returns(service_mock)
+    ApisixStubService.expects(:new).returns(service_mock)
 
     assert_difference '@account.api_keys.count', 1 do
       post create_api_key_account_path, params: { name: 'My API Key' }
     end
 
     assert_redirected_to api_key_account_path
-    assert_match(/API Key created/, flash[:notice])
+    assert_not_nil flash[:new_api_key]
+    assert_match(/^[a-zA-Z0-9]{32}$/, flash[:new_api_key])
 
     api_key = @account.api_keys.last
     assert_equal 'My API Key', api_key.name
@@ -214,7 +215,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
     service_mock = mock('apisix_service')
     service_mock.expects(:create_consumer).returns('test_consumer_id')
-    ApisixService.expects(:new).returns(service_mock)
+    ApisixStubService.expects(:new).returns(service_mock)
 
     post create_api_key_account_path
     assert_redirected_to api_key_account_path
@@ -227,8 +228,8 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     login_as(@account)
 
     service_mock = mock('apisix_service')
-    service_mock.expects(:create_consumer).raises(ApisixService::ConnectionError.new('Failed to connect'))
-    ApisixService.expects(:new).returns(service_mock)
+    service_mock.expects(:create_consumer).raises(ApisixStubService::ConnectionError.new('Failed to connect'))
+    ApisixStubService.expects(:new).returns(service_mock)
 
     assert_no_difference '@account.api_keys.count' do
       post create_api_key_account_path, params: { name: 'My API Key' }
@@ -242,8 +243,8 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     login_as(@account)
 
     service_mock = mock('apisix_service')
-    service_mock.expects(:create_consumer).raises(ApisixService::ApiError.new('Internal error'))
-    ApisixService.expects(:new).returns(service_mock)
+    service_mock.expects(:create_consumer).raises(ApisixStubService::ApiError.new('Internal error'))
+    ApisixStubService.expects(:new).returns(service_mock)
 
     assert_no_difference '@account.api_keys.count' do
       post create_api_key_account_path, params: { name: 'My API Key' }
@@ -264,7 +265,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
     service_mock = mock('apisix_service')
     service_mock.expects(:delete_consumer).with(consumer_name: 'test_prefix').returns(true)
-    ApisixService.expects(:new).returns(service_mock)
+    ApisixStubService.expects(:new).returns(service_mock)
 
     delete revoke_api_key_account_path(api_key_id: api_key.id)
 
@@ -305,8 +306,8 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     api_key.save!
 
     service_mock = mock('apisix_service')
-    service_mock.expects(:delete_consumer).raises(ApisixService::ApiError.new('Internal error'))
-    ApisixService.expects(:new).returns(service_mock)
+    service_mock.expects(:delete_consumer).raises(ApisixStubService::ApiError.new('Internal error'))
+    ApisixStubService.expects(:new).returns(service_mock)
 
     delete revoke_api_key_account_path(api_key_id: api_key.id)
 

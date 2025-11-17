@@ -45,7 +45,7 @@ class AccountsController < ApplicationController
     Rails.logger.info "[API Key Creation] Generated key with prefix=#{api_key.key_prefix}"
 
     # Create consumer in APISIX first
-    apisix_service = ApisixService.new
+    apisix_service = apisix_service_for_env
     Rails.logger.info "[API Key Creation] Calling APISIX to create consumer with prefix=#{api_key.key_prefix}"
     consumer_id = apisix_service.create_consumer(
       consumer_name: api_key.key_prefix,
@@ -63,8 +63,9 @@ class AccountsController < ApplicationController
     api_key.save!
     Rails.logger.info "[API Key Creation] API key saved successfully, id=#{api_key.id}"
 
-    redirect_to api_key_account_path, notice: "API Key created: #{api_key.raw_key}. Save this key - you won't see it again!"
-  rescue ApisixService::ApisixError => e
+    flash[:new_api_key] = api_key.raw_key
+    redirect_to api_key_account_path
+  rescue ApisixService::ApisixError, ApisixStubService::ApisixError => e
     Rails.logger.error "[API Key Creation] APISIX error: #{e.class} - #{e.message}"
     Rails.logger.error "[API Key Creation] Backtrace: #{e.backtrace.first(5).join("\n")}"
     redirect_to api_key_account_path, alert: "Failed to create API key: #{e.message}"
@@ -79,7 +80,7 @@ class AccountsController < ApplicationController
 
     # Delete from APISIX first
     if api_key.apisix_consumer_id.present?
-      apisix_service = ApisixService.new
+      apisix_service = apisix_service_for_env
       apisix_service.delete_consumer(consumer_name: api_key.apisix_consumer_id)
     end
 
@@ -87,7 +88,7 @@ class AccountsController < ApplicationController
     api_key.revoke!
 
     redirect_to api_key_account_path, notice: 'API Key has been revoked.'
-  rescue ApisixService::ApisixError => e
+  rescue ApisixService::ApisixError, ApisixStubService::ApisixError => e
     redirect_to api_key_account_path, alert: "Failed to revoke API key: #{e.message}"
   end
 
@@ -145,5 +146,13 @@ class AccountsController < ApplicationController
 
   def account_params
     params.require(:account).permit(:name, :email, :show_profile_picture)
+  end
+
+  def apisix_service_for_env
+    if Rails.env.development? || Rails.env.test?
+      ApisixStubService.new
+    else
+      ApisixService.new
+    end
   end
 end
