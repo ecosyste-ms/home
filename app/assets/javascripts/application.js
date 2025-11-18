@@ -1,6 +1,7 @@
 //= require popper
 //= require bootstrap
 //= require jquery
+//= require rails-ujs
 
 function copyApiKey() {
   const input = document.getElementById('newApiKey');
