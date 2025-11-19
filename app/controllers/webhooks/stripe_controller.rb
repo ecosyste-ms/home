@@ -207,7 +207,12 @@ module Webhooks
     def fetch_object_if_needed(object, klass)
       if object.is_a?(String)
         Rails.logger.info "[Stripe Webhook] Thin payload detected, fetching #{klass.name} #{object}"
-        klass.retrieve(object)
+        # Expand items for subscriptions to get billing period data (API 2025+)
+        if klass == Stripe::Subscription
+          klass.retrieve(object, expand: ['items.data'])
+        else
+          klass.retrieve(object)
+        end
       else
         object
       end

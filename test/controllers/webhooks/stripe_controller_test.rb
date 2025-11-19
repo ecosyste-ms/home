@@ -21,11 +21,18 @@ module Webhooks
     end
 
     test 'stores all events in database' do
+    # Mock Stripe API 2025+ structure with items
+    item = mock('subscription_item')
+    item.stubs(:current_period_start).returns(Time.current.to_i)
+    item.stubs(:current_period_end).returns(1.month.from_now.to_i)
+
+    items = mock('items')
+    items.stubs(:data).returns([item])
+
     stripe_subscription = mock('subscription')
     stripe_subscription.stubs(:id).returns('sub_123')
     stripe_subscription.stubs(:status).returns('active')
-    stripe_subscription.stubs(:current_period_start).returns(Time.current.to_i)
-    stripe_subscription.stubs(:current_period_end).returns(1.month.from_now.to_i)
+    stripe_subscription.stubs(:items).returns(items)
     stripe_subscription.stubs(:cancel_at_period_end).returns(false)
 
     event_data = mock('event_data')
@@ -109,11 +116,18 @@ module Webhooks
   end
 
   test 'handles customer.subscription.updated event' do
+      # Mock Stripe API 2025+ structure with items
+      item = mock('subscription_item')
+      item.stubs(:current_period_start).returns(Time.current.to_i)
+      item.stubs(:current_period_end).returns(1.month.from_now.to_i)
+
+      items = mock('items')
+      items.stubs(:data).returns([item])
+
       stripe_subscription = mock('subscription')
       stripe_subscription.stubs(:id).returns('sub_123')
       stripe_subscription.stubs(:status).returns('active')
-      stripe_subscription.stubs(:current_period_start).returns(Time.current.to_i)
-      stripe_subscription.stubs(:current_period_end).returns(1.month.from_now.to_i)
+      stripe_subscription.stubs(:items).returns(items)
       stripe_subscription.stubs(:cancel_at_period_end).returns(false)
 
       event_data = mock('event_data')

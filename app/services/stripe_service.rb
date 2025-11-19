@@ -41,13 +41,14 @@ class StripeService
       invoice_settings: { default_payment_method: payment_method.id }
     )
 
-    # Create subscription
+    # Create subscription with expanded items for billing period data
+    # Stripe API 2025-03-31: latest_invoice now has confirmation_secret instead of payment_intent
     stripe_subscription = Stripe::Subscription.create(
       customer: customer.id,
       items: [{ price: plan.stripe_price_id }],
       payment_behavior: 'default_incomplete',
       payment_settings: { save_default_payment_method: 'on_subscription' },
-      expand: ['latest_invoice.payment_intent']
+      expand: ['latest_invoice', 'items.data']
     )
 
     # Create local subscription record
@@ -64,7 +65,7 @@ class StripeService
 
     {
       subscription: subscription,
-      client_secret: stripe_subscription.latest_invoice&.payment_intent&.client_secret
+      client_secret: stripe_subscription.latest_invoice&.confirmation_secret
     }
   rescue Stripe::StripeError => e
     Rails.logger.error "[StripeService] Error creating subscription: #{e.message}"
