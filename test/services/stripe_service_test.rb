@@ -72,12 +72,15 @@ class StripeServiceTest < ActiveSupport::TestCase
     items = mock('items')
     items.stubs(:data).returns([item])
 
+    invoice = mock('invoice')
+    invoice.stubs(:confirmation_secret).returns(nil)
+
     subscription = mock('subscription')
     subscription.stubs(:id).returns('sub_123')
     subscription.stubs(:status).returns('active')
     subscription.stubs(:items).returns(items)
     subscription.stubs(:cancel_at_period_end).returns(false)
-    subscription.stubs(:latest_invoice).returns(nil)
+    subscription.stubs(:latest_invoice).returns(invoice)
 
     @service.stubs(:create_or_retrieve_customer).returns(customer)
     Stripe::PaymentMethod.expects(:attach).with('pm_123', { customer: 'cus_123' }).returns(payment_method)
@@ -122,12 +125,15 @@ class StripeServiceTest < ActiveSupport::TestCase
     items = mock('items')
     items.stubs(:data).returns([item])
 
+    invoice = mock('invoice')
+    invoice.stubs(:confirmation_secret).returns(nil)
+
     subscription = mock('subscription')
     subscription.stubs(:id).returns('sub_123')
     subscription.stubs(:status).returns('incomplete')
     subscription.stubs(:items).returns(items)
     subscription.stubs(:cancel_at_period_end).returns(false)
-    subscription.stubs(:latest_invoice).returns(nil)
+    subscription.stubs(:latest_invoice).returns(invoice)
 
     @service.stubs(:create_or_retrieve_customer).returns(customer)
     Stripe::PaymentMethod.expects(:attach).with('pm_123', { customer: 'cus_123' }).returns(payment_method)
