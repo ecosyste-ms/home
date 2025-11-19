@@ -60,19 +60,19 @@ class Subscription < ApplicationRecord
   end
 
   def sync_from_stripe(stripe_subscription)
-    update!(stripe_attributes(stripe_subscription))
+    update!(self.class.stripe_attributes(stripe_subscription))
   end
 
   def self.stripe_attributes(stripe_subscription)
+    # Stripe API 2025-03-31 moved current_period_start/end from subscription to items
+    # Extract billing period from first subscription item
+    first_item = stripe_subscription.items&.data&.first
+
     {
       status: stripe_subscription.status,
-      current_period_start: stripe_subscription.current_period_start ? Time.at(stripe_subscription.current_period_start) : nil,
-      current_period_end: stripe_subscription.current_period_end ? Time.at(stripe_subscription.current_period_end) : nil,
-      cancel_at_period_end: stripe_subscription.cancel_at_period_end
+      current_period_start: first_item&.current_period_start ? Time.at(first_item.current_period_start) : nil,
+      current_period_end: first_item&.current_period_end ? Time.at(first_item.current_period_end) : nil,
+      cancel_at_period_end: stripe_subscription.cancel_at_period_end || false
     }
-  end
-
-  def stripe_attributes(stripe_subscription)
-    self.class.stripe_attributes(stripe_subscription)
   end
 end

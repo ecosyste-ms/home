@@ -41,13 +41,13 @@ class StripeService
       invoice_settings: { default_payment_method: payment_method.id }
     )
 
-    # Create subscription
+    # Create subscription with expanded items for billing period data
     stripe_subscription = Stripe::Subscription.create(
       customer: customer.id,
       items: [{ price: plan.stripe_price_id }],
       payment_behavior: 'default_incomplete',
       payment_settings: { save_default_payment_method: 'on_subscription' },
-      expand: ['latest_invoice.payment_intent']
+      expand: ['latest_invoice.payment_intent', 'items.data']
     )
 
     # Create local subscription record

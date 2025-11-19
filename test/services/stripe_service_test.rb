@@ -64,11 +64,18 @@ class StripeServiceTest < ActiveSupport::TestCase
     card.stubs(:exp_year).returns(2025)
     payment_method.stubs(:card).returns(card)
 
+    # Mock subscription with items structure (Stripe API 2025+)
+    item = mock('subscription_item')
+    item.stubs(:current_period_start).returns(Time.current.to_i)
+    item.stubs(:current_period_end).returns(1.month.from_now.to_i)
+
+    items = mock('items')
+    items.stubs(:data).returns([item])
+
     subscription = mock('subscription')
     subscription.stubs(:id).returns('sub_123')
     subscription.stubs(:status).returns('active')
-    subscription.stubs(:current_period_start).returns(Time.current.to_i)
-    subscription.stubs(:current_period_end).returns(1.month.from_now.to_i)
+    subscription.stubs(:items).returns(items)
     subscription.stubs(:cancel_at_period_end).returns(false)
     subscription.stubs(:latest_invoice).returns(nil)
 
@@ -107,11 +114,18 @@ class StripeServiceTest < ActiveSupport::TestCase
     card.stubs(:exp_year).returns(2025)
     payment_method.stubs(:card).returns(card)
 
+    # Mock subscription with items but no period dates (incomplete status)
+    item = mock('subscription_item')
+    item.stubs(:current_period_start).returns(nil)
+    item.stubs(:current_period_end).returns(nil)
+
+    items = mock('items')
+    items.stubs(:data).returns([item])
+
     subscription = mock('subscription')
     subscription.stubs(:id).returns('sub_123')
     subscription.stubs(:status).returns('incomplete')
-    subscription.stubs(:current_period_start).returns(nil)
-    subscription.stubs(:current_period_end).returns(nil)
+    subscription.stubs(:items).returns(items)
     subscription.stubs(:cancel_at_period_end).returns(false)
     subscription.stubs(:latest_invoice).returns(nil)
 
