@@ -69,6 +69,7 @@ class StripeServiceTest < ActiveSupport::TestCase
     subscription.stubs(:status).returns('active')
     subscription.stubs(:current_period_start).returns(Time.current.to_i)
     subscription.stubs(:current_period_end).returns(1.month.from_now.to_i)
+    subscription.stubs(:cancel_at_period_end).returns(false)
     subscription.stubs(:latest_invoice).returns(nil)
 
     @service.stubs(:create_or_retrieve_customer).returns(customer)
@@ -90,6 +91,42 @@ class StripeServiceTest < ActiveSupport::TestCase
     assert_raises(StripeService::StripeError) do
       @service.create_subscription(plan: plan, payment_method_id: 'pm_123')
     end
+  end
+
+  test 'create_subscription handles incomplete status without period dates' do
+    customer = mock('customer')
+    customer.stubs(:id).returns('cus_123')
+
+    payment_method = mock('payment_method')
+    payment_method.stubs(:id).returns('pm_123')
+    payment_method.stubs(:type).returns('card')
+    card = mock('card')
+    card.stubs(:brand).returns('visa')
+    card.stubs(:last4).returns('4242')
+    card.stubs(:exp_month).returns(12)
+    card.stubs(:exp_year).returns(2025)
+    payment_method.stubs(:card).returns(card)
+
+    subscription = mock('subscription')
+    subscription.stubs(:id).returns('sub_123')
+    subscription.stubs(:status).returns('incomplete')
+    subscription.stubs(:current_period_start).returns(nil)
+    subscription.stubs(:current_period_end).returns(nil)
+    subscription.stubs(:cancel_at_period_end).returns(false)
+    subscription.stubs(:latest_invoice).returns(nil)
+
+    @service.stubs(:create_or_retrieve_customer).returns(customer)
+    Stripe::PaymentMethod.expects(:attach).with('pm_123', { customer: 'cus_123' }).returns(payment_method)
+    Stripe::Customer.expects(:update).with('cus_123', invoice_settings: { default_payment_method: 'pm_123' })
+    Stripe::Subscription.expects(:create).returns(subscription)
+
+    result = @service.create_subscription(plan: @plan, payment_method_id: 'pm_123')
+
+    assert result[:subscription].persisted?
+    assert_equal 'sub_123', result[:subscription].stripe_subscription_id
+    assert_equal 'incomplete', result[:subscription].status
+    assert_nil result[:subscription].current_period_start
+    assert_nil result[:subscription].current_period_end
   end
 
   test 'cancel_subscription cancels at period end by default' do
