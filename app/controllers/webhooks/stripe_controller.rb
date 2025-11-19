@@ -66,40 +66,13 @@ module Webhooks
     private
 
     def handle_subscription_created(stripe_subscription)
-      # Fetch full object if thin payload (id is a string, not object)
       stripe_subscription = fetch_object_if_needed(stripe_subscription, Stripe::Subscription)
-
-      subscription = Subscription.find_by(stripe_subscription_id: stripe_subscription.id)
-
-      if subscription
-        subscription.update!(
-          status: stripe_subscription.status,
-          current_period_start: Time.at(stripe_subscription.current_period_start),
-          current_period_end: Time.at(stripe_subscription.current_period_end)
-        )
-        Rails.logger.info "[Stripe Webhook] Updated subscription #{subscription.id}"
-      else
-        Rails.logger.warn "[Stripe Webhook] Subscription not found: #{stripe_subscription.id}"
-      end
+      update_subscription_from_stripe(stripe_subscription)
     end
 
     def handle_subscription_updated(stripe_subscription)
-      # Fetch full object if thin payload
       stripe_subscription = fetch_object_if_needed(stripe_subscription, Stripe::Subscription)
-
-      subscription = Subscription.find_by(stripe_subscription_id: stripe_subscription.id)
-
-      if subscription
-        subscription.update!(
-          status: stripe_subscription.status,
-          current_period_start: Time.at(stripe_subscription.current_period_start),
-          current_period_end: Time.at(stripe_subscription.current_period_end),
-          cancel_at_period_end: stripe_subscription.cancel_at_period_end
-        )
-        Rails.logger.info "[Stripe Webhook] Updated subscription #{subscription.id}"
-      else
-        Rails.logger.warn "[Stripe Webhook] Subscription not found: #{stripe_subscription.id}"
-      end
+      update_subscription_from_stripe(stripe_subscription)
     end
 
     def handle_subscription_deleted(stripe_subscription)
@@ -216,6 +189,17 @@ module Webhooks
       invoice.save!
 
       Rails.logger.info "[Stripe Webhook] Invoice #{invoice.id} finalized"
+    end
+
+    def update_subscription_from_stripe(stripe_subscription)
+      subscription = Subscription.find_by(stripe_subscription_id: stripe_subscription.id)
+
+      if subscription
+        subscription.sync_from_stripe(stripe_subscription)
+        Rails.logger.info "[Stripe Webhook] Updated subscription #{subscription.id}"
+      else
+        Rails.logger.warn "[Stripe Webhook] Subscription not found: #{stripe_subscription.id}"
+      end
     end
 
     # Handle both thin and snapshot payloads

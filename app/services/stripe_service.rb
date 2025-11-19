@@ -52,12 +52,11 @@ class StripeService
 
     # Create local subscription record
     subscription = @account.subscriptions.create!(
-      plan: plan,
-      stripe_subscription_id: stripe_subscription.id,
-      stripe_price_id: plan.stripe_price_id,
-      status: stripe_subscription.status,
-      current_period_start: Time.at(stripe_subscription.current_period_start),
-      current_period_end: Time.at(stripe_subscription.current_period_end)
+      Subscription.stripe_attributes(stripe_subscription).merge(
+        plan: plan,
+        stripe_subscription_id: stripe_subscription.id,
+        stripe_price_id: plan.stripe_price_id
+      )
     )
 
     # Update account with payment method info
