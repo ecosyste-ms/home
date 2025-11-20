@@ -19,8 +19,8 @@
 <div class="container mb-5">
   
 
-  <!-- Comparison table (md+) -->
-  <div class="row mt-5 d-none d-md-block">
+  <!-- Comparison table (lg+) -->
+  <div class="row mt-5 d-none d-lg-block">
     <div class="col-12">
       <div class="table-responsive table-rounded">
         <table class="table pricing-table align-middle">
@@ -29,7 +29,7 @@
             <tr>
               <th scope="col" class="w-25"><span class="visually-hidden">Feature</span></th>
               <% @plans.each do |p| %>
-                <th scope="col" class="pricing-table__th>
+                <th scope="col" class="pricing-table__th w-25">
                   <%= render 'plan_card', plan: p %>
                 </th>
               <% end %>
@@ -119,8 +119,8 @@
     </div>
   </div>
 
-  <!-- Mobile accordion (xs–sm only) -->
-<div class="row d-md-none mt-4">
+  <!-- Mobile accordion (xs–md only) -->
+<div class="row d-lg-none mt-4">
   <div class="col-12">
     <div class="accordion pricing-accordion" id="planFeatures">
       <% @plans.each_with_index do |p, i| %>
