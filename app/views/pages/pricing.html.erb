@@ -19,6 +19,8 @@
 <div class="container mb-5">
   
 
+  <!-- Comparison table (lg+) -->
+  <div class="row mt-5 d-none d-lg-block">
     <div class="col-12">
       <div class="table-responsive table-rounded">
         <table class="table pricing-table align-middle">
@@ -117,6 +119,8 @@
     </div>
   </div>
 
+  <!-- Mobile accordion (xs–md only) -->
+<div class="row d-lg-none mt-4">
   <div class="col-12">
     <div class="accordion pricing-accordion" id="planFeatures">
       <% @plans.each_with_index do |p, i| %>
