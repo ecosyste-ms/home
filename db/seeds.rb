@@ -34,14 +34,14 @@ upsert_plan(
 )
 
 upsert_plan(
-  slug: 'researcher',
-  name: 'Researcher',
-  price_cents: 10000,
+  slug: 'develop',
+  name: 'Develop',
+  price_cents: 20000,
   billing_period: 'month',
-  requests_per_hour: 2000,
-  description: 'For bulk and volume downloads that don’t depend on the fastest access',
+  requests_per_hour: 1000,
+  description: 'For larger scale experiments and prototype services',
   metadata: {
-    tagline: 'For those who require bulk and volume downloads but don’t depend on the fastest access',
+    tagline: 'For larger scale experiments and prototype services',
     access_type: 'API Key',
     priority: 'Standard',
     support_level: 'Community',
@@ -54,14 +54,14 @@ upsert_plan(
 )
 
 upsert_plan(
-  slug: 'developer',
-  name: 'Developer',
-  price_cents: 50000,
+  slug: 'scale',
+  name: 'Scale',
+  price_cents: 100000,
   billing_period: 'month',
   requests_per_hour: 5000,
-  description: 'Fast, responsive, and supported access to our data APIs for your production application',
+  description: 'For production applications and services',
   metadata: {
-    tagline: 'Fast, responsive, and supported access to our data APIs for your production application',
+    tagline: 'For production applications and services',
     access_type: 'API Key',
     priority: 'High priority',
     support_level: 'Priority',
