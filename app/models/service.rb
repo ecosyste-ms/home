@@ -108,7 +108,7 @@ class Service
           {
             name: 'Dependabot',
             url: 'https://dependabot.ecosyste.ms',
-            description: '5.22 mllion pull requests opened by Dependabot',
+            description: '5.22 million pull requests opened by Dependabot',
           },
         ]
       },
