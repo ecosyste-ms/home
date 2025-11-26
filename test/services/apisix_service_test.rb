@@ -8,7 +8,7 @@ class ApisixServiceTest < ActiveSupport::TestCase
     @admin_key = ENV.fetch('APISIX_ADMIN_KEY', nil)
   end
 
-  test 'create_consumer creates a consumer with key-auth plugin' do
+  test 'create_consumer creates a consumer with key-auth and rate limiting plugins' do
     consumer_name = 'test_key_prefix'
     api_key = 'test_api_key_12345678901234567890'
 
@@ -16,7 +16,10 @@ class ApisixServiceTest < ActiveSupport::TestCase
       .with(
         body: hash_including(
           username: consumer_name,
-          plugins: hash_including('key-auth' => { key: api_key })
+          plugins: hash_including(
+            'key-auth' => { key: api_key },
+            'limit-count' => hash_including(count: 1000, time_window: 3600)
+          )
         )
       )
       .to_return(status: 200, body: '{"action":"set"}', headers: { 'Content-Type' => 'application/json' })
@@ -24,6 +27,7 @@ class ApisixServiceTest < ActiveSupport::TestCase
     result = @service.create_consumer(
       consumer_name: consumer_name,
       api_key: api_key,
+      requests_per_hour: 1000,
       metadata: { name: 'Test Key', account_id: 123 }
     )
 
@@ -76,6 +80,7 @@ class ApisixServiceTest < ActiveSupport::TestCase
       @service.create_consumer(
         consumer_name: consumer_name,
         api_key: 'test_key',
+        requests_per_hour: 300,
         metadata: {}
       )
     end
@@ -91,6 +96,7 @@ class ApisixServiceTest < ActiveSupport::TestCase
       @service.create_consumer(
         consumer_name: consumer_name,
         api_key: 'test_key',
+        requests_per_hour: 300,
         metadata: {}
       )
     end
@@ -120,6 +126,39 @@ class ApisixServiceTest < ActiveSupport::TestCase
     result = @service.update_consumer_metadata(
       consumer_name: consumer_name,
       metadata: { name: 'Updated Name', account_id: 123 }
+    )
+
+    assert_equal consumer_name, result
+  end
+
+  test 'update_consumer_rate_limit updates the limit-count plugin' do
+    consumer_name = 'test_key_prefix'
+    existing_consumer = {
+      value: {
+        username: consumer_name,
+        desc: 'API Key: Test',
+        plugins: {
+          'key-auth' => { key: 'existing_key' },
+          'limit-count' => { count: 300, time_window: 3600 }
+        },
+        labels: { 'account_id' => '123' }
+      }
+    }.to_json
+
+    stub_request(:get, "#{@base_url}/apisix/admin/consumers/#{consumer_name}")
+      .to_return(status: 200, body: existing_consumer, headers: { 'Content-Type' => 'application/json' })
+
+    stub_request(:put, "#{@base_url}/apisix/admin/consumers/#{consumer_name}")
+      .with(
+        body: hash_including(
+          plugins: hash_including('limit-count' => hash_including(count: 5000))
+        )
+      )
+      .to_return(status: 200, body: '{"action":"set"}', headers: { 'Content-Type' => 'application/json' })
+
+    result = @service.update_consumer_rate_limit(
+      consumer_name: consumer_name,
+      requests_per_hour: 5000
     )
 
     assert_equal consumer_name, result

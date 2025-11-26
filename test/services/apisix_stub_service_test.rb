@@ -5,7 +5,7 @@ class ApisixStubServiceTest < ActiveSupport::TestCase
     @service = ApisixStubService.new
   end
 
-  test "create_consumer stores consumer in memory" do
+  test "create_consumer stores consumer in memory with rate limit" do
     consumer_name = "test_key"
     api_key = "test_api_key_12345"
     metadata = { name: "Test Key", account_id: 1 }
@@ -13,10 +13,14 @@ class ApisixStubServiceTest < ActiveSupport::TestCase
     result = @service.create_consumer(
       consumer_name: consumer_name,
       api_key: api_key,
+      requests_per_hour: 1000,
       metadata: metadata
     )
 
     assert_equal consumer_name, result
+
+    consumer = @service.get_consumer(consumer_name)
+    assert_equal 1000, consumer["value"][:plugins][:"limit-count"][:count]
   end
 
   test "get_consumer returns stored consumer" do
@@ -27,6 +31,7 @@ class ApisixStubServiceTest < ActiveSupport::TestCase
     @service.create_consumer(
       consumer_name: consumer_name,
       api_key: api_key,
+      requests_per_hour: 300,
       metadata: metadata
     )
 
@@ -50,6 +55,7 @@ class ApisixStubServiceTest < ActiveSupport::TestCase
     @service.create_consumer(
       consumer_name: consumer_name,
       api_key: api_key,
+      requests_per_hour: 300,
       metadata: {}
     )
 
@@ -67,6 +73,7 @@ class ApisixStubServiceTest < ActiveSupport::TestCase
     @service.create_consumer(
       consumer_name: consumer_name,
       api_key: api_key,
+      requests_per_hour: 300,
       metadata: original_metadata
     )
 
@@ -85,6 +92,36 @@ class ApisixStubServiceTest < ActiveSupport::TestCase
     result = @service.update_consumer_metadata(
       consumer_name: "nonexistent",
       metadata: { name: "Test" }
+    )
+
+    assert_nil result
+  end
+
+  test "update_consumer_rate_limit updates existing consumer rate limit" do
+    consumer_name = "test_key"
+    api_key = "test_api_key_12345"
+
+    @service.create_consumer(
+      consumer_name: consumer_name,
+      api_key: api_key,
+      requests_per_hour: 300,
+      metadata: { name: "Test", account_id: 1 }
+    )
+
+    @service.update_consumer_rate_limit(
+      consumer_name: consumer_name,
+      requests_per_hour: 5000
+    )
+
+    consumer = @service.get_consumer(consumer_name)
+
+    assert_equal 5000, consumer["value"][:plugins][:"limit-count"][:count]
+  end
+
+  test "update_consumer_rate_limit returns nil for non-existent consumer" do
+    result = @service.update_consumer_rate_limit(
+      consumer_name: "nonexistent",
+      requests_per_hour: 1000
     )
 
     assert_nil result

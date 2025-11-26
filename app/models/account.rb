@@ -26,7 +26,7 @@ class Account < ApplicationRecord
   end
 
   def plan_requests
-    plan&.requests_per_hour || 0
+    plan&.requests_per_hour || ENV.fetch('DEFAULT_REQUESTS_PER_HOUR', 300).to_i
   end
 
   def plan_price

@@ -8,18 +8,26 @@ class ApisixService
     @admin_key = ENV.fetch('APISIX_ADMIN_KEY', nil)
   end
 
-  # Create or update a consumer in APISIX with key-auth plugin
+  # Create or update a consumer in APISIX with key-auth and rate limiting plugins
   # @param consumer_name [String] Unique identifier for the consumer (e.g., key_prefix)
   # @param api_key [String] The actual API key to authenticate with
+  # @param requests_per_hour [Integer] Rate limit for this consumer
   # @param metadata [Hash] Additional metadata to store with the consumer
   # @return [String] The consumer name
-  def create_consumer(consumer_name:, api_key:, metadata: {})
+  def create_consumer(consumer_name:, api_key:, requests_per_hour:, metadata: {})
     body = {
       username: consumer_name,
       desc: metadata[:description] || "API Key: #{metadata[:name]}",
       plugins: {
         "key-auth": {
           key: api_key
+        },
+        "limit-count": {
+          count: requests_per_hour,
+          time_window: 3600,
+          rejected_code: 429,
+          key_type: "var",
+          key: "consumer_name"
         }
       },
       labels: sanitize_labels(metadata.slice(:account_id, :name))
@@ -51,7 +59,6 @@ class ApisixService
   # @param metadata [Hash] Updated metadata
   # @return [String] The consumer name
   def update_consumer_metadata(consumer_name:, metadata: {})
-    # Fetch existing consumer first
     existing = get_consumer(consumer_name)
     return nil unless existing
 
@@ -60,6 +67,39 @@ class ApisixService
       desc: metadata[:description] || "API Key: #{metadata[:name]}",
       plugins: existing.dig("value", "plugins") || {},
       labels: sanitize_labels(metadata.slice(:account_id, :name))
+    }
+
+    make_request(
+      method: :put,
+      path: "/apisix/admin/consumers/#{consumer_name}",
+      body: body
+    )
+
+    consumer_name
+  end
+
+  # Update consumer rate limit (useful when plan changes)
+  # @param consumer_name [String] The consumer identifier
+  # @param requests_per_hour [Integer] New rate limit
+  # @return [String, nil] The consumer name or nil if not found
+  def update_consumer_rate_limit(consumer_name:, requests_per_hour:)
+    existing = get_consumer(consumer_name)
+    return nil unless existing
+
+    plugins = existing.dig("value", "plugins") || {}
+    plugins["limit-count"] = {
+      count: requests_per_hour,
+      time_window: 3600,
+      rejected_code: 429,
+      key_type: "var",
+      key: "consumer_name"
+    }
+
+    body = {
+      username: consumer_name,
+      desc: existing.dig("value", "desc"),
+      plugins: plugins,
+      labels: existing.dig("value", "labels") || {}
     }
 
     make_request(
