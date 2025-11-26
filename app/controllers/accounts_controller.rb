@@ -46,10 +46,11 @@ class AccountsController < ApplicationController
 
     # Create consumer in APISIX first
     apisix_service = apisix_service_for_env
-    Rails.logger.info "[API Key Creation] Calling APISIX to create consumer with prefix=#{api_key.key_prefix}"
+    Rails.logger.info "[API Key Creation] Calling APISIX to create consumer with prefix=#{api_key.key_prefix}, rate_limit=#{@account.plan_requests}"
     consumer_id = apisix_service.create_consumer(
       consumer_name: api_key.key_prefix,
       api_key: api_key.raw_key,
+      requests_per_hour: @account.plan_requests,
       metadata: {
         name: api_key.name,
         account_id: @account.id

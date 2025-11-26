@@ -11,16 +11,22 @@ class ApisixStubService
   end
 
   # Create or update a consumer (stubbed - no actual APISIX call)
-  def create_consumer(consumer_name:, api_key:, metadata: {})
-    Rails.logger.info "[ApisixStubService] Creating consumer: #{consumer_name}"
+  def create_consumer(consumer_name:, api_key:, requests_per_hour:, metadata: {})
+    Rails.logger.info "[ApisixStubService] Creating consumer: #{consumer_name} with #{requests_per_hour} requests/hour"
 
-    # Store in memory for later retrieval
     @consumers[consumer_name] = {
       username: consumer_name,
       desc: metadata[:description] || "API Key: #{metadata[:name]}",
       plugins: {
         "key-auth": {
           key: api_key
+        },
+        "limit-count": {
+          count: requests_per_hour,
+          time_window: 3600,
+          rejected_code: 429,
+          key_type: "var",
+          key: "consumer_name"
         }
       },
       labels: sanitize_labels(metadata.slice(:account_id, :name))
@@ -48,6 +54,24 @@ class ApisixStubService
       desc: metadata[:description] || "API Key: #{metadata[:name]}",
       plugins: existing[:plugins] || {},
       labels: sanitize_labels(metadata.slice(:account_id, :name))
+    }
+
+    consumer_name
+  end
+
+  # Update consumer rate limit (stubbed - no actual APISIX call)
+  def update_consumer_rate_limit(consumer_name:, requests_per_hour:)
+    Rails.logger.info "[ApisixStubService] Updating rate limit for #{consumer_name}: #{requests_per_hour} requests/hour"
+
+    existing = @consumers[consumer_name]
+    return nil unless existing
+
+    existing[:plugins][:"limit-count"] = {
+      count: requests_per_hour,
+      time_window: 3600,
+      rejected_code: 429,
+      key_type: "var",
+      key: "consumer_name"
     }
 
     consumer_name
