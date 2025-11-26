@@ -112,7 +112,7 @@ class ApisixServiceTest < ActiveSupport::TestCase
       .with(
         body: hash_including(
           desc: 'API Key: Updated Name',
-          labels: hash_including('name' => 'Updated Name')
+          labels: hash_including('name' => 'Updated_Name')
         )
       )
       .to_return(status: 200, body: '{"action":"set"}', headers: { 'Content-Type' => 'application/json' })

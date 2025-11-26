@@ -23,7 +23,7 @@ class ApisixStubService
           key: api_key
         }
       },
-      labels: metadata.slice(:account_id, :name).transform_keys(&:to_s)
+      labels: sanitize_labels(metadata.slice(:account_id, :name))
     }
 
     consumer_name
@@ -47,11 +47,19 @@ class ApisixStubService
       username: consumer_name,
       desc: metadata[:description] || "API Key: #{metadata[:name]}",
       plugins: existing[:plugins] || {},
-      labels: metadata.slice(:account_id, :name).transform_keys(&:to_s)
+      labels: sanitize_labels(metadata.slice(:account_id, :name))
     }
 
     consumer_name
   end
+
+  private
+
+  def sanitize_labels(hash)
+    hash.transform_keys(&:to_s).transform_values { |v| v.to_s.gsub(/\s+/, '_') }
+  end
+
+  public
 
   # Get consumer details (stubbed - returns stored data)
   def get_consumer(consumer_name)
