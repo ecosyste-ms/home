@@ -16,7 +16,7 @@ class ApisixStubService
 
     @consumers[consumer_name] = {
       username: consumer_name,
-      desc: metadata[:description] || "API Key: #{metadata[:name]}",
+      desc: "#{metadata[:email]} - #{metadata[:plan_name]} (#{requests_per_hour}/hr)",
       plugins: {
         "key-auth": {
           key: api_key
