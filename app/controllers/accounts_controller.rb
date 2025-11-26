@@ -53,7 +53,9 @@ class AccountsController < ApplicationController
       requests_per_hour: @account.plan_requests,
       metadata: {
         name: api_key.name,
-        account_id: @account.id
+        account_id: @account.id,
+        email: @account.email,
+        plan_name: @account.plan_name
       }
     )
     Rails.logger.info "[API Key Creation] APISIX consumer created successfully, consumer_id=#{consumer_id}"

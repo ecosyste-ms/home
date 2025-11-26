@@ -17,7 +17,7 @@ class ApisixService
   def create_consumer(consumer_name:, api_key:, requests_per_hour:, metadata: {})
     body = {
       username: consumer_name,
-      desc: metadata[:description] || "API Key: #{metadata[:name]}",
+      desc: "#{metadata[:email]} - #{metadata[:plan_name]} (#{requests_per_hour}/hr)",
       plugins: {
         "key-auth": {
           key: api_key
