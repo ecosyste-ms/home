@@ -22,7 +22,7 @@ class ApisixService
           key: api_key
         }
       },
-      labels: metadata.slice(:account_id, :name).transform_keys(&:to_s)
+      labels: sanitize_labels(metadata.slice(:account_id, :name))
     }
 
     response = make_request(
@@ -59,7 +59,7 @@ class ApisixService
       username: consumer_name,
       desc: metadata[:description] || "API Key: #{metadata[:name]}",
       plugins: existing.dig("value", "plugins") || {},
-      labels: metadata.slice(:account_id, :name).transform_keys(&:to_s)
+      labels: sanitize_labels(metadata.slice(:account_id, :name))
     }
 
     make_request(
@@ -87,6 +87,10 @@ class ApisixService
   end
 
   private
+
+  def sanitize_labels(hash)
+    hash.transform_keys(&:to_s).transform_values { |v| v.to_s.gsub(/\s+/, '_') }
+  end
 
   def make_request(method:, path:, body: nil)
     require 'net/http'

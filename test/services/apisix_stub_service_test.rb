@@ -78,7 +78,7 @@ class ApisixStubServiceTest < ActiveSupport::TestCase
 
     consumer = @service.get_consumer(consumer_name)
 
-    assert_equal "Updated Name", consumer["value"][:labels]["name"]
+    assert_equal "Updated_Name", consumer["value"][:labels]["name"]
   end
 
   test "update_consumer_metadata returns nil for non-existent consumer" do
