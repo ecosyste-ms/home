@@ -62,6 +62,46 @@ namespace :stripe do
     puts "\nDone!"
   end
 
+  desc "Update Stripe prices where local price_cents differs from Stripe (creates new price, archives old)"
+  task update_prices: :environment do
+    require 'stripe'
+
+    puts "Checking for price changes..."
+
+    Plan.where.not(stripe_price_id: nil).where.not(price_cents: 0).each do |plan|
+      stripe_price = Stripe::Price.retrieve(plan.stripe_price_id)
+
+      if stripe_price.unit_amount != plan.price_cents
+        puts "\n#{plan.name}: $#{stripe_price.unit_amount / 100} -> $#{plan.price_cents / 100}"
+
+        # Create new price on the same product
+        new_price = Stripe::Price.create(
+          product: stripe_price.product,
+          unit_amount: plan.price_cents,
+          currency: 'usd',
+          recurring: {
+            interval: plan.billing_period
+          }
+        )
+
+        # Archive old price
+        Stripe::Price.update(plan.stripe_price_id, active: false)
+
+        # Update plan with new price ID
+        plan.update!(stripe_price_id: new_price.id)
+
+        puts "  Created new price: #{new_price.id}"
+        puts "  Archived old price: #{stripe_price.id}"
+      else
+        puts "#{plan.name}: no change ($#{plan.price_cents / 100})"
+      end
+    rescue Stripe::StripeError => e
+      puts "Failed for #{plan.name}: #{e.message}"
+    end
+
+    puts "\nDone!"
+  end
+
   desc "List all Stripe prices"
   task list_prices: :environment do
     require 'stripe'
