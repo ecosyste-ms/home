@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   end
 
   # Checkout and subscriptions
+  get '/checkout/success', to: 'checkout#success', as: :checkout_success
   get '/checkout/:plan_id', to: 'checkout#new', as: :checkout
   post '/checkout/:plan_id', to: 'checkout#create', as: :create_checkout
 

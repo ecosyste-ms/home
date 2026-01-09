@@ -1,6 +1,12 @@
 class CheckoutController < ApplicationController
   before_action :require_authentication
-  before_action :set_plan
+  before_action :set_plan, only: [:new, :create]
+
+  def success
+    @meta_title = "Subscription confirmed - ecosyste.ms"
+    @plan = current_account.plan
+    redirect_to plan_account_path, alert: 'No active subscription found.' unless @plan
+  end
 
   def new
     @meta_title = "Checkout - #{@plan.name}"
@@ -31,7 +37,7 @@ class CheckoutController < ApplicationController
       # Subscription created successfully
       render json: {
         success: true,
-        redirect_url: billing_account_path
+        redirect_url: checkout_success_path
       }
     end
   rescue StripeService::StripeError => e

@@ -51,7 +51,7 @@ class CheckoutControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     json = JSON.parse(response.body)
     assert json['success']
-    assert_equal billing_account_path, json['redirect_url']
+    assert_equal checkout_success_path, json['redirect_url']
   end
 
   test 'create returns client_secret when payment requires action' do
@@ -87,5 +87,31 @@ class CheckoutControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
     json = JSON.parse(response.body)
     assert_equal 'Card declined', json['error']
+  end
+
+  test 'success requires authentication' do
+    get checkout_success_path
+    assert_redirected_to login_path
+  end
+
+  test 'success renders page with plan info' do
+    subscription = create(:subscription, account: @account, plan: @plan, status: 'active')
+    login_as(@account)
+
+    get checkout_success_path
+
+    assert_response :success
+    assert_template 'checkout/success'
+    assert_select 'h1', text: /Subscription confirmed/
+    assert_select 'strong', text: @plan.name
+  end
+
+  test 'success redirects if no active subscription' do
+    login_as(@account)
+
+    get checkout_success_path
+
+    assert_redirected_to plan_account_path
+    assert_equal 'No active subscription found.', flash[:alert]
   end
 end
