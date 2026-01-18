@@ -241,7 +241,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     stringio (3.2.0)
-    stripe (18.1.0)
+    stripe (18.2.0)
     thor (1.5.0)
     tilt (2.7.0)
     timeout (0.6.0)
@@ -407,7 +407,7 @@ CHECKSUMS
   sprockets (4.2.2) sha256=761e5a49f1c288704763f73139763564c845a8f856d52fba013458f8af1b59b1
   sprockets-rails (3.5.2) sha256=a9e88e6ce9f8c912d349aa5401509165ec42326baf9e942a85de4b76dbc4119e
   stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
-  stripe (18.1.0) sha256=5f776fb65db442f1ba7401dc100945a2852b3714103c9aac27fa93fb33e2ee72
+  stripe (18.2.0) sha256=48c7e6cd7e98aebbd8dd7211557e11fc8f61b858cd2b8582c048c07fb9412a50
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
   tilt (2.7.0) sha256=0d5b9ba69f6a36490c64b0eee9f6e9aad517e20dcc848800a06eb116f08c6ab3
   timeout (0.6.0) sha256=6d722ad619f96ee383a0c557ec6eb8c4ecb08af3af62098a0be5057bf00de1af
