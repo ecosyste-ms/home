@@ -35,7 +35,7 @@ group :test do
   gem "mocha"
   gem "factory_bot_rails"
   gem "webmock"
-  gem "minitest", "~> 5"
+  gem "minitest", "~> 6"
 end
 
 group :development, :test do
