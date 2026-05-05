@@ -9,17 +9,17 @@ class Service
           {
             name: 'Packages',
             url: 'https://packages.ecosyste.ms',
-            description: 'Metadata for 12.1m packages across 75 sources'
+            description: 'Metadata for 14.1m packages across 103 sources'
           },
           {
             name: 'Repositories',
             url: 'https://repos.ecosyste.ms',
-            description: 'Metadata for 287m repositories across 1,952 sources'
+            description: 'Metadata for 293m repositories across 1.95k sources'
           },
           {
             name: 'Advisories',
             url: 'https://advisories.ecosyste.ms',
-            description: 'Metadata for 24k security advisories across 12 languages'
+            description: 'Metadata for 29.7k security advisories across 12 languages'
           }
         ]
       },
@@ -83,22 +83,22 @@ class Service
           {
             name: 'Commits',
             url: 'https://commits.ecosyste.ms',
-            description: '950 million commits across 6 million repositories',
+            description: '908 million commits across 6.27 million repositories',
           },
           {
             name: 'Issues',
             url: 'https://issues.ecosyste.ms',
-            description: '35 million issues and 112 million pull requests across 11 million repositories',
+            description: '34.3 million issues and 112 million pull requests across 14.5 million repositories',
           },
           {
             name: 'Sponsors',
             url: 'https://sponsors.ecosyste.ms',
-            description: '35k maintainers and 155k sponsors on GitHub Sponsors',
+            description: '36.8k maintainers and 176k sponsors on GitHub Sponsors',
           },
           {
             name: 'Docker',
             url: 'https://docker.ecosyste.ms',
-            description: '789k Docker images and their dependencies from Docker Hub',
+            description: '680k Docker images and their dependencies from Docker Hub',
           },
           {
             name: 'Open Collective',
@@ -108,7 +108,7 @@ class Service
           {
             name: 'Dependabot',
             url: 'https://dependabot.ecosyste.ms',
-            description: '5.22 million pull requests opened by Dependabot',
+            description: '9.58 million pull requests opened by Dependabot',
           },
         ]
       },
