@@ -9,7 +9,7 @@ class Service
           {
             name: 'Packages',
             url: 'https://packages.ecosyste.ms',
-            description: 'Metadata for 14.1m packages across 103 sources'
+            description: 'Metadata for 14.4m packages across 109 sources'
           },
           {
             name: 'Repositories',
@@ -19,7 +19,7 @@ class Service
           {
             name: 'Advisories',
             url: 'https://advisories.ecosyste.ms',
-            description: 'Metadata for 29.7k security advisories across 12 languages'
+            description: 'Metadata for 33.6k security advisories across 12 languages'
           }
         ]
       },
@@ -83,22 +83,22 @@ class Service
           {
             name: 'Commits',
             url: 'https://commits.ecosyste.ms',
-            description: '908 million commits across 6.27 million repositories',
+            description: '889 million commits across 6.33 million repositories',
           },
           {
             name: 'Issues',
             url: 'https://issues.ecosyste.ms',
-            description: '34.3 million issues and 112 million pull requests across 14.5 million repositories',
+            description: '32.9 million issues and 109 million pull requests across 14.9 million repositories',
           },
           {
             name: 'Sponsors',
             url: 'https://sponsors.ecosyste.ms',
-            description: '36.8k maintainers and 176k sponsors on GitHub Sponsors',
+            description: '37.4k maintainers and 180k sponsors on GitHub Sponsors',
           },
           {
             name: 'Docker',
             url: 'https://docker.ecosyste.ms',
-            description: '680k Docker images and their dependencies from Docker Hub',
+            description: '684k Docker images and their dependencies from Docker Hub',
           },
           {
             name: 'Open Collective',
@@ -108,7 +108,7 @@ class Service
           {
             name: 'Dependabot',
             url: 'https://dependabot.ecosyste.ms',
-            description: '9.58 million pull requests opened by Dependabot',
+            description: '9.99 million pull requests opened by Dependabot',
           },
         ]
       },
