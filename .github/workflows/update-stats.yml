@@ -1,0 +1,41 @@
+name: Update stats
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 1 * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-stats
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - name: Install dependent libraries
+        run: sudo apt-get update && sudo apt-get install -y libpq-dev
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Update stats
+        run: bundle exec rake stats:update
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: automated/update-stats
+          base: main
+          commit-message: Update stats
+          title: Update stats
+          body: Update homepage counts and service descriptions using `bundle exec rake stats:update`.
+          add-paths: |
+            app/views/home/index.html.erb
+            app/models/service.rb
