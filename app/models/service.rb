@@ -14,12 +14,12 @@ class Service
           {
             name: 'Repositories',
             url: 'https://repos.ecosyste.ms',
-            description: 'Metadata for 348m repositories across 2k sources'
+            description: 'Metadata for 349m repositories across 2k sources'
           },
           {
             name: 'Advisories',
             url: 'https://advisories.ecosyste.ms',
-            description: 'Metadata for 37.4k security advisories across 12 languages'
+            description: 'Metadata for 37.6k security advisories across 12 languages'
           }
         ]
       },
@@ -83,17 +83,17 @@ class Service
           {
             name: 'Commits',
             url: 'https://commits.ecosyste.ms',
-            description: '1.22 billion commits across 7.93 million repositories',
+            description: '1.24 billion commits across 8.04 million repositories',
           },
           {
             name: 'Issues',
             url: 'https://issues.ecosyste.ms',
-            description: '46.9 million issues and 146 million pull requests across 17.6 million repositories',
+            description: '47.2 million issues and 147 million pull requests across 17.7 million repositories',
           },
           {
             name: 'Sponsors',
             url: 'https://sponsors.ecosyste.ms',
-            description: '40.8k maintainers and 190k sponsors on GitHub Sponsors',
+            description: '41k maintainers and 190k sponsors on GitHub Sponsors',
           },
           {
             name: 'Docker',
