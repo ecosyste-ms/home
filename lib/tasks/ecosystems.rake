@@ -9,13 +9,13 @@ namespace :ecosystems do
     rake_file = 'lib/tasks/ecosystems.rake'
     shared_files = %w[
       app/views/shared/_footer.html.erb
-      app/views/layouts/application.html.erb
       app/assets/stylesheets/ecosystems.scss
       app/helpers/ecosystems_helper.rb
     ]
     header_file = 'app/views/shared/_header.html.erb'
     menu_file = 'app/views/shared/_menu.html.erb'
     partial_file = 'app/views/shared/_services_menu.html.erb'
+    layout_file = 'app/views/layouts/application.html.erb'
 
     begin
       FileUtils.rm_r(temp_dir) if File.exist?(temp_dir)
@@ -29,7 +29,7 @@ namespace :ecosystems do
         exec(Gem.ruby, Gem.bin_path('rake', 'rake'), 'ecosystems:update_shared_assets')
       end
 
-      (shared_files + [header_file, menu_file, partial_file]).each do |path|
+      (shared_files + [header_file, menu_file, partial_file, layout_file]).each do |path|
         raise "Missing shared asset: #{path}" unless File.file?("#{temp_dir}/#{path}")
       end
       %w[app/assets/images public].each do |path|
@@ -42,8 +42,12 @@ namespace :ecosystems do
       FileUtils.cp("#{temp_dir}/#{header_file}", header_file) unless File.exist?(header_file)
       Rake::Task['ecosystems:update_services_menu'].invoke(temp_dir)
       shared_files.each { |path| FileUtils.cp("#{temp_dir}/#{path}", path) }
-      %w[app/assets/images public].each do |path|
-        FileUtils.cp_r("#{temp_dir}/#{path}/.", path)
+      FileUtils.cp("#{temp_dir}/#{layout_file}", layout_file) unless File.exist?(layout_file)
+      FileUtils.cp_r("#{temp_dir}/app/assets/images/.", 'app/assets/images')
+      Dir.children("#{temp_dir}/public").each do |entry|
+        next if entry == 'robots.txt' && File.exist?('public/robots.txt')
+
+        FileUtils.cp_r("#{temp_dir}/public/#{entry}", "public/#{entry}")
       end
       FileUtils.cp("#{temp_dir}/#{menu_file}", menu_file) unless File.exist?(menu_file)
     ensure

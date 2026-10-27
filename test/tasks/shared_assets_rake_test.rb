@@ -97,6 +97,44 @@ class SharedAssetsRakeTest < ActiveSupport::TestCase
     assert_migrated(@header)
   end
 
+  test 'preserves the application layout when refreshing assets and the rake task' do
+    layout_path = File.join(@project, 'app/views/layouts/application.html.erb')
+    layout = "<head><%= auto_discovery_link_tag(:atom, global_feed_path) %></head><body><%= yield %></body>"
+    File.write(layout_path, layout)
+    File.open(File.join(@project, @task_path), 'a') { |file| file.puts "\n" }
+
+    assert_migrated(@header)
+
+    assert_equal layout, File.read(layout_path)
+  end
+
+  test 'installs the shared application layout when none exists' do
+    assert_migrated(@header)
+
+    assert_equal File.read(File.join(@source, 'app/views/layouts/application.html.erb')),
+      File.read(File.join(@project, 'app/views/layouts/application.html.erb'))
+  end
+
+  test 'preserves app-specific crawler rules while refreshing public assets' do
+    robots_path = File.join(@project, 'public/robots.txt')
+    rules = "User-agent: *\nAllow: /\nDisallow: /*?*previous_month=\nDisallow: /*?*previous_year=\n"
+    File.write(robots_path, rules)
+    File.write(File.join(@source, 'public/favicon.ico'), 'new favicon')
+    commit_fixture(@source)
+
+    assert_migrated(@header)
+
+    assert_equal rules, File.read(robots_path)
+    assert_equal 'new favicon', File.read(File.join(@project, 'public/favicon.ico'))
+  end
+
+  test 'installs crawler rules when none exist' do
+    assert_migrated(@header)
+
+    assert_equal File.read(File.join(@source, 'public/robots.txt')),
+      File.read(File.join(@project, 'public/robots.txt'))
+  end
+
   test 'extracts the packages menu' do
     header = Rails.root.join('test/fixtures/files/shared_headers/packages.html.erb').read
     File.write(File.join(@project, @header_path), header)
