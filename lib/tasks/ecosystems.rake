@@ -4,68 +4,53 @@ namespace :ecosystems do
       raise 'Shared assets can only be updated in a Rails app'
     end
 
-    shared_asset_repo = "https://github.com/ecosyste-ms/documentation"
-    branch = "main"
-    temp_dir = "tmp/ecosystems_assets"
-    ecosystems_rake_path = "lib/tasks/ecosystems.rake"
-    temp_rake_file = "#{temp_dir}/lib/tasks/ecosystems.rake"
+    shared_asset_repo = 'https://github.com/ecosyste-ms/documentation'
+    temp_dir = 'tmp/ecosystems_assets'
+    rake_file = 'lib/tasks/ecosystems.rake'
+    shared_files = %w[
+      app/views/shared/_footer.html.erb
+      app/views/layouts/application.html.erb
+      app/assets/stylesheets/ecosystems.scss
+      app/helpers/ecosystems_helper.rb
+    ]
+    header_file = 'app/views/shared/_header.html.erb'
+    menu_file = 'app/views/shared/_menu.html.erb'
+    partial_file = 'app/views/shared/_services_menu.html.erb'
 
-    # Ensure temp directory is clean
-    `rm -rf #{temp_dir}`
-    `mkdir -p #{temp_dir}`
+    begin
+      FileUtils.rm_r(temp_dir) if File.exist?(temp_dir)
+      FileUtils.mkdir_p(File.dirname(temp_dir))
+      system('git', 'clone', '--depth=1', '--branch', 'main', shared_asset_repo, temp_dir, exception: true)
 
-    # Clone the repo with only the required branch
-    `git clone --depth=1 --branch #{branch} #{shared_asset_repo} #{temp_dir}`
+      unless FileUtils.compare_file("#{temp_dir}/#{rake_file}", rake_file)
+        puts 'ecosystems.rake has changed, restarting task with new code...'
+        FileUtils.cp("#{temp_dir}/#{rake_file}", rake_file)
+        FileUtils.rm_r(temp_dir)
+        exec(Gem.ruby, Gem.bin_path('rake', 'rake'), 'ecosystems:update_shared_assets')
+      end
 
-    # Ensure target directories exist
-    `mkdir -p app/views/shared`
-    `mkdir -p app/assets/stylesheets`
-    `mkdir -p app/helpers`
-    `mkdir -p app/assets/images`
-    `mkdir -p public`
+      (shared_files + [header_file, menu_file, partial_file]).each do |path|
+        raise "Missing shared asset: #{path}" unless File.file?("#{temp_dir}/#{path}")
+      end
+      %w[app/assets/images public].each do |path|
+        raise "Missing shared asset directory: #{path}" unless File.directory?("#{temp_dir}/#{path}")
+      end
 
-    # Check if ecosystems.rake has changed
-    if !FileUtils.compare_file(temp_rake_file, ecosystems_rake_path)
-      puts "ecosystems.rake has changed, restarting task with new code..."
-      `cp #{temp_rake_file} #{ecosystems_rake_path}`
-
-      # Cleanup
-      `rm -rf #{temp_dir}`
-
-      # Re-execute the current Rake task using exec to replace the running process
-      exec("rake ecosystems:update_shared_assets")
+      %w[app/views/shared app/views/layouts app/assets/stylesheets app/helpers app/assets/images public].each do |path|
+        FileUtils.mkdir_p(path)
+      end
+      FileUtils.cp("#{temp_dir}/#{header_file}", header_file) unless File.exist?(header_file)
+      Rake::Task['ecosystems:update_services_menu'].invoke(temp_dir)
+      shared_files.each { |path| FileUtils.cp("#{temp_dir}/#{path}", path) }
+      %w[app/assets/images public].each do |path|
+        FileUtils.cp_r("#{temp_dir}/#{path}/.", path)
+      end
+      FileUtils.cp("#{temp_dir}/#{menu_file}", menu_file) unless File.exist?(menu_file)
+    ensure
+      FileUtils.rm_r(temp_dir) if File.exist?(temp_dir)
     end
 
-    header_file = "app/views/shared/_header.html.erb"
-    FileUtils.cp("#{temp_dir}/#{header_file}", header_file) unless File.exist?(header_file)
-    Rake::Task['ecosystems:update_services_menu'].invoke(temp_dir)
-
-    # Install required gems
-    `bundle add bootstrap-icons-helper`
-
-    # Copy required files
-    `cp #{temp_rake_file} #{ecosystems_rake_path}`
-    `cp #{temp_dir}/app/views/shared/_footer.html.erb app/views/shared/`
-    `cp #{temp_dir}/app/views/layouts/application.html.erb app/views/layouts/`
-    `cp #{temp_dir}/app/assets/stylesheets/ecosystems.scss app/assets/stylesheets/`
-    `cp #{temp_dir}/app/helpers/ecosystems_helper.rb app/helpers/`
-    `cp -r #{temp_dir}/app/assets/images/. app/assets/images/`
-    `cp -r #{temp_dir}/public/. public/`
-
-    # Copy _menu.html.erb only if it does not already exist
-    menu_file = "app/views/shared/_menu.html.erb"
-    unless File.exist?(menu_file)
-      `cp #{temp_dir}/app/views/shared/_menu.html.erb #{menu_file}`
-    end
-
-    # Cleanup
-    `rm -rf #{temp_dir}`
-
-    # git add and commit
-    `git add lib/tasks/ecosystems.rake app/views/shared/_header.html.erb app/views/shared/_services_menu.html.erb app/views/shared/_footer.html.erb app/views/shared/_menu.html.erb app/views/layouts/application.html.erb app/assets/stylesheets/ecosystems.scss app/helpers/ecosystems_helper.rb app/assets/images/ public/`
-    `git commit -m "Update shared assets from #{shared_asset_repo}"`
-
-    puts "Shared assets updated successfully."
+    puts 'Shared assets updated; changes left uncommitted.'
   end
 
   task :update_services_menu, [:source] do |_, args|

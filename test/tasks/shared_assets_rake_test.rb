@@ -9,7 +9,6 @@ class SharedAssetsRakeTest < ActiveSupport::TestCase
     @directory = Dir.mktmpdir('shared-assets')
     @project = File.join(@directory, 'app')
     @source = File.join(@directory, 'source')
-    @commands = File.join(@directory, 'commands')
     @header_path = 'app/views/shared/_header.html.erb'
     @partial_path = 'app/views/shared/_services_menu.html.erb'
     @task_path = 'lib/tasks/ecosystems.rake'
@@ -29,7 +28,7 @@ class SharedAssetsRakeTest < ActiveSupport::TestCase
     end
     File.write(File.join(@project, @header_path), @header)
     File.write(File.join(@project, 'app/views/shared/_menu.html.erb'), 'local navigation')
-    File.write(File.join(@project, 'Gemfile'), "source 'https://rubygems.org'\n")
+    File.write(File.join(@project, 'Gemfile'), "source 'https://rubygems.org'\ngem 'rake'\n")
     File.write(File.join(@project, 'Rakefile'), "load 'lib/tasks/ecosystems.rake'\n")
     File.write(File.join(@project, 'bin/rails'), "#!/bin/sh\nexit 0\n")
     File.chmod(0o755, File.join(@project, 'bin/rails'))
@@ -37,41 +36,51 @@ class SharedAssetsRakeTest < ActiveSupport::TestCase
       File.write(File.join(@project, path), '')
     end
 
-    mocks = File.join(@directory, 'mocks')
-    FileUtils.mkdir_p(mocks)
-    real_git, status = Open3.capture2('which', 'git')
-    assert status.success?
-    File.write(File.join(mocks, 'git'), <<~'SH')
-      #!/bin/bash
-      if [ "$1" = clone ]; then
-        cp -R "$SHARED_ASSETS_SOURCE/." "${@: -1}"
-      elif [ "$1" = commit ]; then
-        printf 'commit\n' >> "$SHARED_ASSETS_COMMANDS"
-      else
-        exec "$SHARED_ASSETS_GIT" "$@"
-      fi
-    SH
-    File.write(File.join(mocks, 'bundle'), <<~'SH')
-      #!/bin/sh
-      printf 'bundle %s\n' "$*" >> "$SHARED_ASSETS_COMMANDS"
-    SH
-    File.chmod(0o755, File.join(mocks, 'git'), File.join(mocks, 'bundle'))
-    @env = {
-      'PATH' => "#{mocks}:#{ENV.fetch('PATH')}",
-      'SHARED_ASSETS_SOURCE' => @source,
-      'SHARED_ASSETS_COMMANDS' => @commands,
-      'SHARED_ASSETS_GIT' => real_git.strip
-    }
-    _, error, status = Open3.capture3(real_git.strip, 'init', '-q', @project)
-    assert status.success?, error
+    @env = Bundler.unbundled_env.merge(
+      'BUNDLE_GEMFILE' => File.join(@project, 'Gemfile'),
+      'GIT_CONFIG_COUNT' => '4',
+      'GIT_CONFIG_KEY_0' => 'core.hooksPath',
+      'GIT_CONFIG_VALUE_0' => '/dev/null',
+      'GIT_CONFIG_KEY_1' => 'commit.gpgsign',
+      'GIT_CONFIG_VALUE_1' => 'false',
+      'GIT_CONFIG_KEY_2' => "url.file://#{@source}.insteadOf",
+      'GIT_CONFIG_VALUE_2' => 'https://github.com/ecosyste-ms/documentation',
+      'GIT_CONFIG_KEY_3' => 'protocol.file.allow',
+      'GIT_CONFIG_VALUE_3' => 'always'
+    )
+    command(@project, RbConfig.ruby, Gem.bin_path('bundler', 'bundle'), 'lock', '--local')
+    [@source, @project].each do |root|
+      command(root, 'git', 'init', '-q', '-b', 'main')
+      command(root, 'git', 'config', 'user.name', 'Shared assets test')
+      command(root, 'git', 'config', 'user.email', 'test@example.invalid')
+      commit_fixture(root)
+    end
+    @head = command(@project, 'git', 'rev-parse', 'HEAD')
+    @dependencies = %w[Gemfile Gemfile.lock].to_h { |file| [file, File.binread(File.join(@project, file))] }
   end
 
   def teardown
+    if @dependencies
+      @dependencies.each { |file, content| assert_equal content, File.binread(File.join(@project, file)) }
+      assert_equal @head, command(@project, 'git', 'rev-parse', 'HEAD')
+      assert_empty command(@project, 'git', 'diff', '--cached', '--name-only')
+    end
     FileUtils.remove_entry(@directory)
   end
 
+  def command(directory, *arguments)
+    output, error, status = Open3.capture3(@env, *arguments, chdir: directory, unsetenv_others: true)
+    assert status.success?, "#{arguments.join(' ')}: #{output}\n#{error}"
+    output
+  end
+
+  def commit_fixture(directory)
+    command(directory, 'git', 'add', '.')
+    command(directory, 'git', 'commit', '-qm', 'Fixture')
+  end
+
   def update_assets
-    Open3.capture3(@env, RbConfig.ruby, Gem.bin_path('rake', 'rake'), 'ecosystems:update_shared_assets', chdir: @project)
+    Open3.capture3(@env, RbConfig.ruby, Gem.bin_path('bundler', 'bundle'), 'exec', 'rake', 'ecosystems:update_shared_assets', chdir: @project, unsetenv_others: true)
   end
 
   def assert_migrated(header)
@@ -82,9 +91,6 @@ class SharedAssetsRakeTest < ActiveSupport::TestCase
     assert_equal "#{before}      <%= render 'shared/services_menu' %>\n#{after}", result
     assert_equal @partial, File.read(File.join(@project, @partial_path))
     assert_equal 'local navigation', File.read(File.join(@project, 'app/views/shared/_menu.html.erb'))
-    staged, = Open3.capture2('git', 'diff', '--cached', '--name-only', chdir: @project)
-    assert_includes staged.lines.map(&:strip), @partial_path
-    assert_includes staged.lines.map(&:strip), @header_path
   end
 
   test 'updates assets and extracts the home menu without changing local navigation' do
@@ -108,6 +114,7 @@ class SharedAssetsRakeTest < ActiveSupport::TestCase
     assert status.success?, "#{output}\n#{error}"
     header = File.read(File.join(@project, @header_path))
     File.write(File.join(@source, @partial_path), 'updated shared menu')
+    commit_fixture(@source)
 
     output, error, status = update_assets
 
@@ -127,7 +134,7 @@ class SharedAssetsRakeTest < ActiveSupport::TestCase
     assert_equal header, File.read(File.join(@project, @header_path))
     refute File.exist?(File.join(@project, @partial_path))
     refute File.exist?(File.join(@project, 'app/views/shared/_footer.html.erb'))
-    refute File.exist?(@commands)
+    refute File.exist?(File.join(@project, 'tmp/ecosystems_assets'))
   end
 
   test 'rejects duplicate menus' do
@@ -138,7 +145,7 @@ class SharedAssetsRakeTest < ActiveSupport::TestCase
     refute status.success?
     assert_includes error, 'Unrecognized services menu'
     assert_equal @header + @header, File.read(File.join(@project, @header_path))
-    refute File.exist?(@commands)
+    refute File.exist?(File.join(@project, 'tmp/ecosystems_assets'))
   end
 
   test 'loads the new menu migration after refreshing its rake task' do
@@ -166,7 +173,43 @@ class SharedAssetsRakeTest < ActiveSupport::TestCase
     refute status.success?
     assert_includes error, 'Shared assets can only be updated in a Rails app'
     assert_equal @header, File.read(File.join(@project, @header_path))
-    refute File.exist?(@commands)
+    refute File.exist?(File.join(@project, 'tmp/ecosystems_assets'))
+  end
+
+  test 'stops when cloning fails without reporting success or changing assets' do
+    @env['GIT_CONFIG_KEY_2'] = "url.file://#{@directory}/missing.insteadOf"
+
+    output, _, status = update_assets
+
+    refute status.success?
+    refute_includes output, 'Shared assets updated'
+    assert_equal @header, File.read(File.join(@project, @header_path))
+    refute File.exist?(File.join(@project, @partial_path))
+    refute File.exist?(File.join(@project, 'tmp/ecosystems_assets'))
+  end
+
+  test 'rejects missing source assets before changing the header' do
+    File.delete(File.join(@source, 'app/views/shared/_footer.html.erb'))
+    commit_fixture(@source)
+
+    output, error, status = update_assets
+
+    refute status.success?
+    assert_includes error, 'Missing shared asset: app/views/shared/_footer.html.erb'
+    refute_includes output, 'Shared assets updated'
+    assert_equal @header, File.read(File.join(@project, @header_path))
+    refute File.exist?(File.join(@project, @partial_path))
+    refute File.exist?(File.join(@project, 'tmp/ecosystems_assets'))
+  end
+
+  test 'reports a copy failure and cleans up the clone' do
+    File.symlink('missing/stylesheet', File.join(@project, 'app/assets/stylesheets/ecosystems.scss'))
+
+    output, error, status = update_assets
+
+    refute status.success?
+    assert_includes error, 'ecosystems.scss'
+    refute_includes output, 'Shared assets updated'
     refute File.exist?(File.join(@project, 'tmp/ecosystems_assets'))
   end
 end
