@@ -256,7 +256,7 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    stripe (20.0.1)
+    stripe (20.1.0)
       bigdecimal
       logger
     thor (1.5.0)
@@ -428,7 +428,7 @@ CHECKSUMS
   snaky_hash (2.0.9) sha256=e93e6ec80632f8c8c4a3fe6e25d51eaef253e0e58dc7100f0f8370320feb3128
   sprockets (4.4.1) sha256=fbd665edad0916de5c7abefef0fc616866a60c5e48ce2846f39ac3fc5df9e184
   sprockets-rails (3.5.2) sha256=a9e88e6ce9f8c912d349aa5401509165ec42326baf9e942a85de4b76dbc4119e
-  stripe (20.0.1) sha256=c46bb19bce08b2665c649cdcb01f973889536a8baa513a6a29b5e1983f215442
+  stripe (20.1.0) sha256=5bf6bcab5ce2035324593d2ef5a555e1082d8599694cd44ca1ae30ef187cdc94
   thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
   tilt (2.9.0) sha256=da5735d0280bba96e9a91041bb14aee435ccad5c17b0fa519249ae543d9aa3a5
   timeout (0.6.1) sha256=78f57368a7e7bbadec56971f78a3f5ecbcfb59b7fcbb0a3ed6ddc08a5094accb
