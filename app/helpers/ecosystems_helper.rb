@@ -110,6 +110,14 @@ module EcosystemsHelper
         {
           name: "Ruby",
           url: "https://ruby.ecosyste.ms"
+        },
+        {
+          name: "Search",
+          url: "https://search.ecosyste.ms"
+        },
+        {
+          name: "Proxy",
+          url: "https://proxy.ecosyste.ms"
         }
       ]
     }

@@ -153,6 +153,16 @@ class Service
             name: 'Science',
             url: 'https://science.ecosyste.ms',
             description: 'Tracking open source software for scientific research',
+          },
+          {
+            name: 'Search',
+            url: 'https://search.ecosyste.ms',
+            description: 'Search popular open source packages and projects by name or description',
+          },
+          {
+            name: 'Proxy',
+            url: 'https://proxy.ecosyste.ms',
+            description: 'Cache package downloads across ecosystems with optional release cooldowns',
           }
         ]
       }

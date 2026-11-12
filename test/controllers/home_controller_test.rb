@@ -21,6 +21,28 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'lists search and proxy in the homepage experiments section' do
+    get root_path
+    assert_response :success
+
+    assert_select '.directory-section', text: /Experiments/ do
+      assert_select 'h4 a[href="https://search.ecosyste.ms"]', text: 'Search', count: 1
+      assert_select 'p', text: 'Search popular open source packages and projects by name or description'
+      assert_select 'h4 a[href="https://proxy.ecosyste.ms"]', text: 'Proxy', count: 1
+      assert_select 'p', text: 'Cache package downloads across ecosystems with optional release cooldowns'
+    end
+  end
+
+  test 'lists search and proxy in the service menu experiments category' do
+    get root_path
+    assert_response :success
+
+    assert_select '#header__global__menu .header__global__menu__category', text: /Experiments/ do
+      assert_select 'a[href="https://search.ecosyste.ms"]', text: 'Search', count: 1
+      assert_select 'a[href="https://proxy.ecosyste.ms"]', text: 'Proxy', count: 1
+    end
+  end
+
   test 'renders styleguide for styleguide.ecosyste.ms domain' do
     get root_path, headers: { 'HTTP_HOST' => 'styleguide.ecosyste.ms' }
     assert_response :success
