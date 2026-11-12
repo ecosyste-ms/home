@@ -163,6 +163,11 @@ class Service
             name: 'Proxy',
             url: 'https://proxy.ecosyste.ms',
             description: 'Cache package downloads across ecosystems with optional release cooldowns',
+          },
+          {
+            name: 'Live',
+            url: 'https://live.ecosyste.ms',
+            description: 'A live feed of new packages and versions from open source software ecosystems and registries',
           }
         ]
       }

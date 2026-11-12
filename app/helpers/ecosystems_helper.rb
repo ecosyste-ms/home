@@ -118,6 +118,10 @@ module EcosystemsHelper
         {
           name: "Proxy",
           url: "https://proxy.ecosyste.ms"
+        },
+        {
+          name: "Live",
+          url: "https://live.ecosyste.ms"
         }
       ]
     }

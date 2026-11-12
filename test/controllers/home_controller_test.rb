@@ -21,7 +21,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'lists search and proxy in the homepage experiments section' do
+  test 'lists search, proxy and live in the homepage experiments section' do
     get root_path
     assert_response :success
 
@@ -30,16 +30,19 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
       assert_select 'p', text: 'Search popular open source packages and projects by name or description'
       assert_select 'h4 a[href="https://proxy.ecosyste.ms"]', text: 'Proxy', count: 1
       assert_select 'p', text: 'Cache package downloads across ecosystems with optional release cooldowns'
+      assert_select 'h4 a[href="https://live.ecosyste.ms"]', text: 'Live', count: 1
+      assert_select 'p', text: 'A live feed of new packages and versions from open source software ecosystems and registries'
     end
   end
 
-  test 'lists search and proxy in the service menu experiments category' do
+  test 'lists search, proxy and live in the service menu experiments category' do
     get root_path
     assert_response :success
 
     assert_select '#header__global__menu .header__global__menu__category', text: /Experiments/ do
       assert_select 'a[href="https://search.ecosyste.ms"]', text: 'Search', count: 1
       assert_select 'a[href="https://proxy.ecosyste.ms"]', text: 'Proxy', count: 1
+      assert_select 'a[href="https://live.ecosyste.ms"]', text: 'Live', count: 1
     end
   end
 
