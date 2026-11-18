@@ -29,7 +29,7 @@ You can then load up [http://localhost:3000](http://localhost:3000) to access th
 The account system uses GitHub OAuth for authentication. To set this up for local development:
 
 1. Create a new GitHub OAuth App at https://github.com/settings/developers
-   - Application name: `Ecosyste.ms (Local)`
+   - Application name: `ecosyste.ms (Local)`
    - Homepage URL: `http://localhost:3000`
    - Authorization callback URL: `http://localhost:3000/auth/github/callback`
 
@@ -318,7 +318,7 @@ The services listed on the homepage are defined in [app/controllers/documentatio
 },
 ```
 
-Note: The icon should be a name of an icon from the [bootstrap icon set](https://icons.getbootstrap.com/) (~v1.8) and the repo must exist within the [Ecosystems](https://github.com/ecosyste-ms) GitHub organization.
+Note: The icon should be a name of an icon from the [bootstrap icon set](https://icons.getbootstrap.com/) (~v1.8) and the repo must exist within the [ecosyste.ms](https://github.com/ecosyste-ms) GitHub organization.
 
 ## Deployment
 

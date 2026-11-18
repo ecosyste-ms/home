@@ -5,7 +5,7 @@ namespace :citation do
     service = services.find{|s| s[:name].downcase == args[:name].to_s.downcase}
     citation = <<-CITATION
 cff-version: 1.2.0
-title: 'Ecosyste.ms: #{service[:name]}'
+title: 'ecosyste.ms: #{service[:name]}'
 message: >-
   If you use this software, please cite it using the
   metadata from this file.

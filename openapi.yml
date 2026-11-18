@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: Ecosyste.ms APIs
+  title: ecosyste.ms APIs
   description: |
     Root OpenAPI specification that references all ecosyste.ms service APIs.
     
-    Ecosyste.ms provides datasets and tools for open source package ecosystems.
+    ecosyste.ms provides datasets and tools for open source package ecosystems.
     This specification aggregates all available APIs across the platform for easy discovery.
     
     For more information about ecosyste.ms, visit https://ecosyste.ms
@@ -16,7 +16,7 @@ info:
     url: https://ecosyste.ms
 servers:
   - url: https://ecosyste.ms
-    description: Ecosyste.ms documentation hub
+    description: ecosyste.ms documentation hub
 
 paths: {}
 
