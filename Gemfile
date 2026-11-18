@@ -25,6 +25,7 @@ gem 'ostruct'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem 'oauth2', '>= 2.0.22' # GHSA-pp92-crg2-gfv9
 gem 'bcrypt'
 
 # Payment processing
