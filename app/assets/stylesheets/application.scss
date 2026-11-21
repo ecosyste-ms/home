@@ -428,6 +428,7 @@
 
 .about-photo {
   position: relative;
+  display: inline-block;
   @include media-breakpoint-up(lg) {
     margin-top: -220px;
   }
@@ -441,7 +442,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
-    top: 40%;
-    left: -50px;
+    bottom: 33%;
+    right: 57%;
   }
 }
